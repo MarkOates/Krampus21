@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<head>
+<style>
+*
+{
+  font-family: 'Arial';
+  padding: 3px 20px;
+}
+table td
+{
+  padding: 3px 20px;
+}
+.property
+{
+  color: blue;
+}
+.private_property
+{
+  color: lightblue;
+}
+
+.method
+{
+  color: red;
+}
+
+.private_method
+{
+  color: pink;
+}
+
+.dependency
+{
+  color: green;
+}
+
+.component
+{
+  padding: 20 10 20 10;
+  margin: 20 10 20 10;
+  background-color: #dfdfdf;
+}
+
+.component h3
+{
+}
+</style>
+</head>
+<body>
+<h1>TOC</h1>
+<ul>
+  <li><a href="#quintessence/Krampus21/ProgramRunner.q.yml">quintessence/Krampus21/ProgramRunner.q.yml</a></li>
+  <li><a href="#quintessence/Krampus21/ScreenManager.q.yml">quintessence/Krampus21/ScreenManager.q.yml</a></li>
+  <li><a href="#quintessence/Krampus21/Screens/Base.q.yml">quintessence/Krampus21/Screens/Base.q.yml</a></li>
+  <li><a href="#quintessence/Krampus21/UserEventEmitter.q.yml">quintessence/Krampus21/UserEventEmitter.q.yml</a></li>
+</ul>
+<h1>Components</h1>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/Krampus21/ProgramRunner.q.yml">quintessence/Krampus21/ProgramRunner.q.yml</h3>
+     <table>
+    </table>
+     <table>
+<tr>
+  <td class="method">run()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Display&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Display.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Screens&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Screens.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Framework&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Framework.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, AllegroFlare::AudioRepositoryElement&gt;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;string&quot;, &quot;AllegroFlare/AudioRepositoryElement.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::ScreenManager&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/ScreenManager.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/Krampus21/ScreenManager.q.yml">quintessence/Krampus21/ScreenManager.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">framework</td>
+  <td class="property">AllegroFlare::Framework*</td>
+</tr>
+<tr>
+  <td class="property">screens</td>
+  <td class="property">AllegroFlare::Screens*</td>
+</tr>
+<tr>
+  <td class="private_property">sound_effect_elements</td>
+  <td class="private_property">std::map&lt;std::string, AllegroFlare::AudioRepositoryElement&gt;</td>
+</tr>
+<tr>
+  <td class="private_property">music_track_elements</td>
+  <td class="private_property">std::map&lt;std::string, AllegroFlare::AudioRepositoryElement&gt;</td>
+</tr>
+<tr>
+  <td class="property">current_screen</td>
+  <td class="property">Krampus21::Screens::Base*</td>
+</tr>
+<tr>
+  <td class="property">user_event_emitter_souce</td>
+  <td class="property">ALLEGRO_EVENT_SOURCE</td>
+</tr>
+<tr>
+  <td class="property">user_event_emitter</td>
+  <td class="property">Krampus21::UserEventEmitter</td>
+</tr>
+<tr>
+  <td class="property">audio_controller</td>
+  <td class="property">AllegroFlare::AudioController</td>
+</tr>
+<tr>
+  <td class="property">initialized</td>
+  <td class="property">bool</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">load_initial_screen()</td>
+</tr>
+<tr>
+  <td class="method">initialize()</td>
+</tr>
+<tr>
+  <td class="method">key_down_func(1)</td>
+</tr>
+<tr>
+  <td class="method">user_event_func(1)</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_EVENT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_EVENT_SOURCE&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Screen&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Screen.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Screens*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Screens.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Framework*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Framework.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Display&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Display.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::AudioController&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/AudioController.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Screens::Base*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Screens/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::UserEventEmitter&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/UserEventEmitter.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, AllegroFlare::AudioRepositoryElement&gt;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;string&quot;, &quot;AllegroFlare/AudioRepositoryElement.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/Krampus21/Screens/Base.q.yml">quintessence/Krampus21/Screens/Base.q.yml</h3>
+     <table>
+    </table>
+     <table>
+<tr>
+  <td class="method">run()</td>
+</tr>
+    </table>
+     <table>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/Krampus21/UserEventEmitter.q.yml">quintessence/Krampus21/UserEventEmitter.q.yml</h3>
+     <table>
+    </table>
+     <table>
+<tr>
+  <td class="method">run()</td>
+</tr>
+    </table>
+     <table>
+    </table>
+  </div>
+</ul>
+<h1>Dependents</h1>
+<pre>
+{
+  "AllegroFlare/Display": [
+    "Krampus21/ProgramRunner",
+    "Krampus21/ScreenManager"
+  ],
+  "AllegroFlare/Screens": [
+    "Krampus21/ProgramRunner",
+    "Krampus21/ScreenManager"
+  ],
+  "AllegroFlare/Framework": [
+    "Krampus21/ProgramRunner",
+    "Krampus21/ScreenManager"
+  ],
+  "std/map<std/string, AllegroFlare/AudioRepositoryElement>": [
+    "Krampus21/ProgramRunner",
+    "Krampus21/ScreenManager"
+  ],
+  "Krampus21/ScreenManager": [
+    "Krampus21/ProgramRunner"
+  ],
+  "ALLEGRO_EVENT": [
+    "Krampus21/ScreenManager"
+  ],
+  "ALLEGRO_EVENT_SOURCE": [
+    "Krampus21/ScreenManager"
+  ],
+  "AllegroFlare/Screen": [
+    "Krampus21/ScreenManager"
+  ],
+  "AllegroFlare/AudioController": [
+    "Krampus21/ScreenManager"
+  ],
+  "Krampus21/Screens/Base": [
+    "Krampus21/ScreenManager"
+  ],
+  "Krampus21/UserEventEmitter": [
+    "Krampus21/ScreenManager"
+  ]
+}
+</pre>
+</body>

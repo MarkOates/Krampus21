@@ -1,0 +1,39 @@
+{
+  "AllegroFlare/Display": [
+    "Krampus21/ProgramRunner",
+    "Krampus21/ScreenManager"
+  ],
+  "AllegroFlare/Screens": [
+    "Krampus21/ProgramRunner",
+    "Krampus21/ScreenManager"
+  ],
+  "AllegroFlare/Framework": [
+    "Krampus21/ProgramRunner",
+    "Krampus21/ScreenManager"
+  ],
+  "std/map<std/string, AllegroFlare/AudioRepositoryElement>": [
+    "Krampus21/ProgramRunner",
+    "Krampus21/ScreenManager"
+  ],
+  "Krampus21/ScreenManager": [
+    "Krampus21/ProgramRunner"
+  ],
+  "ALLEGRO_EVENT": [
+    "Krampus21/ScreenManager"
+  ],
+  "ALLEGRO_EVENT_SOURCE": [
+    "Krampus21/ScreenManager"
+  ],
+  "AllegroFlare/Screen": [
+    "Krampus21/ScreenManager"
+  ],
+  "AllegroFlare/AudioController": [
+    "Krampus21/ScreenManager"
+  ],
+  "Krampus21/Screens/Base": [
+    "Krampus21/ScreenManager"
+  ],
+  "Krampus21/UserEventEmitter": [
+    "Krampus21/ScreenManager"
+  ]
+}

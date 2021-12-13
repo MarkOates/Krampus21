@@ -1,0 +1,114 @@
+parent_classes:
+
+
+  - class: AllegroFlare::Screen
+    scope: public
+    init_with: ''
+
+
+properties:
+
+
+  - name: framework
+    type: AllegroFlare::Framework*
+    init_with: nullptr
+    constructor_arg: true
+
+  - name: screens
+    type: AllegroFlare::Screens*
+    init_with: nullptr
+    constructor_arg: true
+
+  - name: sound_effect_elements
+    type: std::map<std::string, AllegroFlare::AudioRepositoryElement>
+    private: true
+    init_with: '{}'
+    constructor_arg: true
+
+  - name: music_track_elements
+    type: std::map<std::string, AllegroFlare::AudioRepositoryElement>
+    private: true
+    init_with: '{}'
+    constructor_arg: true
+
+  - name: current_screen
+    type: Krampus21::Screens::Base*
+    init_with: nullptr
+
+  - name: user_event_emitter_souce
+    type: ALLEGRO_EVENT_SOURCE
+    init_with: '{}'
+
+  - name: user_event_emitter
+    type: Krampus21::UserEventEmitter
+    init_with: '{}'
+
+  - name: audio_controller
+    type: AllegroFlare::AudioController
+    init_with: '{}'
+
+  - name: initialized
+    type: bool
+    init_with: false
+
+
+functions:
+
+
+  - name: load_initial_screen
+    body: |
+      return;
+
+
+  - name: initialize
+    body: |
+      // TODO
+      initialized = true;
+      return;
+
+
+  - name: key_down_func
+    override: true
+    parameters:
+      - name: ev
+        type: ALLEGRO_EVENT*
+        default_argument: nullptr
+    body: |
+      return;
+
+
+  - name: user_event_func
+    override: true
+    parameters:
+      - name: ev
+        type: ALLEGRO_EVENT*
+        default_argument: nullptr
+    body: |
+      return;
+
+
+dependencies:
+
+
+  - symbol: ALLEGRO_EVENT*
+    headers: [ allegro5/allegro.h ]
+  - symbol: ALLEGRO_EVENT_SOURCE
+    headers: [ allegro5/allegro.h ]
+  - symbol: AllegroFlare::Screen
+    headers: [ AllegroFlare/Screen.hpp ]
+  - symbol: AllegroFlare::Screens*
+    headers: [ AllegroFlare/Screens.hpp ]
+  - symbol: AllegroFlare::Framework*
+    headers: [ AllegroFlare/Framework.hpp ]
+  - symbol: AllegroFlare::Display
+    headers: [ AllegroFlare/Display.hpp ]
+  - symbol: AllegroFlare::AudioController
+    headers: [ AllegroFlare/AudioController.hpp ]
+  - symbol: Krampus21::Screens::Base*
+    headers: [ Krampus21/Screens/Base.hpp ]
+  - symbol: Krampus21::UserEventEmitter
+    headers: [ Krampus21/UserEventEmitter.hpp ]
+  - symbol: std::map<std::string, AllegroFlare::AudioRepositoryElement>
+    headers: [ map, string, AllegroFlare/AudioRepositoryElement.hpp ]
+
+
