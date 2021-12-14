@@ -105,18 +105,14 @@ void ScreenManager::key_down_func(ALLEGRO_EVENT* ev)
 
 void ScreenManager::joy_button_down_func(ALLEGRO_EVENT* ev)
 {
-   switch (ev->type)
+   int button_mapped_for_advancing_dialog = 1;
+   switch (ev->joystick.button)
    {
-   case ALLEGRO_EVENT_KEY_DOWN:
-      switch(ev->keyboard.keycode)
-      {
-         case ALLEGRO_KEY_ESCAPE:
-            shutdown_game();
-            break;
-         case ALLEGRO_KEY_SPACE:
-            advance_dialog();
-            break;
-      }
+   case 4:
+      shutdown_game();
+      break;
+   case 1:
+      advance_dialog();
       break;
    }
    return;
