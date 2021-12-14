@@ -1,4 +1,27 @@
+properties:
+
+
+  - name: dialog_box
+    type: Krampus21::DialogBoxes::Base*
+    init_with: nullptr
+
+
 functions:
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+
+
+  - name: render
+    body: |
+      return;
+    body_dependency_symbols:
+      - al_is_system_installed
+
+
+dependencies:
+
+
+  - symbol: al_is_system_installed
+    headers: [ allegro5/allegro.h ]
+  - symbol: Krampus21::DialogBoxes::Base*
+    headers: [ Krampus21/DialogBoxes/Base.hpp ]
+
+

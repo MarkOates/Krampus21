@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <string>
+#include <Krampus21/DialogBoxes/Base.hpp>
 
 
 namespace Krampus21
@@ -9,12 +9,13 @@ namespace Krampus21
    class DialogBoxRenderer
    {
    private:
+      Krampus21::DialogBoxes::Base* dialog_box;
 
    public:
       DialogBoxRenderer();
       ~DialogBoxRenderer();
 
-      std::string run();
+      void render();
    };
 }
 

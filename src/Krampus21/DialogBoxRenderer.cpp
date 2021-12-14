@@ -1,7 +1,7 @@
 
 
 #include <Krampus21/DialogBoxRenderer.hpp>
-
+#include <allegro5/allegro.h>
 
 
 namespace Krampus21
@@ -9,6 +9,7 @@ namespace Krampus21
 
 
 DialogBoxRenderer::DialogBoxRenderer()
+   : dialog_box(nullptr)
 {
 }
 
@@ -18,9 +19,9 @@ DialogBoxRenderer::~DialogBoxRenderer()
 }
 
 
-std::string DialogBoxRenderer::run()
+void DialogBoxRenderer::render()
 {
-   return "Hello World!";
+   return;
 }
 } // namespace Krampus21
 
