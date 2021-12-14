@@ -51,8 +51,23 @@ void DialogBoxRenderer::render()
          error_message << "DialogBoxRenderer" << "::" << "render" << ": error: " << "guard \"al_get_current_display()\" not met";
          throw std::runtime_error(error_message.str());
       }
+   float roundness = 20.0f;
+   float border_thickness = 5.0f;
+   float border_inner_padding = border_thickness * 3;
+   ALLEGRO_COLOR fill_color = al_color_html("353636");
+   ALLEGRO_COLOR border_color = al_color_html("cccccc");
+
    place.start_transform();
-   al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 4.0, 4.0, al_color_name("green"));
+   al_draw_filled_rounded_rectangle(
+      0 + border_inner_padding,
+      0 + border_inner_padding,
+      place.size.x - border_inner_padding,
+      place.size.y - border_inner_padding,
+      roundness * 0.6,
+      roundness * 0.6,
+      fill_color
+   );
+   al_draw_rounded_rectangle(0, 0, place.size.x, place.size.y, roundness, roundness, border_color, border_thickness);
    place.restore_transform();
    return;
 }
