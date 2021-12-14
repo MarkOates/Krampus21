@@ -1,4 +1,23 @@
+parent_classes:
+
+
+  - class: Krampus21::Screens::Base
+    scope: public
+    init_with: ''
+
+
 functions:
+
+
   - name: run
     type: std::string
     body: return "Hello World!";
+
+
+dependencies:
+
+
+  - symbol: Krampus21::Screens::Base
+    headers: [ Krampus21/Screens/Base.hpp ]
+
+

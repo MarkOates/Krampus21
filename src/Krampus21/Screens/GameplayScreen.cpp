@@ -11,6 +11,7 @@ namespace Screens
 
 
 GameplayScreen::GameplayScreen()
+   : Krampus21::Screens::Base()
 {
 }
 
