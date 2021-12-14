@@ -12,6 +12,8 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 
+#define TEST_FIXTURE_FONT_FOLDER "/Users/markoates/Repos/Krampus21/bin/programs/data/fonts/"
+
 
 TEST(Krampus21_DialogBoxRendererTest, can_be_created_without_blowing_up)
 {
@@ -42,11 +44,46 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_allegro_display__
 {
    al_init();
    al_init_primitives_addon();
-
    Krampus21::DialogBoxRenderer dialog_box_renderer;
+
    std::string expected_error_message =
       "DialogBoxRenderer::render: error: guard \"al_get_current_display()\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
+}
+
+
+TEST(Krampus21_DialogBoxRendererTest, render__when_the_allegro_font_addon_has_not_been_initialized__raises_an_exception)
+{
+   al_init();
+   al_init_primitives_addon();
+   al_init_ttf_addon();
+   ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
+   Krampus21::DialogBoxes::Base dialog_box;
+   Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, &dialog_box);
+
+   std::string expected_error_message =
+      "DialogBoxRenderer::obtain_dialog_font: error: guard \"al_is_font_addon_initialized()\" not met";
+   ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
+
+   al_destroy_display(display);
+}
+
+
+TEST(Krampus21_DialogBoxRendererTest, render__when_the_allegro_ttf_addon_has_not_been_initialized__raises_an_exception)
+{
+   al_init();
+   al_init_primitives_addon();
+   al_init_font_addon();
+   al_init_ttf_addon();
+   ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
+   Krampus21::DialogBoxes::Base dialog_box;
+   Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, &dialog_box);
+
+   std::string expected_error_message =
+      "DialogBoxRenderer::obtain_dialog_font: error: guard \"font_bin\" not met";
+   ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
+
+   al_destroy_display(display);
 }
 
 
@@ -54,11 +91,32 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_font_bin__raises_
 {
    al_init();
    al_init_primitives_addon();
+   al_init_font_addon();
+   al_init_ttf_addon();
    ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
+   Krampus21::DialogBoxes::Base dialog_box;
+   Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, &dialog_box);
 
-   Krampus21::DialogBoxRenderer dialog_box_renderer;
    std::string expected_error_message =
-      "DialogBoxRenderer::render: error: guard \"font_bin\" not met";
+      "DialogBoxRenderer::obtain_dialog_font: error: guard \"font_bin\" not met";
+   ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
+
+   al_destroy_display(display);
+}
+
+
+TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_dialog_box__raises_an_exception)
+{
+   al_init();
+   al_init_primitives_addon();
+   al_init_font_addon();
+   al_init_ttf_addon();
+   ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
+   AllegroFlare::FontBin font_bin;
+   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin);
+
+   std::string expected_error_message =
+      "DialogBoxRenderer::get_dialog_box_text: error: guard \"dialog_box\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_destroy_display(display);
@@ -69,9 +127,13 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_the_dialog_box)
 {
    al_init();
    al_init_primitives_addon();
+   al_init_font_addon();
+   al_init_ttf_addon();
    ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
    AllegroFlare::FontBin font_bin;
-   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin);
+   font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
+   Krampus21::DialogBoxes::Base dialog_box;
+   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
 
    dialog_box_renderer.render();
 

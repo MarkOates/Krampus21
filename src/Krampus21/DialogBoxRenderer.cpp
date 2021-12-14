@@ -9,15 +9,17 @@
 #include <sstream>
 #include <stdexcept>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace Krampus21
 {
 
 
-DialogBoxRenderer::DialogBoxRenderer(AllegroFlare::FontBin* font_bin)
+DialogBoxRenderer::DialogBoxRenderer(AllegroFlare::FontBin* font_bin, Krampus21::DialogBoxes::Base* dialog_box)
    : font_bin(font_bin)
-   , dialog_box(nullptr)
+   , dialog_box(dialog_box)
    , place({ 1920/2, 1080/3*2, 1920/2, 1080/3 })
 {
 }
@@ -54,18 +56,16 @@ void DialogBoxRenderer::render()
          error_message << "DialogBoxRenderer" << "::" << "render" << ": error: " << "guard \"al_get_current_display()\" not met";
          throw std::runtime_error(error_message.str());
       }
-   if (!(font_bin))
-      {
-         std::stringstream error_message;
-         error_message << "DialogBoxRenderer" << "::" << "render" << ": error: " << "guard \"font_bin\" not met";
-         throw std::runtime_error(error_message.str());
-      }
    float roundness = 18.0f;
    float border_thickness = 5.0f;
    float border_inner_padding = border_thickness * 3;
    ALLEGRO_COLOR fill_color = al_color_html("162428");
    ALLEGRO_COLOR border_color = al_color_html("244751");
+   std::string text = get_dialog_box_text();
+   ALLEGRO_FONT* text_font = obtain_dialog_font();
+   ALLEGRO_COLOR text_color = al_color_html("66a9bc");
 
+   // draw backfill and border
    place.start_transform();
    al_draw_filled_rounded_rectangle(
       0 + border_inner_padding,
@@ -77,19 +77,46 @@ void DialogBoxRenderer::render()
       fill_color
    );
    al_draw_rounded_rectangle(0, 0, place.size.x, place.size.y, roundness, roundness, border_color, border_thickness);
+
+   // draw text
+   //al_draw_text(text_font, text_color, 0, 0, ALLEGRO_ALIGN_LEFT, text.c_str());
+
    place.restore_transform();
    return;
 }
 
+std::string DialogBoxRenderer::get_dialog_box_text()
+{
+   if (!(dialog_box))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBoxRenderer" << "::" << "get_dialog_box_text" << ": error: " << "guard \"dialog_box\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   return "dummy_dialog_text";
+}
+
 ALLEGRO_FONT* DialogBoxRenderer::obtain_dialog_font()
 {
+   if (!(al_is_font_addon_initialized()))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBoxRenderer" << "::" << "obtain_dialog_font" << ": error: " << "guard \"al_is_font_addon_initialized()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!(al_is_ttf_addon_initialized()))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBoxRenderer" << "::" << "obtain_dialog_font" << ": error: " << "guard \"al_is_ttf_addon_initialized()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
    if (!(font_bin))
       {
          std::stringstream error_message;
          error_message << "DialogBoxRenderer" << "::" << "obtain_dialog_font" << ": error: " << "guard \"font_bin\" not met";
          throw std::runtime_error(error_message.str());
       }
-   static const std::string FONT_IDENTIFIER = "Purista Medium.otf -32";
+   static const std::string FONT_IDENTIFIER = "Purista-Medium.otf -32";
    return font_bin->operator[](FONT_IDENTIFIER);
 }
 } // namespace Krampus21

@@ -9,6 +9,7 @@ properties:
   - name: dialog_box
     type: Krampus21::DialogBoxes::Base*
     init_with: nullptr
+    constructor_arg: true
 
   - name: place
     type: allegro_flare::placement2d
@@ -20,14 +21,18 @@ functions:
 
 
   - name: render
-    guards: [ al_is_system_installed(), al_is_primitives_addon_initialized(), al_get_current_display(), font_bin ]
+    guards: [ al_is_system_installed(), al_is_primitives_addon_initialized(), al_get_current_display() ]
     body: |
       float roundness = 18.0f;
       float border_thickness = 5.0f;
       float border_inner_padding = border_thickness * 3;
       ALLEGRO_COLOR fill_color = al_color_html("162428");
       ALLEGRO_COLOR border_color = al_color_html("244751");
+      std::string text = get_dialog_box_text();
+      ALLEGRO_FONT* text_font = obtain_dialog_font();
+      ALLEGRO_COLOR text_color = al_color_html("66a9bc");
 
+      // draw backfill and border
       place.start_transform();
       al_draw_filled_rounded_rectangle(
          0 + border_inner_padding,
@@ -39,6 +44,10 @@ functions:
          fill_color
       );
       al_draw_rounded_rectangle(0, 0, place.size.x, place.size.y, roundness, roundness, border_color, border_thickness);
+
+      // draw text
+      //al_draw_text(text_font, text_color, 0, 0, ALLEGRO_ALIGN_LEFT, text.c_str());
+
       place.restore_transform();
       return;
     body_dependency_symbols:
@@ -48,12 +57,19 @@ functions:
       - al_color_html
 
 
+  - name: get_dialog_box_text
+    type: std::string
+    guards: [ dialog_box ]
+    body: |
+      return "dummy_dialog_text";
+
+
   - name: obtain_dialog_font
-    guards: [ font_bin ]
+    guards: [ al_is_font_addon_initialized(), al_is_ttf_addon_initialized(), font_bin ]
     private: true
     type: ALLEGRO_FONT*
     body: |
-      static const std::string FONT_IDENTIFIER = "Purista Medium.otf -32";
+      static const std::string FONT_IDENTIFIER = "Purista-Medium.otf -32";
       return font_bin->operator[](FONT_IDENTIFIER);
 
 
