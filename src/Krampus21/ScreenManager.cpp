@@ -74,7 +74,12 @@ void ScreenManager::key_down_func(ALLEGRO_EVENT* ev)
    switch (ev->type)
    {
    case ALLEGRO_EVENT_KEY_DOWN:
-      shutdown_game();
+      switch(ev->keyboard.keycode)
+      {
+         case ALLEGRO_KEY_ESCAPE:
+            shutdown_game();
+            break;
+      }
       break;
    }
    return;
