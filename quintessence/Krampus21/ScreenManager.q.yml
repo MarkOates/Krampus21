@@ -74,6 +74,12 @@ functions:
         type: ALLEGRO_EVENT*
         default_argument: nullptr
     body: |
+      switch (ev->type)
+      {
+      case ALLEGRO_EVENT_KEY_DOWN:
+         framework->shutdown_program = true;
+         break;
+      }
       return;
 
 

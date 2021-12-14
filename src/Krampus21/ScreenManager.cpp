@@ -42,6 +42,12 @@ void ScreenManager::initialize()
 
 void ScreenManager::key_down_func(ALLEGRO_EVENT* ev)
 {
+   switch (ev->type)
+   {
+   case ALLEGRO_EVENT_KEY_DOWN:
+      framework->shutdown_program = true;
+      break;
+   }
    return;
 }
 

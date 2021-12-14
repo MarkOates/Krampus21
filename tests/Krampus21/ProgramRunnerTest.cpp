@@ -9,9 +9,9 @@ TEST(Krampus21_ProgramRunnerTest, can_be_created_without_blowing_up)
    Krampus21::ProgramRunner program_runner;
 }
 
-TEST(Krampus21_ProgramRunnerTest, run__returns_the_expected_response)
+TEST(Krampus21_ProgramRunnerTest, run__runs_the_program)
 {
    Krampus21::ProgramRunner program_runner;
-   //EXPECT_EQ(expected_string, program_runner.run());
+   program_runner.run();
 }
 
