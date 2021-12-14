@@ -21,7 +21,6 @@ DialogBoxRenderer::DialogBoxRenderer(AllegroFlare::FontBin* font_bin, Krampus21:
    : font_bin(font_bin)
    , dialog_box(dialog_box)
    , place({ 1920/2, 1080/3*2, 1920/2, 1080/3 })
-   , default_font(nullptr)
 {
 }
 

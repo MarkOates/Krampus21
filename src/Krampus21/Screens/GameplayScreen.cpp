@@ -50,6 +50,7 @@ void GameplayScreen::primary_timer_func()
    if (current_dialog_box)
    {
       Krampus21::DialogBoxRenderer renderer(font_bin, current_dialog_box);
+      renderer.render();
    }
    return;
 }

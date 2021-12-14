@@ -16,11 +16,6 @@ properties:
     init_with: '{ 1920/2, 1080/3*2, 1920/2, 1080/3 }'
     getter: true
 
-  - name: default_font
-    type: ALLEGRO_FONT*
-    init_with: nullptr
-    getter: false
-
 functions:
 
 

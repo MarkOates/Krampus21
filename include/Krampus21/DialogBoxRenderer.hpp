@@ -16,7 +16,6 @@ namespace Krampus21
       AllegroFlare::FontBin* font_bin;
       Krampus21::DialogBoxes::Base* dialog_box;
       allegro_flare::placement2d place;
-      ALLEGRO_FONT* default_font;
 
    public:
       DialogBoxRenderer(AllegroFlare::FontBin* font_bin=nullptr, Krampus21::DialogBoxes::Base* dialog_box=nullptr);
