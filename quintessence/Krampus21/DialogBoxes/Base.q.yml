@@ -54,16 +54,6 @@ functions:
       return true;
 
 
-  - name: current_page_is_valid
-    private: true
-    type: bool
-    body: |
-      if (pages.empty()) return false;
-      if (current_page_num < 0) return false;
-      if (current_page_num >= pages.size()) return false;
-      return true;
-
-
   - name: num_pages
     type: int
     body: |
@@ -74,6 +64,16 @@ functions:
     type: bool
     body: |
       return (current_page_num == (num_pages() - 1));
+
+
+  - name: current_page_is_valid
+    private: true
+    type: bool
+    body: |
+      if (pages.empty()) return false;
+      if (current_page_num < 0) return false;
+      if (current_page_num >= pages.size()) return false;
+      return true;
 
 
 dependencies:

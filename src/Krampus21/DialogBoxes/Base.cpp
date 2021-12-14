@@ -73,14 +73,6 @@ bool Base::next_page()
    return true;
 }
 
-bool Base::current_page_is_valid()
-{
-   if (pages.empty()) return false;
-   if (current_page_num < 0) return false;
-   if (current_page_num >= pages.size()) return false;
-   return true;
-}
-
 int Base::num_pages()
 {
    return pages.size();
@@ -89,6 +81,14 @@ int Base::num_pages()
 bool Base::at_last_page()
 {
    return (current_page_num == (num_pages() - 1));
+}
+
+bool Base::current_page_is_valid()
+{
+   if (pages.empty()) return false;
+   if (current_page_num < 0) return false;
+   if (current_page_num >= pages.size()) return false;
+   return true;
 }
 } // namespace DialogBoxes
 } // namespace Krampus21
