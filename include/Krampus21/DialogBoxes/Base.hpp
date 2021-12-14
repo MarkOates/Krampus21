@@ -25,7 +25,7 @@ namespace Krampus21
          int get_current_page_num();
          void set_pages(std::vector<std::vector<std::string>> pages={});
          void reset();
-         void get_current_page_text();
+         std::vector<std::string> get_current_page_lines();
          void next_page();
          bool current_page_is_valid();
          bool more_pages_to_go();

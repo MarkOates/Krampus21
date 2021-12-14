@@ -40,3 +40,21 @@ TEST(Krampus21_DialogBoxes_BaseTest, set_pages__sets_the_pages_with_the_passed_v
 }
 
 
+TEST(Krampus21_DialogBoxes_BaseTest, set_pages__will_reset_the_page_num_to_0_if_it_is_passed)
+{
+   std::vector<std::vector<std::string>> pages = {
+      { "Page 1 has this test" },
+      { "This is the text to page 2.", "Page 1 has two lines." },
+      { "And finally the last page" },
+   };
+   MyTestDialogBox dialog_box;
+
+   dialog_box.set_pages(pages);
+   dialog_box.next_page();
+
+   std::vector<std::string> expected_page_lines = { "This is the text to page 2.", "Page 1 has two lines." };
+
+   ASSERT_EQ(expected_page_lines, dialog_box.get_current_page_lines());
+}
+
+

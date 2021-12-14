@@ -39,15 +39,17 @@ functions:
       return;
 
 
-  - name: get_current_page_text
+  - name: get_current_page_lines
+    type: std::vector<std::string>
+    guards: [ current_page_is_valid() ]
     body: |
-      return;
+      return pages[current_page_num];
 
 
   - name: next_page
+    guards: [ more_pages_to_go() ]
     body: |
-      //if (current_page_is_valid()
-      // TODO
+      current_page_num++;
       return;
 
 
