@@ -3,25 +3,7 @@ parent_classes:
 
   - class: Krampus21::DialogBoxes::Base
     scope: public
-    init_with: '{}'
-
-
-properties:
-
-
-  - name: lines
-    type: std::vector<std::string>
-    init_with: '{}'
-    constructor_arg: true
-    getter: true
-
-
-functions:
-
-
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+    init_with: ''
 
 
 dependencies:

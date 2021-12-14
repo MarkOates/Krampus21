@@ -51,7 +51,6 @@ table td
 <ul>
   <li><a href="#quintessence/Krampus21/DialogBoxFactory.q.yml">quintessence/Krampus21/DialogBoxFactory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/Base.q.yml">quintessence/Krampus21/DialogBoxes/Base.q.yml</a></li>
-  <li><a href="#quintessence/Krampus21/DialogBoxes/Basic.q.yml">quintessence/Krampus21/DialogBoxes/Basic.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/ProgramRunner.q.yml">quintessence/Krampus21/ProgramRunner.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/ScreenManager.q.yml">quintessence/Krampus21/ScreenManager.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Screens/Base.q.yml">quintessence/Krampus21/Screens/Base.q.yml</a></li>
@@ -83,31 +82,34 @@ table td
   <div class="component">
     <h3 id="quintessence/Krampus21/DialogBoxes/Base.q.yml">quintessence/Krampus21/DialogBoxes/Base.q.yml</h3>
      <table>
-    </table>
-     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="property">type</td>
+  <td class="property">std::string</td>
 </tr>
-    </table>
-     <table>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
-</tr>
-    </table>
-  </div>
-</ul>
-<ul>
-  <div class="component">
-    <h3 id="quintessence/Krampus21/DialogBoxes/Basic.q.yml">quintessence/Krampus21/DialogBoxes/Basic.q.yml</h3>
-     <table>
 <tr>
   <td class="property">lines</td>
   <td class="property">std::vector&lt;std::string&gt;</td>
 </tr>
+<tr>
+  <td class="property">current_page_num</td>
+  <td class="property"></td>
+</tr>
     </table>
      <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">start()</td>
+</tr>
+<tr>
+  <td class="method">get_current_page_text()</td>
+</tr>
+<tr>
+  <td class="method">init_page()</td>
+</tr>
+<tr>
+  <td class="method">next_page()</td>
+</tr>
+<tr>
+  <td class="method">is_finished()</td>
 </tr>
     </table>
      <table>
@@ -288,8 +290,7 @@ table td
 {
   "Krampus21/DialogBoxes/Base": [
     "Krampus21/DialogBoxFactory",
-    "Krampus21/DialogBoxes/Base",
-    "Krampus21/DialogBoxes/Basic"
+    "Krampus21/DialogBoxes/Base"
   ],
   "Krampus21/DialogBoxes/Basic": [
     "Krampus21/DialogBoxFactory"

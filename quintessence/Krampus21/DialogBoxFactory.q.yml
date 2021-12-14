@@ -8,7 +8,7 @@ functions:
         type: std::vector<std::string>
         default_argument: '{}'
     body: |
-      Krampus21::DialogBoxes::Basic *dialog_box = new Krampus21::DialogBoxes::Basic(lines);
+      Krampus21::DialogBoxes::Basic *dialog_box = new Krampus21::DialogBoxes::Basic;
       return dialog_box;
     body_dependency_symbols:
       - Krampus21::DialogBoxes::Basic

@@ -1,9 +1,49 @@
+properties:
+
+
+  - name: type
+    type: std::string
+    init_with: '"Base"'
+    constructor_arg: true
+    getter: true
+
+  - name: lines
+    type: std::vector<std::string>
+    init_with: '{}'
+    constructor_arg: true
+    getter: true
+
+  - name: current_page_num
+    init_with: 0
+    getter: true
+
+
 functions:
 
 
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+  - name: start
+    body: |
+      return;
+
+
+  - name: get_current_page_text
+    body: |
+      return;
+
+
+  - name: init_page
+    body: |
+      return;
+
+
+  - name: next_page
+    body: |
+      return;
+
+
+  - name: is_finished
+    body: |
+      return;
 
 
 dependencies:
@@ -11,4 +51,5 @@ dependencies:
 
   - symbol: Krampus21::DialogBoxes::Base
     headers: [ Krampus21/DialogBoxes/Base.hpp ]
+
 
