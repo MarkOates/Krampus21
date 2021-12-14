@@ -6,12 +6,24 @@ parent_classes:
     init_with: ''
 
 
+properties:
+
+
+  - name: current_dialog_box
+    type: Krampus21::DialogBoxes::Base*
+    private: true
+    init_with: nullptr
+    getter: true
+    setter: true
+
+
 functions:
 
 
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+  - name: primary_timer_func
+    override: true
+    body: |
+      return;
 
 
 dependencies:
@@ -19,5 +31,7 @@ dependencies:
 
   - symbol: Krampus21::Screens::Base
     headers: [ Krampus21/Screens/Base.hpp ]
+  - symbol: Krampus21::DialogBoxes::Base*
+    headers: [ Krampus21/DialogBoxes/Base.hpp ]
 
 

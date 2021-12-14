@@ -12,6 +12,7 @@ namespace Screens
 
 GameplayScreen::GameplayScreen()
    : Krampus21::Screens::Base()
+   , current_dialog_box(nullptr)
 {
 }
 
@@ -21,9 +22,21 @@ GameplayScreen::~GameplayScreen()
 }
 
 
-std::string GameplayScreen::run()
+void GameplayScreen::set_current_dialog_box(Krampus21::DialogBoxes::Base* current_dialog_box)
 {
-   return "Hello World!";
+   this->current_dialog_box = current_dialog_box;
+}
+
+
+Krampus21::DialogBoxes::Base* GameplayScreen::get_current_dialog_box()
+{
+   return current_dialog_box;
+}
+
+
+void GameplayScreen::primary_timer_func()
+{
+   return;
 }
 } // namespace Screens
 } // namespace Krampus21

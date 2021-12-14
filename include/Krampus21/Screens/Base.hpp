@@ -1,14 +1,14 @@
 #pragma once
 
 
-#include <string>
+#include <AllegroFlare/Screen.hpp>
 
 
 namespace Krampus21
 {
    namespace Screens
    {
-      class Base
+      class Base : public AllegroFlare::Screen
       {
       private:
 
@@ -16,7 +16,6 @@ namespace Krampus21
          Base();
          ~Base();
 
-         std::string run();
       };
    }
 }

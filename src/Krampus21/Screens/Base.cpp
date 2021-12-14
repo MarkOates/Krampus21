@@ -11,6 +11,7 @@ namespace Screens
 
 
 Base::Base()
+   : AllegroFlare::Screen()
 {
 }
 
@@ -20,10 +21,6 @@ Base::~Base()
 }
 
 
-std::string Base::run()
-{
-   return "Hello World!";
-}
 } // namespace Screens
 } // namespace Krampus21
 
