@@ -80,6 +80,9 @@
   "Krampus21/UserEventEmitter": [
     "Krampus21/ScreenManager"
   ],
+  "al_draw_filled_rectangle": [
+    "Krampus21/Screens/GameplayScreen"
+  ],
   "Krampus21/DialogBoxRenderer": [
     "Krampus21/Screens/GameplayScreen"
   ],

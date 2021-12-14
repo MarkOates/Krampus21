@@ -37,18 +37,22 @@ functions:
   - name: primary_timer_func
     override: true
     body: |
+      al_draw_filled_rectangle(0, 0, 200, 200, ALLEGRO_COLOR{1, 0, 0, 1});
       if (current_dialog_box)
       {
          Krampus21::DialogBoxRenderer renderer(font_bin, current_dialog_box);
       }
       return;
     body_dependency_symbols:
+      - al_draw_filled_rectangle
       - Krampus21::DialogBoxRenderer
 
 
 dependencies:
 
 
+  - symbol: al_draw_filled_rectangle
+    headers: [ allegro5/allegro_primitives.h ]
   - symbol: Krampus21::Screens::Base
     headers: [ Krampus21/Screens/Base.hpp ]
   - symbol: Krampus21::DialogBoxes::Base*

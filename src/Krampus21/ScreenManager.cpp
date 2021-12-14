@@ -47,8 +47,13 @@ void ScreenManager::load_initial_screen()
          error_message << "ScreenManager" << "::" << "load_initial_screen" << ": error: " << "guard \"initialized\" not met";
          throw std::runtime_error(error_message.str());
       }
-   if (current_screen) delete current_screen;
+   if (current_screen)
+   {
+      screens->remove(current_screen);
+      delete current_screen;
+   }
    current_screen = new Krampus21::Screens::GameplayScreen;
+   screens->add(current_screen);
    return;
 }
 

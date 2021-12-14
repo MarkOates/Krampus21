@@ -65,8 +65,13 @@ functions:
   - name: load_initial_screen
     guards: [ initialized ]
     body: |
-      if (current_screen) delete current_screen;
+      if (current_screen)
+      {
+         screens->remove(current_screen);
+         delete current_screen;
+      }
       current_screen = new Krampus21::Screens::GameplayScreen;
+      screens->add(current_screen);
       return;
     body_dependency_symbols:
       - Krampus21::Screens::GameplayScreen

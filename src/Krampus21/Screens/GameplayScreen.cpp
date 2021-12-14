@@ -2,6 +2,7 @@
 
 #include <Krampus21/Screens/GameplayScreen.hpp>
 #include <Krampus21/DialogBoxFactory.hpp>
+#include <allegro5/allegro_primitives.h>
 #include <Krampus21/DialogBoxRenderer.hpp>
 
 
@@ -45,6 +46,7 @@ void GameplayScreen::initialize_dialog_box()
 
 void GameplayScreen::primary_timer_func()
 {
+   al_draw_filled_rectangle(0, 0, 200, 200, ALLEGRO_COLOR{1, 0, 0, 1});
    if (current_dialog_box)
    {
       Krampus21::DialogBoxRenderer renderer(font_bin, current_dialog_box);

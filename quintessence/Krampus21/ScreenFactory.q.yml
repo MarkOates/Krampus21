@@ -6,6 +6,7 @@ functions:
     body: |
        Krampus21::Screens::GameplayScreen *gameplay_screen = new Krampus21::Screens::GameplayScreen;
        gameplay_screen->set_type("GameplayScreen");
+       gameplay_screen->initialize_dialog_box();
        return gameplay_screen;
     body_dependency_symbols:
       - Krampus21::Screens::GameplayScreen
