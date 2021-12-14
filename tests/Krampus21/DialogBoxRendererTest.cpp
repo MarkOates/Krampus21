@@ -10,6 +10,7 @@
 #include <Krampus21/DialogBoxRenderer.hpp>
 
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_primitives.h>
 
 
 TEST(Krampus21_DialogBoxRendererTest, can_be_created_without_blowing_up)
@@ -33,6 +34,17 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_allegro_primitives_are_not_in
    Krampus21::DialogBoxRenderer dialog_box_renderer;
    std::string expected_error_message =
       "DialogBoxRenderer::render: error: guard \"al_is_primitives_addon_initialized()\" not met";
+   ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
+}
+
+TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_allegro_display__raises_an_exception)
+{
+   al_init();
+   al_init_primitives_addon();
+
+   Krampus21::DialogBoxRenderer dialog_box_renderer;
+   std::string expected_error_message =
+      "DialogBoxRenderer::render: error: guard \"al_get_current_display()\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 }
 

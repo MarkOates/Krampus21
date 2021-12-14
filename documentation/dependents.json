@@ -14,6 +14,9 @@
   "al_is_system_installed": [
     "Krampus21/DialogBoxRenderer"
   ],
+  "al_get_current_display": [
+    "Krampus21/DialogBoxRenderer"
+  ],
   "al_color_name": [
     "Krampus21/DialogBoxRenderer"
   ],

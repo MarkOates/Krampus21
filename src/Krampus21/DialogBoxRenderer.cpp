@@ -38,6 +38,12 @@ void DialogBoxRenderer::render()
          error_message << "DialogBoxRenderer" << "::" << "render" << ": error: " << "guard \"al_is_primitives_addon_initialized()\" not met";
          throw std::runtime_error(error_message.str());
       }
+   if (!(al_get_current_display()))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBoxRenderer" << "::" << "render" << ": error: " << "guard \"al_get_current_display()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
    al_draw_filled_rounded_rectangle(0, 0, 100, 200, 4.0, 4.0, al_color_name("green"));
    return;
 }
