@@ -1,7 +1,7 @@
 
 
 #include <Krampus21/Screens/GameplayScreen.hpp>
-
+#include <Krampus21/DialogBoxRenderer.hpp>
 
 
 namespace Krampus21
@@ -10,8 +10,9 @@ namespace Screens
 {
 
 
-GameplayScreen::GameplayScreen()
+GameplayScreen::GameplayScreen(AllegroFlare::FontBin* font_bin)
    : Krampus21::Screens::Base()
+   , font_bin(font_bin)
    , current_dialog_box(nullptr)
 {
 }
@@ -36,6 +37,10 @@ Krampus21::DialogBoxes::Base* GameplayScreen::get_current_dialog_box()
 
 void GameplayScreen::primary_timer_func()
 {
+   if (current_dialog_box)
+   {
+      Krampus21::DialogBoxRenderer renderer(font_bin, current_dialog_box);
+   }
    return;
 }
 } // namespace Screens

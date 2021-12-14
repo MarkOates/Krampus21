@@ -9,6 +9,11 @@ parent_classes:
 properties:
 
 
+  - name: font_bin
+    type: AllegroFlare::FontBin*
+    init_with: nullptr
+    constructor_arg: true
+
   - name: current_dialog_box
     type: Krampus21::DialogBoxes::Base*
     private: true
@@ -23,7 +28,13 @@ functions:
   - name: primary_timer_func
     override: true
     body: |
+      if (current_dialog_box)
+      {
+         Krampus21::DialogBoxRenderer renderer(font_bin, current_dialog_box);
+      }
       return;
+    body_dependency_symbols:
+      - Krampus21::DialogBoxRenderer
 
 
 dependencies:
@@ -33,5 +44,9 @@ dependencies:
     headers: [ Krampus21/Screens/Base.hpp ]
   - symbol: Krampus21::DialogBoxes::Base*
     headers: [ Krampus21/DialogBoxes/Base.hpp ]
+  - symbol: Krampus21::DialogBoxRenderer
+    headers: [ Krampus21/DialogBoxRenderer.hpp ]
+  - symbol: AllegroFlare::FontBin*
+    headers: [ AllegroFlare/FontBin.hpp ]
 
 

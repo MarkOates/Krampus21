@@ -31,7 +31,8 @@
     "Krampus21/DialogBoxRenderer"
   ],
   "AllegroFlare/FontBin": [
-    "Krampus21/DialogBoxRenderer"
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/Screens/GameplayScreen"
   ],
   "allegro_flare/placement2d": [
     "Krampus21/DialogBoxRenderer"
@@ -78,5 +79,8 @@
   ],
   "Krampus21/UserEventEmitter": [
     "Krampus21/ScreenManager"
+  ],
+  "Krampus21/DialogBoxRenderer": [
+    "Krampus21/Screens/GameplayScreen"
   ]
 }
