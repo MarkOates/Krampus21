@@ -51,6 +51,8 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_allegro_display__
    std::string expected_error_message =
       "DialogBoxRenderer::render: error: guard \"al_get_current_display()\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
+
+   al_uninstall_system();
 }
 
 
@@ -69,6 +71,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_the_allegro_font_addon_has_no
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_destroy_display(display);
+   al_uninstall_system();
 }
 
 
@@ -108,6 +111,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_font_bin__raises_
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_destroy_display(display);
+   al_uninstall_system();
 }
 
 
@@ -144,11 +148,10 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_the_dialog_box)
    Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
 
    dialog_box_renderer.render();
-
    al_flip_display();
    //sleep(2);
-   al_destroy_display(display);
 
+   al_destroy_display(display);
    al_uninstall_system();
 }
 
@@ -163,15 +166,14 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_multiline_dialog)
    AllegroFlare::FontBin font_bin;
    font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
    Krampus21::DialogBoxes::Base dialog_box;
-   dialog_box.set_pages({ { "Some test dialog text.  There's actually a lot of text that will need to fit." } });
+   dialog_box.set_pages({ { "Some test dialog text. There's actually a lot of text that will need to fit." } });
    Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
 
    dialog_box_renderer.render();
-
    al_flip_display();
    sleep(2);
-   al_destroy_display(display);
 
+   al_destroy_display(display);
    al_uninstall_system();
 }
 

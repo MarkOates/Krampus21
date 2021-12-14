@@ -16,6 +16,7 @@ namespace Krampus21
    private:
       AllegroFlare::FontBin* font_bin;
       Krampus21::DialogBoxes::Base* dialog_box;
+      int dialog_box_num_revealed_characters;
       allegro_flare::placement2d place;
 
    public:
