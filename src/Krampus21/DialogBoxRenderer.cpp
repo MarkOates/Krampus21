@@ -1,6 +1,7 @@
 
 
 #include <Krampus21/DialogBoxRenderer.hpp>
+#include <Blast/StringJoiner.hpp>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_primitives.h>
@@ -62,7 +63,7 @@ void DialogBoxRenderer::render()
    float border_inner_padding = border_thickness * 3;
    ALLEGRO_COLOR fill_color = al_color_html("162428");
    ALLEGRO_COLOR border_color = al_color_html("244751");
-   std::vector<std::string> lines = get_dialog_box_lines();
+   std::string text = Blast::StringJoiner(get_dialog_box_lines(), "\n").join();
    ALLEGRO_FONT* text_font = obtain_dialog_font();
    ALLEGRO_COLOR text_color = al_color_html("66a9bc");
    float text_padding_x = 40.0f;
@@ -84,9 +85,9 @@ void DialogBoxRenderer::render()
    al_draw_rounded_rectangle(0, 0, place.size.x, place.size.y, roundness, roundness, border_color, border_thickness);
 
    // draw text
-   int line_num = 0;
-   for (auto &line : lines)
-   {
+   //int line_num = 0;
+   //for (auto &line : lines)
+   //{
       /*
       al_draw_text(
          text_font,
@@ -97,7 +98,7 @@ void DialogBoxRenderer::render()
          line.c_str()
       );
       */
-      line_num++;
+      //line_num++;
 
       al_draw_multiline_text(
          text_font,
@@ -107,9 +108,9 @@ void DialogBoxRenderer::render()
          text_box_max_width,
          line_height,
          ALLEGRO_ALIGN_LEFT,
-         line.c_str()
+         text.c_str()
       );
-   }
+   //}
 
    place.restore_transform();
    return;

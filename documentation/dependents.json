@@ -30,6 +30,9 @@
   "al_draw_filled_rounded_rectangle": [
     "Krampus21/DialogBoxRenderer"
   ],
+  "Blast/StringJoiner": [
+    "Krampus21/DialogBoxRenderer"
+  ],
   "AllegroFlare/FontBin": [
     "Krampus21/DialogBoxRenderer",
     "Krampus21/ScreenManager"

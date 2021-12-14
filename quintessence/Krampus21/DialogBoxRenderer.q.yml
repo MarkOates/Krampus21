@@ -32,7 +32,7 @@ functions:
       float border_inner_padding = border_thickness * 3;
       ALLEGRO_COLOR fill_color = al_color_html("162428");
       ALLEGRO_COLOR border_color = al_color_html("244751");
-      std::vector<std::string> lines = get_dialog_box_lines();
+      std::string text = Blast::StringJoiner(get_dialog_box_lines(), "\n").join();
       ALLEGRO_FONT* text_font = obtain_dialog_font();
       ALLEGRO_COLOR text_color = al_color_html("66a9bc");
       float text_padding_x = 40.0f;
@@ -54,9 +54,9 @@ functions:
       al_draw_rounded_rectangle(0, 0, place.size.x, place.size.y, roundness, roundness, border_color, border_thickness);
 
       // draw text
-      int line_num = 0;
-      for (auto &line : lines)
-      {
+      //int line_num = 0;
+      //for (auto &line : lines)
+      //{
          /*
          al_draw_text(
             text_font,
@@ -67,7 +67,7 @@ functions:
             line.c_str()
          );
          */
-         line_num++;
+         //line_num++;
 
          al_draw_multiline_text(
             text_font,
@@ -77,13 +77,14 @@ functions:
             text_box_max_width,
             line_height,
             ALLEGRO_ALIGN_LEFT,
-            line.c_str()
+            text.c_str()
          );
-      }
+      //}
 
       place.restore_transform();
       return;
     body_dependency_symbols:
+      - Blast::StringJoiner
       - al_is_system_installed
       - al_is_primitives_addon_initialized
       - al_draw_filled_rounded_rectangle
@@ -122,6 +123,8 @@ dependencies:
     headers: [ allegro5/allegro_primitives.h ]
   - symbol: al_draw_filled_rounded_rectangle
     headers: [ allegro5/allegro_primitives.h ]
+  - symbol: Blast::StringJoiner
+    headers: [ Blast/StringJoiner.hpp ]
   - symbol: AllegroFlare::FontBin*
     headers: [ AllegroFlare/FontBin.hpp ]
   - symbol: Krampus21::DialogBoxes::Base*
