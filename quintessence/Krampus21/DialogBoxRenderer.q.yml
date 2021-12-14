@@ -10,6 +10,7 @@ functions:
 
 
   - name: render
+    guards: [ al_is_system_installed() ]
     body: |
       return;
     body_dependency_symbols:
