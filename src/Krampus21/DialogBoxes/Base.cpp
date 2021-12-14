@@ -41,6 +41,13 @@ int Base::get_current_page_num()
 }
 
 
+void Base::set_pages(std::vector<std::vector<std::string>> pages)
+{
+   this->pages = pages;
+   reset();
+   return;
+}
+
 void Base::reset()
 {
    current_page_num = 0;

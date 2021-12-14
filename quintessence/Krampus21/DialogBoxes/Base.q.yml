@@ -22,6 +22,17 @@ properties:
 functions:
 
 
+  - name: set_pages
+    parameters:
+      - name: pages
+        type: std::vector<std::vector<std::string>>
+        default_argument: '{}'
+    body: |
+      this->pages = pages;
+      reset();
+      return;
+
+
   - name: reset
     body: |
       current_page_num = 0;

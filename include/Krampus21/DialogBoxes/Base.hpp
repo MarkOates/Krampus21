@@ -23,6 +23,7 @@ namespace Krampus21
          std::string get_type();
          std::vector<std::vector<std::string>> get_pages();
          int get_current_page_num();
+         void set_pages(std::vector<std::vector<std::string>> pages={});
          void reset();
          void get_current_page_text();
          void next_page();
