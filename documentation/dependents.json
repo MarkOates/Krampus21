@@ -6,8 +6,7 @@
   "Krampus21/DialogBoxes/Base": [
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxes/Base",
-    "Krampus21/Screens/GameplayScreen"
+    "Krampus21/DialogBoxes/Base"
   ],
   "Krampus21/DialogBoxes/Basic": [
     "Krampus21/DialogBoxFactory"
@@ -31,8 +30,7 @@
     "Krampus21/DialogBoxRenderer"
   ],
   "AllegroFlare/FontBin": [
-    "Krampus21/DialogBoxRenderer",
-    "Krampus21/Screens/GameplayScreen"
+    "Krampus21/DialogBoxRenderer"
   ],
   "allegro_flare/placement2d": [
     "Krampus21/DialogBoxRenderer"
@@ -56,15 +54,6 @@
   "Krampus21/ScreenManager": [
     "Krampus21/ProgramRunner"
   ],
-  "Krampus21/Screens/Base": [
-    "Krampus21/ScreenFactory",
-    "Krampus21/ScreenManager",
-    "Krampus21/Screens/GameplayScreen"
-  ],
-  "Krampus21/Screens/GameplayScreen": [
-    "Krampus21/ScreenFactory",
-    "Krampus21/ScreenManager"
-  ],
   "ALLEGRO_EVENT": [
     "Krampus21/ScreenManager"
   ],
@@ -77,16 +66,10 @@
   "AllegroFlare/AudioController": [
     "Krampus21/ScreenManager"
   ],
-  "Krampus21/UserEventEmitter": [
+  "Krampus21/Screens/Base": [
     "Krampus21/ScreenManager"
   ],
-  "al_draw_filled_rectangle": [
-    "Krampus21/Screens/GameplayScreen"
-  ],
-  "Krampus21/DialogBoxRenderer": [
-    "Krampus21/Screens/GameplayScreen"
-  ],
-  "Krampus21/DialogBoxFactory": [
-    "Krampus21/Screens/GameplayScreen"
+  "Krampus21/UserEventEmitter": [
+    "Krampus21/ScreenManager"
   ]
 }

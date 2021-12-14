@@ -1,7 +1,6 @@
 #pragma once
 
 
-#include <Krampus21/Screens/Base.hpp>
 
 
 namespace Krampus21
@@ -14,7 +13,6 @@ namespace Krampus21
       ScreenFactory();
       ~ScreenFactory();
 
-      Krampus21::Screens::Base* create_gameplay_screen();
    };
 }
 

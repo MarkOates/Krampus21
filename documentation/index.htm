@@ -53,9 +53,7 @@ table td
   <li><a href="#quintessence/Krampus21/DialogBoxRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderer.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/Base.q.yml">quintessence/Krampus21/DialogBoxes/Base.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/ProgramRunner.q.yml">quintessence/Krampus21/ProgramRunner.q.yml</a></li>
-  <li><a href="#quintessence/Krampus21/ScreenFactory.q.yml">quintessence/Krampus21/ScreenFactory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/ScreenManager.q.yml">quintessence/Krampus21/ScreenManager.q.yml</a></li>
-  <li><a href="#quintessence/Krampus21/Screens/GameplayScreen.q.yml">quintessence/Krampus21/Screens/GameplayScreen.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/UserEventEmitter.q.yml">quintessence/Krampus21/UserEventEmitter.q.yml</a></li>
 </ul>
 <h1>Components</h1>
@@ -225,26 +223,6 @@ table td
 </ul>
 <ul>
   <div class="component">
-    <h3 id="quintessence/Krampus21/ScreenFactory.q.yml">quintessence/Krampus21/ScreenFactory.q.yml</h3>
-     <table>
-    </table>
-     <table>
-<tr>
-  <td class="method">create_gameplay_screen()</td>
-</tr>
-    </table>
-     <table>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Screens::Base*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Screens/Base.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Screens::GameplayScreen&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Screens/GameplayScreen.hpp&quot;]}</td>
-</tr>
-    </table>
-  </div>
-</ul>
-<ul>
-  <div class="component">
     <h3 id="quintessence/Krampus21/ScreenManager.q.yml">quintessence/Krampus21/ScreenManager.q.yml</h3>
      <table>
 <tr>
@@ -330,53 +308,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::UserEventEmitter&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/UserEventEmitter.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Screens::GameplayScreen&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Screens/GameplayScreen.hpp&quot;]}</td>
-</tr>
-<tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, AllegroFlare::AudioRepositoryElement&gt;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;string&quot;, &quot;AllegroFlare/AudioRepositoryElement.hpp&quot;]}</td>
-</tr>
-    </table>
-  </div>
-</ul>
-<ul>
-  <div class="component">
-    <h3 id="quintessence/Krampus21/Screens/GameplayScreen.q.yml">quintessence/Krampus21/Screens/GameplayScreen.q.yml</h3>
-     <table>
-<tr>
-  <td class="property">font_bin</td>
-  <td class="property">AllegroFlare::FontBin*</td>
-</tr>
-<tr>
-  <td class="private_property">current_dialog_box</td>
-  <td class="private_property">Krampus21::DialogBoxes::Base*</td>
-</tr>
-    </table>
-     <table>
-<tr>
-  <td class="method">initialize_dialog_box()</td>
-</tr>
-<tr>
-  <td class="method">primary_timer_func()</td>
-</tr>
-    </table>
-     <table>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_filled_rectangle&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Screens::Base&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Screens/Base.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxRenderer&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxRenderer.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxFactory&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxFactory.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -405,8 +337,7 @@ table td
   "Krampus21/DialogBoxes/Base": [
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxes/Base",
-    "Krampus21/Screens/GameplayScreen"
+    "Krampus21/DialogBoxes/Base"
   ],
   "Krampus21/DialogBoxes/Basic": [
     "Krampus21/DialogBoxFactory"
@@ -430,8 +361,7 @@ table td
     "Krampus21/DialogBoxRenderer"
   ],
   "AllegroFlare/FontBin": [
-    "Krampus21/DialogBoxRenderer",
-    "Krampus21/Screens/GameplayScreen"
+    "Krampus21/DialogBoxRenderer"
   ],
   "allegro_flare/placement2d": [
     "Krampus21/DialogBoxRenderer"
@@ -455,15 +385,6 @@ table td
   "Krampus21/ScreenManager": [
     "Krampus21/ProgramRunner"
   ],
-  "Krampus21/Screens/Base": [
-    "Krampus21/ScreenFactory",
-    "Krampus21/ScreenManager",
-    "Krampus21/Screens/GameplayScreen"
-  ],
-  "Krampus21/Screens/GameplayScreen": [
-    "Krampus21/ScreenFactory",
-    "Krampus21/ScreenManager"
-  ],
   "ALLEGRO_EVENT": [
     "Krampus21/ScreenManager"
   ],
@@ -476,17 +397,11 @@ table td
   "AllegroFlare/AudioController": [
     "Krampus21/ScreenManager"
   ],
-  "Krampus21/UserEventEmitter": [
+  "Krampus21/Screens/Base": [
     "Krampus21/ScreenManager"
   ],
-  "al_draw_filled_rectangle": [
-    "Krampus21/Screens/GameplayScreen"
-  ],
-  "Krampus21/DialogBoxRenderer": [
-    "Krampus21/Screens/GameplayScreen"
-  ],
-  "Krampus21/DialogBoxFactory": [
-    "Krampus21/Screens/GameplayScreen"
+  "Krampus21/UserEventEmitter": [
+    "Krampus21/ScreenManager"
   ]
 }
 </pre>
