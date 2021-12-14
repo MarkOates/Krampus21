@@ -55,6 +55,15 @@
   "Krampus21/ScreenManager": [
     "Krampus21/ProgramRunner"
   ],
+  "Krampus21/Screens/Base": [
+    "Krampus21/ScreenFactory",
+    "Krampus21/ScreenManager",
+    "Krampus21/Screens/GameplayScreen"
+  ],
+  "Krampus21/Screens/GameplayScreen": [
+    "Krampus21/ScreenFactory",
+    "Krampus21/ScreenManager"
+  ],
   "ALLEGRO_EVENT": [
     "Krampus21/ScreenManager"
   ],
@@ -67,14 +76,7 @@
   "AllegroFlare/AudioController": [
     "Krampus21/ScreenManager"
   ],
-  "Krampus21/Screens/Base": [
-    "Krampus21/ScreenManager",
-    "Krampus21/Screens/GameplayScreen"
-  ],
   "Krampus21/UserEventEmitter": [
-    "Krampus21/ScreenManager"
-  ],
-  "Krampus21/Screens/GameplayScreen": [
     "Krampus21/ScreenManager"
   ]
 }

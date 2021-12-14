@@ -1,4 +1,22 @@
 functions:
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+
+
+  - name: create_gameplay_screen
+    type: Krampus21::Screens::Base*
+    body: |
+       Krampus21::Screens::GameplayScreen *gameplay_screen = new Krampus21::Screens::GameplayScreen;
+       gameplay_screen->set_type("GameplayScreen");
+       return gameplay_screen;
+    body_dependency_symbols:
+      - Krampus21::Screens::GameplayScreen
+
+
+dependencies:
+
+
+  - symbol: Krampus21::Screens::Base*
+    headers: [ Krampus21/Screens/Base.hpp ]
+  - symbol: Krampus21::Screens::GameplayScreen
+    headers: [ Krampus21/Screens/GameplayScreen.hpp ]
+
+

@@ -53,6 +53,7 @@ table td
   <li><a href="#quintessence/Krampus21/DialogBoxRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderer.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/Base.q.yml">quintessence/Krampus21/DialogBoxes/Base.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/ProgramRunner.q.yml">quintessence/Krampus21/ProgramRunner.q.yml</a></li>
+  <li><a href="#quintessence/Krampus21/ScreenFactory.q.yml">quintessence/Krampus21/ScreenFactory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/ScreenManager.q.yml">quintessence/Krampus21/ScreenManager.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Screens/GameplayScreen.q.yml">quintessence/Krampus21/Screens/GameplayScreen.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/UserEventEmitter.q.yml">quintessence/Krampus21/UserEventEmitter.q.yml</a></li>
@@ -219,6 +220,26 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::ScreenManager&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/ScreenManager.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/Krampus21/ScreenFactory.q.yml">quintessence/Krampus21/ScreenFactory.q.yml</h3>
+     <table>
+    </table>
+     <table>
+<tr>
+  <td class="method">create_gameplay_screen()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Screens::Base*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Screens/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Screens::GameplayScreen&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Screens/GameplayScreen.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -412,6 +433,15 @@ table td
   "Krampus21/ScreenManager": [
     "Krampus21/ProgramRunner"
   ],
+  "Krampus21/Screens/Base": [
+    "Krampus21/ScreenFactory",
+    "Krampus21/ScreenManager",
+    "Krampus21/Screens/GameplayScreen"
+  ],
+  "Krampus21/Screens/GameplayScreen": [
+    "Krampus21/ScreenFactory",
+    "Krampus21/ScreenManager"
+  ],
   "ALLEGRO_EVENT": [
     "Krampus21/ScreenManager"
   ],
@@ -424,14 +454,7 @@ table td
   "AllegroFlare/AudioController": [
     "Krampus21/ScreenManager"
   ],
-  "Krampus21/Screens/Base": [
-    "Krampus21/ScreenManager",
-    "Krampus21/Screens/GameplayScreen"
-  ],
   "Krampus21/UserEventEmitter": [
-    "Krampus21/ScreenManager"
-  ],
-  "Krampus21/Screens/GameplayScreen": [
     "Krampus21/ScreenManager"
   ]
 }
