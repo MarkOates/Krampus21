@@ -103,6 +103,25 @@ void ScreenManager::key_down_func(ALLEGRO_EVENT* ev)
    return;
 }
 
+void ScreenManager::joy_button_down_func(ALLEGRO_EVENT* ev)
+{
+   switch (ev->type)
+   {
+   case ALLEGRO_EVENT_KEY_DOWN:
+      switch(ev->keyboard.keycode)
+      {
+         case ALLEGRO_KEY_ESCAPE:
+            shutdown_game();
+            break;
+         case ALLEGRO_KEY_SPACE:
+            advance_dialog();
+            break;
+      }
+      break;
+   }
+   return;
+}
+
 void ScreenManager::user_event_func(ALLEGRO_EVENT* ev)
 {
    return;

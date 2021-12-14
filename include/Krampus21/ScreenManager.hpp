@@ -39,6 +39,7 @@ namespace Krampus21
       void advance_dialog();
       void primary_timer_func() override;
       void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
+      void joy_button_down_func(ALLEGRO_EVENT* ev=nullptr) override;
       void user_event_func(ALLEGRO_EVENT* ev=nullptr) override;
       AllegroFlare::FontBin* obtain_font_bin();
    };

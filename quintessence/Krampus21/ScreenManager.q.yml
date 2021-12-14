@@ -118,6 +118,30 @@ functions:
       return;
 
 
+  - name: joy_button_down_func
+    override: true
+    parameters:
+      - name: ev
+        type: ALLEGRO_EVENT*
+        default_argument: nullptr
+    body: |
+      switch (ev->type)
+      {
+      case ALLEGRO_EVENT_KEY_DOWN:
+         switch(ev->keyboard.keycode)
+         {
+            case ALLEGRO_KEY_ESCAPE:
+               shutdown_game();
+               break;
+            case ALLEGRO_KEY_SPACE:
+               advance_dialog();
+               break;
+         }
+         break;
+      }
+      return;
+
+
   - name: user_event_func
     override: true
     parameters:
