@@ -23,7 +23,7 @@ DialogBoxRenderer::DialogBoxRenderer(AllegroFlare::FontBin* font_bin, Krampus21:
    : font_bin(font_bin)
    , dialog_box(dialog_box)
    , dialog_box_num_revealed_characters(dialog_box_num_revealed_characters)
-   , place({ 1920/2, 1080/4*3, 1920/2, 1080/4 })
+   , place({ 1920/2, 1080/4*3, 1920/5*3, 1080/4 })
 {
 }
 

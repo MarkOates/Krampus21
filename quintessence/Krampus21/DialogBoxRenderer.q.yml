@@ -19,7 +19,7 @@ properties:
 
   - name: place
     type: allegro_flare::placement2d
-    init_with: '{ 1920/2, 1080/4*3, 1920/2, 1080/4 }'
+    init_with: '{ 1920/2, 1080/4*3, 1920/5*3, 1080/4 }'
     getter: true
 
 
