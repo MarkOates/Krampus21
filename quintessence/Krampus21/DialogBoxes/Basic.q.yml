@@ -6,6 +6,15 @@ parent_classes:
     init_with: '{}'
 
 
+properties:
+
+
+  - name: lines
+    type: std::vector<std::string>
+    init_with: '{}'
+    constructor_arg: true
+
+
 functions:
 
 

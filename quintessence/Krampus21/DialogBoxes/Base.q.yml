@@ -1,4 +1,14 @@
 functions:
+
+
   - name: run
     type: std::string
     body: return "Hello World!";
+
+
+dependencies:
+
+
+  - symbol: Krampus21::DialogBoxes::Base
+    headers: [ Krampus21/DialogBoxes/Base.hpp ]
+

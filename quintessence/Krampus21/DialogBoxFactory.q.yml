@@ -1,4 +1,25 @@
 functions:
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+
+
+  - name: create_basic_dialog_box
+    type: Krampus21::DialogBoxes::Base*
+    parameters:
+      - name: lines
+        type: std::vector<std::string>
+        default_argument: '{}'
+    body: |
+      Krampus21::DialogBoxes::Basic *dialog_box = new Krampus21::DialogBoxes::Basic(lines);
+      return dialog_box;
+    body_dependency_symbols:
+      - Krampus21::DialogBoxes::Basic
+
+
+dependencies:
+
+
+  - symbol: Krampus21::DialogBoxes::Base*
+    headers: [ Krampus21/DialogBoxes/Base.hpp ]
+  - symbol: Krampus21::DialogBoxes::Basic
+    headers: [ Krampus21/DialogBoxes/Basic.hpp ]
+
+

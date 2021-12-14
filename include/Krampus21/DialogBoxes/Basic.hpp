@@ -3,6 +3,7 @@
 
 #include <Krampus21/DialogBoxes/Base.hpp>
 #include <string>
+#include <vector>
 
 
 namespace Krampus21
@@ -12,9 +13,10 @@ namespace Krampus21
       class Basic : public Krampus21::DialogBoxes::Base
       {
       private:
+         std::vector<std::string> lines;
 
       public:
-         Basic();
+         Basic(std::vector<std::string> lines={});
          ~Basic();
 
          std::string run();

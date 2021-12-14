@@ -10,8 +10,9 @@ namespace DialogBoxes
 {
 
 
-Basic::Basic()
+Basic::Basic(std::vector<std::string> lines)
    : Krampus21::DialogBoxes::Base({})
+   , lines(lines)
 {
 }
 

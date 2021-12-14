@@ -1,6 +1,11 @@
 {
   "Krampus21/DialogBoxes/Base": [
+    "Krampus21/DialogBoxFactory",
+    "Krampus21/DialogBoxes/Base",
     "Krampus21/DialogBoxes/Basic"
+  ],
+  "Krampus21/DialogBoxes/Basic": [
+    "Krampus21/DialogBoxFactory"
   ],
   "AllegroFlare/Display": [
     "Krampus21/ProgramRunner",

@@ -1,7 +1,7 @@
 
 
 #include <Krampus21/DialogBoxFactory.hpp>
-
+#include <Krampus21/DialogBoxes/Basic.hpp>
 
 
 namespace Krampus21
@@ -18,9 +18,10 @@ DialogBoxFactory::~DialogBoxFactory()
 }
 
 
-std::string DialogBoxFactory::run()
+Krampus21::DialogBoxes::Base* DialogBoxFactory::create_basic_dialog_box(std::vector<std::string> lines)
 {
-   return "Hello World!";
+   Krampus21::DialogBoxes::Basic *dialog_box = new Krampus21::DialogBoxes::Basic(lines);
+   return dialog_box;
 }
 } // namespace Krampus21
 
