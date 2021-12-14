@@ -22,6 +22,12 @@ Basic::~Basic()
 }
 
 
+std::vector<std::string> Basic::get_lines()
+{
+   return lines;
+}
+
+
 std::string Basic::run()
 {
    return "Hello World!";

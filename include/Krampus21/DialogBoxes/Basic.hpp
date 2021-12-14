@@ -19,6 +19,7 @@ namespace Krampus21
          Basic(std::vector<std::string> lines={});
          ~Basic();
 
+         std::vector<std::string> get_lines();
          std::string run();
       };
    }
