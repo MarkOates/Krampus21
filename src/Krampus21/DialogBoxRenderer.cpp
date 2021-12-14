@@ -21,6 +21,7 @@ DialogBoxRenderer::DialogBoxRenderer(AllegroFlare::FontBin* font_bin, Krampus21:
    : font_bin(font_bin)
    , dialog_box(dialog_box)
    , place({ 1920/2, 1080/3*2, 1920/2, 1080/3 })
+   , default_font(nullptr)
 {
 }
 
@@ -64,6 +65,8 @@ void DialogBoxRenderer::render()
    std::string text = get_dialog_box_text();
    ALLEGRO_FONT* text_font = obtain_dialog_font();
    ALLEGRO_COLOR text_color = al_color_html("66a9bc");
+   float text_padding_x = 40.0f;
+   float text_padding_y = 30.0f;
 
    // draw backfill and border
    place.start_transform();
@@ -72,14 +75,14 @@ void DialogBoxRenderer::render()
       0 + border_inner_padding,
       place.size.x - border_inner_padding,
       place.size.y - border_inner_padding,
-      roundness * 0.6,
-      roundness * 0.6,
+      roundness * 0.5,
+      roundness * 0.5,
       fill_color
    );
    al_draw_rounded_rectangle(0, 0, place.size.x, place.size.y, roundness, roundness, border_color, border_thickness);
 
    // draw text
-   //al_draw_text(text_font, text_color, 0, 0, ALLEGRO_ALIGN_LEFT, text.c_str());
+   al_draw_text(text_font, text_color, text_padding_x, text_padding_y, ALLEGRO_ALIGN_LEFT, text.c_str());
 
    place.restore_transform();
    return;
@@ -93,7 +96,7 @@ std::string DialogBoxRenderer::get_dialog_box_text()
          error_message << "DialogBoxRenderer" << "::" << "get_dialog_box_text" << ": error: " << "guard \"dialog_box\" not met";
          throw std::runtime_error(error_message.str());
       }
-   return "dummy_dialog_text";
+   return "This is dummy dialog text.";
 }
 
 ALLEGRO_FONT* DialogBoxRenderer::obtain_dialog_font()
@@ -116,8 +119,9 @@ ALLEGRO_FONT* DialogBoxRenderer::obtain_dialog_font()
          error_message << "DialogBoxRenderer" << "::" << "obtain_dialog_font" << ": error: " << "guard \"font_bin\" not met";
          throw std::runtime_error(error_message.str());
       }
-   static const std::string FONT_IDENTIFIER = "Purista-Medium.otf -32";
-   return font_bin->operator[](FONT_IDENTIFIER);
+   static const std::string FONT_IDENTIFIER = "Purista Medium.ttf -50";
+   ALLEGRO_FONT* result_font = font_bin->operator[](FONT_IDENTIFIER);
+   return result_font;
 }
 } // namespace Krampus21
 
