@@ -14,3 +14,4 @@ TEST(Krampus21_ScreenManagerTest, run__returns_the_expected_response)
    std::string expected_string = "Hello World!";
    //EXPECT_EQ(expected_string, screen_manager.run());
 }
+

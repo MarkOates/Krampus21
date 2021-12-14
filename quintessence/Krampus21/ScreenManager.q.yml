@@ -56,8 +56,13 @@ functions:
 
 
   - name: load_initial_screen
+    guards: [ initialized ]
     body: |
+      if (current_screen) delete current_screen;
+      current_screen = new Krampus21::Screens::GameplayScreen;
       return;
+    body_dependency_symbols:
+      - Krampus21::Screens::GameplayScreen
 
 
   - name: initialize
@@ -114,6 +119,8 @@ dependencies:
     headers: [ Krampus21/Screens/Base.hpp ]
   - symbol: Krampus21::UserEventEmitter
     headers: [ Krampus21/UserEventEmitter.hpp ]
+  - symbol: Krampus21::Screens::GameplayScreen
+    headers: [ Krampus21/Screens/GameplayScreen.hpp ]
   - symbol: std::map<std::string, AllegroFlare::AudioRepositoryElement>
     headers: [ map, string, AllegroFlare/AudioRepositoryElement.hpp ]
 

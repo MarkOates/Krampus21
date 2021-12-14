@@ -1,7 +1,9 @@
 
 
 #include <Krampus21/ScreenManager.hpp>
-
+#include <Krampus21/Screens/GameplayScreen.hpp>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace Krampus21
@@ -30,6 +32,14 @@ ScreenManager::~ScreenManager()
 
 void ScreenManager::load_initial_screen()
 {
+   if (!(initialized))
+      {
+         std::stringstream error_message;
+         error_message << "ScreenManager" << "::" << "load_initial_screen" << ": error: " << "guard \"initialized\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (current_screen) delete current_screen;
+   current_screen = new Krampus21::Screens::GameplayScreen;
    return;
 }
 

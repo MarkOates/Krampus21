@@ -36,5 +36,8 @@
   ],
   "Krampus21/UserEventEmitter": [
     "Krampus21/ScreenManager"
+  ],
+  "Krampus21/Screens/GameplayScreen": [
+    "Krampus21/ScreenManager"
   ]
 }
