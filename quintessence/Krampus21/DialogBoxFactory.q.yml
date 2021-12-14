@@ -1,6 +1,22 @@
 functions:
 
 
+  - name: create_basic_dialog_box_for_testing
+    type: Krampus21::DialogBoxes::Base*
+    body: |
+      Krampus21::DialogBoxes::Basic *dialog_box = new Krampus21::DialogBoxes::Basic;
+      std::vector<std::vector<std::string>> pages = {
+        { "Page 1 text" },
+        { "Page 2 text", "With multiple lines" },
+        { "And now text from the last page." },
+      };
+      dialog_box->set_pages(pages);
+      return dialog_box;
+    body_dependency_symbols:
+      - Krampus21::DialogBoxes::Basic
+      - std::vector<std::vector<std::string>>
+
+
   - name: create_basic_dialog_box
     type: Krampus21::DialogBoxes::Base*
     parameters:
@@ -9,7 +25,7 @@ functions:
         default_argument: '{}'
     body: |
       Krampus21::DialogBoxes::Basic *dialog_box = new Krampus21::DialogBoxes::Basic;
-      //dialog_box->set_pages(pages);
+      dialog_box->set_pages(pages);
       return dialog_box;
     body_dependency_symbols:
       - Krampus21::DialogBoxes::Basic

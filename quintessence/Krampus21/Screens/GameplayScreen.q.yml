@@ -25,6 +25,15 @@ properties:
 functions:
 
 
+  - name: initialize_dialog_box
+    body: |
+      Krampus21::DialogBoxFactory dialog_box_factory;
+      current_dialog_box = dialog_box_factory.create_basic_dialog_box_for_testing();
+      return;
+    body_dependency_symbols:
+      - Krampus21::DialogBoxFactory
+
+
   - name: primary_timer_func
     override: true
     body: |
@@ -46,6 +55,8 @@ dependencies:
     headers: [ Krampus21/DialogBoxes/Base.hpp ]
   - symbol: Krampus21::DialogBoxRenderer
     headers: [ Krampus21/DialogBoxRenderer.hpp ]
+  - symbol: Krampus21::DialogBoxFactory
+    headers: [ Krampus21/DialogBoxFactory.hpp ]
   - symbol: AllegroFlare::FontBin*
     headers: [ AllegroFlare/FontBin.hpp ]
 

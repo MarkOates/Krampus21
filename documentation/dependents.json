@@ -82,5 +82,8 @@
   ],
   "Krampus21/DialogBoxRenderer": [
     "Krampus21/Screens/GameplayScreen"
+  ],
+  "Krampus21/DialogBoxFactory": [
+    "Krampus21/Screens/GameplayScreen"
   ]
 }

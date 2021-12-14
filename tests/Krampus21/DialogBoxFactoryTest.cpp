@@ -14,3 +14,4 @@ TEST(Krampus21_DialogBoxFactoryTest, create_basic_dialog_box__returns_the_dialog
    //std::string expected_string = "Hello World!";
    //EXPECT_EQ(expected_string, dialog_box_factory.run());
 }
+

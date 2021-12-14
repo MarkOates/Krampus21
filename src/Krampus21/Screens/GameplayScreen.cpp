@@ -1,6 +1,7 @@
 
 
 #include <Krampus21/Screens/GameplayScreen.hpp>
+#include <Krampus21/DialogBoxFactory.hpp>
 #include <Krampus21/DialogBoxRenderer.hpp>
 
 
@@ -34,6 +35,13 @@ Krampus21::DialogBoxes::Base* GameplayScreen::get_current_dialog_box()
    return current_dialog_box;
 }
 
+
+void GameplayScreen::initialize_dialog_box()
+{
+   Krampus21::DialogBoxFactory dialog_box_factory;
+   current_dialog_box = dialog_box_factory.create_basic_dialog_box_for_testing();
+   return;
+}
 
 void GameplayScreen::primary_timer_func()
 {

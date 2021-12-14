@@ -22,6 +22,7 @@ namespace Krampus21
 
          void set_current_dialog_box(Krampus21::DialogBoxes::Base* current_dialog_box);
          Krampus21::DialogBoxes::Base* get_current_dialog_box();
+         void initialize_dialog_box();
          void primary_timer_func() override;
       };
    }
