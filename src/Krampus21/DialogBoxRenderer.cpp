@@ -51,11 +51,11 @@ void DialogBoxRenderer::render()
          error_message << "DialogBoxRenderer" << "::" << "render" << ": error: " << "guard \"al_get_current_display()\" not met";
          throw std::runtime_error(error_message.str());
       }
-   float roundness = 20.0f;
+   float roundness = 18.0f;
    float border_thickness = 5.0f;
    float border_inner_padding = border_thickness * 3;
-   ALLEGRO_COLOR fill_color = al_color_html("353636");
-   ALLEGRO_COLOR border_color = al_color_html("cccccc");
+   ALLEGRO_COLOR fill_color = al_color_html("162428");
+   ALLEGRO_COLOR border_color = al_color_html("244751");
 
    place.start_transform();
    al_draw_filled_rounded_rectangle(
