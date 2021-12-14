@@ -47,10 +47,11 @@ functions:
 
 
   - name: next_page
-    guards: [ more_pages_to_go() ]
+    type: bool
     body: |
+      if (at_last_page()) return false;
       current_page_num++;
-      return;
+      return true;
 
 
   - name: current_page_is_valid

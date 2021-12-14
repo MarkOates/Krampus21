@@ -40,7 +40,7 @@ TEST(Krampus21_DialogBoxes_BaseTest, set_pages__sets_the_pages_with_the_passed_v
 }
 
 
-TEST(Krampus21_DialogBoxes_BaseTest, set_pages__will_reset_the_page_num_to_0_if_it_is_passed)
+TEST(Krampus21_DialogBoxes_BaseTest, next_page__will_increment_the_page_number)
 {
    std::vector<std::vector<std::string>> pages = {
       { "Page 1 has this test" },
@@ -56,5 +56,6 @@ TEST(Krampus21_DialogBoxes_BaseTest, set_pages__will_reset_the_page_num_to_0_if_
 
    ASSERT_EQ(expected_page_lines, dialog_box.get_current_page_lines());
 }
+
 
 

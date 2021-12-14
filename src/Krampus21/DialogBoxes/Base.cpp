@@ -3,8 +3,6 @@
 #include <Krampus21/DialogBoxes/Base.hpp>
 #include <stdexcept>
 #include <sstream>
-#include <stdexcept>
-#include <sstream>
 
 
 namespace Krampus21
@@ -68,16 +66,11 @@ std::vector<std::string> Base::get_current_page_lines()
    return pages[current_page_num];
 }
 
-void Base::next_page()
+bool Base::next_page()
 {
-   if (!(more_pages_to_go()))
-      {
-         std::stringstream error_message;
-         error_message << "Base" << "::" << "next_page" << ": error: " << "guard \"more_pages_to_go()\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   if (at_last_page()) return false;
    current_page_num++;
-   return;
+   return true;
 }
 
 bool Base::current_page_is_valid()
