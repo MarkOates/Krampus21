@@ -44,6 +44,7 @@ void ScreenManager::initialize()
          error_message << "ScreenManager" << "::" << "initialize" << ": error: " << "guard \"(!initialized)\" not met";
          throw std::runtime_error(error_message.str());
       }
+   dialog.set_pages({{ "Ugh. I just woke up from a bad dream." }, { "Things couldn't be that bad" }});
    initialized = true;
    return;
 }
@@ -68,6 +69,7 @@ void ScreenManager::advance_dialog()
          error_message << "ScreenManager" << "::" << "advance_dialog" << ": error: " << "guard \"framework\" not met";
          throw std::runtime_error(error_message.str());
       }
+   dialog.next_page();
    return;
 }
 

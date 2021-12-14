@@ -57,8 +57,8 @@ void ProgramRunner::run()
       music_track_elements,
       sound_effect_elements
    );
-   screen_manager->initialize();
    screens.add(screen_manager);
+   screen_manager->initialize();
 
    framework.run_loop();
 

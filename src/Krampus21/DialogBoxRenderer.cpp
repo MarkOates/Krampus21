@@ -61,11 +61,12 @@ void DialogBoxRenderer::render()
    float border_inner_padding = border_thickness * 3;
    ALLEGRO_COLOR fill_color = al_color_html("162428");
    ALLEGRO_COLOR border_color = al_color_html("244751");
-   std::string text = get_dialog_box_text();
+   std::vector<std::string> lines = get_dialog_box_lines();
    ALLEGRO_FONT* text_font = obtain_dialog_font();
    ALLEGRO_COLOR text_color = al_color_html("66a9bc");
    float text_padding_x = 40.0f;
    float text_padding_y = 30.0f;
+   float line_height = al_get_font_line_height(text_font);
 
    // draw backfill and border
    place.start_transform();
@@ -81,21 +82,27 @@ void DialogBoxRenderer::render()
    al_draw_rounded_rectangle(0, 0, place.size.x, place.size.y, roundness, roundness, border_color, border_thickness);
 
    // draw text
-   al_draw_text(text_font, text_color, text_padding_x, text_padding_y, ALLEGRO_ALIGN_LEFT, text.c_str());
+   int line_num = 0;
+   for (auto &line : lines)
+   {
+      al_draw_text(text_font, text_color, text_padding_x,
+      text_padding_y + line_num*line_height, ALLEGRO_ALIGN_LEFT, line.c_str());
+      line_num++;
+   }
 
    place.restore_transform();
    return;
 }
 
-std::string DialogBoxRenderer::get_dialog_box_text()
+std::vector<std::string> DialogBoxRenderer::get_dialog_box_lines()
 {
    if (!(dialog_box))
       {
          std::stringstream error_message;
-         error_message << "DialogBoxRenderer" << "::" << "get_dialog_box_text" << ": error: " << "guard \"dialog_box\" not met";
+         error_message << "DialogBoxRenderer" << "::" << "get_dialog_box_lines" << ": error: " << "guard \"dialog_box\" not met";
          throw std::runtime_error(error_message.str());
       }
-   return "This is dummy dialog text.";
+   return dialog_box->get_current_page_lines();
 }
 
 ALLEGRO_FONT* DialogBoxRenderer::obtain_dialog_font()

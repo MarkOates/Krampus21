@@ -59,6 +59,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_the_allegro_font_addon_has_no
    al_init_ttf_addon();
    ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
    Krampus21::DialogBoxes::Base dialog_box;
+   dialog_box.set_pages({ { "Some test dialog text." } });
    Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, &dialog_box);
 
    std::string expected_error_message =
@@ -77,6 +78,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_the_allegro_ttf_addon_has_not
    al_init_ttf_addon();
    ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
    Krampus21::DialogBoxes::Base dialog_box;
+   dialog_box.set_pages({ { "Some test dialog text." } });
    Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, &dialog_box);
 
    std::string expected_error_message =
@@ -95,6 +97,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_font_bin__raises_
    al_init_ttf_addon();
    ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
    Krampus21::DialogBoxes::Base dialog_box;
+   dialog_box.set_pages({ { "Some test dialog text." } });
    Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, &dialog_box);
 
    std::string expected_error_message =
@@ -116,7 +119,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_dialog_box__raise
    Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin);
 
    std::string expected_error_message =
-      "DialogBoxRenderer::get_dialog_box_text: error: guard \"dialog_box\" not met";
+      "DialogBoxRenderer::get_dialog_box_lines: error: guard \"dialog_box\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_destroy_display(display);
@@ -133,6 +136,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_the_dialog_box)
    AllegroFlare::FontBin font_bin;
    font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
    Krampus21::DialogBoxes::Base dialog_box;
+   dialog_box.set_pages({ { "Some test dialog text." } });
    Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
 
    dialog_box_renderer.render();

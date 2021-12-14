@@ -58,6 +58,7 @@ functions:
   - name: initialize
     guards: [ (!initialized) ]
     body: |
+      dialog.set_pages({{ "Ugh. I just woke up from a bad dream." }, { "Things couldn't be that bad" }});
       initialized = true;
       return;
 
@@ -72,6 +73,7 @@ functions:
   - name: advance_dialog
     guards: [ framework ]
     body: |
+      dialog.next_page();
       return;
 
 

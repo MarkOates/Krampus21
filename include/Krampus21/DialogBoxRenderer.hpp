@@ -6,6 +6,7 @@
 #include <allegro5/allegro.h>
 #include <allegro_flare/placement2d.h>
 #include <string>
+#include <vector>
 
 
 namespace Krampus21
@@ -23,7 +24,7 @@ namespace Krampus21
 
       allegro_flare::placement2d get_place();
       void render();
-      std::string get_dialog_box_text();
+      std::vector<std::string> get_dialog_box_lines();
       ALLEGRO_FONT* obtain_dialog_font();
    };
 }
