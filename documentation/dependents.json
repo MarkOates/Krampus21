@@ -14,6 +14,12 @@
   "al_is_system_installed": [
     "Krampus21/DialogBoxRenderer"
   ],
+  "al_color_name": [
+    "Krampus21/DialogBoxRenderer"
+  ],
+  "al_draw_filled_rounded_rectangle": [
+    "Krampus21/DialogBoxRenderer"
+  ],
   "AllegroFlare/Display": [
     "Krampus21/ProgramRunner",
     "Krampus21/ScreenManager"
