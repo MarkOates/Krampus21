@@ -13,7 +13,7 @@ properties:
 
   - name: dialog_box_num_revealed_characters
     type: int
-    init_with: 10
+    init_with: 9999
     getter: true
 
   - name: place

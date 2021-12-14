@@ -23,7 +23,7 @@ namespace Krampus21
 DialogBoxRenderer::DialogBoxRenderer(AllegroFlare::FontBin* font_bin, Krampus21::DialogBoxes::Base* dialog_box)
    : font_bin(font_bin)
    , dialog_box(dialog_box)
-   , dialog_box_num_revealed_characters(10)
+   , dialog_box_num_revealed_characters(9999)
    , place({ 1920/2, 1080/3*2, 1920/2, 1080/3 })
 {
 }
