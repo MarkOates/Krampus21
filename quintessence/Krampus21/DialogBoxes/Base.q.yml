@@ -7,13 +7,14 @@ properties:
     constructor_arg: true
     getter: true
 
-  - name: lines
-    type: std::vector<std::string>
+  - name: pages
+    type: std::vector<std::vector<std::string>>
     init_with: '{}'
     constructor_arg: true
     getter: true
 
   - name: current_page_num
+    type: int
     init_with: 0
     getter: true
 
@@ -21,8 +22,9 @@ properties:
 functions:
 
 
-  - name: start
+  - name: reset
     body: |
+      current_page_num = 0;
       return;
 
 
@@ -31,19 +33,39 @@ functions:
       return;
 
 
-  - name: init_page
-    body: |
-      return;
-
-
   - name: next_page
     body: |
+      //if (current_page_is_valid()
+      // TODO
       return;
 
 
-  - name: is_finished
+  - name: current_page_is_valid
+    type: bool
     body: |
-      return;
+      if (pages.empty()) return false;
+      if (current_page_num < 0) return false;
+      if (current_page_num >= pages.size()) return false;
+      return true;
+
+
+  - name: more_pages_to_go
+    type: bool
+    body: |
+      if (current_page_is_valid() && current_page_num < pages.size()) return true;
+      return false;
+
+
+  - name: num_pages
+    type: int
+    body: |
+      return pages.size();
+
+
+  - name: at_last_page
+    type: bool
+    body: |
+      return (current_page_num == num_pages());
 
 
 dependencies:
@@ -51,5 +73,7 @@ dependencies:
 
   - symbol: Krampus21::DialogBoxes::Base
     headers: [ Krampus21/DialogBoxes/Base.hpp ]
+  - symbol: std::vector<std::vector<std::string>>
+    headers: [ vector, string ]
 
 

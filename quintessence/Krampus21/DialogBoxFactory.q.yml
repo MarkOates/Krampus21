@@ -4,11 +4,12 @@ functions:
   - name: create_basic_dialog_box
     type: Krampus21::DialogBoxes::Base*
     parameters:
-      - name: lines
-        type: std::vector<std::string>
+      - name: pages
+        type: std::vector<std::vector<std::string>>
         default_argument: '{}'
     body: |
       Krampus21::DialogBoxes::Basic *dialog_box = new Krampus21::DialogBoxes::Basic;
+      //dialog_box->set_pages(pages);
       return dialog_box;
     body_dependency_symbols:
       - Krampus21::DialogBoxes::Basic
@@ -17,6 +18,8 @@ functions:
 dependencies:
 
 
+  - symbol: std::vector<std::vector<std::string>>
+    headers: [ vector, string ]
   - symbol: Krampus21::DialogBoxes::Base*
     headers: [ Krampus21/DialogBoxes/Base.hpp ]
   - symbol: Krampus21::DialogBoxes::Basic

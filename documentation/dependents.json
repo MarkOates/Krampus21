@@ -1,4 +1,8 @@
 {
+  "std/vector<std/vector<std/string>>": [
+    "Krampus21/DialogBoxFactory",
+    "Krampus21/DialogBoxes/Base"
+  ],
   "Krampus21/DialogBoxes/Base": [
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxes/Base"

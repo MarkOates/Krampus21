@@ -70,6 +70,9 @@ table td
     </table>
      <table>
 <tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::vector&lt;std::string&gt;&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;string&quot;]}</td>
+</tr>
+<tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
 </tr>
 <tr>
@@ -87,34 +90,43 @@ table td
   <td class="property">std::string</td>
 </tr>
 <tr>
-  <td class="property">lines</td>
-  <td class="property">std::vector&lt;std::string&gt;</td>
+  <td class="property">pages</td>
+  <td class="property">std::vector&lt;std::vector&lt;std::string&gt;&gt;</td>
 </tr>
 <tr>
   <td class="property">current_page_num</td>
-  <td class="property"></td>
+  <td class="property">int</td>
 </tr>
     </table>
      <table>
 <tr>
-  <td class="method">start()</td>
+  <td class="method">reset()</td>
 </tr>
 <tr>
   <td class="method">get_current_page_text()</td>
 </tr>
 <tr>
-  <td class="method">init_page()</td>
-</tr>
-<tr>
   <td class="method">next_page()</td>
 </tr>
 <tr>
-  <td class="method">is_finished()</td>
+  <td class="method">current_page_is_valid()</td>
+</tr>
+<tr>
+  <td class="method">more_pages_to_go()</td>
+</tr>
+<tr>
+  <td class="method">num_pages()</td>
+</tr>
+<tr>
+  <td class="method">at_last_page()</td>
 </tr>
     </table>
      <table>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::vector&lt;std::string&gt;&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;string&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -288,6 +300,10 @@ table td
 <h1>Dependents</h1>
 <pre>
 {
+  "std/vector<std/vector<std/string>>": [
+    "Krampus21/DialogBoxFactory",
+    "Krampus21/DialogBoxes/Base"
+  ],
   "Krampus21/DialogBoxes/Base": [
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxes/Base"
