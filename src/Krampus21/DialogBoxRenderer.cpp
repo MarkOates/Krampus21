@@ -71,14 +71,6 @@ void DialogBoxRenderer::render()
    float border_inner_padding = border_thickness * 3;
    ALLEGRO_COLOR fill_color = al_color_html("162428");
    ALLEGRO_COLOR border_color = al_color_html("244751");
-   std::string text = Blast::StringJoiner(get_dialog_box_lines(), "\n").join();
-   std::string partial_text_to_render = Blast::StringJoiner(get_dialog_box_lines(), "\n").join();
-   ALLEGRO_FONT* text_font = obtain_dialog_font();
-   ALLEGRO_COLOR text_color = al_color_html("66a9bc");
-   float text_padding_x = 40.0f;
-   float text_padding_y = 30.0f;
-   float text_box_max_width = place.size.x - (text_padding_x * 2);
-   float line_height = al_get_font_line_height(text_font);
 
    // draw backfill and border
    place.start_transform();
@@ -93,7 +85,22 @@ void DialogBoxRenderer::render()
    );
    al_draw_rounded_rectangle(0, 0, place.size.x, place.size.y, roundness, roundness, border_color, border_thickness);
 
-   // draw text
+   draw_styled_revealed_text();
+
+   place.restore_transform();
+   return;
+}
+
+void DialogBoxRenderer::draw_styled_revealed_text()
+{
+   std::string text = Blast::StringJoiner(get_dialog_box_lines(), "\n").join();
+   float text_padding_x = 40.0f;
+   float text_padding_y = 30.0f;
+   float text_box_max_width = place.size.x - (text_padding_x * 2);
+   ALLEGRO_FONT* text_font = obtain_dialog_font();
+   float line_height = al_get_font_line_height(text_font);
+   ALLEGRO_COLOR text_color = al_color_html("66a9bc");
+
    al_draw_multiline_text(
       text_font,
       text_color,
@@ -102,10 +109,8 @@ void DialogBoxRenderer::render()
       text_box_max_width,
       line_height,
       ALLEGRO_ALIGN_LEFT,
-      concat_text(text, 20).c_str()
+      concat_text(text, dialog_box_num_revealed_characters).c_str()
    );
-
-   place.restore_transform();
    return;
 }
 
