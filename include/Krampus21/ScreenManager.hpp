@@ -27,6 +27,7 @@ namespace Krampus21
       Krampus21::UserEventEmitter user_event_emitter;
       AllegroFlare::AudioController audio_controller;
       Krampus21::DialogBoxes::Basic dialog;
+      int dialog_num_revealed_characters;
       bool initialized;
 
    public:

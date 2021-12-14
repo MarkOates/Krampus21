@@ -20,7 +20,7 @@ namespace Krampus21
       allegro_flare::placement2d place;
 
    public:
-      DialogBoxRenderer(AllegroFlare::FontBin* font_bin=nullptr, Krampus21::DialogBoxes::Base* dialog_box=nullptr);
+      DialogBoxRenderer(AllegroFlare::FontBin* font_bin=nullptr, Krampus21::DialogBoxes::Base* dialog_box=nullptr, int dialog_box_num_revealed_characters=9999);
       ~DialogBoxRenderer();
 
       int get_dialog_box_num_revealed_characters();

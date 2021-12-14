@@ -47,6 +47,10 @@ properties:
     type: Krampus21::DialogBoxes::Basic
     init_with: '{}'
 
+  - name: dialog_num_revealed_characters
+    type: int
+    init_with: 0
+
   - name: initialized
     type: bool
     init_with: false
@@ -59,6 +63,7 @@ functions:
     guards: [ (!initialized) ]
     body: |
       dialog.set_pages({{ "Ugh. I just woke up from a bad dream." }, { "Things couldn't be that bad" }});
+      dialog_num_revealed_characters = 0;
       initialized = true;
       return;
 
@@ -74,13 +79,15 @@ functions:
     guards: [ framework ]
     body: |
       dialog.next_page();
+      dialog_num_revealed_characters = 0;
       return;
 
 
   - name: primary_timer_func
     override: true
     body: |
-      Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), &dialog);
+      dialog_num_revealed_characters++;
+      Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), &dialog, dialog_num_revealed_characters);
       renderer.render();
       return;
     body_dependency_symbols:

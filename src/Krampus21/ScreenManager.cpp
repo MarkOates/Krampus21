@@ -26,6 +26,7 @@ ScreenManager::ScreenManager(AllegroFlare::Framework* framework, AllegroFlare::S
    , user_event_emitter({})
    , audio_controller({})
    , dialog({})
+   , dialog_num_revealed_characters(0)
    , initialized(false)
 {
 }
@@ -45,6 +46,7 @@ void ScreenManager::initialize()
          throw std::runtime_error(error_message.str());
       }
    dialog.set_pages({{ "Ugh. I just woke up from a bad dream." }, { "Things couldn't be that bad" }});
+   dialog_num_revealed_characters = 0;
    initialized = true;
    return;
 }
@@ -70,12 +72,14 @@ void ScreenManager::advance_dialog()
          throw std::runtime_error(error_message.str());
       }
    dialog.next_page();
+   dialog_num_revealed_characters = 0;
    return;
 }
 
 void ScreenManager::primary_timer_func()
 {
-   Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), &dialog);
+   dialog_num_revealed_characters++;
+   Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), &dialog, dialog_num_revealed_characters);
    renderer.render();
    return;
 }

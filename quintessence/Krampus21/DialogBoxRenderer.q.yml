@@ -15,6 +15,7 @@ properties:
     type: int
     init_with: 9999
     getter: true
+    constructor_arg: true
 
   - name: place
     type: allegro_flare::placement2d
