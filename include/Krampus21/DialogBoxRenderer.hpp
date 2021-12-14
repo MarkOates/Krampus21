@@ -17,6 +17,7 @@ namespace Krampus21
       DialogBoxRenderer();
       ~DialogBoxRenderer();
 
+      allegro_flare::placement2d get_place();
       void render();
    };
 }

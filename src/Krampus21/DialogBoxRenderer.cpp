@@ -25,6 +25,12 @@ DialogBoxRenderer::~DialogBoxRenderer()
 }
 
 
+allegro_flare::placement2d DialogBoxRenderer::get_place()
+{
+   return place;
+}
+
+
 void DialogBoxRenderer::render()
 {
    if (!(al_is_system_installed()))
