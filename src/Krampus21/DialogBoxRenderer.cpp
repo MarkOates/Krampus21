@@ -85,32 +85,16 @@ void DialogBoxRenderer::render()
    al_draw_rounded_rectangle(0, 0, place.size.x, place.size.y, roundness, roundness, border_color, border_thickness);
 
    // draw text
-   //int line_num = 0;
-   //for (auto &line : lines)
-   //{
-      /*
-      al_draw_text(
-         text_font,
-         text_color,
-         text_padding_x,
-         text_padding_y + line_num*line_height,
-         ALLEGRO_ALIGN_LEFT,
-         line.c_str()
-      );
-      */
-      //line_num++;
-
-      al_draw_multiline_text(
-         text_font,
-         text_color,
-         text_padding_x,
-         text_padding_y,
-         text_box_max_width,
-         line_height,
-         ALLEGRO_ALIGN_LEFT,
-         text.c_str()
-      );
-   //}
+   al_draw_multiline_text(
+      text_font,
+      text_color,
+      text_padding_x,
+      text_padding_y,
+      text_box_max_width,
+      line_height,
+      ALLEGRO_ALIGN_LEFT,
+      text.c_str()
+   );
 
    place.restore_transform();
    return;
