@@ -43,6 +43,10 @@ properties:
     type: AllegroFlare::AudioController
     init_with: '{}'
 
+  - name: dialog
+    type: Krampus21::DialogBoxes::Basic
+    init_with: '{}'
+
   - name: initialized
     type: bool
     init_with: false
@@ -54,7 +58,6 @@ functions:
   - name: initialize
     guards: [ (!initialized) ]
     body: |
-      // TODO
       initialized = true;
       return;
 
@@ -70,6 +73,16 @@ functions:
     guards: [ framework ]
     body: |
       return;
+
+
+  - name: primary_timer_func
+    override: true
+    body: |
+      Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), &dialog);
+      renderer.render();
+      return;
+    body_dependency_symbols:
+      - Krampus21::DialogBoxRenderer
 
 
   - name: key_down_func
@@ -106,6 +119,12 @@ functions:
       return;
 
 
+  - name: obtain_font_bin
+    type: AllegroFlare::FontBin*
+    guards: [ framework ]
+    body: return &framework->get_font_bin_ref();
+
+
 dependencies:
 
 
@@ -119,6 +138,8 @@ dependencies:
     headers: [ AllegroFlare/Screens.hpp ]
   - symbol: AllegroFlare::Framework*
     headers: [ AllegroFlare/Framework.hpp ]
+  - symbol: AllegroFlare::FontBin*
+    headers: [ AllegroFlare/FontBin.hpp ]
   - symbol: AllegroFlare::Display
     headers: [ AllegroFlare/Display.hpp ]
   - symbol: AllegroFlare::AudioController
@@ -129,5 +150,9 @@ dependencies:
     headers: [ Krampus21/UserEventEmitter.hpp ]
   - symbol: std::map<std::string, AllegroFlare::AudioRepositoryElement>
     headers: [ map, string, AllegroFlare/AudioRepositoryElement.hpp ]
+  - symbol: Krampus21::DialogBoxes::Basic
+    headers: [ Krampus21/DialogBoxes/Basic.hpp ]
+  - symbol: Krampus21::DialogBoxRenderer
+    headers: [ Krampus21/DialogBoxRenderer.hpp ]
 
 

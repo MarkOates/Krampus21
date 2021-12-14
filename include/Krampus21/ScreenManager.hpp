@@ -3,9 +3,11 @@
 
 #include <AllegroFlare/AudioController.hpp>
 #include <AllegroFlare/AudioRepositoryElement.hpp>
+#include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/Framework.hpp>
 #include <AllegroFlare/Screen.hpp>
 #include <AllegroFlare/Screens.hpp>
+#include <Krampus21/DialogBoxes/Basic.hpp>
 #include <Krampus21/UserEventEmitter.hpp>
 #include <allegro5/allegro.h>
 #include <map>
@@ -24,6 +26,7 @@ namespace Krampus21
       ALLEGRO_EVENT_SOURCE user_event_emitter_souce;
       Krampus21::UserEventEmitter user_event_emitter;
       AllegroFlare::AudioController audio_controller;
+      Krampus21::DialogBoxes::Basic dialog;
       bool initialized;
 
    public:
@@ -33,8 +36,10 @@ namespace Krampus21
       void initialize();
       void shutdown_game();
       void advance_dialog();
+      void primary_timer_func() override;
       void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
       void user_event_func(ALLEGRO_EVENT* ev=nullptr) override;
+      AllegroFlare::FontBin* obtain_font_bin();
    };
 }
 

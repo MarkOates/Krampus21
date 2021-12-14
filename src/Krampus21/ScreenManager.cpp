@@ -7,6 +7,9 @@
 #include <sstream>
 #include <stdexcept>
 #include <sstream>
+#include <Krampus21/DialogBoxRenderer.hpp>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace Krampus21
@@ -22,6 +25,7 @@ ScreenManager::ScreenManager(AllegroFlare::Framework* framework, AllegroFlare::S
    , user_event_emitter_souce({})
    , user_event_emitter({})
    , audio_controller({})
+   , dialog({})
    , initialized(false)
 {
 }
@@ -40,7 +44,6 @@ void ScreenManager::initialize()
          error_message << "ScreenManager" << "::" << "initialize" << ": error: " << "guard \"(!initialized)\" not met";
          throw std::runtime_error(error_message.str());
       }
-   // TODO
    initialized = true;
    return;
 }
@@ -68,6 +71,13 @@ void ScreenManager::advance_dialog()
    return;
 }
 
+void ScreenManager::primary_timer_func()
+{
+   Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), &dialog);
+   renderer.render();
+   return;
+}
+
 void ScreenManager::key_down_func(ALLEGRO_EVENT* ev)
 {
    switch (ev->type)
@@ -90,6 +100,17 @@ void ScreenManager::key_down_func(ALLEGRO_EVENT* ev)
 void ScreenManager::user_event_func(ALLEGRO_EVENT* ev)
 {
    return;
+}
+
+AllegroFlare::FontBin* ScreenManager::obtain_font_bin()
+{
+   if (!(framework))
+      {
+         std::stringstream error_message;
+         error_message << "ScreenManager" << "::" << "obtain_font_bin" << ": error: " << "guard \"framework\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   return &framework->get_font_bin_ref();
 }
 } // namespace Krampus21
 
