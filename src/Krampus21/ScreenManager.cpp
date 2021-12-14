@@ -4,6 +4,8 @@
 #include <Krampus21/Screens/GameplayScreen.hpp>
 #include <stdexcept>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace Krampus21
@@ -30,6 +32,13 @@ ScreenManager::~ScreenManager()
 }
 
 
+void ScreenManager::initialize()
+{
+   // TODO
+   initialized = true;
+   return;
+}
+
 void ScreenManager::load_initial_screen()
 {
    if (!(initialized))
@@ -43,10 +52,15 @@ void ScreenManager::load_initial_screen()
    return;
 }
 
-void ScreenManager::initialize()
+void ScreenManager::shutdown_game()
 {
-   // TODO
-   initialized = true;
+   if (!(framework))
+      {
+         std::stringstream error_message;
+         error_message << "ScreenManager" << "::" << "shutdown_game" << ": error: " << "guard \"framework\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   framework->shutdown_program = true;
    return;
 }
 
@@ -55,7 +69,7 @@ void ScreenManager::key_down_func(ALLEGRO_EVENT* ev)
    switch (ev->type)
    {
    case ALLEGRO_EVENT_KEY_DOWN:
-      framework->shutdown_program = true;
+      shutdown_game();
       break;
    }
    return;

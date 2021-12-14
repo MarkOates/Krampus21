@@ -32,8 +32,9 @@ namespace Krampus21
       ScreenManager(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements={}, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements={});
       ~ScreenManager();
 
-      void load_initial_screen();
       void initialize();
+      void load_initial_screen();
+      void shutdown_game();
       void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
       void user_event_func(ALLEGRO_EVENT* ev=nullptr) override;
    };

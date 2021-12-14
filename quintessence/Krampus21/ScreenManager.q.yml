@@ -55,6 +55,13 @@ properties:
 functions:
 
 
+  - name: initialize
+    body: |
+      // TODO
+      initialized = true;
+      return;
+
+
   - name: load_initial_screen
     guards: [ initialized ]
     body: |
@@ -65,10 +72,10 @@ functions:
       - Krampus21::Screens::GameplayScreen
 
 
-  - name: initialize
+  - name: shutdown_game
+    guards: [ framework ]
     body: |
-      // TODO
-      initialized = true;
+      framework->shutdown_program = true;
       return;
 
 
@@ -82,7 +89,7 @@ functions:
       switch (ev->type)
       {
       case ALLEGRO_EVENT_KEY_DOWN:
-         framework->shutdown_program = true;
+         shutdown_game();
          break;
       }
       return;
