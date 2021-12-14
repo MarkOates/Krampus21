@@ -30,7 +30,7 @@ properties:
 
   - name: showing_close_cursor
     type: bool
-    init_with: false
+    init_with: true
     getter: true
     setter: true
 
@@ -62,6 +62,15 @@ functions:
 
       draw_styled_revealed_text();
 
+      if (get_showing_next_cursor())
+      {
+         show_action_text(">>");
+      }
+      if (get_showing_close_cursor())
+      {
+         show_action_text("[close]");
+      }
+
       place.restore_transform();
       return;
     body_dependency_symbols:
@@ -70,6 +79,26 @@ functions:
       - al_is_primitives_addon_initialized
       - al_draw_filled_rounded_rectangle
       - al_color_html
+
+
+  - name: show_action_text
+    parameters:
+      - name: text
+        type: std::string
+        default_argument: '"[unset-action-text]"'
+    body: |
+      ALLEGRO_FONT* text_font = obtain_dialog_font();
+      ALLEGRO_COLOR text_color = al_color_html("66a9bc");
+      float line_height = al_get_font_line_height(text_font);
+      al_draw_text(
+         text_font,
+         text_color,
+         place.size.x-20,
+         place.size.y-line_height-10,
+         ALLEGRO_ALIGN_RIGHT,
+         text.c_str()
+      );
+      return;
 
 
   - name: draw_styled_revealed_text

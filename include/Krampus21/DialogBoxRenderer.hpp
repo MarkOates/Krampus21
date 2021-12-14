@@ -32,6 +32,7 @@ namespace Krampus21
       bool get_showing_next_cursor();
       bool get_showing_close_cursor();
       void render();
+      void show_action_text(std::string text="[unset-action-text]");
       void draw_styled_revealed_text();
       std::vector<std::string> get_dialog_box_lines();
       std::string concat_text(std::string source_text="", int length=0);

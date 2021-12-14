@@ -26,7 +26,7 @@ DialogBoxRenderer::DialogBoxRenderer(AllegroFlare::FontBin* font_bin, Krampus21:
    , dialog_box_num_revealed_characters(dialog_box_num_revealed_characters)
    , place({ 1920/2, 1080/4*3, 1920/2, 1080/4 })
    , showing_next_cursor(false)
-   , showing_close_cursor(false)
+   , showing_close_cursor(true)
 {
 }
 
@@ -113,7 +113,32 @@ void DialogBoxRenderer::render()
 
    draw_styled_revealed_text();
 
+   if (get_showing_next_cursor())
+   {
+      show_action_text(">>");
+   }
+   if (get_showing_close_cursor())
+   {
+      show_action_text("[close]");
+   }
+
    place.restore_transform();
+   return;
+}
+
+void DialogBoxRenderer::show_action_text(std::string text)
+{
+   ALLEGRO_FONT* text_font = obtain_dialog_font();
+   ALLEGRO_COLOR text_color = al_color_html("66a9bc");
+   float line_height = al_get_font_line_height(text_font);
+   al_draw_text(
+      text_font,
+      text_color,
+      place.size.x-20,
+      place.size.y-line_height-10,
+      ALLEGRO_ALIGN_RIGHT,
+      text.c_str()
+   );
    return;
 }
 
