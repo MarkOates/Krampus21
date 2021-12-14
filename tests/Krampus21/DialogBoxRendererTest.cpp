@@ -37,6 +37,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_allegro_primitives_are_not_in
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 }
 
+
 TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_allegro_display__raises_an_exception)
 {
    al_init();
@@ -48,5 +49,19 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_allegro_display__
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 }
 
+
+TEST(Krampus21_DialogBoxRendererTest, render__draws_the_dialog_box)
+{
+   al_init();
+   al_init_primitives_addon();
+   ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
+   Krampus21::DialogBoxRenderer dialog_box_renderer;
+
+   dialog_box_renderer.render();
+
+   al_flip_display();
+   sleep(2);
+   al_destroy_display(display);
+}
 
 
