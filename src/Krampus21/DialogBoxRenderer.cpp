@@ -15,6 +15,7 @@ namespace Krampus21
 
 DialogBoxRenderer::DialogBoxRenderer()
    : dialog_box(nullptr)
+   , place({ 1920/2, 1080/3*2, 1920/2, 1080/3 })
 {
 }
 
@@ -44,7 +45,9 @@ void DialogBoxRenderer::render()
          error_message << "DialogBoxRenderer" << "::" << "render" << ": error: " << "guard \"al_get_current_display()\" not met";
          throw std::runtime_error(error_message.str());
       }
-   al_draw_filled_rounded_rectangle(0, 0, 100, 200, 4.0, 4.0, al_color_name("green"));
+   place.start_transform();
+   al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 4.0, 4.0, al_color_name("green"));
+   place.restore_transform();
    return;
 }
 } // namespace Krampus21

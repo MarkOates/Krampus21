@@ -26,6 +26,9 @@
   "al_draw_filled_rounded_rectangle": [
     "Krampus21/DialogBoxRenderer"
   ],
+  "allegro_flare/placement2d": [
+    "Krampus21/DialogBoxRenderer"
+  ],
   "AllegroFlare/Display": [
     "Krampus21/ProgramRunner",
     "Krampus21/ScreenManager"

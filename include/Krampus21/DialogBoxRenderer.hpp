@@ -2,6 +2,7 @@
 
 
 #include <Krampus21/DialogBoxes/Base.hpp>
+#include <allegro_flare/placement2d.h>
 
 
 namespace Krampus21
@@ -10,6 +11,7 @@ namespace Krampus21
    {
    private:
       Krampus21::DialogBoxes::Base* dialog_box;
+      allegro_flare::placement2d place;
 
    public:
       DialogBoxRenderer();
