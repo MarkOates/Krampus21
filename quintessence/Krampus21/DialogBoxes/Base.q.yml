@@ -55,6 +55,7 @@ functions:
 
 
   - name: current_page_is_valid
+    private: true
     type: bool
     body: |
       if (pages.empty()) return false;
