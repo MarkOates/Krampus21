@@ -83,10 +83,17 @@ functions:
       return;
 
 
+  - name: update_dialog_playing
+    body: |
+      dialog_num_revealed_characters++;
+      // TODO HERE
+      return;
+
+
   - name: primary_timer_func
     override: true
     body: |
-      dialog_num_revealed_characters++;
+      update_dialog_playing();
       Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), &dialog, dialog_num_revealed_characters);
       renderer.render();
       return;

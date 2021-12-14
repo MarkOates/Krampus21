@@ -11,7 +11,7 @@ namespace DialogBoxes
 {
 
 
-Base::Base(std::string type, std::vector<std::vector<std::string>> pages)
+Base::Base(std::string type, std::vector<std::string> pages)
    : type(type)
    , pages(pages)
    , current_page_num(0)
@@ -30,7 +30,7 @@ std::string Base::get_type()
 }
 
 
-std::vector<std::vector<std::string>> Base::get_pages()
+std::vector<std::string> Base::get_pages()
 {
    return pages;
 }
@@ -42,7 +42,7 @@ int Base::get_current_page_num()
 }
 
 
-void Base::set_pages(std::vector<std::vector<std::string>> pages)
+void Base::set_pages(std::vector<std::string> pages)
 {
    this->pages = pages;
    reset();
@@ -55,12 +55,12 @@ void Base::reset()
    return;
 }
 
-std::vector<std::string> Base::get_current_page_lines()
+std::string Base::get_current_page_text()
 {
    if (!(current_page_is_valid()))
       {
          std::stringstream error_message;
-         error_message << "Base" << "::" << "get_current_page_lines" << ": error: " << "guard \"current_page_is_valid()\" not met";
+         error_message << "Base" << "::" << "get_current_page_text" << ": error: " << "guard \"current_page_is_valid()\" not met";
          throw std::runtime_error(error_message.str());
       }
    return pages[current_page_num];

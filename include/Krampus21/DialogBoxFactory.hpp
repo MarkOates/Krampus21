@@ -17,7 +17,7 @@ namespace Krampus21
       ~DialogBoxFactory();
 
       Krampus21::DialogBoxes::Base* create_basic_dialog_box_for_testing();
-      Krampus21::DialogBoxes::Base* create_basic_dialog_box(std::vector<std::vector<std::string>> pages={});
+      Krampus21::DialogBoxes::Base* create_basic_dialog_box(std::vector<std::string> pages={});
    };
 }
 

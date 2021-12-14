@@ -76,9 +76,16 @@ void ScreenManager::advance_dialog()
    return;
 }
 
-void ScreenManager::primary_timer_func()
+void ScreenManager::update_dialog_playing()
 {
    dialog_num_revealed_characters++;
+   // TODO HERE
+   return;
+}
+
+void ScreenManager::primary_timer_func()
+{
+   update_dialog_playing();
    Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), &dialog, dialog_num_revealed_characters);
    renderer.render();
    return;

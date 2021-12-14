@@ -8,7 +8,7 @@ properties:
     getter: true
 
   - name: pages
-    type: std::vector<std::vector<std::string>>
+    type: std::vector<std::string>
     init_with: '{}'
     constructor_arg: true
     getter: true
@@ -25,7 +25,7 @@ functions:
   - name: set_pages
     parameters:
       - name: pages
-        type: std::vector<std::vector<std::string>>
+        type: std::vector<std::string>
         default_argument: '{}'
     body: |
       this->pages = pages;
@@ -39,8 +39,8 @@ functions:
       return;
 
 
-  - name: get_current_page_lines
-    type: std::vector<std::string>
+  - name: get_current_page_text
+    type: std::string
     guards: [ current_page_is_valid() ]
     body: |
       return pages[current_page_num];

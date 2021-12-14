@@ -1,7 +1,6 @@
 {
-  "std/vector<std/vector<std/string>>": [
-    "Krampus21/DialogBoxFactory",
-    "Krampus21/DialogBoxes/Base"
+  "std/vector<std/string>": [
+    "Krampus21/DialogBoxFactory"
   ],
   "Krampus21/DialogBoxes/Base": [
     "Krampus21/DialogBoxFactory",
@@ -39,6 +38,9 @@
   ],
   "allegro_flare/placement2d": [
     "Krampus21/DialogBoxRenderer"
+  ],
+  "std/vector<std/vector<std/string>>": [
+    "Krampus21/DialogBoxes/Base"
   ],
   "AllegroFlare/Display": [
     "Krampus21/ProgramRunner",

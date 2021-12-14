@@ -72,7 +72,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::vector&lt;std::string&gt;&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;string&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::string&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;string&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
@@ -123,7 +123,7 @@ table td
   <td class="method">draw_styled_revealed_text()</td>
 </tr>
 <tr>
-  <td class="method">get_dialog_box_lines()</td>
+  <td class="method">get_dialog_box_text()</td>
 </tr>
 <tr>
   <td class="method">concat_text(2)</td>
@@ -176,7 +176,7 @@ table td
 </tr>
 <tr>
   <td class="property">pages</td>
-  <td class="property">std::vector&lt;std::vector&lt;std::string&gt;&gt;</td>
+  <td class="property">std::vector&lt;std::string&gt;</td>
 </tr>
 <tr>
   <td class="property">current_page_num</td>
@@ -191,7 +191,7 @@ table td
   <td class="method">reset()</td>
 </tr>
 <tr>
-  <td class="method">get_current_page_lines()</td>
+  <td class="method">get_current_page_text()</td>
 </tr>
 <tr>
   <td class="method">next_page()</td>
@@ -301,6 +301,9 @@ table td
   <td class="method">advance_dialog()</td>
 </tr>
 <tr>
+  <td class="method">update_dialog_playing()</td>
+</tr>
+<tr>
   <td class="method">primary_timer_func()</td>
 </tr>
 <tr>
@@ -376,9 +379,8 @@ table td
 <h1>Dependents</h1>
 <pre>
 {
-  "std/vector<std/vector<std/string>>": [
-    "Krampus21/DialogBoxFactory",
-    "Krampus21/DialogBoxes/Base"
+  "std/vector<std/string>": [
+    "Krampus21/DialogBoxFactory"
   ],
   "Krampus21/DialogBoxes/Base": [
     "Krampus21/DialogBoxFactory",
@@ -416,6 +418,9 @@ table td
   ],
   "allegro_flare/placement2d": [
     "Krampus21/DialogBoxRenderer"
+  ],
+  "std/vector<std/vector<std/string>>": [
+    "Krampus21/DialogBoxes/Base"
   ],
   "AllegroFlare/Display": [
     "Krampus21/ProgramRunner",

@@ -37,6 +37,7 @@ namespace Krampus21
       void initialize();
       void shutdown_game();
       void advance_dialog();
+      void update_dialog_playing();
       void primary_timer_func() override;
       void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
       void joy_button_down_func(ALLEGRO_EVENT* ev=nullptr) override;

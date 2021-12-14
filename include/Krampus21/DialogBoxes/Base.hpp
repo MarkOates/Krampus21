@@ -13,19 +13,19 @@ namespace Krampus21
       {
       private:
          std::string type;
-         std::vector<std::vector<std::string>> pages;
+         std::vector<std::string> pages;
          int current_page_num;
 
       public:
-         Base(std::string type="Base", std::vector<std::vector<std::string>> pages={});
+         Base(std::string type="Base", std::vector<std::string> pages={});
          ~Base();
 
          std::string get_type();
-         std::vector<std::vector<std::string>> get_pages();
+         std::vector<std::string> get_pages();
          int get_current_page_num();
-         void set_pages(std::vector<std::vector<std::string>> pages={});
+         void set_pages(std::vector<std::string> pages={});
          void reset();
-         std::vector<std::string> get_current_page_lines();
+         std::string get_current_page_text();
          bool next_page();
          int num_pages();
          bool at_last_page();

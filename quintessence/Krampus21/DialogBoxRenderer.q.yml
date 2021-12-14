@@ -30,7 +30,7 @@ properties:
 
   - name: showing_close_cursor
     type: bool
-    init_with: true
+    init_with: false
     getter: true
     setter: true
 
@@ -74,7 +74,6 @@ functions:
       place.restore_transform();
       return;
     body_dependency_symbols:
-      - Blast::StringJoiner
       - al_is_system_installed
       - al_is_primitives_addon_initialized
       - al_draw_filled_rounded_rectangle
@@ -103,7 +102,7 @@ functions:
 
   - name: draw_styled_revealed_text
     body: |
-      std::string text = Blast::StringJoiner(get_dialog_box_lines(), "\n").join();
+      std::string text = get_dialog_box_text();
       float text_padding_x = 40.0f;
       float text_padding_y = 30.0f;
       float text_box_max_width = place.size.x - (text_padding_x * 2);
@@ -124,11 +123,11 @@ functions:
       return;
 
 
-  - name: get_dialog_box_lines
-    type: std::vector<std::string>
+  - name: get_dialog_box_text
+    type: std::string
     guards: [ dialog_box ]
     body: |
-      return dialog_box->get_current_page_lines();
+      return dialog_box->get_current_page_text();
 
 
   - name: concat_text

@@ -126,7 +126,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_dialog_box__raise
    Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin);
 
    std::string expected_error_message =
-      "DialogBoxRenderer::get_dialog_box_lines: error: guard \"dialog_box\" not met";
+      "DialogBoxRenderer::get_dialog_box_text: error: guard \"dialog_box\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_destroy_display(display);

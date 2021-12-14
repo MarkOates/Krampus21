@@ -27,10 +27,10 @@ TEST(Krampus21_DialogBoxes_BaseTest, when_derived_the_type_of_the_derived_class_
 
 TEST(Krampus21_DialogBoxes_BaseTest, set_pages__sets_the_pages_with_the_passed_value)
 {
-   std::vector<std::vector<std::string>> pages = {
-      { "Page 1 has this test" },
-      { "This is the text to page 2.", "Page 1 has two lines." },
-      { "And finally the last page" },
+   std::vector<std::string> pages = {
+      "Page 1 has this test",
+      "This is the text to page 2.\nPage 1 has two lines.",
+      "And finally the last page",
    };
    MyTestDialogBox dialog_box;
 
@@ -42,10 +42,10 @@ TEST(Krampus21_DialogBoxes_BaseTest, set_pages__sets_the_pages_with_the_passed_v
 
 TEST(Krampus21_DialogBoxes_BaseTest, next_page__will_increment_the_page_number)
 {
-   std::vector<std::vector<std::string>> pages = {
-      { "Page 1 has this test" },
-      { "This is the text to page 2.", "Page 1 has two lines." },
-      { "And finally the last page" },
+   std::vector<std::string> pages = {
+      "Page 1 has this test",
+      "This is the text to page 2.\nPage 1 has two lines.",
+      "And finally the last page",
    };
    MyTestDialogBox dialog_box;
 
@@ -62,10 +62,10 @@ TEST(Krampus21_DialogBoxes_BaseTest, next_page__will_increment_the_page_number)
 TEST(Krampus21_DialogBoxes_BaseTest,
    next_page__when_at_the_last_page__will_return_false_and_not_increment_the_page_number)
 {
-   std::vector<std::vector<std::string>> pages = {
-      { "Page 1 has this test" },
-      { "This is the text to page 2.", "Page 1 has two lines." },
-      { "And finally the last page." },
+   std::vector<std::string> pages = {
+      "Page 1 has this test",
+      "This is the text to page 2.\nPage 1 has two lines.",
+      "And finally the last page.",
    };
    MyTestDialogBox dialog_box;
 
@@ -77,36 +77,36 @@ TEST(Krampus21_DialogBoxes_BaseTest,
    }
 
    EXPECT_EQ(false, dialog_box.next_page());
-   std::vector<std::string> expected_last_page_text = { "And finally the last page." };
-   ASSERT_EQ(expected_last_page_text, dialog_box.get_current_page_lines());
+   std::string expected_last_page_text = "And finally the last page.";
+   ASSERT_EQ(expected_last_page_text, dialog_box.get_current_page_text());
 }
 
 
 TEST(Krampus21_DialogBoxes_BaseTest, next_page__will_increment_the_page_text)
 {
-   std::vector<std::vector<std::string>> pages = {
-      { "Page 1 has this test" },
-      { "This is the text to page 2.", "Page 1 has two lines." },
-      { "And finally the last page." },
+   std::vector<std::string> pages = {
+      "Page 1 has this test",
+      "This is the text to page 2.\nPage 1 has two lines.",
+      "And finally the last page.",
    };
    MyTestDialogBox dialog_box;
 
    dialog_box.set_pages(pages);
    dialog_box.next_page();
 
-   std::vector<std::string> expected_page_lines = { "This is the text to page 2.", "Page 1 has two lines." };
+   std::string expected_page_text = "This is the text to page 2.\nPage 1 has two lines.";
 
-   ASSERT_EQ(expected_page_lines, dialog_box.get_current_page_lines());
+   ASSERT_EQ(expected_page_text, dialog_box.get_current_page_text());
 }
 
 
 TEST(Krampus21_DialogBoxes_BaseTest,
    next_page__when_at_the_last_page__not_increment_the_page_text)
 {
-   std::vector<std::vector<std::string>> pages = {
-      { "Page 1 has this test" },
-      { "This is the text to page 2.", "Page 1 has two lines." },
-      { "And finally the last page." },
+   std::vector<std::string> pages = {
+      "Page 1 has this test",
+      "This is the text to page 2.\nPage 1 has two lines.",
+      "And finally the last page.",
    };
    MyTestDialogBox dialog_box;
 
@@ -117,11 +117,11 @@ TEST(Krampus21_DialogBoxes_BaseTest,
       EXPECT_EQ(true, dialog_box.next_page());
    }
 
-   std::vector<std::string> expected_last_page_text = { "And finally the last page." };
+   std::string expected_last_page_text = "And finally the last page.";
 
-   ASSERT_EQ(expected_last_page_text, dialog_box.get_current_page_lines());
+   ASSERT_EQ(expected_last_page_text, dialog_box.get_current_page_text());
    EXPECT_EQ(false, dialog_box.next_page());
-   ASSERT_EQ(expected_last_page_text, dialog_box.get_current_page_lines());
+   ASSERT_EQ(expected_last_page_text, dialog_box.get_current_page_text());
 }
 
 
