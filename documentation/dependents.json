@@ -11,6 +11,9 @@
   "Krampus21/DialogBoxes/Basic": [
     "Krampus21/DialogBoxFactory"
   ],
+  "ALLEGRO_FONT": [
+    "Krampus21/DialogBoxRenderer"
+  ],
   "al_is_system_installed": [
     "Krampus21/DialogBoxRenderer"
   ],

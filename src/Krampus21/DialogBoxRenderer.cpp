@@ -7,6 +7,8 @@
 #include <allegro5/allegro_color.h>
 #include <stdexcept>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace Krampus21
@@ -77,6 +79,18 @@ void DialogBoxRenderer::render()
    al_draw_rounded_rectangle(0, 0, place.size.x, place.size.y, roundness, roundness, border_color, border_thickness);
    place.restore_transform();
    return;
+}
+
+ALLEGRO_FONT* DialogBoxRenderer::obtain_dialog_font()
+{
+   if (!(font_bin))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBoxRenderer" << "::" << "obtain_dialog_font" << ": error: " << "guard \"font_bin\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   static const std::string FONT_IDENTIFIER = "Purista Medium.otf -32";
+   return font_bin->operator[](FONT_IDENTIFIER);
 }
 } // namespace Krampus21
 

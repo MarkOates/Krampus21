@@ -103,8 +103,14 @@ table td
 <tr>
   <td class="method">render()</td>
 </tr>
+<tr>
+  <td class="private_method">obtain_dialog_font()</td>
+</tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_is_system_installed&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
@@ -362,6 +368,9 @@ table td
   ],
   "Krampus21/DialogBoxes/Basic": [
     "Krampus21/DialogBoxFactory"
+  ],
+  "ALLEGRO_FONT": [
+    "Krampus21/DialogBoxRenderer"
   ],
   "al_is_system_installed": [
     "Krampus21/DialogBoxRenderer"

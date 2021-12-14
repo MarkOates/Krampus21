@@ -48,9 +48,20 @@ functions:
       - al_color_html
 
 
+  - name: obtain_dialog_font
+    guards: [ font_bin ]
+    private: true
+    type: ALLEGRO_FONT*
+    body: |
+      static const std::string FONT_IDENTIFIER = "Purista Medium.otf -32";
+      return font_bin->operator[](FONT_IDENTIFIER);
+
+
 dependencies:
 
 
+  - symbol: ALLEGRO_FONT*
+    headers: [ allegro5/allegro.h ]
   - symbol: al_is_system_installed
     headers: [ allegro5/allegro.h ]
   - symbol: al_get_current_display
