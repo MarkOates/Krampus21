@@ -22,18 +22,6 @@ properties:
     init_with: '{ 1920/2, 1080/4*3, 1920/2, 1080/4 }'
     getter: true
 
-  - name: showing_next_cursor
-    type: bool
-    init_with: false
-    getter: true
-    setter: true
-
-  - name: showing_close_cursor
-    type: bool
-    init_with: false
-    getter: true
-    setter: true
-
 
 functions:
 
@@ -62,13 +50,11 @@ functions:
 
       draw_styled_revealed_text();
 
-      if (get_showing_next_cursor())
+      int current_dialog_box_page_character_count = dialog_box->get_current_page_text().length();
+      if (dialog_box_num_revealed_characters >= current_dialog_box_page_character_count)
       {
-         show_action_text(">>");
-      }
-      if (get_showing_close_cursor())
-      {
-         show_action_text("[close]");
+         if (dialog_box->at_last_page()) show_action_text("[close]");
+         else show_action_text(">>");
       }
 
       place.restore_transform();

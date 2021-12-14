@@ -79,7 +79,6 @@ void ScreenManager::advance_dialog()
 void ScreenManager::update_dialog_playing()
 {
    dialog_num_revealed_characters++;
-   // TODO HERE
    return;
 }
 

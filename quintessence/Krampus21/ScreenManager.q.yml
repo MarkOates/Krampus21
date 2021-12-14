@@ -86,7 +86,6 @@ functions:
   - name: update_dialog_playing
     body: |
       dialog_num_revealed_characters++;
-      // TODO HERE
       return;
 
 

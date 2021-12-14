@@ -24,26 +24,12 @@ DialogBoxRenderer::DialogBoxRenderer(AllegroFlare::FontBin* font_bin, Krampus21:
    , dialog_box(dialog_box)
    , dialog_box_num_revealed_characters(dialog_box_num_revealed_characters)
    , place({ 1920/2, 1080/4*3, 1920/2, 1080/4 })
-   , showing_next_cursor(false)
-   , showing_close_cursor(false)
 {
 }
 
 
 DialogBoxRenderer::~DialogBoxRenderer()
 {
-}
-
-
-void DialogBoxRenderer::set_showing_next_cursor(bool showing_next_cursor)
-{
-   this->showing_next_cursor = showing_next_cursor;
-}
-
-
-void DialogBoxRenderer::set_showing_close_cursor(bool showing_close_cursor)
-{
-   this->showing_close_cursor = showing_close_cursor;
 }
 
 
@@ -56,18 +42,6 @@ int DialogBoxRenderer::get_dialog_box_num_revealed_characters()
 allegro_flare::placement2d DialogBoxRenderer::get_place()
 {
    return place;
-}
-
-
-bool DialogBoxRenderer::get_showing_next_cursor()
-{
-   return showing_next_cursor;
-}
-
-
-bool DialogBoxRenderer::get_showing_close_cursor()
-{
-   return showing_close_cursor;
 }
 
 
@@ -112,13 +86,11 @@ void DialogBoxRenderer::render()
 
    draw_styled_revealed_text();
 
-   if (get_showing_next_cursor())
+   int current_dialog_box_page_character_count = dialog_box->get_current_page_text().length();
+   if (dialog_box_num_revealed_characters >= current_dialog_box_page_character_count)
    {
-      show_action_text(">>");
-   }
-   if (get_showing_close_cursor())
-   {
-      show_action_text("[close]");
+      if (dialog_box->at_last_page()) show_action_text("[close]");
+      else show_action_text(">>");
    }
 
    place.restore_transform();
