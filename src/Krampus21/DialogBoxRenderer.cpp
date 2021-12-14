@@ -66,6 +66,7 @@ void DialogBoxRenderer::render()
    ALLEGRO_COLOR text_color = al_color_html("66a9bc");
    float text_padding_x = 40.0f;
    float text_padding_y = 30.0f;
+   float text_box_max_width = place.size.x - (text_padding_x * 2);
    float line_height = al_get_font_line_height(text_font);
 
    // draw backfill and border
@@ -85,9 +86,28 @@ void DialogBoxRenderer::render()
    int line_num = 0;
    for (auto &line : lines)
    {
-      al_draw_text(text_font, text_color, text_padding_x,
-      text_padding_y + line_num*line_height, ALLEGRO_ALIGN_LEFT, line.c_str());
+      /*
+      al_draw_text(
+         text_font,
+         text_color,
+         text_padding_x,
+         text_padding_y + line_num*line_height,
+         ALLEGRO_ALIGN_LEFT,
+         line.c_str()
+      );
+      */
       line_num++;
+
+      al_draw_multiline_text(
+         text_font,
+         text_color,
+         text_padding_x,
+         text_padding_y,
+         text_box_max_width,
+         line_height,
+         ALLEGRO_ALIGN_LEFT,
+         line.c_str()
+      );
    }
 
    place.restore_transform();
