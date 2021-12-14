@@ -19,7 +19,6 @@ ScreenManager::ScreenManager(AllegroFlare::Framework* framework, AllegroFlare::S
    , screens(screens)
    , sound_effect_elements(sound_effect_elements)
    , music_track_elements(music_track_elements)
-   , current_screen(nullptr)
    , user_event_emitter_souce({})
    , user_event_emitter({})
    , audio_controller({})
@@ -46,18 +45,6 @@ void ScreenManager::initialize()
    return;
 }
 
-void ScreenManager::load_initial_screen()
-{
-   if (!(initialized))
-      {
-         std::stringstream error_message;
-         error_message << "ScreenManager" << "::" << "load_initial_screen" << ": error: " << "guard \"initialized\" not met";
-         throw std::runtime_error(error_message.str());
-      }
-   // TODO
-   return;
-}
-
 void ScreenManager::shutdown_game()
 {
    if (!(framework))
@@ -70,6 +57,17 @@ void ScreenManager::shutdown_game()
    return;
 }
 
+void ScreenManager::advance_dialog()
+{
+   if (!(framework))
+      {
+         std::stringstream error_message;
+         error_message << "ScreenManager" << "::" << "advance_dialog" << ": error: " << "guard \"framework\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   return;
+}
+
 void ScreenManager::key_down_func(ALLEGRO_EVENT* ev)
 {
    switch (ev->type)
@@ -79,6 +77,9 @@ void ScreenManager::key_down_func(ALLEGRO_EVENT* ev)
       {
          case ALLEGRO_KEY_ESCAPE:
             shutdown_game();
+            break;
+         case ALLEGRO_KEY_SPACE:
+            advance_dialog();
             break;
       }
       break;

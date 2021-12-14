@@ -6,7 +6,6 @@
 #include <AllegroFlare/Framework.hpp>
 #include <AllegroFlare/Screen.hpp>
 #include <AllegroFlare/Screens.hpp>
-#include <Krampus21/Screens/Base.hpp>
 #include <Krampus21/UserEventEmitter.hpp>
 #include <allegro5/allegro.h>
 #include <map>
@@ -22,7 +21,6 @@ namespace Krampus21
       AllegroFlare::Screens* screens;
       std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements;
       std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements;
-      Krampus21::Screens::Base* current_screen;
       ALLEGRO_EVENT_SOURCE user_event_emitter_souce;
       Krampus21::UserEventEmitter user_event_emitter;
       AllegroFlare::AudioController audio_controller;
@@ -33,8 +31,8 @@ namespace Krampus21
       ~ScreenManager();
 
       void initialize();
-      void load_initial_screen();
       void shutdown_game();
+      void advance_dialog();
       void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
       void user_event_func(ALLEGRO_EVENT* ev=nullptr) override;
    };

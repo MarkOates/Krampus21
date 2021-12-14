@@ -31,10 +31,6 @@ properties:
     init_with: '{}'
     constructor_arg: true
 
-  - name: current_screen
-    type: Krampus21::Screens::Base*
-    init_with: nullptr
-
   - name: user_event_emitter_souce
     type: ALLEGRO_EVENT_SOURCE
     init_with: '{}'
@@ -63,17 +59,16 @@ functions:
       return;
 
 
-  - name: load_initial_screen
-    guards: [ initialized ]
-    body: |
-      // TODO
-      return;
-
-
   - name: shutdown_game
     guards: [ framework ]
     body: |
       framework->shutdown_program = true;
+      return;
+
+
+  - name: advance_dialog
+    guards: [ framework ]
+    body: |
       return;
 
 
@@ -91,6 +86,9 @@ functions:
          {
             case ALLEGRO_KEY_ESCAPE:
                shutdown_game();
+               break;
+            case ALLEGRO_KEY_SPACE:
+               advance_dialog();
                break;
          }
          break;

@@ -59,7 +59,6 @@ void ProgramRunner::run()
    );
    screen_manager->initialize();
    screens.add(screen_manager);
-   screen_manager->load_initial_screen();
 
    framework.run_loop();
 
