@@ -10,12 +10,13 @@ functions:
 
 
   - name: render
-    guards: [ al_is_system_installed(), al_init_primitives_addon() ]
+    guards: [ al_is_system_installed(), al_is_primitives_addon_initialized() ]
     body: |
       al_draw_filled_rounded_rectangle(0, 0, 100, 200, 4.0, 4.0, al_color_name("green"));
       return;
     body_dependency_symbols:
       - al_is_system_installed
+      - al_is_primitives_addon_initialized
       - al_draw_filled_rounded_rectangle
       - al_color_name
 
@@ -27,6 +28,8 @@ dependencies:
     headers: [ allegro5/allegro.h ]
   - symbol: al_color_name
     headers: [ allegro5/allegro_color.h ]
+  - symbol: al_is_primitives_addon_initialized
+    headers: [ allegro5/allegro_primitives.h ]
   - symbol: al_draw_filled_rounded_rectangle
     headers: [ allegro5/allegro_primitives.h ]
   - symbol: Krampus21::DialogBoxes::Base*

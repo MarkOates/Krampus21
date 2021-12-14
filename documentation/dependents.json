@@ -17,6 +17,9 @@
   "al_color_name": [
     "Krampus21/DialogBoxRenderer"
   ],
+  "al_is_primitives_addon_initialized": [
+    "Krampus21/DialogBoxRenderer"
+  ],
   "al_draw_filled_rounded_rectangle": [
     "Krampus21/DialogBoxRenderer"
   ],
