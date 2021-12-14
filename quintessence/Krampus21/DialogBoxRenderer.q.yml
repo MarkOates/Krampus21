@@ -1,6 +1,11 @@
 properties:
 
 
+  - name: font_bin
+    type: AllegroFlare::FontBin*
+    init_with: nullptr
+    constructor_arg: true
+
   - name: dialog_box
     type: Krampus21::DialogBoxes::Base*
     init_with: nullptr
@@ -15,7 +20,7 @@ functions:
 
 
   - name: render
-    guards: [ al_is_system_installed(), al_is_primitives_addon_initialized(), al_get_current_display() ]
+    guards: [ al_is_system_installed(), al_is_primitives_addon_initialized(), al_get_current_display(), font_bin ]
     body: |
       float roundness = 18.0f;
       float border_thickness = 5.0f;
@@ -56,6 +61,8 @@ dependencies:
     headers: [ allegro5/allegro_primitives.h ]
   - symbol: al_draw_filled_rounded_rectangle
     headers: [ allegro5/allegro_primitives.h ]
+  - symbol: AllegroFlare::FontBin*
+    headers: [ AllegroFlare/FontBin.hpp ]
   - symbol: Krampus21::DialogBoxes::Base*
     headers: [ Krampus21/DialogBoxes/Base.hpp ]
   - symbol: allegro_flare::placement2d

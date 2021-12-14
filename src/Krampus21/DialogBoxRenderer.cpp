@@ -13,8 +13,9 @@ namespace Krampus21
 {
 
 
-DialogBoxRenderer::DialogBoxRenderer()
-   : dialog_box(nullptr)
+DialogBoxRenderer::DialogBoxRenderer(AllegroFlare::FontBin* font_bin)
+   : font_bin(font_bin)
+   , dialog_box(nullptr)
    , place({ 1920/2, 1080/3*2, 1920/2, 1080/3 })
 {
 }
@@ -49,6 +50,12 @@ void DialogBoxRenderer::render()
       {
          std::stringstream error_message;
          error_message << "DialogBoxRenderer" << "::" << "render" << ": error: " << "guard \"al_get_current_display()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!(font_bin))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBoxRenderer" << "::" << "render" << ": error: " << "guard \"font_bin\" not met";
          throw std::runtime_error(error_message.str());
       }
    float roundness = 18.0f;

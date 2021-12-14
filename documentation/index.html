@@ -87,6 +87,10 @@ table td
     <h3 id="quintessence/Krampus21/DialogBoxRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderer.q.yml</h3>
      <table>
 <tr>
+  <td class="property">font_bin</td>
+  <td class="property">AllegroFlare::FontBin*</td>
+</tr>
+<tr>
   <td class="property">dialog_box</td>
   <td class="property">Krampus21::DialogBoxes::Base*</td>
 </tr>
@@ -115,6 +119,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_filled_rounded_rectangle&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
@@ -369,6 +376,9 @@ table td
     "Krampus21/DialogBoxRenderer"
   ],
   "al_draw_filled_rounded_rectangle": [
+    "Krampus21/DialogBoxRenderer"
+  ],
+  "AllegroFlare/FontBin": [
     "Krampus21/DialogBoxRenderer"
   ],
   "allegro_flare/placement2d": [
