@@ -1,4 +1,7 @@
 {
+  "Krampus21/DialogBoxes/Base": [
+    "Krampus21/DialogBoxes/Basic"
+  ],
   "AllegroFlare/Display": [
     "Krampus21/ProgramRunner",
     "Krampus21/ScreenManager"
