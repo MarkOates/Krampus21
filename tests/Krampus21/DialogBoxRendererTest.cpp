@@ -171,7 +171,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_multiline_dialog)
 
    dialog_box_renderer.render();
    al_flip_display();
-   sleep(2);
+   sleep(1);
 
    al_destroy_display(display);
    al_uninstall_system();

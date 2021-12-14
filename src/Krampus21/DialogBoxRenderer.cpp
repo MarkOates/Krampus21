@@ -12,6 +12,8 @@
 #include <sstream>
 #include <stdexcept>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace Krampus21
@@ -21,7 +23,7 @@ namespace Krampus21
 DialogBoxRenderer::DialogBoxRenderer(AllegroFlare::FontBin* font_bin, Krampus21::DialogBoxes::Base* dialog_box)
    : font_bin(font_bin)
    , dialog_box(dialog_box)
-   , dialog_box_num_revealed_characters(0)
+   , dialog_box_num_revealed_characters(10)
    , place({ 1920/2, 1080/3*2, 1920/2, 1080/3 })
 {
 }
@@ -29,6 +31,12 @@ DialogBoxRenderer::DialogBoxRenderer(AllegroFlare::FontBin* font_bin, Krampus21:
 
 DialogBoxRenderer::~DialogBoxRenderer()
 {
+}
+
+
+int DialogBoxRenderer::get_dialog_box_num_revealed_characters()
+{
+   return dialog_box_num_revealed_characters;
 }
 
 
@@ -64,6 +72,7 @@ void DialogBoxRenderer::render()
    ALLEGRO_COLOR fill_color = al_color_html("162428");
    ALLEGRO_COLOR border_color = al_color_html("244751");
    std::string text = Blast::StringJoiner(get_dialog_box_lines(), "\n").join();
+   std::string partial_text_to_render = Blast::StringJoiner(get_dialog_box_lines(), "\n").join();
    ALLEGRO_FONT* text_font = obtain_dialog_font();
    ALLEGRO_COLOR text_color = al_color_html("66a9bc");
    float text_padding_x = 40.0f;
@@ -93,7 +102,7 @@ void DialogBoxRenderer::render()
       text_box_max_width,
       line_height,
       ALLEGRO_ALIGN_LEFT,
-      text.c_str()
+      concat_text(text, 20).c_str()
    );
 
    place.restore_transform();
@@ -109,6 +118,17 @@ std::vector<std::string> DialogBoxRenderer::get_dialog_box_lines()
          throw std::runtime_error(error_message.str());
       }
    return dialog_box->get_current_page_lines();
+}
+
+std::string DialogBoxRenderer::concat_text(std::string source_text, int length)
+{
+   if (!(dialog_box))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBoxRenderer" << "::" << "concat_text" << ": error: " << "guard \"dialog_box\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   return source_text.substr(0, length);
 }
 
 ALLEGRO_FONT* DialogBoxRenderer::obtain_dialog_font()

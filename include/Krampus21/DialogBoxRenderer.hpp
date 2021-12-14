@@ -23,9 +23,11 @@ namespace Krampus21
       DialogBoxRenderer(AllegroFlare::FontBin* font_bin=nullptr, Krampus21::DialogBoxes::Base* dialog_box=nullptr);
       ~DialogBoxRenderer();
 
+      int get_dialog_box_num_revealed_characters();
       allegro_flare::placement2d get_place();
       void render();
       std::vector<std::string> get_dialog_box_lines();
+      std::string concat_text(std::string source_text="", int length=0);
       ALLEGRO_FONT* obtain_dialog_font();
    };
 }
