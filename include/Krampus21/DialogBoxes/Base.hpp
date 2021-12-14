@@ -28,7 +28,6 @@ namespace Krampus21
          std::vector<std::string> get_current_page_lines();
          bool next_page();
          bool current_page_is_valid();
-         bool more_pages_to_go();
          int num_pages();
          bool at_last_page();
       };

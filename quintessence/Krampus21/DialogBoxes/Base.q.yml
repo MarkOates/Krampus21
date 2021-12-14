@@ -63,13 +63,6 @@ functions:
       return true;
 
 
-  - name: more_pages_to_go
-    type: bool
-    body: |
-      if (current_page_is_valid() && current_page_num < pages.size()) return true;
-      return false;
-
-
   - name: num_pages
     type: int
     body: |
@@ -79,7 +72,7 @@ functions:
   - name: at_last_page
     type: bool
     body: |
-      return (current_page_num == num_pages());
+      return (current_page_num == (num_pages() - 1));
 
 
 dependencies:

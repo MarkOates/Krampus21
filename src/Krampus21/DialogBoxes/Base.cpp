@@ -81,12 +81,6 @@ bool Base::current_page_is_valid()
    return true;
 }
 
-bool Base::more_pages_to_go()
-{
-   if (current_page_is_valid() && current_page_num < pages.size()) return true;
-   return false;
-}
-
 int Base::num_pages()
 {
    return pages.size();
@@ -94,7 +88,7 @@ int Base::num_pages()
 
 bool Base::at_last_page()
 {
-   return (current_page_num == num_pages());
+   return (current_page_num == (num_pages() - 1));
 }
 } // namespace DialogBoxes
 } // namespace Krampus21
