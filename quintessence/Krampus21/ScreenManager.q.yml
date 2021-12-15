@@ -62,7 +62,13 @@ functions:
   - name: initialize
     guards: [ (!initialized) ]
     body: |
-      dialog.set_pages({{ "Ugh. I just woke up from a bad dream." }, { "Things couldn't be that bad" }});
+      dialog.set_pages({
+         { "Interesting.  I'm just sitting here working." },
+         { "How could I be so worthless in my life that I'm doing this?" },
+         { "Oh well. I guess I'll just have to keep grinding" },
+         { "I might go smoke a bowl." },
+         { "What shoud I do? { smoke a bowl; keep working }" },
+      });
       dialog_num_revealed_characters = 0;
       initialized = true;
       return;
