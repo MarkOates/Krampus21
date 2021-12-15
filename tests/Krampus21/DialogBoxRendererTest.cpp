@@ -12,7 +12,11 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 
+#ifdef _WIN32
+#define TEST_FIXTURE_FONT_FOLDER "/msys64/home/Mark/Repos/Krampus21/bin/programs/data/fonts/"
+#else
 #define TEST_FIXTURE_FONT_FOLDER "/Users/markoates/Repos/Krampus21/bin/programs/data/fonts/"
+#endif
 
 
 TEST(Krampus21_DialogBoxRendererTest, can_be_created_without_blowing_up)
@@ -149,7 +153,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_the_dialog_box)
 
    dialog_box_renderer.render();
    al_flip_display();
-   //sleep(2);
+   //sleep(1);
 
    al_destroy_display(display);
    al_uninstall_system();
@@ -171,7 +175,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_multiline_dialog)
 
    dialog_box_renderer.render();
    al_flip_display();
-   sleep(1);
+   //sleep(1);
 
    al_destroy_display(display);
    al_uninstall_system();
