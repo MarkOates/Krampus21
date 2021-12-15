@@ -33,6 +33,7 @@ void ProgramRunner::run()
    framework.initialize();
    display = framework.create_display(1920, 1080, ALLEGRO_FULLSCREEN_WINDOW);
    //display = framework.create_display(AllegroFlare::Display::RESOLUTION_HD_1080);
+   display->set_orthographic_projection(0, 0, 1920, 1080);
 
    // these two lists are essentially a fragment of a master Krampus21 config:
 
