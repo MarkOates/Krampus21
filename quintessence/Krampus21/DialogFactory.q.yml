@@ -16,10 +16,42 @@ functions:
       - Krampus21::DialogBoxes::Basic
 
 
+  - name: build_basic_test_dialog_from_file
+    type: Krampus21::DialogBoxes::Basic
+    parameters:
+      - name: filename
+        type: std::string
+        default_argument: '"no-filename-set.txt"'
+    body: |
+      Krampus21::DialogBoxes::Basic basic_dialog_box;
+      Blast::FileExistenceChecker file_existence_checker(filename);
+      if (!file_existence_checker.exists())
+      {
+         std::stringstream error_message;
+         error_message << "[DialogFactory:build_basic_test_dialog_from_file]: error: "
+                       << "the file \"" << filename << "\" is not present.";
+         throw std::runtime_error(error_message.str());
+      }
+
+      basic_dialog_box.set_pages({
+         { "Interesting.  I'm just sitting here working." },
+         { "Oh well. I guess I'll just have to keep grinding." },
+         { "At least I'm listening to some cool music." },
+      });
+
+      return basic_dialog_box;
+    body_dependency_symbols:
+      - std::stringstream
+      - Krampus21::DialogBoxes::Basic
+      - Blast::FileExistenceChecker
+
+
 dependencies:
 
 
   - symbol: Krampus21::DialogBoxes::Basic
     headers: [ Krampus21/DialogBoxes/Basic.hpp ]
+  - symbol: Blast::FileExistenceChecker
+    headers: [ Blast/FileExistenceChecker.hpp ]
 
 

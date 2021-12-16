@@ -43,6 +43,9 @@
   "std/vector<std/vector<std/string>>": [
     "Krampus21/DialogBoxes/Base"
   ],
+  "Blast/FileExistenceChecker": [
+    "Krampus21/DialogFactory"
+  ],
   "AllegroFlare/Display": [
     "Krampus21/ProgramRunner",
     "Krampus21/ScreenManager"

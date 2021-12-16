@@ -218,10 +218,16 @@ table td
 <tr>
   <td class="method">build_basic_test_dialog()</td>
 </tr>
+<tr>
+  <td class="method">build_basic_test_dialog_from_file(1)</td>
+</tr>
     </table>
      <table>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Basic&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Basic.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Blast::FileExistenceChecker&quot;, &quot;headers&quot;=&gt;[&quot;Blast/FileExistenceChecker.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -435,6 +441,9 @@ table td
   ],
   "std/vector<std/vector<std/string>>": [
     "Krampus21/DialogBoxes/Base"
+  ],
+  "Blast/FileExistenceChecker": [
+    "Krampus21/DialogFactory"
   ],
   "AllegroFlare/Display": [
     "Krampus21/ProgramRunner",
