@@ -18,6 +18,11 @@ properties:
     init_with: 0
     getter: true
 
+  - name: finished
+    type: bool
+    init_with: false
+    getter: true
+
 
 functions:
 

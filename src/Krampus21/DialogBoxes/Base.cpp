@@ -14,6 +14,7 @@ Base::Base(std::string type, std::vector<std::string> pages)
    : type(type)
    , pages(pages)
    , current_page_num(0)
+   , finished(false)
 {
 }
 
@@ -38,6 +39,12 @@ std::vector<std::string> Base::get_pages()
 int Base::get_current_page_num()
 {
    return current_page_num;
+}
+
+
+bool Base::get_finished()
+{
+   return finished;
 }
 
 
