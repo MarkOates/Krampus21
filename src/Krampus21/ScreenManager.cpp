@@ -86,11 +86,23 @@ void ScreenManager::update_dialog_playing()
    return;
 }
 
+bool ScreenManager::dialog_is_finished()
+{
+   return dialog.get_finished();
+}
+
 void ScreenManager::primary_timer_func()
 {
+   al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
    update_dialog_playing();
-   Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), &dialog, dialog_num_revealed_characters);
-   renderer.render();
+   if (dialog_is_finished())
+   {
+   }
+   else
+   {
+      Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), &dialog, dialog_num_revealed_characters);
+      renderer.render();
+   }
    return;
 }
 

@@ -94,12 +94,25 @@ functions:
       return;
 
 
+  - name: dialog_is_finished
+    type: bool
+    body: |
+      return dialog.get_finished();
+
+
   - name: primary_timer_func
     override: true
     body: |
+      al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
       update_dialog_playing();
-      Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), &dialog, dialog_num_revealed_characters);
-      renderer.render();
+      if (dialog_is_finished())
+      {
+      }
+      else
+      {
+         Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), &dialog, dialog_num_revealed_characters);
+         renderer.render();
+      }
       return;
     body_dependency_symbols:
       - Krampus21::DialogBoxRenderer
