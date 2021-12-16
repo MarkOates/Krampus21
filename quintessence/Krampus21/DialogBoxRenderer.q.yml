@@ -66,6 +66,11 @@ functions:
       - al_color_html
 
 
+  - name: show_special_state_empty_text
+    body: |
+      return;
+
+
   - name: show_action_text
     parameters:
       - name: text

@@ -97,6 +97,11 @@ void DialogBoxRenderer::render()
    return;
 }
 
+void DialogBoxRenderer::show_special_state_empty_text()
+{
+   return;
+}
+
 void DialogBoxRenderer::show_action_text(std::string text)
 {
    ALLEGRO_FONT* text_font = obtain_dialog_font();

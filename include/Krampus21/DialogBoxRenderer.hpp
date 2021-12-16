@@ -25,6 +25,7 @@ namespace Krampus21
       int get_dialog_box_num_revealed_characters();
       allegro_flare::placement2d get_place();
       void render();
+      void show_special_state_empty_text();
       void show_action_text(std::string text="[unset-action-text]");
       void draw_styled_revealed_text();
       std::string get_dialog_box_text();
