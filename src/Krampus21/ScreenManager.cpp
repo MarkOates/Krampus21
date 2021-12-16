@@ -46,8 +46,10 @@ void ScreenManager::initialize()
          error_message << "ScreenManager" << "::" << "initialize" << ": error: " << "guard \"(!initialized)\" not met";
          throw std::runtime_error(error_message.str());
       }
+   std::string dialog_filename = "/Users/markoates/Repos/Krampus21/bin/programs/data/dialogs/dialog-1.txt";
    Krampus21::DialogFactory dialog_factory;
-   dialog = dialog_factory.build_basic_test_dialog();
+   //dialog = dialog_factory.build_basic_test_dialog();
+   dialog = dialog_factory.build_basic_dialog_from_file(dialog_filename);
    dialog_num_revealed_characters = 0;
    initialized = true;
    return;
