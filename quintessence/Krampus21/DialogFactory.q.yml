@@ -16,7 +16,7 @@ functions:
       - Krampus21::DialogBoxes::Basic
 
 
-  - name: build_basic_test_dialog_from_file
+  - name: build_basic_dialog_from_file
     type: Krampus21::DialogBoxes::Basic
     parameters:
       - name: filename
@@ -28,22 +28,21 @@ functions:
       if (!file_existence_checker.exists())
       {
          std::stringstream error_message;
-         error_message << "[DialogFactory:build_basic_test_dialog_from_file]: error: "
+         error_message << "[DialogFactory:build_basic_dialog_from_file]: error: "
                        << "the file \"" << filename << "\" is not present.";
          throw std::runtime_error(error_message.str());
       }
 
-      basic_dialog_box.set_pages({
-         { "Interesting.  I'm just sitting here working." },
-         { "Oh well. I guess I'll just have to keep grinding." },
-         { "At least I'm listening to some cool music." },
-      });
+      std::vector<std::string> file_lines = AllegroFlare::php::file_get_contents_split(filename);
+
+      basic_dialog_box.set_pages(file_lines);
 
       return basic_dialog_box;
     body_dependency_symbols:
       - std::stringstream
       - Krampus21::DialogBoxes::Basic
       - Blast::FileExistenceChecker
+      - AllegroFlare::php::file_get_contents_split
 
 
 dependencies:
@@ -53,5 +52,7 @@ dependencies:
     headers: [ Krampus21/DialogBoxes/Basic.hpp ]
   - symbol: Blast::FileExistenceChecker
     headers: [ Blast/FileExistenceChecker.hpp ]
+  - symbol: AllegroFlare::php::file_get_contents_split
+    headers: [ AllegroFlare/UsefulPHP.hpp ]
 
 
