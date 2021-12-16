@@ -64,7 +64,7 @@ void Base::reset()
 
 std::string Base::get_current_page_text()
 {
-   if (!current_page_is_valid()) return "[empty]";
+   if (!current_page_is_valid()) return "[null]";
    return pages[current_page_num];
 }
 

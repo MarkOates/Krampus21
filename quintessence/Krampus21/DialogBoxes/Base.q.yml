@@ -48,7 +48,7 @@ functions:
   - name: get_current_page_text
     type: std::string
     body: |
-      if (!current_page_is_valid()) return "[empty]";
+      if (!current_page_is_valid()) return "[null]";
       return pages[current_page_num];
 
 

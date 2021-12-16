@@ -110,7 +110,7 @@ TEST(Krampus21_DialogBoxes_BaseTest, get_current_page_text__will_return_a_specia
    MyTestDialogBox dialog_box;
    dialog_box.next_page();
 
-   std::string expected_page_text = "[empty]";
+   std::string expected_page_text = "[null]";
 
    ASSERT_EQ(expected_page_text, dialog_box.get_current_page_text());
 }
