@@ -40,6 +40,45 @@ TEST(Krampus21_DialogBoxes_BaseTest, set_pages__sets_the_pages_with_the_passed_v
 }
 
 
+TEST(Krampus21_DialogBoxes_BaseTest, at_last_page__will_return_true_if_the_dialog_is_at_the_very_last_page)
+{
+   std::vector<std::string> pages = {
+      "Page 1 has this test",
+      "This is the text to page 2.\nPage 1 has two lines.",
+      "And finally the last page",
+   };
+   MyTestDialogBox dialog_box;
+   dialog_box.set_pages(pages);
+
+   ASSERT_EQ(true, dialog_box.next_page());
+   ASSERT_EQ(true, dialog_box.next_page());
+
+   ASSERT_EQ(true, dialog_box.at_last_page());
+}
+
+
+TEST(Krampus21_DialogBoxes_BaseTest, at_last_page__will_false_ff_the_dialog_is_anywhere_but_at_the_very_last_page)
+{
+   std::vector<std::string> pages = {
+      "Page 1 has this test",
+      "This is the text to page 2.\nPage 1 has two lines.",
+      "And finally the last page",
+   };
+   MyTestDialogBox dialog_box;
+   dialog_box.set_pages(pages);
+
+   ASSERT_EQ(false, dialog_box.at_last_page());
+   ASSERT_EQ(true, dialog_box.next_page());
+   ASSERT_EQ(false, dialog_box.at_last_page());
+   ASSERT_EQ(true, dialog_box.next_page());
+
+   //ASSERT_EQ(true, dialog_box.at_last_page()); // skipping this check, covered in other test
+
+   ASSERT_EQ(true, dialog_box.next_page());
+   ASSERT_EQ(false, dialog_box.at_last_page());
+}
+
+
 TEST(Krampus21_DialogBoxes_BaseTest, next_page__will_increment_the_page_number)
 {
    std::vector<std::string> pages = {

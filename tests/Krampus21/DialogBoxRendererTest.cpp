@@ -148,12 +148,12 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_the_dialog_box)
    AllegroFlare::FontBin font_bin;
    font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
    Krampus21::DialogBoxes::Base dialog_box;
-   dialog_box.set_pages({ { "Some test dialog text." } });
+   dialog_box.set_pages({ { "Some test dialog text with multiple pages.", "Here's the second page." } });
    Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
 
    dialog_box_renderer.render();
    al_flip_display();
-   //sleep(1);
+   sleep(1);
 
    al_destroy_display(display);
    al_uninstall_system();
@@ -197,7 +197,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_multiline_dialog)
 
    dialog_box_renderer.render();
    al_flip_display();
-   //sleep(1);
+   sleep(1);
 
    al_destroy_display(display);
    al_uninstall_system();

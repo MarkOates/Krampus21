@@ -15,7 +15,7 @@ properties:
 
   - name: current_page_num
     type: int
-    init_with: 0
+    init_with: -1
     getter: true
 
   - name: finished
@@ -58,7 +58,11 @@ functions:
       //if (at_last_page()) return false;
       if (get_finished()) return false;
       current_page_num++;
-      if (current_page_num >= num_pages()) finished = true;
+      if (current_page_num >= num_pages())
+      {
+         finished = true;
+         current_page_num = -1;
+      }
       return true;
 
 

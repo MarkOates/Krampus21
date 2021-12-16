@@ -13,7 +13,7 @@ namespace DialogBoxes
 Base::Base(std::string type, std::vector<std::string> pages)
    : type(type)
    , pages(pages)
-   , current_page_num(0)
+   , current_page_num(-1)
    , finished(false)
 {
 }
@@ -73,7 +73,11 @@ bool Base::next_page()
    //if (at_last_page()) return false;
    if (get_finished()) return false;
    current_page_num++;
-   if (current_page_num >= num_pages()) finished = true;
+   if (current_page_num >= num_pages())
+   {
+      finished = true;
+      current_page_num = -1;
+   }
    return true;
 }
 

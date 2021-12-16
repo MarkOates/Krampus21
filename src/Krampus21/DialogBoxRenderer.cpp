@@ -97,6 +97,14 @@ void DialogBoxRenderer::render()
    else
    {
       draw_styled_revealed_text();
+
+      // draw the player's action cursor thing at the bottom
+      int current_dialog_box_page_character_count = dialog_box->get_current_page_text().length();
+      if (dialog_box_num_revealed_characters >= current_dialog_box_page_character_count)
+      {
+         if (dialog_box->at_last_page()) draw_action_text("[close]");
+         else draw_action_text(">>");
+      }
    }
 
    place.restore_transform();
@@ -133,14 +141,6 @@ void DialogBoxRenderer::draw_action_text(std::string text)
       ALLEGRO_ALIGN_RIGHT,
       text.c_str()
    );
-
-   // draw the player's action cursor thing at the bottom
-   int current_dialog_box_page_character_count = dialog_box->get_current_page_text().length();
-   if (dialog_box_num_revealed_characters >= current_dialog_box_page_character_count)
-   {
-      if (dialog_box->at_last_page()) draw_action_text("[close]");
-      else draw_action_text(">>");
-   }
 
    return;
 }
