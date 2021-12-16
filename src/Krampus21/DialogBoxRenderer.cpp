@@ -65,6 +65,12 @@ void DialogBoxRenderer::render()
          error_message << "DialogBoxRenderer" << "::" << "render" << ": error: " << "guard \"al_get_current_display()\" not met";
          throw std::runtime_error(error_message.str());
       }
+   if (!(dialog_box))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBoxRenderer" << "::" << "render" << ": error: " << "guard \"dialog_box\" not met";
+         throw std::runtime_error(error_message.str());
+      }
    float roundness = 18.0f;
    float border_thickness = 5.0f;
    float border_inner_padding = border_thickness * 3;
@@ -84,25 +90,37 @@ void DialogBoxRenderer::render()
    );
    al_draw_rounded_rectangle(0, 0, place.size.x, place.size.y, roundness, roundness, border_color, border_thickness);
 
-   draw_styled_revealed_text();
-
-   int current_dialog_box_page_character_count = dialog_box->get_current_page_text().length();
-   if (dialog_box_num_revealed_characters >= current_dialog_box_page_character_count)
+   if (dialog_box->get_finished())
    {
-      if (dialog_box->at_last_page()) show_action_text("[close]");
-      else show_action_text(">>");
+      draw_special_state_empty_text();
+   }
+   else
+   {
+      draw_styled_revealed_text();
    }
 
    place.restore_transform();
    return;
 }
 
-void DialogBoxRenderer::show_special_state_empty_text()
+void DialogBoxRenderer::draw_special_state_empty_text()
 {
+   ALLEGRO_FONT* text_font = obtain_dialog_font();
+   ALLEGRO_COLOR text_color = al_color_name("darkslategray");
+   float line_height = al_get_font_line_height(text_font);
+   std::string text = "[dialog empty]";
+   al_draw_text(
+      text_font,
+      text_color,
+      place.size.x * 0.5,
+      place.size.y * 0.5 - line_height * 0.5,
+      ALLEGRO_ALIGN_CENTER,
+      text.c_str()
+   );
    return;
 }
 
-void DialogBoxRenderer::show_action_text(std::string text)
+void DialogBoxRenderer::draw_action_text(std::string text)
 {
    ALLEGRO_FONT* text_font = obtain_dialog_font();
    ALLEGRO_COLOR text_color = al_color_html("66a9bc");
@@ -115,6 +133,15 @@ void DialogBoxRenderer::show_action_text(std::string text)
       ALLEGRO_ALIGN_RIGHT,
       text.c_str()
    );
+
+   // draw the player's action cursor thing at the bottom
+   int current_dialog_box_page_character_count = dialog_box->get_current_page_text().length();
+   if (dialog_box_num_revealed_characters >= current_dialog_box_page_character_count)
+   {
+      if (dialog_box->at_last_page()) draw_action_text("[close]");
+      else draw_action_text(">>");
+   }
+
    return;
 }
 

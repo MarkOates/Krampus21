@@ -130,7 +130,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_dialog_box__raise
    Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin);
 
    std::string expected_error_message =
-      "DialogBoxRenderer::get_dialog_box_text: error: guard \"dialog_box\" not met";
+      "DialogBoxRenderer::render: error: guard \"dialog_box\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_destroy_display(display);
@@ -154,6 +154,28 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_the_dialog_box)
    dialog_box_renderer.render();
    al_flip_display();
    //sleep(1);
+
+   al_destroy_display(display);
+   al_uninstall_system();
+}
+
+
+TEST(Krampus21_DialogBoxRendererTest, render__when_the_dialog_box_is_finish__renders_special_empty_text)
+{
+   al_init();
+   al_init_primitives_addon();
+   al_init_font_addon();
+   al_init_ttf_addon();
+   ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
+   AllegroFlare::FontBin font_bin;
+   font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
+   Krampus21::DialogBoxes::Base dialog_box;
+   dialog_box.next_page();
+   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
+
+   dialog_box_renderer.render();
+   al_flip_display();
+   sleep(1);
 
    al_destroy_display(display);
    al_uninstall_system();
