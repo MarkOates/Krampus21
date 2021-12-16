@@ -108,7 +108,7 @@ void DialogBoxRenderer::draw_special_state_empty_text()
    ALLEGRO_FONT* text_font = obtain_dialog_font();
    ALLEGRO_COLOR text_color = al_color_name("darkslategray");
    float line_height = al_get_font_line_height(text_font);
-   std::string text = "[dialog empty]";
+   std::string text = "[dialog finished]";
    al_draw_text(
       text_font,
       text_color,
