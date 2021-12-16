@@ -17,12 +17,13 @@ namespace Krampus21
 {
 
 
-ScreenManager::ScreenManager(AllegroFlare::Framework* framework, AllegroFlare::Screens* screens, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements)
+ScreenManager::ScreenManager(AllegroFlare::Framework* framework, AllegroFlare::Screens* screens, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements, std::string dialog_filename)
    : AllegroFlare::Screen()
    , framework(framework)
    , screens(screens)
    , sound_effect_elements(sound_effect_elements)
    , music_track_elements(music_track_elements)
+   , dialog_filename(dialog_filename)
    , user_event_emitter_souce({})
    , user_event_emitter({})
    , audio_controller({})
@@ -38,6 +39,12 @@ ScreenManager::~ScreenManager()
 }
 
 
+std::string ScreenManager::get_dialog_filename()
+{
+   return dialog_filename;
+}
+
+
 void ScreenManager::initialize()
 {
    if (!((!initialized)))
@@ -46,10 +53,9 @@ void ScreenManager::initialize()
          error_message << "ScreenManager" << "::" << "initialize" << ": error: " << "guard \"(!initialized)\" not met";
          throw std::runtime_error(error_message.str());
       }
-   std::string dialog_filename = "/Users/markoates/Repos/Krampus21/bin/programs/data/dialogs/dialog-1.txt";
    Krampus21::DialogFactory dialog_factory;
    //dialog = dialog_factory.build_basic_test_dialog();
-   dialog = dialog_factory.build_basic_dialog_from_file(dialog_filename);
+   dialog = dialog_factory.build_basic_dialog_from_file(get_dialog_filename());
    dialog_num_revealed_characters = 0;
    initialized = true;
    return;

@@ -23,6 +23,7 @@ namespace Krampus21
       AllegroFlare::Screens* screens;
       std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements;
       std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements;
+      std::string dialog_filename;
       ALLEGRO_EVENT_SOURCE user_event_emitter_souce;
       Krampus21::UserEventEmitter user_event_emitter;
       AllegroFlare::AudioController audio_controller;
@@ -31,9 +32,10 @@ namespace Krampus21
       bool initialized;
 
    public:
-      ScreenManager(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements={}, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements={});
+      ScreenManager(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements={}, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements={}, std::string dialog_filename="unset-dialog-file.txt");
       ~ScreenManager();
 
+      std::string get_dialog_filename();
       void initialize();
       void shutdown_game();
       void advance_dialog();

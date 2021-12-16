@@ -31,6 +31,12 @@ properties:
     init_with: '{}'
     constructor_arg: true
 
+  - name: dialog_filename
+    type: std::string
+    init_with: '"unset-dialog-file.txt"'
+    constructor_arg: true
+    getter: true
+
   - name: user_event_emitter_souce
     type: ALLEGRO_EVENT_SOURCE
     init_with: '{}'
@@ -62,10 +68,9 @@ functions:
   - name: initialize
     guards: [ (!initialized) ]
     body: |
-      std::string dialog_filename = "/Users/markoates/Repos/Krampus21/bin/programs/data/dialogs/dialog-1.txt";
       Krampus21::DialogFactory dialog_factory;
       //dialog = dialog_factory.build_basic_test_dialog();
-      dialog = dialog_factory.build_basic_dialog_from_file(dialog_filename);
+      dialog = dialog_factory.build_basic_dialog_from_file(get_dialog_filename());
       dialog_num_revealed_characters = 0;
       initialized = true;
       return;
