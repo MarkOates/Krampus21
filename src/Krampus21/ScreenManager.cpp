@@ -1,6 +1,7 @@
 
 
 #include <Krampus21/ScreenManager.hpp>
+#include <Krampus21/DialogFactory.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -45,6 +46,8 @@ void ScreenManager::initialize()
          error_message << "ScreenManager" << "::" << "initialize" << ": error: " << "guard \"(!initialized)\" not met";
          throw std::runtime_error(error_message.str());
       }
+   //Krampus21::DialogFactory dialog_factory;
+   //dialog = build_factory.load_test_dialog();
    dialog.set_pages({
       { "Interesting.  I'm just sitting here working." },
       { "How could I be so worthless in my life that I'm doing this?" },

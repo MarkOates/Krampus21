@@ -81,5 +81,8 @@
   ],
   "Krampus21/DialogBoxRenderer": [
     "Krampus21/ScreenManager"
+  ],
+  "Krampus21/DialogFactory": [
+    "Krampus21/ScreenManager"
   ]
 }

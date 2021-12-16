@@ -62,6 +62,8 @@ functions:
   - name: initialize
     guards: [ (!initialized) ]
     body: |
+      //Krampus21::DialogFactory dialog_factory;
+      //dialog = build_factory.load_test_dialog();
       dialog.set_pages({
          { "Interesting.  I'm just sitting here working." },
          { "How could I be so worthless in my life that I'm doing this?" },
@@ -72,6 +74,8 @@ functions:
       dialog_num_revealed_characters = 0;
       initialized = true;
       return;
+    body_dependency_symbols:
+      - Krampus21::DialogFactory
 
 
   - name: shutdown_game
@@ -195,5 +199,7 @@ dependencies:
     headers: [ Krampus21/DialogBoxes/Basic.hpp ]
   - symbol: Krampus21::DialogBoxRenderer
     headers: [ Krampus21/DialogBoxRenderer.hpp ]
+  - symbol: Krampus21::DialogFactory
+    headers: [ Krampus21/DialogFactory.hpp ]
 
 
