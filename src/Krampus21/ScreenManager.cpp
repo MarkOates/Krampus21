@@ -46,15 +46,8 @@ void ScreenManager::initialize()
          error_message << "ScreenManager" << "::" << "initialize" << ": error: " << "guard \"(!initialized)\" not met";
          throw std::runtime_error(error_message.str());
       }
-   //Krampus21::DialogFactory dialog_factory;
-   //dialog = build_factory.load_test_dialog();
-   dialog.set_pages({
-      { "Interesting.  I'm just sitting here working." },
-      { "How could I be so worthless in my life that I'm doing this?" },
-      { "Oh well. I guess I'll just have to keep grinding" },
-      { "I might go smoke a bowl." },
-      { "What shoud I do? { smoke a bowl; keep working }" },
-   });
+   Krampus21::DialogFactory dialog_factory;
+   dialog = dialog_factory.build_basic_test_dialog();
    dialog_num_revealed_characters = 0;
    initialized = true;
    return;
