@@ -41,8 +41,8 @@ functions:
 
   - name: get_current_page_text
     type: std::string
-    guards: [ current_page_is_valid() ]
     body: |
+      if (!current_page_is_valid()) return "[empty]";
       return pages[current_page_num];
 
 
@@ -58,6 +58,12 @@ functions:
     type: int
     body: |
       return pages.size();
+
+
+  - name: has_no_pages
+    type: bool
+    body: |
+      return pages.empty();
 
 
   - name: at_last_page

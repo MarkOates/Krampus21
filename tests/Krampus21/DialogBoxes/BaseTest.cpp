@@ -82,6 +82,24 @@ TEST(Krampus21_DialogBoxes_BaseTest,
 }
 
 
+TEST(Krampus21_DialogBoxes_BaseTest, has_no_pages__will_true_if_there_are_no_pages)
+{
+   MyTestDialogBox dialog_box;
+   ASSERT_EQ(true, dialog_box.has_no_pages());
+}
+
+
+TEST(Krampus21_DialogBoxes_BaseTest, get_current_page_text__will_return_a_special_empty_text_when_not_on_a_page)
+{
+   MyTestDialogBox dialog_box;
+   dialog_box.next_page();
+
+   std::string expected_page_text = "[empty]";
+
+   ASSERT_EQ(expected_page_text, dialog_box.get_current_page_text());
+}
+
+
 TEST(Krampus21_DialogBoxes_BaseTest, next_page__will_increment_the_page_text)
 {
    std::vector<std::string> pages = {

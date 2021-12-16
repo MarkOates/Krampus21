@@ -1,8 +1,7 @@
 
 
 #include <Krampus21/DialogBoxes/Base.hpp>
-#include <stdexcept>
-#include <sstream>
+
 
 
 namespace Krampus21
@@ -57,12 +56,7 @@ void Base::reset()
 
 std::string Base::get_current_page_text()
 {
-   if (!(current_page_is_valid()))
-      {
-         std::stringstream error_message;
-         error_message << "Base" << "::" << "get_current_page_text" << ": error: " << "guard \"current_page_is_valid()\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   if (!current_page_is_valid()) return "[empty]";
    return pages[current_page_num];
 }
 
@@ -76,6 +70,11 @@ bool Base::next_page()
 int Base::num_pages()
 {
    return pages.size();
+}
+
+bool Base::has_no_pages()
+{
+   return pages.empty();
 }
 
 bool Base::at_last_page()

@@ -28,6 +28,7 @@ namespace Krampus21
          std::string get_current_page_text();
          bool next_page();
          int num_pages();
+         bool has_no_pages();
          bool at_last_page();
          bool current_page_is_valid();
       };
