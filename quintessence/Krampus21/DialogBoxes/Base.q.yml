@@ -41,6 +41,7 @@ functions:
   - name: reset
     body: |
       current_page_num = 0;
+      finished = false;
       return;
 
 
@@ -54,8 +55,10 @@ functions:
   - name: next_page
     type: bool
     body: |
-      if (at_last_page()) return false;
+      //if (at_last_page()) return false;
+      if (get_finished()) return false;
       current_page_num++;
+      if (current_page_num >= num_pages()) finished = true;
       return true;
 
 
