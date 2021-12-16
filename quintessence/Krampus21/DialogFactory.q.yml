@@ -1,5 +1,25 @@
 functions:
 
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+
+  - name: build_basic_test_dialog
+    type: Krampus21::DialogBoxes::Basic
+    body: |
+      Krampus21::DialogBoxes::Basic basic_dialog_box;
+      basic_dialog_box.set_pages({
+         { "Interesting.  I'm just sitting here working." },
+         { "Oh well. I guess I'll just have to keep grinding." },
+         { "At least I'm listening to some cool music." },
+      });
+
+      return basic_dialog_box;
+    body_dependency_symbols:
+      - Krampus21::DialogBoxes::Basic
+
+
+dependencies:
+
+
+  - symbol: Krampus21::DialogBoxes::Basic
+    headers: [ Krampus21/DialogBoxes/Basic.hpp ]
+
+

@@ -9,6 +9,7 @@
   ],
   "Krampus21/DialogBoxes/Basic": [
     "Krampus21/DialogBoxFactory",
+    "Krampus21/DialogFactory",
     "Krampus21/ScreenManager"
   ],
   "ALLEGRO_FONT": [

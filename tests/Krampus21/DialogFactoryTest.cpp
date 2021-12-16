@@ -11,6 +11,14 @@ TEST(Krampus21_DialogFactoryTest, can_be_created_without_blowing_up)
 TEST(Krampus21_DialogFactoryTest, run__returns_the_expected_response)
 {
    Krampus21::DialogFactory dialog_factory;
-   std::string expected_string = "Hello World!";
-   EXPECT_EQ(expected_string, dialog_factory.run());
+   Krampus21::DialogBoxes::Basic basic_dialog_box;
+
+   basic_dialog_box = dialog_factory.build_basic_test_dialog();
+
+   std::vector<std::string> expected_pages = {
+      { "Interesting.  I'm just sitting here working." },
+      { "Oh well. I guess I'll just have to keep grinding." },
+      { "At least I'm listening to some cool music." },
+   };
+   ASSERT_EQ(expected_pages, basic_dialog_box.get_pages());
 }

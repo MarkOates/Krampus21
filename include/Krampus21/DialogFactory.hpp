@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <string>
+#include <Krampus21/DialogBoxes/Basic.hpp>
 
 
 namespace Krampus21
@@ -14,7 +14,7 @@ namespace Krampus21
       DialogFactory();
       ~DialogFactory();
 
-      std::string run();
+      Krampus21::DialogBoxes::Basic build_basic_test_dialog();
    };
 }
 
