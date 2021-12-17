@@ -4,6 +4,7 @@
 #include <Krampus21/DialogFactory.hpp>
 #include <stdexcept>
 #include <sstream>
+#include <Krampus21/DialogFactory.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -53,13 +54,17 @@ void ScreenManager::initialize()
          error_message << "ScreenManager" << "::" << "initialize" << ": error: " << "guard \"(!initialized)\" not met";
          throw std::runtime_error(error_message.str());
       }
-   Krampus21::DialogFactory dialog_factory;
-   //dialog = dialog_factory.build_basic_test_dialog();
-   dialog = dialog_factory.build_basic_dialog_from_file(get_dialog_filename());
-   dialog_num_revealed_characters = 0;
    audio_controller.initialize();
    initialized = true;
    return;
+}
+
+void ScreenManager::start_game()
+{
+   Krampus21::DialogFactory dialog_factory;
+   dialog = dialog_factory.build_basic_dialog_from_file(get_dialog_filename());
+   play_music_track("ambiences-clips_2-machine-noise.wav");
+   dialog_num_revealed_characters = 0;
 }
 
 void ScreenManager::shutdown_game()

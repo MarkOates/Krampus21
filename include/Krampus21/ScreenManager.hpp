@@ -37,6 +37,7 @@ namespace Krampus21
 
       std::string get_dialog_filename();
       void initialize();
+      void start_game();
       void shutdown_game();
       void advance_dialog();
       void update_dialog_playing();

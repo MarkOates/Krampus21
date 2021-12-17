@@ -68,13 +68,19 @@ functions:
   - name: initialize
     guards: [ (!initialized) ]
     body: |
-      Krampus21::DialogFactory dialog_factory;
-      //dialog = dialog_factory.build_basic_test_dialog();
-      dialog = dialog_factory.build_basic_dialog_from_file(get_dialog_filename());
-      dialog_num_revealed_characters = 0;
       audio_controller.initialize();
       initialized = true;
       return;
+    body_dependency_symbols:
+      - Krampus21::DialogFactory
+
+
+  - name: start_game
+    body: |
+      Krampus21::DialogFactory dialog_factory;
+      dialog = dialog_factory.build_basic_dialog_from_file(get_dialog_filename());
+      play_music_track("ambiences-clips_2-machine-noise.wav");
+      dialog_num_revealed_characters = 0;
     body_dependency_symbols:
       - Krampus21::DialogFactory
 
