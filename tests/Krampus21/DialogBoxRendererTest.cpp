@@ -11,6 +11,8 @@
 
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
+#include <chrono>
+#include <thread>
 
 #ifdef _WIN32
 #define TEST_FIXTURE_FONT_FOLDER "/msys64/home/Mark/Repos/Krampus21/bin/programs/data/fonts/"
@@ -153,7 +155,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_the_dialog_box)
 
    dialog_box_renderer.render();
    al_flip_display();
-   sleep(1);
+   std::this_thread::sleep_for(std::chrono::seconds(1));
 
    al_destroy_display(display);
    al_uninstall_system();
@@ -175,7 +177,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_the_dialog_box_is_finish__ren
 
    dialog_box_renderer.render();
    al_flip_display();
-   sleep(1);
+   std::this_thread::sleep_for(std::chrono::seconds(1));
 
    al_destroy_display(display);
    al_uninstall_system();
@@ -197,7 +199,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_multiline_dialog)
 
    dialog_box_renderer.render();
    al_flip_display();
-   sleep(1);
+   std::this_thread::sleep_for(std::chrono::seconds(1));
 
    al_destroy_display(display);
    al_uninstall_system();
