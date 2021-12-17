@@ -66,6 +66,7 @@ void ProgramRunner::run()
    );
    screens.add(screen_manager);
    screen_manager->initialize();
+   screen_manager->start_game();
 
    framework.run_loop();
 
