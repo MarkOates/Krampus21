@@ -57,6 +57,8 @@ void ScreenManager::initialize()
    //dialog = dialog_factory.build_basic_test_dialog();
    dialog = dialog_factory.build_basic_dialog_from_file(get_dialog_filename());
    dialog_num_revealed_characters = 0;
+   audio_controller.initialize();
+   play_music_track("ambiences-clips_2-machine-noise.wav");
    initialized = true;
    return;
 }
@@ -109,6 +111,12 @@ void ScreenManager::primary_timer_func()
       Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), &dialog, dialog_num_revealed_characters);
       renderer.render();
    }
+   return;
+}
+
+void ScreenManager::play_music_track(std::string identifier)
+{
+   audio_controller.play_music_track_by_identifier(identifier);
    return;
 }
 

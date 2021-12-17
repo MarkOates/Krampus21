@@ -123,6 +123,16 @@ functions:
       - Krampus21::DialogBoxRenderer
 
 
+  - name: play_music_track
+    parameters:
+      - name: identifier
+        type: std::string
+        default_argument: '"unset-music-identifier"'
+    body: |
+      audio_controller.play_music_track_by_identifier(identifier);
+      return;
+
+
   - name: key_down_func
     override: true
     parameters:
