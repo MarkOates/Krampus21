@@ -72,6 +72,7 @@ functions:
       //dialog = dialog_factory.build_basic_test_dialog();
       dialog = dialog_factory.build_basic_dialog_from_file(get_dialog_filename());
       dialog_num_revealed_characters = 0;
+      audio_controller.initialize();
       initialized = true;
       return;
     body_dependency_symbols:
