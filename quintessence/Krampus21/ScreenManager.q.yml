@@ -47,7 +47,7 @@ properties:
 
   - name: audio_controller
     type: AllegroFlare::AudioController
-    init_with: '{}'
+    init_with: '&framework->get_sample_bin_ref(), sound_effect_elements, music_track_elements'
 
   - name: dialog
     type: Krampus21::DialogBoxes::Basic

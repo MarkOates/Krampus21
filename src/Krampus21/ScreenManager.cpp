@@ -26,7 +26,7 @@ ScreenManager::ScreenManager(AllegroFlare::Framework* framework, AllegroFlare::S
    , dialog_filename(dialog_filename)
    , user_event_emitter_souce({})
    , user_event_emitter({})
-   , audio_controller({})
+   , audio_controller(&framework->get_sample_bin_ref(), sound_effect_elements, music_track_elements)
    , dialog({})
    , dialog_num_revealed_characters(0)
    , initialized(false)

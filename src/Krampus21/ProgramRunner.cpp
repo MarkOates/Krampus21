@@ -39,6 +39,8 @@ void ProgramRunner::run()
 
    std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements =
       std::map<std::string, AllegroFlare::AudioRepositoryElement>{
+         { "ambiences-clips_2-etherial.wav", { "ambiences-clips_2-etherial.wav", true } },
+         { "ambiences-clips_2-machine-noise.wav", { "ambiences-clips_2-machine-noise.wav", true } },
          //{ TITLE_SCREEN_MUSIC, { "TitleScreen - With Edit - 01.ogg", false } },
          //{ LEVEL_1_MUSIC, { "02 sawsquarenoise - Stage 1.ogg", true } },
          //{ GAME_OVER_SCREEN_MUSIC, { "05 sawsquarenoise - Boss Splash.ogg", false } },
@@ -58,8 +60,8 @@ void ProgramRunner::run()
    Krampus21::ScreenManager *screen_manager = new Krampus21::ScreenManager(
       &framework,
       &screens,
-      music_track_elements,
       sound_effect_elements,
+      music_track_elements,
       dialog_filename
    );
    screens.add(screen_manager);
