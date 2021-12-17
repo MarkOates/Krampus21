@@ -9,7 +9,11 @@
 #include <Krampus21/DialogFactory.hpp>
 
 
-#define TEST_FIXTURE_FILENAME "/Users/markoates/Repos/Krampus21/tests/test_fixtures/dialog-1.txt"
+#ifdef _WIN32
+#define TEST_FIXTURE_FOLDER "/msys64/home/Mark/Repos/Krampus21/tests/test_fixtures/"
+#else
+#define TEST_FIXTURE_FOLDER "/Users/markoates/Repos/Krampus21/tests/test_fixtures/"
+#endif
 
 
 TEST(Krampus21_DialogFactoryTest, can_be_created_without_blowing_up)
@@ -53,8 +57,9 @@ TEST(Krampus21_DialogFactoryTest, build_basic_dialog_from_file__sets_the_test_to
 {
    Krampus21::DialogFactory dialog_factory;
    Krampus21::DialogBoxes::Basic basic_dialog_box;
+   std::string test_fixture_filename = std::string(TEST_FIXTURE_FOLDER) + "dialog-1.txt";
 
-   basic_dialog_box = dialog_factory.build_basic_dialog_from_file(TEST_FIXTURE_FILENAME);
+   basic_dialog_box = dialog_factory.build_basic_dialog_from_file(test_fixture_filename);
 
    std::vector<std::string> expected_pages = {
       "Hello Clarence.",
