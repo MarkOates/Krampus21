@@ -10,7 +10,9 @@
   "Krampus21/DialogBoxes/Basic": [
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogFactory",
-    "Krampus21/ScreenManager"
+    "Krampus21/DialogFactory",
+    "Krampus21/ScreenManager",
+    "Krampus21/ScriptLoader"
   ],
   "ALLEGRO_FONT": [
     "Krampus21/DialogBoxRenderer"
@@ -90,6 +92,10 @@
     "Krampus21/ScreenManager"
   ],
   "Krampus21/DialogFactory": [
-    "Krampus21/ScreenManager"
+    "Krampus21/ScreenManager",
+    "Krampus21/ScriptLoader"
+  ],
+  "std/vector<Krampus21/DialogBoxes/Base>": [
+    "Krampus21/ScriptLoader"
   ]
 }

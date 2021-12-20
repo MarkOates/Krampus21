@@ -1,6 +1,8 @@
 #pragma once
 
 
+#include <Krampus21/DialogBoxes/Base.hpp>
+#include <Krampus21/DialogFactory.hpp>
 #include <string>
 #include <vector>
 
@@ -11,12 +13,13 @@ namespace Krampus21
    {
    private:
       std::vector<std::string> script_lines;
+      Krampus21::DialogFactory dialog_factory;
 
    public:
       ScriptLoader(std::vector<std::string> script_lines={});
       ~ScriptLoader();
 
-      std::string parse();
+      std::vector<Krampus21::DialogBoxes::Base*> parse();
    };
 }
 

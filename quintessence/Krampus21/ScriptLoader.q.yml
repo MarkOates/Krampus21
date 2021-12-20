@@ -6,13 +6,33 @@ properties:
     init_with: '{}'
     constructor_arg: true
 
+  - name: dialog_factory
+    type: Krampus21::DialogFactory
+    init_with: '{}'
+
 
 functions:
 
 
   - name: parse
-    type: std::string
+    type: std::vector<Krampus21::DialogBoxes::Base*>
     body: |
-      return "Hello World!";
+      std::vector<Krampus21::DialogBoxes::Base*> result = {
+         dialog_factory.create_basic_test_dialog(),
+         dialog_factory.create_basic_test_dialog(),
+         dialog_factory.create_basic_test_dialog(),
+      };
+      return result;
+
+
+dependencies:
+
+
+  - symbol: std::vector<Krampus21::DialogBoxes::Base*>
+    headers: [ vector, Krampus21/DialogBoxes/Base.hpp ]
+  - symbol: Krampus21::DialogFactory
+    headers: [ Krampus21/DialogFactory.hpp ]
+  - symbol: Krampus21::DialogBoxes::Basic*
+    headers: [ Krampus21/DialogBoxes/Basic.hpp ]
 
 

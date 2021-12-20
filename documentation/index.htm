@@ -230,6 +230,9 @@ table td
   <td class="method">build_basic_test_dialog()</td>
 </tr>
 <tr>
+  <td class="method">create_basic_test_dialog()</td>
+</tr>
+<tr>
   <td class="method">build_basic_dialog(1)</td>
 </tr>
 <tr>
@@ -237,6 +240,9 @@ table td
 </tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Basic*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Basic.hpp&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Basic&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Basic.hpp&quot;]}</td>
 </tr>
@@ -419,6 +425,10 @@ table td
   <td class="property">script_lines</td>
   <td class="property">std::vector&lt;std::string&gt;</td>
 </tr>
+<tr>
+  <td class="property">dialog_factory</td>
+  <td class="property">Krampus21::DialogFactory</td>
+</tr>
     </table>
      <table>
 <tr>
@@ -426,6 +436,15 @@ table td
 </tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;Krampus21::DialogBoxes::Base*&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogFactory&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogFactory.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Basic*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Basic.hpp&quot;]}</td>
+</tr>
     </table>
   </div>
 </ul>
@@ -457,7 +476,9 @@ table td
   "Krampus21/DialogBoxes/Basic": [
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogFactory",
-    "Krampus21/ScreenManager"
+    "Krampus21/DialogFactory",
+    "Krampus21/ScreenManager",
+    "Krampus21/ScriptLoader"
   ],
   "ALLEGRO_FONT": [
     "Krampus21/DialogBoxRenderer"
@@ -537,7 +558,11 @@ table td
     "Krampus21/ScreenManager"
   ],
   "Krampus21/DialogFactory": [
-    "Krampus21/ScreenManager"
+    "Krampus21/ScreenManager",
+    "Krampus21/ScriptLoader"
+  ],
+  "std/vector<Krampus21/DialogBoxes/Base>": [
+    "Krampus21/ScriptLoader"
   ]
 }
 </pre>

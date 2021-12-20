@@ -8,12 +8,11 @@ TEST(Krampus21_ScriptLoaderTest, can_be_created_without_blowing_up)
    Krampus21::ScriptLoader script_loader;
 }
 
-TEST(Krampus21_ScriptLoaderTest, run__returns_the_expected_response)
+TEST(Krampus21_ScriptLoaderTest, parse__does_not_blow_up)
 {
-   std::vector<std::string> lines = {
-      "This is the most basic dialog."
-   };
-   Krampus21::ScriptLoader script_loader(lines);
-   script_loader.parse();
-   SUCCESS();
+   Krampus21::ScriptLoader script_loader;
+   std::vector<Krampus21::DialogBoxes::Base*> parsed_script = script_loader.parse();
+   EXPECT_EQ(3, parsed_script.size());
+   SUCCEED();
 }
+
