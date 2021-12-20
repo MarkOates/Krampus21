@@ -80,11 +80,16 @@ functions:
       }
       else
       {
-         result.first = script_line.substr(0, pos);
-         result.second = script_line.substr(pos+DELIMETER.size());
+         // TODO validate format of command (all caps, underscore, no spaces)
+         std::string command_fragment_unsanitized = script_line.substr(0, pos);
+
+         result.first = Blast::String::Trimmer(command_fragment_unsanitized).trim();
+         result.second = Blast::String::Trimmer(script_line.substr(pos+DELIMETER.size())).trim();
       }
 
       return result;
+    body_dependency_symbols:
+      - Blast::String::Trimmer
 
 
 dependencies:
@@ -100,5 +105,7 @@ dependencies:
     headers: [ Krampus21/DialogBoxes/Basic.hpp ]
   - symbol: std::pair<std::string, std::string>
     headers: [ utility, string ]
+  - symbol: Blast::String::Trimmer
+    headers: [ Blast/String/Trimmer.hpp ]
 
 

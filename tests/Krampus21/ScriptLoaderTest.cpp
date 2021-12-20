@@ -54,3 +54,21 @@ TEST(Krampus21_ScriptLoaderTest, parse__command_and_argument__will_parse_a_scrip
 }
 
 
+TEST(Krampus21_ScriptLoaderTest, parse__command_and_argument__will_trim_the_argument_fragment)
+   // note this is a private method test
+{
+   std::string script_line = "  DIALOG  :  This is the most basic dialog that should be trimmed  \n  ";
+   std::pair<std::string, std::string> parsed_command_argument_pair;
+   Krampus21::ScriptLoader script_loader;
+
+   parsed_command_argument_pair = script_loader.parse_command_and_argument(script_line);
+
+   std::pair<std::string, std::string> expected_command_argument_pair = {
+      "DIALOG",
+      "This is the most basic dialog that should be trimmed",
+   };
+
+   EXPECT_EQ(expected_command_argument_pair, parsed_command_argument_pair);
+}
+
+

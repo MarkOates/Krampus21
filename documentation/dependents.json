@@ -101,5 +101,8 @@
   ],
   "std/pair<std/string, std/string>": [
     "Krampus21/ScriptLoader"
+  ],
+  "Blast/String/Trimmer": [
+    "Krampus21/ScriptLoader"
   ]
 }

@@ -2,6 +2,7 @@
 
 #include <Krampus21/ScriptLoader.hpp>
 #include <iostream>
+#include <Blast/String/Trimmer.hpp>
 
 
 namespace Krampus21
@@ -72,8 +73,11 @@ std::pair<std::string, std::string> ScriptLoader::parse_command_and_argument(std
    }
    else
    {
-      result.first = script_line.substr(0, pos);
-      result.second = script_line.substr(pos+DELIMETER.size());
+      // TODO validate format of command (all caps, underscore, no spaces)
+      std::string command_fragment_unsanitized = script_line.substr(0, pos);
+
+      result.first = Blast::String::Trimmer(command_fragment_unsanitized).trim();
+      result.second = Blast::String::Trimmer(script_line.substr(pos+DELIMETER.size())).trim();
    }
 
    return result;
