@@ -20,6 +20,7 @@ namespace Krampus21
       ~ScriptLoader();
 
       std::vector<Krampus21::DialogBoxes::Base*> parse();
+      Krampus21::DialogBoxes::Base* parse_line_and_build_dialog(std::string script_line={});
    };
 }
 

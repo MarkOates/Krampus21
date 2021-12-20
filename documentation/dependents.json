@@ -5,7 +5,8 @@
   "Krampus21/DialogBoxes/Base": [
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxes/Base"
+    "Krampus21/DialogBoxes/Base",
+    "Krampus21/ScriptLoader"
   ],
   "Krampus21/DialogBoxes/Basic": [
     "Krampus21/DialogBoxFactory",

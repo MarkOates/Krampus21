@@ -437,10 +437,16 @@ table td
 <tr>
   <td class="method">parse()</td>
 </tr>
+<tr>
+  <td class="method">parse_line_and_build_dialog(1)</td>
+</tr>
     </table>
      <table>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;Krampus21::DialogBoxes::Base*&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogFactory&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogFactory.hpp&quot;]}</td>
@@ -474,7 +480,8 @@ table td
   "Krampus21/DialogBoxes/Base": [
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxes/Base"
+    "Krampus21/DialogBoxes/Base",
+    "Krampus21/ScriptLoader"
   ],
   "Krampus21/DialogBoxes/Basic": [
     "Krampus21/DialogBoxFactory",
