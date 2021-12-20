@@ -47,15 +47,21 @@ Krampus21::DialogBoxes::Base* ScriptLoader::parse_line_and_build_dialog(std::str
    std::string DIALOG = "DIALOG";
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
 
-   std::string commandment = DIALOG;
+   std::string command = DIALOG;
    std::string arguments = "";
 
-   if (commandment == DIALOG)
+   if (command == DIALOG)
    {
       created_dialog = dialog_factory.create_basic_dialog(std::vector<std::string>{script_line});
    }
 
    return created_dialog;
+}
+
+std::pair<std::string, std::string> ScriptLoader::parse_command_and_argument(std::string script_line)
+{
+   std::pair<std::string, std::string> command_argument_pair;
+   return command_argument_pair;
 }
 } // namespace Krampus21
 

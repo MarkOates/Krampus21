@@ -4,6 +4,7 @@
 #include <Krampus21/DialogBoxes/Base.hpp>
 #include <Krampus21/DialogFactory.hpp>
 #include <string>
+#include <utility>
 #include <vector>
 
 
@@ -21,6 +22,7 @@ namespace Krampus21
 
       std::vector<Krampus21::DialogBoxes::Base*> parse();
       Krampus21::DialogBoxes::Base* parse_line_and_build_dialog(std::string script_line={});
+      std::pair<std::string, std::string> parse_command_and_argument(std::string script_line={});
    };
 }
 

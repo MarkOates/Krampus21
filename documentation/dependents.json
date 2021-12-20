@@ -98,5 +98,8 @@
   ],
   "std/vector<Krampus21/DialogBoxes/Base>": [
     "Krampus21/ScriptLoader"
+  ],
+  "std/pair<std/string, std/string>": [
+    "Krampus21/ScriptLoader"
   ]
 }

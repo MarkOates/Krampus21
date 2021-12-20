@@ -49,15 +49,27 @@ functions:
       std::string DIALOG = "DIALOG";
       Krampus21::DialogBoxes::Base* created_dialog = nullptr;
 
-      std::string commandment = DIALOG;
+      std::string command = DIALOG;
       std::string arguments = "";
 
-      if (commandment == DIALOG)
+      if (command == DIALOG)
       {
          created_dialog = dialog_factory.create_basic_dialog(std::vector<std::string>{script_line});
       }
 
       return created_dialog;
+
+
+  - name: parse_command_and_argument
+    private: true
+    type: std::pair<std::string, std::string>
+    parameters:
+      - name: script_line
+        type: std::string
+        default_argument: '{}'
+    body: |
+       std::pair<std::string, std::string> command_argument_pair;
+       return command_argument_pair;
 
 
 dependencies:
@@ -71,5 +83,7 @@ dependencies:
     headers: [ Krampus21/DialogFactory.hpp ]
   - symbol: Krampus21::DialogBoxes::Basic*
     headers: [ Krampus21/DialogBoxes/Basic.hpp ]
+  - symbol: std::pair<std::string, std::string>
+    headers: [ utility, string ]
 
 
