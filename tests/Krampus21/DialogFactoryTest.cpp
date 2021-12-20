@@ -38,6 +38,19 @@ TEST(Krampus21_DialogFactoryTest, run__returns_the_expected_response)
 }
 
 
+TEST(Krampus21_DialogFactoryTest, build_basic_dialog__sets_the_lines_to_the_created_dialog)
+{
+   std::vector<std::string> pages = {
+      { "This seems to be working." },
+      { "Good thing I kept grinding." },
+      { "I guess I didn't have to have the perfect answer in the beginning." },
+   };
+   Krampus21::DialogFactory dialog_factory;
+   Krampus21::DialogBoxes::Basic created_dialog = dialog_factory.build_basic_dialog(pages);
+   ASSERT_EQ(pages, created_dialog.get_pages());
+}
+
+
 TEST(Krampus21_DialogFactoryTest, build_basic_dialog_from_file__without_the_file_present__throws_an_exception)
 {
    Krampus21::DialogFactory dialog_factory;

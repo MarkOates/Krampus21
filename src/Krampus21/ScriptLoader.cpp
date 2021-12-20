@@ -8,7 +8,8 @@ namespace Krampus21
 {
 
 
-ScriptLoader::ScriptLoader()
+ScriptLoader::ScriptLoader(std::vector<std::string> script_lines)
+   : script_lines(script_lines)
 {
 }
 
@@ -18,7 +19,7 @@ ScriptLoader::~ScriptLoader()
 }
 
 
-std::string ScriptLoader::run()
+std::string ScriptLoader::parse()
 {
    return "Hello World!";
 }

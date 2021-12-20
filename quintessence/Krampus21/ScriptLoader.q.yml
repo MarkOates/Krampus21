@@ -1,4 +1,18 @@
+properties:
+
+
+  - name: script_lines
+    type: std::vector<std::string>
+    init_with: '{}'
+    constructor_arg: true
+
+
 functions:
-  - name: run
+
+
+  - name: parse
     type: std::string
-    body: return "Hello World!";
+    body: |
+      return "Hello World!";
+
+

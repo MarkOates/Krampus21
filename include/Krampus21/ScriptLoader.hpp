@@ -2,6 +2,7 @@
 
 
 #include <string>
+#include <vector>
 
 
 namespace Krampus21
@@ -9,12 +10,13 @@ namespace Krampus21
    class ScriptLoader
    {
    private:
+      std::vector<std::string> script_lines;
 
    public:
-      ScriptLoader();
+      ScriptLoader(std::vector<std::string> script_lines={});
       ~ScriptLoader();
 
-      std::string run();
+      std::string parse();
    };
 }
 
