@@ -43,6 +43,18 @@ functions:
       return basic_dialog_box;
 
 
+  - name: create_basic_dialog
+    type: Krampus21::DialogBoxes::Basic*
+    parameters:
+      - name: pages
+        type: std::vector<std::string>
+        default_argument: '{}'
+    body: |
+      Krampus21::DialogBoxes::Basic* basic_dialog_box = new Krampus21::DialogBoxes::Basic();
+      basic_dialog_box->set_pages(pages);
+      return basic_dialog_box;
+
+
   - name: build_basic_dialog_from_file
     type: Krampus21::DialogBoxes::Basic
     parameters:

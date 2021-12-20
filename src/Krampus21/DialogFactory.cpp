@@ -54,6 +54,13 @@ Krampus21::DialogBoxes::Basic DialogFactory::build_basic_dialog(std::vector<std:
    return basic_dialog_box;
 }
 
+Krampus21::DialogBoxes::Basic* DialogFactory::create_basic_dialog(std::vector<std::string> pages)
+{
+   Krampus21::DialogBoxes::Basic* basic_dialog_box = new Krampus21::DialogBoxes::Basic();
+   basic_dialog_box->set_pages(pages);
+   return basic_dialog_box;
+}
+
 Krampus21::DialogBoxes::Basic DialogFactory::build_basic_dialog_from_file(std::string filename)
 {
    Krampus21::DialogBoxes::Basic basic_dialog_box;
