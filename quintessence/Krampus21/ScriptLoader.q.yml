@@ -52,7 +52,7 @@ functions:
       std::string command = DIALOG;
       std::string arguments = "";
 
-      if (command == DIALOG)
+      if (command.empty() || command == DIALOG)
       {
          created_dialog = dialog_factory.create_basic_dialog(std::vector<std::string>{script_line});
       }
@@ -68,8 +68,23 @@ functions:
         type: std::string
         default_argument: '{}'
     body: |
-       std::pair<std::string, std::string> command_argument_pair;
-       return command_argument_pair;
+      std::pair<std::string, std::string> result{"", ""};
+      std::string DELIMETER = ": ";
+
+      std::size_t pos = script_line.find(DELIMETER);
+
+      if (pos == std::string::npos)
+      {
+         result.first = "DIALOG";
+         result.second = script_line;
+      }
+      else
+      {
+         result.first = script_line.substr(0, pos);
+         result.second = script_line.substr(pos+DELIMETER.size());
+      }
+
+      return result;
 
 
 dependencies:

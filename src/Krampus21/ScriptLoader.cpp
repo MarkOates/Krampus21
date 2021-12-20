@@ -50,7 +50,7 @@ Krampus21::DialogBoxes::Base* ScriptLoader::parse_line_and_build_dialog(std::str
    std::string command = DIALOG;
    std::string arguments = "";
 
-   if (command == DIALOG)
+   if (command.empty() || command == DIALOG)
    {
       created_dialog = dialog_factory.create_basic_dialog(std::vector<std::string>{script_line});
    }
@@ -60,8 +60,23 @@ Krampus21::DialogBoxes::Base* ScriptLoader::parse_line_and_build_dialog(std::str
 
 std::pair<std::string, std::string> ScriptLoader::parse_command_and_argument(std::string script_line)
 {
-   std::pair<std::string, std::string> command_argument_pair;
-   return command_argument_pair;
+   std::pair<std::string, std::string> result{"", ""};
+   std::string DELIMETER = ": ";
+
+   std::size_t pos = script_line.find(DELIMETER);
+
+   if (pos == std::string::npos)
+   {
+      result.first = "DIALOG";
+      result.second = script_line;
+   }
+   else
+   {
+      result.first = script_line.substr(0, pos);
+      result.second = script_line.substr(pos+DELIMETER.size());
+   }
+
+   return result;
 }
 } // namespace Krampus21
 
