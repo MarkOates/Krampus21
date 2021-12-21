@@ -199,7 +199,6 @@ void ScreenManager::key_down_func(ALLEGRO_EVENT* ev)
 
 void ScreenManager::joy_button_down_func(ALLEGRO_EVENT* ev)
 {
-   int button_mapped_for_advancing_dialog = 1;
    switch (ev->joystick.button)
    {
    case 4:
@@ -207,6 +206,41 @@ void ScreenManager::joy_button_down_func(ALLEGRO_EVENT* ev)
       break;
    case 1:
       advance_dialog();
+      break;
+   }
+   return;
+}
+
+void ScreenManager::joy_axis_func(ALLEGRO_EVENT* ev)
+{
+   static float joystick_0_y_state = 0.0;
+   static float joystick_1_y_state = 0.0;
+   static float joystick_2_y_state = 0.0;
+
+   switch (ev->joystick.stick)
+   {
+   case 0: // left most stick
+      if (ev->joystick.axis == 1) // the up/down axis
+      {
+         float new_joystick_0_y_state = ev->joystick.pos;
+         if (joystick_0_y_state < 0.5 && new_joystick_0_y_state >= 0.5)
+         {
+            // move cursor down
+            if (is_current_dialog_a_choice()) move_dialog_choice_cursor_down();
+            std::cout << "CURSOR DOWN" << std::endl;
+         }
+         else if (joystick_0_y_state > -0.5 && new_joystick_0_y_state <= -0.5)
+         {
+            // move cursor up
+            if (is_current_dialog_a_choice()) move_dialog_choice_cursor_up();
+            std::cout << "CURSOR UP" << std::endl;
+         }
+         joystick_0_y_state = new_joystick_0_y_state;
+      }
+      break;
+   case 1:
+      break;
+   case 2: // the hat
       break;
    }
    return;

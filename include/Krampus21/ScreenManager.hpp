@@ -51,6 +51,7 @@ namespace Krampus21
       void play_music_track(std::string identifier="unset-music-identifier");
       void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
       void joy_button_down_func(ALLEGRO_EVENT* ev=nullptr) override;
+      void joy_axis_func(ALLEGRO_EVENT* ev=nullptr) override;
       void user_event_func(ALLEGRO_EVENT* ev=nullptr) override;
       AllegroFlare::FontBin* obtain_font_bin();
       bool is_current_dialog_a_choice();
