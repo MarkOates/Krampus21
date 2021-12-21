@@ -108,6 +108,7 @@ functions:
 
   - name: tokenize
     private: true
+    static: true
     type: std::vector<std::string>
     parameters:
       - name: str

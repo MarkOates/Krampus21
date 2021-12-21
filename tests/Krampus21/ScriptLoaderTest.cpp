@@ -102,7 +102,10 @@ TEST(Krampus21_ScriptLoaderTest, parse__command_and_argument__will_trim_the_argu
 TEST(Krampus21_ScriptLoaderTest, tokenize__will_split_a_source_string_into_trimmed_tokens)
    // note this is a private method test
 {
-   // TODO
+   std::string source_string = "  Voo| do |daah || \t dang ";
+   std::vector<std::string> expected_tokens = { "Voo", "do", "daah", "", "dang" };
+   std::vector<std::string> actual_tokens = Krampus21::ScriptLoader::tokenize(source_string);
+   EXPECT_EQ(expected_tokens, actual_tokens);
 }
 
 
