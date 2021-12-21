@@ -103,6 +103,11 @@ bool Base::current_page_is_valid()
    if (current_page_num >= pages.size()) return false;
    return true;
 }
+
+bool Base::is_type(std::string possible_type)
+{
+   return (possible_type == get_type());
+}
 } // namespace DialogBoxes
 } // namespace Krampus21
 

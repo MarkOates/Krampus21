@@ -33,6 +33,7 @@ namespace Krampus21
          bool has_no_pages();
          bool at_last_page();
          bool current_page_is_valid();
+         bool is_type(std::string possible_type="");
       };
    }
 }

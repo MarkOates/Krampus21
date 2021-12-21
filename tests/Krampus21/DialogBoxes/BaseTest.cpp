@@ -25,6 +25,22 @@ TEST(Krampus21_DialogBoxes_BaseTest, when_derived_the_type_of_the_derived_class_
 }
 
 
+TEST(Krampus21_DialogBoxes_BaseTest, is_type__returns_true_if_the_type_matches_the_current_type)
+{
+   std::string the_type_that_it_is = "MyTestDialogBox";
+   MyTestDialogBox dialog_box;
+   ASSERT_EQ(true, dialog_box.is_type(the_type_that_it_is));
+}
+
+
+TEST(Krampus21_DialogBoxes_BaseTest, is_type__returns_false_if_the_type_does_not_matches_the_current_type)
+{
+   std::string some_type_that_it_is_not = "SomeTypeThatItIsNot";
+   MyTestDialogBox dialog_box;
+   ASSERT_EQ(false, dialog_box.is_type(some_type_that_it_is_not));
+}
+
+
 TEST(Krampus21_DialogBoxes_BaseTest, set_pages__sets_the_pages_with_the_passed_value)
 {
    std::vector<std::string> pages = {
