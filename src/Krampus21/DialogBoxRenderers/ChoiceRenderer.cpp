@@ -7,6 +7,10 @@
 #include <sstream>
 #include <stdexcept>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
+#include <stdexcept>
+#include <sstream>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_primitives.h>
@@ -90,6 +94,28 @@ std::string ChoiceRenderer::obtain_choice_dialog_box_prompt()
    return choice_dialog_box->get_prompt();
 }
 
+std::vector<std::pair<std::string, std::string>> ChoiceRenderer::obtain_choice_dialog_box_options()
+{
+   if (!(choice_dialog_box))
+      {
+         std::stringstream error_message;
+         error_message << "ChoiceRenderer" << "::" << "obtain_choice_dialog_box_options" << ": error: " << "guard \"choice_dialog_box\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   return choice_dialog_box->get_options();
+}
+
+int ChoiceRenderer::obtain_choice_dialog_box_cursor_position()
+{
+   if (!(choice_dialog_box))
+      {
+         std::stringstream error_message;
+         error_message << "ChoiceRenderer" << "::" << "obtain_choice_dialog_box_cursor_position" << ": error: " << "guard \"choice_dialog_box\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   return choice_dialog_box->get_cursor_position();
+}
+
 void ChoiceRenderer::draw_prompt_text()
 {
    int dialog_box_num_revealed_characters = 999;
@@ -111,6 +137,19 @@ void ChoiceRenderer::draw_prompt_text()
       ALLEGRO_ALIGN_LEFT,
       concat_text(text, dialog_box_num_revealed_characters).c_str()
    );
+   return;
+}
+
+void ChoiceRenderer::draw_choices_with_cursor_and_current_selection()
+{
+   std::vector<std::pair<std::string, std::string>> options = obtain_choice_dialog_box_options();
+   int current_selection_num = obtain_choice_dialog_box_cursor_position();
+
+   int option_num = 0;
+   for (auto &option : options)
+   {
+      option_num++;
+   }
    return;
 }
 

@@ -58,12 +58,13 @@
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/DialogFactory"
   ],
-  "std/vector<std/vector<std/string>>": [
-    "Krampus21/DialogBoxes/Base"
-  ],
   "std/vector<std/pair<std/string, std/string>>": [
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/DialogBoxes/Choice",
     "Krampus21/DialogFactory"
+  ],
+  "std/vector<std/vector<std/string>>": [
+    "Krampus21/DialogBoxes/Base"
   ],
   "Blast/FileExistenceChecker": [
     "Krampus21/DialogFactory"

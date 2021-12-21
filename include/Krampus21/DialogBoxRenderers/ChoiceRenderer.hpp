@@ -5,6 +5,8 @@
 #include <Krampus21/DialogBoxes/Choice.hpp>
 #include <allegro5/allegro.h>
 #include <string>
+#include <utility>
+#include <vector>
 
 
 namespace Krampus21
@@ -26,7 +28,10 @@ namespace Krampus21
          void render();
          ALLEGRO_FONT* obtain_dialog_font();
          std::string obtain_choice_dialog_box_prompt();
+         std::vector<std::pair<std::string, std::string>> obtain_choice_dialog_box_options();
+         int obtain_choice_dialog_box_cursor_position();
          void draw_prompt_text();
+         void draw_choices_with_cursor_and_current_selection();
          void draw_frame();
          std::string concat_text(std::string source_text="", int length=0);
       };

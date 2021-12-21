@@ -50,6 +50,20 @@ functions:
       return choice_dialog_box->get_prompt();
 
 
+  - name: obtain_choice_dialog_box_options
+    type: std::vector<std::pair<std::string, std::string>>
+    guards: [ choice_dialog_box ]
+    body: |
+      return choice_dialog_box->get_options();
+
+
+  - name: obtain_choice_dialog_box_cursor_position
+    type: int
+    guards: [ choice_dialog_box ]
+    body: |
+      return choice_dialog_box->get_cursor_position();
+
+
   - name: draw_prompt_text
     body: |
       int dialog_box_num_revealed_characters = 999;
@@ -72,6 +86,23 @@ functions:
          concat_text(text, dialog_box_num_revealed_characters).c_str()
       );
       return;
+
+
+  - name: draw_choices_with_cursor_and_current_selection
+    properties:
+     - name: options
+       type: std::vector<std::pair<std::string, std::string>>
+       default_argument: '{}'
+    body: |
+       std::vector<std::pair<std::string, std::string>> options = obtain_choice_dialog_box_options();
+       int current_selection_num = obtain_choice_dialog_box_cursor_position();
+
+       int option_num = 0;
+       for (auto &option : options)
+       {
+          option_num++;
+       }
+       return;
 
 
   - name: draw_frame
@@ -130,5 +161,7 @@ dependencies:
     headers: [ allegro5/allegro_primitives.h ]
   - symbol: al_color_html
     headers: [ allegro5/allegro_color.h ]
+  - symbol: std::vector<std::pair<std::string, std::string>>
+    headers: [ vector, utility, string ]
 
 

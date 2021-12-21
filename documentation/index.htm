@@ -198,7 +198,16 @@ table td
   <td class="method">obtain_choice_dialog_box_prompt()</td>
 </tr>
 <tr>
+  <td class="method">obtain_choice_dialog_box_options()</td>
+</tr>
+<tr>
+  <td class="method">obtain_choice_dialog_box_cursor_position()</td>
+</tr>
+<tr>
   <td class="method">draw_prompt_text()</td>
+</tr>
+<tr>
+  <td class="method">draw_choices_with_cursor_and_current_selection()</td>
 </tr>
 <tr>
   <td class="method">draw_frame()</td>
@@ -228,6 +237,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_html&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;utility&quot;, &quot;string&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -742,12 +754,13 @@ table td
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/DialogFactory"
   ],
-  "std/vector<std/vector<std/string>>": [
-    "Krampus21/DialogBoxes/Base"
-  ],
   "std/vector<std/pair<std/string, std/string>>": [
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/DialogBoxes/Choice",
     "Krampus21/DialogFactory"
+  ],
+  "std/vector<std/vector<std/string>>": [
+    "Krampus21/DialogBoxes/Base"
   ],
   "Blast/FileExistenceChecker": [
     "Krampus21/DialogFactory"
