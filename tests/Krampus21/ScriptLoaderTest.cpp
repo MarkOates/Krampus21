@@ -109,3 +109,17 @@ TEST(Krampus21_ScriptLoaderTest, tokenize__will_split_a_source_string_into_trimm
 }
 
 
+TEST(Krampus21_ScriptLoaderTest, assert_min_token_count__will_return_true_if_there_are_at_least_n_tokens)
+{
+   ASSERT_EQ(true, Krampus21::ScriptLoader::assert_min_token_count({}, 0));
+   ASSERT_EQ(true, Krampus21::ScriptLoader::assert_min_token_count({ "t1", "t2", "t3" }, 3));
+   ASSERT_EQ(true, Krampus21::ScriptLoader::assert_min_token_count({ "t1", "t2", "t3", "t4" }, 2));
+}
+
+TEST(Krampus21_ScriptLoaderTest, assert_min_token_count__will_return_false_if_there_are_less_than_n_tokens)
+{
+   ASSERT_EQ(false, Krampus21::ScriptLoader::assert_min_token_count({}, 1));
+   ASSERT_EQ(false, Krampus21::ScriptLoader::assert_min_token_count({ "t1", "t2", "t3" }, 4));
+   ASSERT_EQ(false, Krampus21::ScriptLoader::assert_min_token_count({ "t1", "t2", "t3", "t4" }, 999));
+}
+

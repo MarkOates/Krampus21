@@ -65,7 +65,11 @@ Krampus21::DialogBoxes::Base* ScriptLoader::parse_line_and_create_dialog(std::st
       std::string choice_prompt = "[coice-prompt-text-not-extracted]";
       std::vector<std::pair<std::string, std::string>> choice_options = {};
 
-      std::string DELIMITER = "|";
+      std::vector<std::string> tokens = tokenize(argument);
+      // expect at least 3 tokens
+      // expect an odd number of tokens
+      // first token is the prompt
+      // next consecutive tokens are (choice_text, choice_value) pairs
 
       choice_options = { { "Boobar", "boobruhh" }, { "Zoozaz", "zazzle" } };
       created_dialog = dialog_factory.create_choice_dialog(choice_prompt, choice_options);
@@ -105,6 +109,21 @@ std::vector<std::string> ScriptLoader::tokenize(std::string str, char delim)
    std::vector<std::string> tokens = Blast::StringSplitter(str, delim).split();
    for (auto &token : tokens) token = Blast::String::Trimmer(token).trim();
    return tokens;
+}
+
+bool ScriptLoader::assert_min_token_count(std::vector<std::string> tokens, int min)
+{
+   return (tokens.size() >= min);
+}
+
+bool ScriptLoader::assert_odd_token_count(std::vector<std::string> tokens, int min)
+{
+   return (tokens.size() % 2);
+}
+
+bool ScriptLoader::assert_even_token_count(std::vector<std::string> tokens, int min)
+{
+   return (tokens.size() % 2);
 }
 } // namespace Krampus21
 
