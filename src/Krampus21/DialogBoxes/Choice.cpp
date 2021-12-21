@@ -11,6 +11,10 @@
 #include <sstream>
 #include <stdexcept>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace Krampus21
@@ -31,18 +35,6 @@ Choice::Choice(std::string prompt, std::vector<std::pair<std::string, std::strin
 
 Choice::~Choice()
 {
-}
-
-
-std::string Choice::get_prompt()
-{
-   return prompt;
-}
-
-
-std::vector<std::pair<std::string, std::string>> Choice::get_options()
-{
-   return options;
 }
 
 
@@ -70,6 +62,28 @@ void Choice::initialize()
    }
    initialized = true;
    return;
+}
+
+std::string Choice::get_prompt()
+{
+   if (!(initialized))
+      {
+         std::stringstream error_message;
+         error_message << "Choice" << "::" << "get_prompt" << ": error: " << "guard \"initialized\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   return prompt;
+}
+
+std::vector<std::pair<std::string, std::string>> Choice::get_options()
+{
+   if (!(initialized))
+      {
+         std::stringstream error_message;
+         error_message << "Choice" << "::" << "get_options" << ": error: " << "guard \"initialized\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   return options;
 }
 
 std::string Choice::get_current_selection_text()

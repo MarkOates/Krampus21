@@ -1,6 +1,11 @@
 
 #include <gtest/gtest.h>
 
+#define EXPECT_THROW_WITH_MESSAGE(code, raised_exception_type, raised_exception_message) \
+   try { code; FAIL() << "Expected " # raised_exception_type; } \
+   catch ( raised_exception_type const &err ) { EXPECT_EQ(err.what(), std::string( raised_exception_message )); } \
+   catch (...) { FAIL() << "Expected " # raised_exception_type; }
+
 #include <Krampus21/DialogBoxes/Choice.hpp>
 
 
@@ -21,6 +26,14 @@ TEST(Krampus21_DialogBoxes_ChoiceTest, when_not_initialized__cursor_position_is_
 {
    Krampus21::DialogBoxes::Choice choice;
    EXPECT_EQ(-1, choice.get_cursor_position());
+}
+
+
+TEST(Krampus21_DialogBoxes_ChoiceTest, get_prompt__when_not_initialized__raises_an_exception)
+{
+   Krampus21::DialogBoxes::Choice choice;
+   std::string expected_error_message = "Choice::get_prompt: error: guard \"initialized\" not met";
+   EXPECT_THROW_WITH_MESSAGE(choice.get_prompt(), std::runtime_error, expected_error_message);
 }
 
 

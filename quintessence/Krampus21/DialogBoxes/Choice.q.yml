@@ -13,13 +13,11 @@ properties:
     type: std::string
     init_with: '"[prompt-question-not-set]"'
     constructor_arg: true
-    getter: true
 
   - name: options
     type: std::vector<std::pair<std::string, std::string>>
     init_with: '{}'
     constructor_arg: true
-    getter: true
 
   - name: cursor_position
     type: int
@@ -47,6 +45,18 @@ functions:
       }
       initialized = true;
       return;
+
+
+  - name: get_prompt
+    type: std::string
+    guards: [ initialized ]
+    body: return prompt;
+
+
+  - name: get_options
+    type: std::vector<std::pair<std::string, std::string>>
+    guards: [ initialized ]
+    body: return options;
 
 
   - name: get_current_selection_text
