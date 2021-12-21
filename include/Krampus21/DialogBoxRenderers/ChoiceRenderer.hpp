@@ -1,6 +1,7 @@
 #pragma once
 
 
+#include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/FontBin.hpp>
 #include <Krampus21/DialogBoxes/Choice.hpp>
 #include <allegro5/allegro.h>
@@ -17,12 +18,13 @@ namespace Krampus21
       {
       private:
          AllegroFlare::FontBin* font_bin;
+         AllegroFlare::BitmapBin* bitmap_bin;
          Krampus21::DialogBoxes::Choice* choice_dialog_box;
          float width;
          float height;
 
       public:
-         ChoiceRenderer(AllegroFlare::FontBin* font_bin=nullptr, Krampus21::DialogBoxes::Choice* choice_dialog_box=nullptr, float width=1, float height=1);
+         ChoiceRenderer(AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, Krampus21::DialogBoxes::Choice* choice_dialog_box=nullptr, float width=1, float height=1);
          ~ChoiceRenderer();
 
          void render();

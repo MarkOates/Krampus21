@@ -54,6 +54,9 @@
     "Krampus21/DialogBoxRenderer",
     "Testing/WithAllegroRenderingFixture"
   ],
+  "AllegroFlare/BitmapBin": [
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+  ],
   "Krampus21/DialogBoxes/Choice": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/DialogFactory"
@@ -133,6 +136,12 @@
     "Testing/WithAllegroRenderingFixture"
   ],
   "al_init_ttf_addon": [
+    "Testing/WithAllegroRenderingFixture"
+  ],
+  "al_init_font_addon": [
+    "Testing/WithAllegroRenderingFixture"
+  ],
+  "al_init_image_addon": [
     "Testing/WithAllegroRenderingFixture"
   ],
   "ALLEGRO_DISPLAY": [

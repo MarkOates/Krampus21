@@ -175,6 +175,10 @@ table td
   <td class="property">AllegroFlare::FontBin*</td>
 </tr>
 <tr>
+  <td class="property">bitmap_bin</td>
+  <td class="property">AllegroFlare::BitmapBin*</td>
+</tr>
+<tr>
   <td class="property">choice_dialog_box</td>
   <td class="property">Krampus21::DialogBoxes::Choice*</td>
 </tr>
@@ -217,6 +221,9 @@ table td
 </tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
 </tr>
@@ -658,6 +665,10 @@ table td
   <td class="property">font_bin</td>
   <td class="property">AllegroFlare::FontBin</td>
 </tr>
+<tr>
+  <td class="property">bitmap_bin</td>
+  <td class="property">AllegroFlare::FontBin</td>
+</tr>
     </table>
      <table>
 <tr>
@@ -679,6 +690,12 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_init_ttf_addon&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_ttf.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_init_font_addon&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_init_image_addon&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_image.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_DISPLAY*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
@@ -755,6 +772,9 @@ table td
   "allegro_flare/placement2d": [
     "Krampus21/DialogBoxRenderer",
     "Testing/WithAllegroRenderingFixture"
+  ],
+  "AllegroFlare/BitmapBin": [
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "Krampus21/DialogBoxes/Choice": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
@@ -835,6 +855,12 @@ table td
     "Testing/WithAllegroRenderingFixture"
   ],
   "al_init_ttf_addon": [
+    "Testing/WithAllegroRenderingFixture"
+  ],
+  "al_init_font_addon": [
+    "Testing/WithAllegroRenderingFixture"
+  ],
+  "al_init_image_addon": [
     "Testing/WithAllegroRenderingFixture"
   ],
   "ALLEGRO_DISPLAY": [

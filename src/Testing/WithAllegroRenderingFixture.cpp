@@ -1,6 +1,8 @@
 
 
 #include <Testing/WithAllegroRenderingFixture.hpp>
+#include <allegro5/allegro_image.h>
+#include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_primitives.h>
 #include <stdexcept>
@@ -15,6 +17,7 @@ WithAllegroRenderingFixture::WithAllegroRenderingFixture()
    : ::testing::Test()
    , display(nullptr)
    , font_bin({})
+   , bitmap_bin({})
 {
 }
 
@@ -36,6 +39,12 @@ AllegroFlare::FontBin &WithAllegroRenderingFixture::get_font_bin_ref()
 }
 
 
+AllegroFlare::FontBin &WithAllegroRenderingFixture::get_bitmap_bin_ref()
+{
+   return bitmap_bin;
+}
+
+
 void WithAllegroRenderingFixture::SetUp()
 {
    ASSERT_EQ(false, al_is_system_installed());
@@ -43,8 +52,10 @@ void WithAllegroRenderingFixture::SetUp()
    al_init_primitives_addon();
    al_init_font_addon();
    al_init_ttf_addon();
+   al_init_image_addon();
 
    font_bin.set_full_path("/Users/markoates/Repos/Krampus21/bin/programs/data/fonts");
+   bitmap_bin.set_full_path("/Users/markoates/Repos/Krampus21/bin/programs/data/bitmaps");
 
    //display = al_create_display(1280 * 2, 720 * 2);
    display = al_create_display(1920, 1080);
@@ -55,6 +66,7 @@ void WithAllegroRenderingFixture::SetUp()
 void WithAllegroRenderingFixture::TearDown()
 {
    font_bin.clear();
+   bitmap_bin.clear();
    al_destroy_display(display);
    al_shutdown_ttf_addon(); // this is required otherwise subsequent al_init_ttf_addon will not work
                             // this is a bug in Allegro

@@ -25,8 +25,9 @@ namespace DialogBoxRenderers
 {
 
 
-ChoiceRenderer::ChoiceRenderer(AllegroFlare::FontBin* font_bin, Krampus21::DialogBoxes::Choice* choice_dialog_box, float width, float height)
+ChoiceRenderer::ChoiceRenderer(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* bitmap_bin, Krampus21::DialogBoxes::Choice* choice_dialog_box, float width, float height)
    : font_bin(font_bin)
+   , bitmap_bin(bitmap_bin)
    , choice_dialog_box(choice_dialog_box)
    , width(width)
    , height(height)

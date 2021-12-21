@@ -6,6 +6,11 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
+  - name: bitmap_bin
+    type: AllegroFlare::BitmapBin*
+    init_with: nullptr
+    constructor_arg: true
+
   - name: choice_dialog_box
     type: Krampus21::DialogBoxes::Choice*
     init_with: nullptr
@@ -179,6 +184,8 @@ functions:
 dependencies:
 
 
+  - symbol: AllegroFlare::BitmapBin*
+    headers: [ AllegroFlare/BitmapBin.hpp ]
   - symbol: AllegroFlare::FontBin*
     headers: [ AllegroFlare/FontBin.hpp ]
   - symbol: Krampus21::DialogBoxes::Choice*
