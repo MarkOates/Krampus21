@@ -11,6 +11,14 @@ public:
 };
 
 
+TEST(Krampus21_DialogBoxes_BaseTest, type__when_not_from_a_derived_class__is_the_expected_default)
+{
+   std::string expected_type = "Base";
+   Krampus21::DialogBoxes::Base base_dialog_box;
+   ASSERT_EQ(expected_type, base_dialog_box.get_type());
+}
+
+
 TEST(Krampus21_DialogBoxes_BaseTest, can_be_created_without_blowing_up)
 {
    Krampus21::DialogBoxes::Base base;
