@@ -47,7 +47,7 @@ TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererWithAllegroRenderingFixtureTes
    std::vector<std::pair<std::string, std::string>> choice_options = {
      { "Absolutely!", "GOTO A" },
      { "I hope so", "GOTO B" },
-     { "I don't think I am", "GOTO C" },
+     { "I think I am", "GOTO C" },
    };
    Krampus21::DialogBoxes::Choice choice_dialog_box(choice_box_prompt, choice_options);
    choice_dialog_box.initialize();
