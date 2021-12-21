@@ -17,11 +17,17 @@ namespace Krampus21
          std::string prompt;
          std::vector<std::pair<std::string, std::string>> options;
          int cursor_position;
+         bool initialized;
 
       public:
          Choice();
          ~Choice();
 
+         int get_cursor_position();
+         void initialize();
+         void move_cursor_position_down();
+         void move_cursor_position_up();
+         bool has_valid_cursor_position();
       };
    }
 }

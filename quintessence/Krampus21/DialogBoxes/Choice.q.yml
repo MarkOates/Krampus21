@@ -20,6 +20,58 @@ properties:
   - name: cursor_position
     type: int
     init_with: -1
+    getter: true
+
+  - name: initialized
+    type: bool
+    init_with: false
+
+
+functions:
+
+
+  - name: initialize
+    guards: [ (!initialized) ]
+    body: |
+      if (options.empty())
+      {
+         // do nothing
+      }
+      else
+      {
+         cursor_position = 0;
+      }
+      initialized = true;
+      return;
+
+
+  - name: move_cursor_position_down
+    type: void
+    guards: [ initialized ]
+    body: |
+      if (!has_valid_cursor_position()) return;
+
+      cursor_position++;
+      if (cursor_position >= options.size()) cursor_position = cursor_position % options.size();
+      return;
+
+
+  - name: move_cursor_position_up
+    type: void
+    guards: [ initialized ]
+    body: |
+      if (!has_valid_cursor_position()) return;
+
+      cursor_position--;
+      if (cursor_position < 0) cursor_position = (cursor_position + (options.size() * 100)) % options.size();
+      return;
+
+
+  - name: has_valid_cursor_position
+    private: true
+    type: bool
+    body: |
+      return (cursor_position != -1);
 
 
 dependencies:
