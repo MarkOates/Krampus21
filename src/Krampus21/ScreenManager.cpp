@@ -73,7 +73,7 @@ void ScreenManager::start_game()
    clear_all_dialogs();
    Krampus21::DialogFactory dialog_factory;
    //dialogs = dialog_factory.build_basic_dialog_from_file(get_dialog_filename());
-   play_music_track("ambiences-clips_2-machine-noise.wav");
+   play_music_track("etherial-ambience-01.wav");
    dialog_num_revealed_characters = 0;
 }
 
