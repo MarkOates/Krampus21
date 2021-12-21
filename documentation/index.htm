@@ -178,6 +178,14 @@ table td
   <td class="property">choice_dialog_box</td>
   <td class="property">Krampus21::DialogBoxes::Choice*</td>
 </tr>
+<tr>
+  <td class="property">width</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">height</td>
+  <td class="property">float</td>
+</tr>
     </table>
      <table>
 <tr>
@@ -196,6 +204,18 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_is_system_installed&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_is_primitives_addon_initialized&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_filled_rounded_rectangle&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_html&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -675,19 +695,23 @@ table td
     "Testing/WithAllegroRenderingFixture"
   ],
   "al_is_system_installed": [
-    "Krampus21/DialogBoxRenderer"
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "al_get_current_display": [
     "Krampus21/DialogBoxRenderer"
   ],
   "al_color_html": [
-    "Krampus21/DialogBoxRenderer"
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "al_is_primitives_addon_initialized": [
-    "Krampus21/DialogBoxRenderer"
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "al_draw_filled_rounded_rectangle": [
-    "Krampus21/DialogBoxRenderer"
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "Blast/StringJoiner": [
     "Krampus21/DialogBoxRenderer"

@@ -45,8 +45,10 @@ TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererWithAllegroRenderingFixtureTes
    Krampus21::DialogBoxes::Choice choice_dialog_box;
    Krampus21::DialogBoxRenderers::ChoiceRenderer choice_renderer(&get_font_bin_ref(), &choice_dialog_box);
 
-   //std::string expected_error_message = "ChoiceRenderer::render: error: guard \"choice_dialog_box\" not met";
-   //ASSERT_THROW_WITH_MESSAGE(choice_renderer.render(), std::runtime_error, expected_error_message);
+   choice_renderer.render();
+   sleep(1);
+
+   SUCCEED();
 }
 
 

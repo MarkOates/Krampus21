@@ -15,9 +15,11 @@ namespace Krampus21
       private:
          AllegroFlare::FontBin* font_bin;
          Krampus21::DialogBoxes::Choice* choice_dialog_box;
+         float width;
+         float height;
 
       public:
-         ChoiceRenderer(AllegroFlare::FontBin* font_bin=nullptr, Krampus21::DialogBoxes::Choice* choice_dialog_box=nullptr);
+         ChoiceRenderer(AllegroFlare::FontBin* font_bin=nullptr, Krampus21::DialogBoxes::Choice* choice_dialog_box=nullptr, float width=1, float height=1);
          ~ChoiceRenderer();
 
          void render();

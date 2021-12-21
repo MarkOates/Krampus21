@@ -23,19 +23,23 @@
     "Testing/WithAllegroRenderingFixture"
   ],
   "al_is_system_installed": [
-    "Krampus21/DialogBoxRenderer"
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "al_get_current_display": [
     "Krampus21/DialogBoxRenderer"
   ],
   "al_color_html": [
-    "Krampus21/DialogBoxRenderer"
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "al_is_primitives_addon_initialized": [
-    "Krampus21/DialogBoxRenderer"
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "al_draw_filled_rounded_rectangle": [
-    "Krampus21/DialogBoxRenderer"
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "Blast/StringJoiner": [
     "Krampus21/DialogBoxRenderer"
