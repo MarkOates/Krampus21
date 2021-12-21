@@ -59,7 +59,6 @@ table td
   <li><a href="#quintessence/Krampus21/ScreenManager.q.yml">quintessence/Krampus21/ScreenManager.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/ScriptLoader.q.yml">quintessence/Krampus21/ScriptLoader.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/UserEventEmitter.q.yml">quintessence/Krampus21/UserEventEmitter.q.yml</a></li>
-  <li><a href="#quintessence/Testing/WithAllegroRenderingFixture.q.yml">quintessence/Testing/WithAllegroRenderingFixture.q.yml</a></li>
 </ul>
 <h1>Components</h1>
 <ul>
@@ -653,68 +652,6 @@ table td
     </table>
   </div>
 </ul>
-<ul>
-  <div class="component">
-    <h3 id="quintessence/Testing/WithAllegroRenderingFixture.q.yml">quintessence/Testing/WithAllegroRenderingFixture.q.yml</h3>
-     <table>
-<tr>
-  <td class="property">display</td>
-  <td class="property">ALLEGRO_DISPLAY*</td>
-</tr>
-<tr>
-  <td class="property">font_bin</td>
-  <td class="property">AllegroFlare::FontBin</td>
-</tr>
-<tr>
-  <td class="property">bitmap_bin</td>
-  <td class="property">AllegroFlare::FontBin</td>
-</tr>
-    </table>
-     <table>
-<tr>
-  <td class="method">SetUp()</td>
-</tr>
-<tr>
-  <td class="method">TearDown()</td>
-</tr>
-<tr>
-  <td class="method">get_any_font()</td>
-</tr>
-<tr>
-  <td class="method">build_centered_placement(2)</td>
-</tr>
-    </table>
-     <table>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_init_primitives_addon&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_init_ttf_addon&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_ttf.h&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_init_font_addon&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_init_image_addon&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_image.h&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_DISPLAY*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;:&quot;:testing::Test&quot;, &quot;headers&quot;=&gt;[&quot;gtest/gtest.h&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement2d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement2d.h&quot;]}</td>
-</tr>
-    </table>
-  </div>
-</ul>
 <h1>Dependents</h1>
 <pre>
 {
@@ -738,8 +675,7 @@ table td
   ],
   "ALLEGRO_FONT": [
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Testing/WithAllegroRenderingFixture"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "al_is_system_installed": [
     "Krampus21/DialogBoxRenderer",
@@ -766,12 +702,10 @@ table td
   "AllegroFlare/FontBin": [
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/ScreenManager",
-    "Testing/WithAllegroRenderingFixture"
+    "Krampus21/ScreenManager"
   ],
   "allegro_flare/placement2d": [
-    "Krampus21/DialogBoxRenderer",
-    "Testing/WithAllegroRenderingFixture"
+    "Krampus21/DialogBoxRenderer"
   ],
   "AllegroFlare/BitmapBin": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer"
@@ -850,24 +784,6 @@ table td
   ],
   "Blast/String/Trimmer": [
     "Krampus21/ScriptLoader"
-  ],
-  "al_init_primitives_addon": [
-    "Testing/WithAllegroRenderingFixture"
-  ],
-  "al_init_ttf_addon": [
-    "Testing/WithAllegroRenderingFixture"
-  ],
-  "al_init_font_addon": [
-    "Testing/WithAllegroRenderingFixture"
-  ],
-  "al_init_image_addon": [
-    "Testing/WithAllegroRenderingFixture"
-  ],
-  "ALLEGRO_DISPLAY": [
-    "Testing/WithAllegroRenderingFixture"
-  ],
-  ":testing/Test": [
-    "Testing/WithAllegroRenderingFixture"
   ]
 }
 </pre>

@@ -19,8 +19,7 @@
   ],
   "ALLEGRO_FONT": [
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Testing/WithAllegroRenderingFixture"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "al_is_system_installed": [
     "Krampus21/DialogBoxRenderer",
@@ -47,12 +46,10 @@
   "AllegroFlare/FontBin": [
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/ScreenManager",
-    "Testing/WithAllegroRenderingFixture"
+    "Krampus21/ScreenManager"
   ],
   "allegro_flare/placement2d": [
-    "Krampus21/DialogBoxRenderer",
-    "Testing/WithAllegroRenderingFixture"
+    "Krampus21/DialogBoxRenderer"
   ],
   "AllegroFlare/BitmapBin": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer"
@@ -131,23 +128,5 @@
   ],
   "Blast/String/Trimmer": [
     "Krampus21/ScriptLoader"
-  ],
-  "al_init_primitives_addon": [
-    "Testing/WithAllegroRenderingFixture"
-  ],
-  "al_init_ttf_addon": [
-    "Testing/WithAllegroRenderingFixture"
-  ],
-  "al_init_font_addon": [
-    "Testing/WithAllegroRenderingFixture"
-  ],
-  "al_init_image_addon": [
-    "Testing/WithAllegroRenderingFixture"
-  ],
-  "ALLEGRO_DISPLAY": [
-    "Testing/WithAllegroRenderingFixture"
-  ],
-  ":testing/Test": [
-    "Testing/WithAllegroRenderingFixture"
   ]
 }
