@@ -63,7 +63,20 @@ TEST(Krampus21_ScriptLoaderTest, parse_line_and_create_dialog__will_parse_a_DIAL
    Krampus21::DialogBoxes::Base* created_dialog = script_loader.parse_line_and_create_dialog(script_line);
 
    ASSERT_NE(nullptr, created_dialog);
-   EXPECT_EQ(true, created_dialog->is_type("Basic"));
+   EXPECT_EQ("Basic", created_dialog->get_type());
+}
+
+
+TEST(Krampus21_ScriptLoaderTest, parse_line_and_create_dialog__will_parse_a_CHOICE_command)
+   // note this is a private method test
+{
+   std::string script_line = "CHOICE: This is the most basic dialog line.";
+   Krampus21::ScriptLoader script_loader;
+
+   Krampus21::DialogBoxes::Base* created_dialog = script_loader.parse_line_and_create_dialog(script_line);
+
+   ASSERT_NE(nullptr, created_dialog);
+   EXPECT_EQ("Choice", created_dialog->get_type());
 }
 
 

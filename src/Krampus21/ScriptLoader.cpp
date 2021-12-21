@@ -48,9 +48,9 @@ Krampus21::DialogBoxes::Base* ScriptLoader::parse_line_and_create_dialog(std::st
    std::string DIALOG = "DIALOG";
    std::string CHOICE = "CHOICE";
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
-
-   std::string command = DIALOG;
-   std::string arguments = "";
+   std::pair<std::string, std::string> command_and_argument = parse_command_and_argument(script_line);
+   std::string command = command_and_argument.first;
+   std::string argument = command_and_argument.second;
 
    if (command.empty() || command == DIALOG)
    {
@@ -60,6 +60,7 @@ Krampus21::DialogBoxes::Base* ScriptLoader::parse_line_and_create_dialog(std::st
    {
       std::string choice_prompt = "[coice-prompt-text-not-extracted]";
       std::vector<std::pair<std::string, std::string>> choice_options = {};
+      choice_options = { { "Boobar", "boobruhh" }, { "Zoozaz", "zazzle" } };
       created_dialog = dialog_factory.create_choice_dialog(choice_prompt, choice_options);
    }
 
