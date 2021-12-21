@@ -171,6 +171,10 @@ table td
     <h3 id="quintessence/Krampus21/DialogBoxRenderers/ChoiceRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderers/ChoiceRenderer.q.yml</h3>
      <table>
 <tr>
+  <td class="property">font_bin</td>
+  <td class="property">AllegroFlare::FontBin*</td>
+</tr>
+<tr>
   <td class="property">choice_dialog_box</td>
   <td class="property">Krampus21::DialogBoxes::Choice*</td>
 </tr>
@@ -181,6 +185,9 @@ table td
 </tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Choice*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Choice.hpp&quot;]}</td>
 </tr>
@@ -680,6 +687,7 @@ table td
   ],
   "AllegroFlare/FontBin": [
     "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/ScreenManager",
     "Testing/WithAllegroRenderingFixture"
   ],

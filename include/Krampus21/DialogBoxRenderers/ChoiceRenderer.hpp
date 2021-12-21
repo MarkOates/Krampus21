@@ -1,6 +1,7 @@
 #pragma once
 
 
+#include <AllegroFlare/FontBin.hpp>
 #include <Krampus21/DialogBoxes/Choice.hpp>
 
 
@@ -11,10 +12,11 @@ namespace Krampus21
       class ChoiceRenderer
       {
       private:
+         AllegroFlare::FontBin* font_bin;
          Krampus21::DialogBoxes::Choice* choice_dialog_box;
 
       public:
-         ChoiceRenderer(Krampus21::DialogBoxes::Choice* choice_dialog_box=nullptr);
+         ChoiceRenderer(AllegroFlare::FontBin* font_bin=nullptr, Krampus21::DialogBoxes::Choice* choice_dialog_box=nullptr);
          ~ChoiceRenderer();
 
          void render();

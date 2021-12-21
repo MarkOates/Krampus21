@@ -11,8 +11,9 @@ namespace DialogBoxRenderers
 {
 
 
-ChoiceRenderer::ChoiceRenderer(Krampus21::DialogBoxes::Choice* choice_dialog_box)
-   : choice_dialog_box(choice_dialog_box)
+ChoiceRenderer::ChoiceRenderer(AllegroFlare::FontBin* font_bin, Krampus21::DialogBoxes::Choice* choice_dialog_box)
+   : font_bin(font_bin)
+   , choice_dialog_box(choice_dialog_box)
 {
 }
 

@@ -1,6 +1,11 @@
 properties:
 
 
+  - name: font_bin
+    type: AllegroFlare::FontBin*
+    init_with: nullptr
+    constructor_arg: true
+
   - name: choice_dialog_box
     type: Krampus21::DialogBoxes::Choice*
     init_with: nullptr
@@ -19,6 +24,8 @@ functions:
 dependencies:
 
 
+  - symbol: AllegroFlare::FontBin*
+    headers: [ AllegroFlare/FontBin.hpp ]
   - symbol: Krampus21::DialogBoxes::Choice*
     headers: [ Krampus21/DialogBoxes/Choice.hpp ]
 
