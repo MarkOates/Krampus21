@@ -66,6 +66,7 @@ functions:
         default_argument: '{}'
     body: |
       Krampus21::DialogBoxes::Choice* choice_dialog_box = new Krampus21::DialogBoxes::Choice(prompt, options);
+      choice_dialog_box->initialize();
       //basic_dialog_box->set_pages(pages); // ??? hmm
       return choice_dialog_box;
 
