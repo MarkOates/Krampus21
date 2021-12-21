@@ -19,7 +19,8 @@
 
 
 class Krampus21_DialogBoxRenderers_ChoiceRendererTest : public ::testing::Test {};
-class MyTestClass : public Testing::WithAllegroRenderingFixture {};
+class Krampus21_DialogBoxRenderers_ChoiceRendererWithAllegroRenderingFixtureTest
+   : public Testing::WithAllegroRenderingFixture {};
 
 
 TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererTest, can_be_created_without_blowing_up)
@@ -33,6 +34,15 @@ TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererTest, render__without_a_choice
    Krampus21::DialogBoxRenderers::ChoiceRenderer choice_renderer;
    std::string expected_error_message = "ChoiceRenderer::render: error: guard \"choice_dialog_box\" not met";
    ASSERT_THROW_WITH_MESSAGE(choice_renderer.render(), std::runtime_error, expected_error_message);
+}
+
+
+TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererWithAllegroRenderingFixtureTest,
+   render__without_a_choice_dialog_box__throws_an_exception)
+{
+   //Krampus21::DialogBoxRenderers::ChoiceRenderer choice_renderer;
+   //std::string expected_error_message = "ChoiceRenderer::render: error: guard \"choice_dialog_box\" not met";
+   //ASSERT_THROW_WITH_MESSAGE(choice_renderer.render(), std::runtime_error, expected_error_message);
 }
 
 
