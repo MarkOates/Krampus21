@@ -28,6 +28,22 @@ functions:
   - name: render
     guards: [ al_is_system_installed(), choice_dialog_box ]
     body: |
+      render_frame();
+      return;
+
+
+  - name: obtain_dialog_font
+    guards: [ al_is_font_addon_initialized(), al_is_ttf_addon_initialized(), font_bin ]
+    private: true
+    type: ALLEGRO_FONT*
+    body: |
+      static const std::string FONT_IDENTIFIER = "Purista Medium.ttf -50";
+      ALLEGRO_FONT* result_font = font_bin->operator[](FONT_IDENTIFIER);
+      return result_font;
+
+
+  - name: render_frame
+    body: |
       float roundness = 18.0f;
       float border_thickness = 5.0f;
       float border_inner_padding = border_thickness * 3;
@@ -48,16 +64,6 @@ functions:
       - al_is_primitives_addon_initialized
       - al_draw_filled_rounded_rectangle
       - al_color_html
-
-
-  - name: obtain_dialog_font
-    guards: [ al_is_font_addon_initialized(), al_is_ttf_addon_initialized(), font_bin ]
-    private: true
-    type: ALLEGRO_FONT*
-    body: |
-      static const std::string FONT_IDENTIFIER = "Purista Medium.ttf -50";
-      ALLEGRO_FONT* result_font = font_bin->operator[](FONT_IDENTIFIER);
-      return result_font;
 
 
 dependencies:

@@ -1,14 +1,14 @@
 
 
 #include <Krampus21/DialogBoxRenderers/ChoiceRenderer.hpp>
+#include <stdexcept>
+#include <sstream>
+#include <stdexcept>
+#include <sstream>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_color.h>
-#include <stdexcept>
-#include <sstream>
-#include <stdexcept>
-#include <sstream>
 
 
 namespace Krampus21
@@ -45,20 +45,7 @@ void ChoiceRenderer::render()
          error_message << "ChoiceRenderer" << "::" << "render" << ": error: " << "guard \"choice_dialog_box\" not met";
          throw std::runtime_error(error_message.str());
       }
-   float roundness = 18.0f;
-   float border_thickness = 5.0f;
-   float border_inner_padding = border_thickness * 3;
-   ALLEGRO_COLOR fill_color = al_color_html("162428");
-   //ALLEGRO_COLOR border_color = al_color_html("244751");
-   al_draw_filled_rounded_rectangle(
-      0 + border_inner_padding,
-      0 + border_inner_padding,
-      width - border_inner_padding,
-      height - border_inner_padding,
-      roundness * 0.5,
-      roundness * 0.5,
-      fill_color
-   );
+   render_frame();
    return;
 }
 
@@ -85,6 +72,25 @@ ALLEGRO_FONT* ChoiceRenderer::obtain_dialog_font()
    static const std::string FONT_IDENTIFIER = "Purista Medium.ttf -50";
    ALLEGRO_FONT* result_font = font_bin->operator[](FONT_IDENTIFIER);
    return result_font;
+}
+
+void ChoiceRenderer::render_frame()
+{
+   float roundness = 18.0f;
+   float border_thickness = 5.0f;
+   float border_inner_padding = border_thickness * 3;
+   ALLEGRO_COLOR fill_color = al_color_html("162428");
+   //ALLEGRO_COLOR border_color = al_color_html("244751");
+   al_draw_filled_rounded_rectangle(
+      0 + border_inner_padding,
+      0 + border_inner_padding,
+      width - border_inner_padding,
+      height - border_inner_padding,
+      roundness * 0.5,
+      roundness * 0.5,
+      fill_color
+   );
+   return;
 }
 } // namespace DialogBoxRenderers
 } // namespace Krampus21

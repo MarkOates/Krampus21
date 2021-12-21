@@ -24,6 +24,7 @@ namespace Krampus21
 
          void render();
          ALLEGRO_FONT* obtain_dialog_font();
+         void render_frame();
       };
    }
 }
