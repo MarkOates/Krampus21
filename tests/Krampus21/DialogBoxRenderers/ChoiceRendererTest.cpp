@@ -43,7 +43,13 @@ TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererWithAllegroRenderingFixtureTes
    render__does_not_blow_up)
 {
    allegro_flare::placement2d place{ 1920/2, 1080/4*3, 1920/5*3, 1080/4 };
-   Krampus21::DialogBoxes::Choice choice_dialog_box;
+   std::string choice_box_prompt = "Do you think you're making progress?";
+   std::vector<std::pair<std::string, std::string>> choice_options = {
+     { "Absolutely!", "GOTO A" },
+     { "I hope so", "GOTO B" },
+     { "I don't think I am", "GOTO C" },
+   };
+   Krampus21::DialogBoxes::Choice choice_dialog_box(choice_box_prompt, choice_options);
    Krampus21::DialogBoxRenderers::ChoiceRenderer choice_renderer(
       &get_font_bin_ref(),
       &choice_dialog_box,

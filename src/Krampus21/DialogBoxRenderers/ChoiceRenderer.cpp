@@ -55,6 +55,7 @@ void ChoiceRenderer::render()
       }
    draw_frame();
    draw_prompt_text();
+   draw_choices_with_cursor_and_current_selection();
    return;
 }
 
@@ -82,14 +83,27 @@ void ChoiceRenderer::draw_prompt_text()
    return;
 }
 
-void ChoiceRenderer::draw_choices_with_cursor_and_current_selection()
+void ChoiceRenderer::draw_choices_with_cursor_and_current_selection(float start_y)
 {
+   ALLEGRO_FONT* text_font = obtain_dialog_font();
    std::vector<std::pair<std::string, std::string>> options = obtain_choice_dialog_box_options();
    int current_selection_num = obtain_choice_dialog_box_cursor_position();
+   float line_height = al_get_font_line_height(text_font);
+   ALLEGRO_COLOR text_color = al_color_html("66a9bc");
 
    int option_num = 0;
    for (auto &option : options)
    {
+      bool this_option_is_currently_selected = (option_num == current_selection_num);
+      std::string option_text = "foobar";
+      al_draw_text(
+         text_font,
+         text_color,
+         100,
+         start_y + line_height*option_num,
+         ALLEGRO_ALIGN_LEFT,
+         option_text.c_str()
+      );
       option_num++;
    }
    return;
