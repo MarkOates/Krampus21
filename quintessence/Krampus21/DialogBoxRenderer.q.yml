@@ -111,6 +111,7 @@ functions:
 
       return;
 
+
   - name: draw_styled_revealed_text
     body: |
       std::string text = obtain_dialog_box_text();
