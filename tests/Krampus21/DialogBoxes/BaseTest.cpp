@@ -168,4 +168,34 @@ TEST(Krampus21_DialogBoxes_BaseTest, next_page__will_increment_the_page_text)
 }
 
 
+TEST(Krampus21_DialogBoxes_BaseTest, update__will_increment_the_num_revealed_characters)
+{
+   std::vector<std::string> pages = {
+      "This is text who's characters will reveal over time.",
+   };
+   MyTestDialogBox dialog_box;
+   dialog_box.set_pages(pages);
+
+   EXPECT_EQ(0, dialog_box.get_num_revealed_characters());
+   dialog_box.update();
+   EXPECT_EQ(1, dialog_box.get_num_revealed_characters());
+}
+
+
+TEST(Krampus21_DialogBoxes_BaseTest, reset__will_set_the_num_revealed_characters_to_0)
+{
+   std::vector<std::string> pages = {
+      "This is text who's characters will reveal over time.",
+   };
+   MyTestDialogBox dialog_box;
+   dialog_box.set_pages(pages);
+
+   for (unsigned i=0; i<30; i++) dialog_box.update();
+   EXPECT_NE(0, dialog_box.get_num_revealed_characters());
+
+   dialog_box.reset();
+   EXPECT_EQ(0, dialog_box.get_num_revealed_characters());
+}
+
+
 

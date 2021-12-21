@@ -46,6 +46,7 @@ functions:
   - name: reset
     body: |
       current_page_num = 0;
+      num_revealed_characters = 0;
       finished = false;
       return;
 
@@ -53,6 +54,7 @@ functions:
   - name: update
     virtual: true
     body: |
+      num_revealed_characters++;
       return;
 
 
@@ -69,6 +71,7 @@ functions:
       //if (at_last_page()) return false;
       if (get_finished()) return false;
       current_page_num++;
+      num_revealed_characters = 0;
       if (current_page_num >= num_pages())
       {
          finished = true;

@@ -65,12 +65,14 @@ void Base::set_pages(std::vector<std::string> pages)
 void Base::reset()
 {
    current_page_num = 0;
+   num_revealed_characters = 0;
    finished = false;
    return;
 }
 
 void Base::update()
 {
+   num_revealed_characters++;
    return;
 }
 
@@ -85,6 +87,7 @@ bool Base::next_page()
    //if (at_last_page()) return false;
    if (get_finished()) return false;
    current_page_num++;
+   num_revealed_characters = 0;
    if (current_page_num >= num_pages())
    {
       finished = true;
