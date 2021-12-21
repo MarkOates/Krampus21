@@ -109,7 +109,6 @@ functions:
          ALLEGRO_ALIGN_RIGHT,
          text.c_str()
       );
-
       return;
 
 

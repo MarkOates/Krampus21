@@ -144,7 +144,6 @@ void DialogBoxRenderer::draw_action_text(std::string text)
       ALLEGRO_ALIGN_RIGHT,
       text.c_str()
    );
-
    return;
 }
 
