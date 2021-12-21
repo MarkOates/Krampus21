@@ -91,7 +91,7 @@ void ChoiceRenderer::draw_choices_with_cursor_and_current_selection(float start_
    float line_height = al_get_font_line_height(text_font);
    ALLEGRO_COLOR text_color = al_color_html("66a9bc");
    ALLEGRO_COLOR selection_hilight_color = ALLEGRO_COLOR{0.1, 0.1, 0.1, 0.1};
-   float selection_box_x_padding = 20;
+   float selection_box_x_padding = 18;
    float selection_box_y_padding = 0;
    float x = 200;
 
