@@ -3,6 +3,7 @@
 
 #include <AllegroFlare/FontBin.hpp>
 #include <Krampus21/DialogBoxes/Choice.hpp>
+#include <allegro5/allegro.h>
 
 
 namespace Krampus21
@@ -20,6 +21,7 @@ namespace Krampus21
          ~ChoiceRenderer();
 
          void render();
+         ALLEGRO_FONT* obtain_dialog_font();
       };
    }
 }
