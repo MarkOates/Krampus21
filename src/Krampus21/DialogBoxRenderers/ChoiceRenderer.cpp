@@ -55,7 +55,7 @@ void ChoiceRenderer::render()
       }
    draw_frame();
    draw_prompt_text();
-   draw_choices_with_cursor_and_current_selection();
+   draw_choices_with_cursor_and_current_selection(85);
    return;
 }
 
@@ -95,11 +95,11 @@ void ChoiceRenderer::draw_choices_with_cursor_and_current_selection(float start_
    for (auto &option : options)
    {
       bool this_option_is_currently_selected = (option_num == current_selection_num);
-      std::string option_text = "foobar";
+      std::string option_text = option.first;
       al_draw_text(
          text_font,
          text_color,
-         100,
+         200,
          start_y + line_height*option_num,
          ALLEGRO_ALIGN_LEFT,
          option_text.c_str()
