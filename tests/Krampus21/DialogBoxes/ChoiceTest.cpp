@@ -97,7 +97,16 @@ TEST(Krampus21_DialogBoxes_ChoiceTest, move_cursor_position_down__decrements_the
 TEST(Krampus21_DialogBoxes_ChoiceTest,
    move_cursor_position_up__when_at_the_top_of_the_list_of_chioices__wraps_to_the_bottom)
 {
-   // TODO
+   std::vector<std::pair<std::string, std::string>> choice_options = {
+     { "Post a log", "GOTO A" },
+     { "Keep coding", "GOTO B" },
+     { "Drink more soylent", "GOTO C" },
+   };
+   Krampus21::DialogBoxes::Choice choice("What will you do?", choice_options);
+   choice.initialize();
+
+   choice.move_cursor_position_up();
+   EXPECT_EQ(2, choice.get_cursor_position());
 }
 
 
