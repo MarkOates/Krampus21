@@ -9,7 +9,7 @@
 
 #include <Krampus21/DialogBoxRenderers/ChoiceRenderer.hpp>
 
-#include <Testing/WithAllegroRenderingFixture.hpp>
+#include <AllegroFlare/Testing/WithAllegroRenderingFixture.hpp>
 
 #ifdef _WIN32
 #define TEST_FIXTURE_FONT_FOLDER "/msys64/home/Mark/Repos/Krampus21/bin/programs/data/fonts/"
@@ -20,7 +20,7 @@
 
 class Krampus21_DialogBoxRenderers_ChoiceRendererTest : public ::testing::Test {};
 class Krampus21_DialogBoxRenderers_ChoiceRendererWithAllegroRenderingFixtureTest
-   : public Testing::WithAllegroRenderingFixture {};
+   : public AllegroFlare::Testing::WithAllegroRenderingFixture {};
 
 
 TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererTest, can_be_created_without_blowing_up)
@@ -53,6 +53,7 @@ TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererWithAllegroRenderingFixtureTes
    choice_dialog_box.initialize();
    Krampus21::DialogBoxRenderers::ChoiceRenderer choice_renderer(
       &get_font_bin_ref(),
+      &get_bitmap_bin_ref(),
       &choice_dialog_box,
       place.size.x,
       place.size.y
@@ -68,5 +69,6 @@ TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererWithAllegroRenderingFixtureTes
 
    SUCCEED();
 }
+
 
 
