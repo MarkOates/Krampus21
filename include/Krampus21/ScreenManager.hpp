@@ -7,11 +7,12 @@
 #include <AllegroFlare/Framework.hpp>
 #include <AllegroFlare/Screen.hpp>
 #include <AllegroFlare/Screens.hpp>
-#include <Krampus21/DialogBoxes/Basic.hpp>
+#include <Krampus21/DialogBoxes/Base.hpp>
 #include <Krampus21/UserEventEmitter.hpp>
 #include <allegro5/allegro.h>
 #include <map>
 #include <string>
+#include <vector>
 
 
 namespace Krampus21
@@ -27,7 +28,8 @@ namespace Krampus21
       ALLEGRO_EVENT_SOURCE user_event_emitter_souce;
       Krampus21::UserEventEmitter user_event_emitter;
       AllegroFlare::AudioController audio_controller;
-      Krampus21::DialogBoxes::Basic dialog;
+      std::vector<Krampus21::DialogBoxes::Base*> dialogs;
+      Krampus21::DialogBoxes::Base* current_dialog;
       int dialog_num_revealed_characters;
       bool initialized;
 
@@ -37,6 +39,7 @@ namespace Krampus21
 
       std::string get_dialog_filename();
       void initialize();
+      void clear_all_dialogs();
       void start_game();
       void shutdown_game();
       void advance_dialog();

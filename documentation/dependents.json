@@ -6,6 +6,7 @@
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxes/Base",
+    "Krampus21/ScreenManager",
     "Krampus21/ScriptLoader"
   ],
   "Krampus21/DialogBoxes/Basic": [
@@ -97,6 +98,7 @@
     "Krampus21/ScriptLoader"
   ],
   "std/vector<Krampus21/DialogBoxes/Base>": [
+    "Krampus21/ScreenManager",
     "Krampus21/ScriptLoader"
   ],
   "std/pair<std/string, std/string>": [

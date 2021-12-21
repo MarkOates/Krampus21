@@ -49,9 +49,13 @@ properties:
     type: AllegroFlare::AudioController
     init_with: '&framework->get_sample_bin_ref(), sound_effect_elements, music_track_elements'
 
-  - name: dialog
-    type: Krampus21::DialogBoxes::Basic
+  - name: dialogs
+    type: std::vector<Krampus21::DialogBoxes::Base*>
     init_with: '{}'
+
+  - name: current_dialog
+    type: Krampus21::DialogBoxes::Base*
+    init_with: nullptr
 
   - name: dialog_num_revealed_characters
     type: int
@@ -75,10 +79,20 @@ functions:
       - Krampus21::DialogFactory
 
 
+  - name: clear_all_dialogs
+    type: void
+    body: |
+      for (auto &dialog : dialogs) { if (dialog) delete dialog; }
+      dialogs.clear();
+      current_dialog = nullptr;
+      return;
+
+
   - name: start_game
     body: |
+      clear_all_dialogs();
       Krampus21::DialogFactory dialog_factory;
-      dialog = dialog_factory.build_basic_dialog_from_file(get_dialog_filename());
+      //dialogs = dialog_factory.build_basic_dialog_from_file(get_dialog_filename());
       play_music_track("ambiences-clips_2-machine-noise.wav");
       dialog_num_revealed_characters = 0;
     body_dependency_symbols:
@@ -95,7 +109,8 @@ functions:
   - name: advance_dialog
     guards: [ framework ]
     body: |
-      dialog.next_page();
+      if (!current_dialog) return;
+      current_dialog->next_page();
       dialog_num_revealed_characters = 0;
       return;
 
@@ -109,7 +124,8 @@ functions:
   - name: dialog_is_finished
     type: bool
     body: |
-      return dialog.get_finished();
+      if (!current_dialog) return true;
+      return current_dialog->get_finished();
 
 
   - name: primary_timer_func
@@ -122,7 +138,8 @@ functions:
       }
       else
       {
-         Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), &dialog, dialog_num_revealed_characters);
+         
+         Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), current_dialog, dialog_num_revealed_characters);
          renderer.render();
       }
       return;
@@ -231,5 +248,9 @@ dependencies:
     headers: [ Krampus21/DialogBoxRenderer.hpp ]
   - symbol: Krampus21::DialogFactory
     headers: [ Krampus21/DialogFactory.hpp ]
+  - symbol: std::vector<Krampus21::DialogBoxes::Base*>
+    headers: [ vector, Krampus21/DialogBoxes/Base.hpp ]
+  - symbol: Krampus21::DialogBoxes::Base*
+    headers: [ Krampus21/DialogBoxes/Base.hpp ]
 
 

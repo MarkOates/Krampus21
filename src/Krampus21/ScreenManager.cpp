@@ -28,7 +28,8 @@ ScreenManager::ScreenManager(AllegroFlare::Framework* framework, AllegroFlare::S
    , user_event_emitter_souce({})
    , user_event_emitter({})
    , audio_controller(&framework->get_sample_bin_ref(), sound_effect_elements, music_track_elements)
-   , dialog({})
+   , dialogs({})
+   , current_dialog(nullptr)
    , dialog_num_revealed_characters(0)
    , initialized(false)
 {
@@ -59,10 +60,19 @@ void ScreenManager::initialize()
    return;
 }
 
+void ScreenManager::clear_all_dialogs()
+{
+   for (auto &dialog : dialogs) { if (dialog) delete dialog; }
+   dialogs.clear();
+   current_dialog = nullptr;
+   return;
+}
+
 void ScreenManager::start_game()
 {
+   clear_all_dialogs();
    Krampus21::DialogFactory dialog_factory;
-   dialog = dialog_factory.build_basic_dialog_from_file(get_dialog_filename());
+   //dialogs = dialog_factory.build_basic_dialog_from_file(get_dialog_filename());
    play_music_track("ambiences-clips_2-machine-noise.wav");
    dialog_num_revealed_characters = 0;
 }
@@ -87,7 +97,8 @@ void ScreenManager::advance_dialog()
          error_message << "ScreenManager" << "::" << "advance_dialog" << ": error: " << "guard \"framework\" not met";
          throw std::runtime_error(error_message.str());
       }
-   dialog.next_page();
+   if (!current_dialog) return;
+   current_dialog->next_page();
    dialog_num_revealed_characters = 0;
    return;
 }
@@ -100,7 +111,8 @@ void ScreenManager::update_dialog_playing()
 
 bool ScreenManager::dialog_is_finished()
 {
-   return dialog.get_finished();
+   if (!current_dialog) return true;
+   return current_dialog->get_finished();
 }
 
 void ScreenManager::primary_timer_func()
@@ -112,7 +124,8 @@ void ScreenManager::primary_timer_func()
    }
    else
    {
-      Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), &dialog, dialog_num_revealed_characters);
+      
+      Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), current_dialog, dialog_num_revealed_characters);
       renderer.render();
    }
    return;

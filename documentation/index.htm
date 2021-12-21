@@ -324,8 +324,12 @@ table td
   <td class="property">AllegroFlare::AudioController</td>
 </tr>
 <tr>
-  <td class="property">dialog</td>
-  <td class="property">Krampus21::DialogBoxes::Basic</td>
+  <td class="property">dialogs</td>
+  <td class="property">std::vector&lt;Krampus21::DialogBoxes::Base*&gt;</td>
+</tr>
+<tr>
+  <td class="property">current_dialog</td>
+  <td class="property">Krampus21::DialogBoxes::Base*</td>
 </tr>
 <tr>
   <td class="property">dialog_num_revealed_characters</td>
@@ -339,6 +343,9 @@ table td
      <table>
 <tr>
   <td class="method">initialize()</td>
+</tr>
+<tr>
+  <td class="method">clear_all_dialogs()</td>
 </tr>
 <tr>
   <td class="method">start_game()</td>
@@ -417,6 +424,12 @@ table td
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogFactory&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogFactory.hpp&quot;]}</td>
 </tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;Krampus21::DialogBoxes::Base*&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
+</tr>
     </table>
   </div>
 </ul>
@@ -490,6 +503,7 @@ table td
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxes/Base",
+    "Krampus21/ScreenManager",
     "Krampus21/ScriptLoader"
   ],
   "Krampus21/DialogBoxes/Basic": [
@@ -581,6 +595,7 @@ table td
     "Krampus21/ScriptLoader"
   ],
   "std/vector<Krampus21/DialogBoxes/Base>": [
+    "Krampus21/ScreenManager",
     "Krampus21/ScriptLoader"
   ],
   "std/pair<std/string, std/string>": [

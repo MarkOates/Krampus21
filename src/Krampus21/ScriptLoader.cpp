@@ -73,8 +73,10 @@ std::pair<std::string, std::string> ScriptLoader::parse_command_and_argument(std
    }
    else
    {
-      // TODO validate format of command (all caps, underscore, no spaces)
       std::string command_fragment_unsanitized = script_line.substr(0, pos);
+
+      // TODO validate format of command (all caps, underscore, no spaces)
+      // here
 
       result.first = Blast::String::Trimmer(command_fragment_unsanitized).trim();
       result.second = Blast::String::Trimmer(script_line.substr(pos+DELIMETER.size())).trim();
