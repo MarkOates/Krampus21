@@ -130,13 +130,13 @@ TEST(Krampus21_DialogBoxes_ChoiceTest,
 
 TEST(Krampus21_DialogBoxes_ChoiceTest, get_current_selection_text__with_no_options__returns_an_empty_string)
 {
-   // TODO
+   // WILL SKIP FOR NOW
 }
 
 
 TEST(Krampus21_DialogBoxes_ChoiceTest, get_current_selection_value__with_no_options__returns_an_empty_string)
 {
-   // TODO
+   // WILL SKIP FOR NOW
 }
 
 
