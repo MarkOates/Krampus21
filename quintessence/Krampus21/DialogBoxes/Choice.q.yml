@@ -12,10 +12,12 @@ properties:
   - name: prompt
     type: std::string
     init_with: '"[prompt-question-not-set]"'
+    constructor_arg: true
 
   - name: options
     type: std::vector<std::pair<std::string, std::string>>
     init_with: '{}'
+    constructor_arg: true
 
   - name: cursor_position
     type: int

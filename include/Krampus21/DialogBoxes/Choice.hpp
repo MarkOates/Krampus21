@@ -20,7 +20,7 @@ namespace Krampus21
          bool initialized;
 
       public:
-         Choice();
+         Choice(std::string prompt="[prompt-question-not-set]", std::vector<std::pair<std::string, std::string>> options={});
          ~Choice();
 
          int get_cursor_position();

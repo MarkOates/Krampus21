@@ -15,10 +15,10 @@ namespace DialogBoxes
 {
 
 
-Choice::Choice()
+Choice::Choice(std::string prompt, std::vector<std::pair<std::string, std::string>> options)
    : Krampus21::DialogBoxes::Base("Choice")
-   , prompt("[prompt-question-not-set]")
-   , options({})
+   , prompt(prompt)
+   , options(options)
    , cursor_position(-1)
    , initialized(false)
 {
