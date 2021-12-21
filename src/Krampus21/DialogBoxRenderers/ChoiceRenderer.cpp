@@ -27,6 +27,12 @@ ChoiceRenderer::~ChoiceRenderer()
 
 void ChoiceRenderer::render()
 {
+   if (!(al_is_system_installed()))
+      {
+         std::stringstream error_message;
+         error_message << "ChoiceRenderer" << "::" << "render" << ": error: " << "guard \"al_is_system_installed()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
    if (!(choice_dialog_box))
       {
          std::stringstream error_message;

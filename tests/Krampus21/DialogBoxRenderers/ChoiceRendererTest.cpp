@@ -31,16 +31,20 @@ TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererTest, can_be_created_without_b
 
 TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererTest, render__without_a_choice_dialog_box__throws_an_exception)
 {
+   al_init();
    Krampus21::DialogBoxRenderers::ChoiceRenderer choice_renderer;
    std::string expected_error_message = "ChoiceRenderer::render: error: guard \"choice_dialog_box\" not met";
    ASSERT_THROW_WITH_MESSAGE(choice_renderer.render(), std::runtime_error, expected_error_message);
+   al_uninstall_system();
 }
 
 
 TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererWithAllegroRenderingFixtureTest,
-   render__without_a_choice_dialog_box__throws_an_exception)
+   render__does_not_blow_up)
 {
-   //Krampus21::DialogBoxRenderers::ChoiceRenderer choice_renderer;
+   Krampus21::DialogBoxes::Choice choice_dialog_box;
+   Krampus21::DialogBoxRenderers::ChoiceRenderer choice_renderer(&get_font_bin_ref(), &choice_dialog_box);
+
    //std::string expected_error_message = "ChoiceRenderer::render: error: guard \"choice_dialog_box\" not met";
    //ASSERT_THROW_WITH_MESSAGE(choice_renderer.render(), std::runtime_error, expected_error_message);
 }

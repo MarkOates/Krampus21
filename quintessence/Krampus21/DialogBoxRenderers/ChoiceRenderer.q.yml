@@ -16,7 +16,7 @@ functions:
 
 
   - name: render
-    guards: [ choice_dialog_box ]
+    guards: [ al_is_system_installed(), choice_dialog_box ]
     body: |
       return;
 
