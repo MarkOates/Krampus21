@@ -34,6 +34,18 @@ Choice::~Choice()
 }
 
 
+std::string Choice::get_prompt()
+{
+   return prompt;
+}
+
+
+std::vector<std::pair<std::string, std::string>> Choice::get_options()
+{
+   return options;
+}
+
+
 int Choice::get_cursor_position()
 {
    return cursor_position;

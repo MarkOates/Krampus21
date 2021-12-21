@@ -13,11 +13,13 @@ properties:
     type: std::string
     init_with: '"[prompt-question-not-set]"'
     constructor_arg: true
+    getter: true
 
   - name: options
     type: std::vector<std::pair<std::string, std::string>>
     init_with: '{}'
     constructor_arg: true
+    getter: true
 
   - name: cursor_position
     type: int

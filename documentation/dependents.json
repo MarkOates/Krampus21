@@ -49,7 +49,11 @@
     "Krampus21/DialogBoxes/Base"
   ],
   "std/vector<std/pair<std/string, std/string>>": [
-    "Krampus21/DialogBoxes/Choice"
+    "Krampus21/DialogBoxes/Choice",
+    "Krampus21/DialogFactory"
+  ],
+  "Krampus21/DialogBoxes/Choice": [
+    "Krampus21/DialogFactory"
   ],
   "Blast/FileExistenceChecker": [
     "Krampus21/DialogFactory"

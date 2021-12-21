@@ -83,3 +83,23 @@ TEST(Krampus21_DialogFactoryTest, build_basic_dialog_from_file__sets_the_test_to
 }
 
 
+TEST(Krampus21_DialogFactoryTest,
+   create_choice_dialog__creates_a_choice_dialog__passes_the_arguments__and_initializes_it)
+{
+   std::string choice_prompt = "What will the test return?";
+   std::vector<std::pair<std::string, std::string>> choice_options = {
+     { "A passing test.", "GOTO A" },
+     { "A failing test.", "GOTO B" },
+   };
+   Krampus21::DialogFactory dialog_factory;
+   Krampus21::DialogBoxes::Choice* created_dialog = dialog_factory.create_choice_dialog(choice_prompt, choice_options);
+
+   ASSERT_NE(nullptr, created_dialog);
+
+   ASSERT_EQ(choice_prompt, created_dialog->get_prompt());
+   ASSERT_EQ(choice_options, created_dialog->get_options());
+
+   delete created_dialog;
+}
+
+

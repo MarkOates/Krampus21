@@ -61,6 +61,13 @@ Krampus21::DialogBoxes::Basic* DialogFactory::create_basic_dialog(std::vector<st
    return basic_dialog_box;
 }
 
+Krampus21::DialogBoxes::Choice* DialogFactory::create_choice_dialog(std::string prompt, std::vector<std::pair<std::string, std::string>> options)
+{
+   Krampus21::DialogBoxes::Choice* choice_dialog_box = new Krampus21::DialogBoxes::Choice(prompt, options);
+   //basic_dialog_box->set_pages(pages); // ??? hmm
+   return choice_dialog_box;
+}
+
 Krampus21::DialogBoxes::Basic DialogFactory::build_basic_dialog_from_file(std::string filename)
 {
    Krampus21::DialogBoxes::Basic basic_dialog_box;

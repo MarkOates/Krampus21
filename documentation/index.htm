@@ -294,10 +294,16 @@ table td
   <td class="method">create_basic_dialog(1)</td>
 </tr>
 <tr>
+  <td class="method">create_choice_dialog(2)</td>
+</tr>
+<tr>
   <td class="method">build_basic_dialog_from_file(1)</td>
 </tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Choice*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Choice.hpp&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Basic*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Basic.hpp&quot;]}</td>
 </tr>
@@ -309,6 +315,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::php::file_get_contents_split&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/UsefulPHP.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;utility&quot;, &quot;string&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -604,7 +613,11 @@ table td
     "Krampus21/DialogBoxes/Base"
   ],
   "std/vector<std/pair<std/string, std/string>>": [
-    "Krampus21/DialogBoxes/Choice"
+    "Krampus21/DialogBoxes/Choice",
+    "Krampus21/DialogFactory"
+  ],
+  "Krampus21/DialogBoxes/Choice": [
+    "Krampus21/DialogFactory"
   ],
   "Blast/FileExistenceChecker": [
     "Krampus21/DialogFactory"

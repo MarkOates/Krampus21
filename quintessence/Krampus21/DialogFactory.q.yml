@@ -55,6 +55,21 @@ functions:
       return basic_dialog_box;
 
 
+  - name: create_choice_dialog
+    type: Krampus21::DialogBoxes::Choice*
+    parameters:
+      - name: prompt
+        type: std::string
+        default_argument: '"[prompt-argument-set-as-default]"'
+      - name: options
+        type: std::vector<std::pair<std::string, std::string>>
+        default_argument: '{}'
+    body: |
+      Krampus21::DialogBoxes::Choice* choice_dialog_box = new Krampus21::DialogBoxes::Choice(prompt, options);
+      //basic_dialog_box->set_pages(pages); // ??? hmm
+      return choice_dialog_box;
+
+
   - name: build_basic_dialog_from_file
     type: Krampus21::DialogBoxes::Basic
     parameters:
@@ -87,6 +102,8 @@ functions:
 dependencies:
 
 
+  - symbol: Krampus21::DialogBoxes::Choice*
+    headers: [ Krampus21/DialogBoxes/Choice.hpp ]
   - symbol: Krampus21::DialogBoxes::Basic*
     headers: [ Krampus21/DialogBoxes/Basic.hpp ]
   - symbol: Krampus21::DialogBoxes::Basic
@@ -95,5 +112,7 @@ dependencies:
     headers: [ Blast/FileExistenceChecker.hpp ]
   - symbol: AllegroFlare::php::file_get_contents_split
     headers: [ AllegroFlare/UsefulPHP.hpp ]
+  - symbol: std::vector<std::pair<std::string, std::string>>
+    headers: [ vector, utility, string ]
 
 
