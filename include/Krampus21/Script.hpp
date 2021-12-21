@@ -22,7 +22,8 @@ namespace Krampus21
 
       void initialize();
       std::string get_current_line_text();
-      bool at_end();
+      bool at_last_line();
+      bool at_valid_line();
       void build_markers_index();
    };
 }

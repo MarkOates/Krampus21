@@ -25,28 +25,39 @@ functions:
   - name: initialize
     guards: [ (!initialized) ]
     body: |
-      // TODO
       build_markers_index();
-      current_line_num = 0; // TODO <- if not empty?
+      if (!lines.empty()) current_line_num = 0;
       initialized = true;
       return;
 
 
   - name: get_current_line_text
+    guards: [ initialized ]
     type: std::string
     body: |
-      // TODO
-      return "";
+      if (!at_valid_line()) return "";
+      return lines[current_line_num];
 
 
-  - name: at_end
+  - name: at_last_line
+    guards: [ initialized ]
     type: bool
     body: |
-      // TODO
-      return false;
+      if (!lines.empty() && current_line_num == (lines.size()-1));
+
+
+  - name: at_valid_line
+    private: true
+    type: bool
+    body: |
+      if (lines.empty()) return false;
+      if (current_line_num < 0) return false;
+      if (current_line_num >= lines.size()) return false;
+      return true;
 
 
   - name: build_markers_index
+    private: true
     body: |
       // TODO
       return;
@@ -55,8 +66,8 @@ functions:
 dependencies:
 
 
-   - symbol: std::map<std::string, int>
-     headers: [ map, string ]
+  - symbol: std::map<std::string, int>
+    headers: [ map, string ]
 
 
 
