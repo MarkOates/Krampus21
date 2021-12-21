@@ -46,7 +46,8 @@ void WithAllegroRenderingFixture::SetUp()
 
    font_bin.set_full_path("/Users/markoates/Repos/Krampus21/bin/programs/data/fonts");
 
-   display = al_create_display(1280 * 2, 720 * 2);
+   //display = al_create_display(1280 * 2, 720 * 2);
+   display = al_create_display(1920, 1080);
    al_clear_to_color(ALLEGRO_COLOR{0.05f, 0.05f, 0.05f, 0.05f});
    return;
 }

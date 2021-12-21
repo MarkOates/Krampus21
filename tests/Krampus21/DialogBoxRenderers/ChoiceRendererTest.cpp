@@ -42,10 +42,19 @@ TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererTest, render__without_a_choice
 TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererWithAllegroRenderingFixtureTest,
    render__does_not_blow_up)
 {
+   allegro_flare::placement2d place{ 1920/2, 1080/4*3, 1920/5*3, 1080/4 };
    Krampus21::DialogBoxes::Choice choice_dialog_box;
-   Krampus21::DialogBoxRenderers::ChoiceRenderer choice_renderer(&get_font_bin_ref(), &choice_dialog_box);
+   Krampus21::DialogBoxRenderers::ChoiceRenderer choice_renderer(
+      &get_font_bin_ref(),
+      &choice_dialog_box,
+      place.size.x,
+      place.size.y
+   );
 
+   place.start_transform();
    choice_renderer.render();
+   place.restore_transform();
+   al_flip_display();
    sleep(1);
 
    SUCCEED();
