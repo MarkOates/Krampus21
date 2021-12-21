@@ -30,7 +30,6 @@ namespace Krampus21
       AllegroFlare::AudioController audio_controller;
       std::vector<Krampus21::DialogBoxes::Base*> dialogs;
       Krampus21::DialogBoxes::Base* current_dialog;
-      int dialog_num_revealed_characters;
       bool initialized;
 
    public:

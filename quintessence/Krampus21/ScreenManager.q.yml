@@ -57,10 +57,6 @@ properties:
     type: Krampus21::DialogBoxes::Base*
     init_with: nullptr
 
-  - name: dialog_num_revealed_characters
-    type: int
-    init_with: 0
-
   - name: initialized
     type: bool
     init_with: false
@@ -102,7 +98,6 @@ functions:
 
       play_music_track("etherial-ambience-01.wav");
 
-      dialog_num_revealed_characters = 0;
     body_dependency_symbols:
       - Krampus21::ScriptLoader
 
@@ -128,7 +123,6 @@ functions:
     body: |
       if (!current_dialog) return;
       current_dialog->next_page();
-      dialog_num_revealed_characters = 0;
       return;
 
 
@@ -153,7 +147,6 @@ functions:
   - name: update_dialog
     body: |
       if (current_dialog) current_dialog->update();
-      dialog_num_revealed_characters++;
       return;
 
 

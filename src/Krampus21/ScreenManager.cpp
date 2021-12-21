@@ -30,7 +30,6 @@ ScreenManager::ScreenManager(AllegroFlare::Framework* framework, AllegroFlare::S
    , audio_controller(&framework->get_sample_bin_ref(), sound_effect_elements, music_track_elements)
    , dialogs({})
    , current_dialog(nullptr)
-   , dialog_num_revealed_characters(0)
    , initialized(false)
 {
 }
@@ -82,8 +81,6 @@ void ScreenManager::start_game()
    }
 
    play_music_track("etherial-ambience-01.wav");
-
-   dialog_num_revealed_characters = 0;
 }
 
 void ScreenManager::clear_all_dialogs()
@@ -116,7 +113,6 @@ void ScreenManager::advance_dialog()
       }
    if (!current_dialog) return;
    current_dialog->next_page();
-   dialog_num_revealed_characters = 0;
    return;
 }
 
@@ -141,7 +137,6 @@ void ScreenManager::submit_dialog_choice_selection()
 void ScreenManager::update_dialog()
 {
    if (current_dialog) current_dialog->update();
-   dialog_num_revealed_characters++;
    return;
 }
 
