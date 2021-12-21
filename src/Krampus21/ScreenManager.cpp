@@ -138,7 +138,7 @@ void ScreenManager::submit_dialog_choice_selection()
    return;
 }
 
-void ScreenManager::update_dialog_playing()
+void ScreenManager::update_dialog()
 {
    if (current_dialog) current_dialog->update();
    dialog_num_revealed_characters++;
@@ -154,7 +154,7 @@ bool ScreenManager::dialog_is_finished()
 void ScreenManager::primary_timer_func()
 {
    al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
-   update_dialog_playing();
+   update_dialog();
    if (dialog_is_finished())
    {
    }

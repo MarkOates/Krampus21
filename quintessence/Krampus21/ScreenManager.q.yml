@@ -150,7 +150,7 @@ functions:
       return;
 
 
-  - name: update_dialog_playing
+  - name: update_dialog
     body: |
       if (current_dialog) current_dialog->update();
       dialog_num_revealed_characters++;
@@ -168,7 +168,7 @@ functions:
     override: true
     body: |
       al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
-      update_dialog_playing();
+      update_dialog();
       if (dialog_is_finished())
       {
       }

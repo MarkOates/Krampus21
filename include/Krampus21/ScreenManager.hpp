@@ -46,7 +46,7 @@ namespace Krampus21
       void move_dialog_choice_cursor_up();
       void move_dialog_choice_cursor_down();
       void submit_dialog_choice_selection();
-      void update_dialog_playing();
+      void update_dialog();
       bool dialog_is_finished();
       void primary_timer_func() override;
       void play_music_track(std::string identifier="unset-music-identifier");
