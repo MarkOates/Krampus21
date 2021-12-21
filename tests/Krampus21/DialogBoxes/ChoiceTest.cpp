@@ -150,8 +150,13 @@ TEST(Krampus21_DialogBoxes_ChoiceTest, get_current_selection_text__returns_the_t
    Krampus21::DialogBoxes::Choice choice("What will you do?", choice_options);
    choice.initialize();
 
-   std::string expected_selection_text = "Post a log";
-   EXPECT_EQ(expected_selection_text, choice.get_current_selection_text());
+   EXPECT_EQ("Post a log", choice.get_current_selection_text());
+
+   choice.move_cursor_position_down();
+   EXPECT_EQ("Keep coding", choice.get_current_selection_text());
+
+   choice.move_cursor_position_down();
+   EXPECT_EQ("Drink more soylent", choice.get_current_selection_text());
 }
 
 
