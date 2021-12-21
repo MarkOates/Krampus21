@@ -13,6 +13,8 @@
 #include <sstream>
 #include <stdexcept>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace Krampus21
@@ -177,6 +179,17 @@ std::string DialogBoxRenderer::obtain_dialog_box_text()
          throw std::runtime_error(error_message.str());
       }
    return dialog_box->get_current_page_text();
+}
+
+int DialogBoxRenderer::obtain_dialog_box_num_revealed_characters()
+{
+   if (!(dialog_box))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBoxRenderer" << "::" << "obtain_dialog_box_num_revealed_characters" << ": error: " << "guard \"dialog_box\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   return dialog_box->get_num_revealed_characters();
 }
 
 std::string DialogBoxRenderer::concat_text(std::string source_text, int length)
