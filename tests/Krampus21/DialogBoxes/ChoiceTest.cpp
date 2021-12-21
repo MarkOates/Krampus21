@@ -69,8 +69,9 @@ TEST(Krampus21_DialogBoxes_ChoiceTest, move_cursor_position_down__increments_the
    choice.initialize();
 
    choice.move_cursor_position_down();
-
    EXPECT_EQ(1, choice.get_cursor_position());
+   choice.move_cursor_position_down();
+   EXPECT_EQ(2, choice.get_cursor_position());
 }
 
 
