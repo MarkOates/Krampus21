@@ -142,7 +142,16 @@ TEST(Krampus21_DialogBoxes_ChoiceTest, get_current_selection_value__with_no_opti
 
 TEST(Krampus21_DialogBoxes_ChoiceTest, get_current_selection_text__returns_the_text_from_the_current_selection)
 {
-   // TODO
+   std::vector<std::pair<std::string, std::string>> choice_options = {
+     { "Post a log", "GOTO A" },
+     { "Keep coding", "GOTO B" },
+     { "Drink more soylent", "GOTO C" },
+   };
+   Krampus21::DialogBoxes::Choice choice("What will you do?", choice_options);
+   choice.initialize();
+
+   std::string expected_selection_text = "Post a log";
+   EXPECT_EQ(expected_selection_text, choice.get_current_selection_text());
 }
 
 
