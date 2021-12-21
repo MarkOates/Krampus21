@@ -26,7 +26,6 @@ namespace Krampus21
       static std::vector<std::string> tokenize(std::string str="", char delim='|');
       static bool assert_min_token_count(std::vector<std::string> tokens={}, int min=0);
       static bool assert_odd_token_count(std::vector<std::string> tokens={}, int min=0);
-      static bool assert_even_token_count(std::vector<std::string> tokens={}, int min=0);
    };
 }
 

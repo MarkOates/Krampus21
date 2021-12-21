@@ -161,21 +161,6 @@ functions:
       return (tokens.size() % 2);
 
 
-  - name: assert_even_token_count
-    type: bool
-    private: true
-    static: true
-    parameters:
-      - name: tokens
-        type: std::vector<std::string>
-        default_argument: '{}'
-      - name: min
-        type: int
-        default_argument: 0
-    body: |
-      return (tokens.size() % 2);
-
-
 dependencies:
 
 

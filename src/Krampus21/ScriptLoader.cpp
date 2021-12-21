@@ -120,11 +120,6 @@ bool ScriptLoader::assert_odd_token_count(std::vector<std::string> tokens, int m
 {
    return (tokens.size() % 2);
 }
-
-bool ScriptLoader::assert_even_token_count(std::vector<std::string> tokens, int min)
-{
-   return (tokens.size() % 2);
-}
 } // namespace Krampus21
 
 

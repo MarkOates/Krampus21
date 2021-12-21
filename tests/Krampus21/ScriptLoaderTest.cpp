@@ -123,3 +123,17 @@ TEST(Krampus21_ScriptLoaderTest, assert_min_token_count__will_return_false_if_th
    ASSERT_EQ(false, Krampus21::ScriptLoader::assert_min_token_count({ "t1", "t2", "t3", "t4" }, 999));
 }
 
+TEST(Krampus21_ScriptLoaderTest, assert_odd_token_count__will_return_true_if_the_number_of_tokens_is_odd)
+{
+   ASSERT_EQ(true, Krampus21::ScriptLoader::assert_min_token_count({ "t1" }));
+   ASSERT_EQ(true, Krampus21::ScriptLoader::assert_min_token_count({ "t1", "t2", "t3" }));
+   ASSERT_EQ(true, Krampus21::ScriptLoader::assert_min_token_count({ "t1", "t2", "t3", "t4", "t5", "t6", "t7" }));
+}
+
+TEST(Krampus21_ScriptLoaderTest, assert_odd_token_count__will_return_false_if_the_number_of_tokens_is_not_odd)
+{
+   ASSERT_EQ(false, Krampus21::ScriptLoader::assert_odd_token_count({ }));
+   ASSERT_EQ(false, Krampus21::ScriptLoader::assert_odd_token_count({ "t1", "t2" }));
+   ASSERT_EQ(false, Krampus21::ScriptLoader::assert_odd_token_count({ "t1", "t2", "t3", "t4", "t5", "t6" }));
+}
+
