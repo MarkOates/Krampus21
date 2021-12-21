@@ -57,6 +57,8 @@ TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererWithAllegroRenderingFixtureTes
       place.size.x,
       place.size.y
    );
+   choice_dialog_box.move_cursor_position_down();
+   choice_dialog_box.move_cursor_position_down();
 
    place.start_transform();
    choice_renderer.render();

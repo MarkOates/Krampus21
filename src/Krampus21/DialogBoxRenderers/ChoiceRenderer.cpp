@@ -105,9 +105,9 @@ void ChoiceRenderer::draw_choices_with_cursor_and_current_selection(float start_
          float text_width = al_get_text_width(text_font, option_text.c_str());
          al_draw_filled_rectangle(
             x - selection_box_x_padding,
-            start_y - selection_box_y_padding,
+            start_y - selection_box_y_padding + option_num * line_height,
             x+text_width + selection_box_x_padding,
-            start_y+line_height + selection_box_y_padding,
+            start_y+line_height + selection_box_y_padding + option_num * line_height,
             selection_hilight_color
          );
       }
