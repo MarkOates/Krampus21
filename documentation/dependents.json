@@ -45,14 +45,15 @@
   "allegro_flare/placement2d": [
     "Krampus21/DialogBoxRenderer"
   ],
+  "Krampus21/DialogBoxes/Choice": [
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/DialogFactory"
+  ],
   "std/vector<std/vector<std/string>>": [
     "Krampus21/DialogBoxes/Base"
   ],
   "std/vector<std/pair<std/string, std/string>>": [
     "Krampus21/DialogBoxes/Choice",
-    "Krampus21/DialogFactory"
-  ],
-  "Krampus21/DialogBoxes/Choice": [
     "Krampus21/DialogFactory"
   ],
   "Blast/FileExistenceChecker": [

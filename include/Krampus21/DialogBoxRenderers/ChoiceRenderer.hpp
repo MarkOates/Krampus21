@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <string>
+#include <Krampus21/DialogBoxes/Choice.hpp>
 
 
 namespace Krampus21
@@ -11,12 +11,13 @@ namespace Krampus21
       class ChoiceRenderer
       {
       private:
+         Krampus21::DialogBoxes::Choice* choice_dialog_box;
 
       public:
-         ChoiceRenderer();
+         ChoiceRenderer(Krampus21::DialogBoxes::Choice* choice_dialog_box=nullptr);
          ~ChoiceRenderer();
 
-         std::string run();
+         void render();
       };
    }
 }

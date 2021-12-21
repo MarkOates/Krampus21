@@ -1,4 +1,25 @@
+properties:
+
+
+  - name: choice_dialog_box
+    type: Krampus21::DialogBoxes::Choice*
+    init_with: nullptr
+    constructor_arg: true
+
+
 functions:
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+
+
+  - name: render
+    guards: [ choice_dialog_box ]
+    body: |
+      return;
+
+
+dependencies:
+
+
+  - symbol: Krampus21::DialogBoxes::Choice*
+    headers: [ Krampus21/DialogBoxes/Choice.hpp ]
+
+

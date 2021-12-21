@@ -51,6 +51,7 @@ table td
 <ul>
   <li><a href="#quintessence/Krampus21/DialogBoxFactory.q.yml">quintessence/Krampus21/DialogBoxFactory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderer.q.yml</a></li>
+  <li><a href="#quintessence/Krampus21/DialogBoxRenderers/ChoiceRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderers/ChoiceRenderer.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/Base.q.yml">quintessence/Krampus21/DialogBoxes/Base.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/Choice.q.yml">quintessence/Krampus21/DialogBoxes/Choice.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogFactory.q.yml">quintessence/Krampus21/DialogFactory.q.yml</a></li>
@@ -160,6 +161,27 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement2d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement2d.h&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/Krampus21/DialogBoxRenderers/ChoiceRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderers/ChoiceRenderer.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">choice_dialog_box</td>
+  <td class="property">Krampus21::DialogBoxes::Choice*</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">render()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Choice*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Choice.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -609,14 +631,15 @@ table td
   "allegro_flare/placement2d": [
     "Krampus21/DialogBoxRenderer"
   ],
+  "Krampus21/DialogBoxes/Choice": [
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/DialogFactory"
+  ],
   "std/vector<std/vector<std/string>>": [
     "Krampus21/DialogBoxes/Base"
   ],
   "std/vector<std/pair<std/string, std/string>>": [
     "Krampus21/DialogBoxes/Choice",
-    "Krampus21/DialogFactory"
-  ],
-  "Krampus21/DialogBoxes/Choice": [
     "Krampus21/DialogFactory"
   ],
   "Blast/FileExistenceChecker": [
