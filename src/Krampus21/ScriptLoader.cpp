@@ -28,7 +28,7 @@ std::vector<Krampus21::DialogBoxes::Base*> ScriptLoader::parse()
    int line_num = 0;
    for (auto &script_line : script_lines)
    {
-      Krampus21::DialogBoxes::Base* created_dialog = parse_line_and_build_dialog(script_line);
+      Krampus21::DialogBoxes::Base* created_dialog = parse_line_and_create_dialog(script_line);
       if (!created_dialog)
       {
          std::cout << "Script loading/parsing error on line [" << line_num << "]" << std::endl;
@@ -43,9 +43,10 @@ std::vector<Krampus21::DialogBoxes::Base*> ScriptLoader::parse()
    return result;
 }
 
-Krampus21::DialogBoxes::Base* ScriptLoader::parse_line_and_build_dialog(std::string script_line)
+Krampus21::DialogBoxes::Base* ScriptLoader::parse_line_and_create_dialog(std::string script_line)
 {
    std::string DIALOG = "DIALOG";
+   std::string CHOICE = "CHOICE";
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
 
    std::string command = DIALOG;
@@ -54,6 +55,12 @@ Krampus21::DialogBoxes::Base* ScriptLoader::parse_line_and_build_dialog(std::str
    if (command.empty() || command == DIALOG)
    {
       created_dialog = dialog_factory.create_basic_dialog(std::vector<std::string>{script_line});
+   }
+   else if (command == CHOICE)
+   {
+      std::string choice_prompt = "[coice-prompt-text-not-extracted]";
+      std::vector<std::pair<std::string, std::string>> choice_options = {};
+      created_dialog = dialog_factory.create_choice_dialog(choice_prompt, choice_options);
    }
 
    return created_dialog;

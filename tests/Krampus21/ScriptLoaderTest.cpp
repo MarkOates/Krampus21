@@ -39,7 +39,7 @@ TEST(Krampus21_ScriptLoaderTest, parse__command_and_argument__will_not_blow_up_o
 }
 
 
-TEST(Krampus21_ScriptLoaderTest, parse__command_and_argument__will_parse_a_script_line_into_an_expected_set_of_elements)
+TEST(Krampus21_ScriptLoaderTest, parse_command_and_argument__will_parse_a_script_line_into_an_expected_set_of_elements)
    // note this is a private method test
 {
    std::string script_line = "DIALOG: This is the most basic dialog.";
@@ -51,6 +51,19 @@ TEST(Krampus21_ScriptLoaderTest, parse__command_and_argument__will_parse_a_scrip
    std::pair<std::string, std::string> expected_command_argument_pair = {"DIALOG", "This is the most basic dialog."};
 
    EXPECT_EQ(expected_command_argument_pair, parsed_command_argument_pair);
+}
+
+
+TEST(Krampus21_ScriptLoaderTest, parse_line_and_create_dialog__will_parse_a_DIALOG_command)
+   // note this is a private method test
+{
+   std::string script_line = "DIALOG: This is the most basic dialog line.";
+   Krampus21::ScriptLoader script_loader;
+
+   Krampus21::DialogBoxes::Base* created_dialog = script_loader.parse_line_and_create_dialog(script_line);
+
+   ASSERT_NE(nullptr, created_dialog);
+   EXPECT_EQ(true, created_dialog->is_type("Basic"));
 }
 
 
