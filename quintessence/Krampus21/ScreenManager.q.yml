@@ -79,6 +79,33 @@ functions:
       - Krampus21::DialogFactory
 
 
+  - name: start_game
+    body: |
+      clear_all_dialogs();
+
+      std::vector<std::string> script_lines = {
+         { "DIALOG: This will be the first dialog loaded through a script loader." }
+      };
+
+      Krampus21::ScriptLoader script_loader(script_lines);
+      dialogs = script_loader.parse();
+
+      if (dialogs.empty())
+      {
+         // no dialogs are loaded
+      }
+      else
+      {
+         current_dialog = dialogs[0];
+      }
+
+      play_music_track("etherial-ambience-01.wav");
+
+      dialog_num_revealed_characters = 0;
+    body_dependency_symbols:
+      - Krampus21::ScriptLoader
+
+
   - name: clear_all_dialogs
     type: void
     body: |
@@ -86,17 +113,6 @@ functions:
       dialogs.clear();
       current_dialog = nullptr;
       return;
-
-
-  - name: start_game
-    body: |
-      clear_all_dialogs();
-      Krampus21::DialogFactory dialog_factory;
-      //dialogs = dialog_factory.build_basic_dialog_from_file(get_dialog_filename());
-      play_music_track("etherial-ambience-01.wav");
-      dialog_num_revealed_characters = 0;
-    body_dependency_symbols:
-      - Krampus21::DialogFactory
 
 
   - name: shutdown_game
@@ -251,5 +267,7 @@ dependencies:
     headers: [ vector, Krampus21/DialogBoxes/Base.hpp ]
   - symbol: Krampus21::DialogBoxes::Base*
     headers: [ Krampus21/DialogBoxes/Base.hpp ]
+  - symbol: Krampus21::ScriptLoader
+    headers: [ Krampus21/ScriptLoader.hpp ]
 
 

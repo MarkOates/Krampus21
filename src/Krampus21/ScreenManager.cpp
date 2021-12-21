@@ -4,7 +4,7 @@
 #include <Krampus21/DialogFactory.hpp>
 #include <stdexcept>
 #include <sstream>
-#include <Krampus21/DialogFactory.hpp>
+#include <Krampus21/ScriptLoader.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -60,21 +60,37 @@ void ScreenManager::initialize()
    return;
 }
 
+void ScreenManager::start_game()
+{
+   clear_all_dialogs();
+
+   std::vector<std::string> script_lines = {
+      { "DIALOG: This will be the first dialog loaded through a script loader." }
+   };
+
+   Krampus21::ScriptLoader script_loader(script_lines);
+   dialogs = script_loader.parse();
+
+   if (dialogs.empty())
+   {
+      // no dialogs are loaded
+   }
+   else
+   {
+      current_dialog = dialogs[0];
+   }
+
+   play_music_track("etherial-ambience-01.wav");
+
+   dialog_num_revealed_characters = 0;
+}
+
 void ScreenManager::clear_all_dialogs()
 {
    for (auto &dialog : dialogs) { if (dialog) delete dialog; }
    dialogs.clear();
    current_dialog = nullptr;
    return;
-}
-
-void ScreenManager::start_game()
-{
-   clear_all_dialogs();
-   Krampus21::DialogFactory dialog_factory;
-   //dialogs = dialog_factory.build_basic_dialog_from_file(get_dialog_filename());
-   play_music_track("etherial-ambience-01.wav");
-   dialog_num_revealed_characters = 0;
 }
 
 void ScreenManager::shutdown_game()

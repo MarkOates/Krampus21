@@ -101,6 +101,9 @@
     "Krampus21/ScreenManager",
     "Krampus21/ScriptLoader"
   ],
+  "Krampus21/ScriptLoader": [
+    "Krampus21/ScreenManager"
+  ],
   "std/pair<std/string, std/string>": [
     "Krampus21/ScriptLoader"
   ],
