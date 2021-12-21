@@ -47,6 +47,22 @@ functions:
       return;
 
 
+  - name: get_current_selection_text
+    type: std::string
+    guards: [ initialized ]
+    body: |
+      if (!has_valid_cursor_position()) return "";
+      return options[cursor_position].first;
+
+
+  - name: get_current_selection_value
+    type: std::string
+    guards: [ initialized ]
+    body: |
+      if (!has_valid_cursor_position()) return "";
+      return options[cursor_position].second;
+
+
   - name: move_cursor_position_down
     type: void
     guards: [ initialized ]

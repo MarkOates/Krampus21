@@ -128,3 +128,27 @@ TEST(Krampus21_DialogBoxes_ChoiceTest,
 }
 
 
+TEST(Krampus21_DialogBoxes_ChoiceTest, get_current_selection_text__with_no_options__returns_an_empty_string)
+{
+   // TODO
+}
+
+
+TEST(Krampus21_DialogBoxes_ChoiceTest, get_current_selection_value__with_no_options__returns_an_empty_string)
+{
+   // TODO
+}
+
+
+TEST(Krampus21_DialogBoxes_ChoiceTest, get_current_selection_text__returns_the_text_from_the_current_selection)
+{
+   // TODO
+}
+
+
+TEST(Krampus21_DialogBoxes_ChoiceTest, get_current_selection_value__returns_the_value_from_the_current_selection)
+{
+   // TODO
+}
+
+

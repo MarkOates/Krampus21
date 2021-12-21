@@ -7,6 +7,10 @@
 #include <sstream>
 #include <stdexcept>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace Krampus21
@@ -54,6 +58,30 @@ void Choice::initialize()
    }
    initialized = true;
    return;
+}
+
+std::string Choice::get_current_selection_text()
+{
+   if (!(initialized))
+      {
+         std::stringstream error_message;
+         error_message << "Choice" << "::" << "get_current_selection_text" << ": error: " << "guard \"initialized\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!has_valid_cursor_position()) return "";
+   return options[cursor_position].first;
+}
+
+std::string Choice::get_current_selection_value()
+{
+   if (!(initialized))
+      {
+         std::stringstream error_message;
+         error_message << "Choice" << "::" << "get_current_selection_value" << ": error: " << "guard \"initialized\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!has_valid_cursor_position()) return "";
+   return options[cursor_position].second;
 }
 
 void Choice::move_cursor_position_down()
