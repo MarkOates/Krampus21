@@ -122,11 +122,19 @@ void ScreenManager::advance_dialog()
 
 void ScreenManager::move_dialog_choice_cursor_up()
 {
+   // TODO
    return;
 }
 
 void ScreenManager::move_dialog_choice_cursor_down()
 {
+   // TODO
+   return;
+}
+
+void ScreenManager::submit_dialog_choice_selection()
+{
+   // TODO
    return;
 }
 
@@ -178,11 +186,14 @@ void ScreenManager::key_down_func(ALLEGRO_EVENT* ev)
             break;
          case ALLEGRO_KEY_UP:
          case ALLEGRO_KEY_K:
-            move_dialog_choice_cursor_up();
+            if (is_current_dialog_a_choice()) move_dialog_choice_cursor_up();
             break;
          case ALLEGRO_KEY_DOWN:
          case ALLEGRO_KEY_J:
-            move_dialog_choice_cursor_down();
+            if (is_current_dialog_a_choice()) move_dialog_choice_cursor_down();
+            break;
+         case ALLEGRO_KEY_ENTER:
+            submit_dialog_choice_selection();
             break;
       }
       break;
@@ -219,6 +230,11 @@ AllegroFlare::FontBin* ScreenManager::obtain_font_bin()
          throw std::runtime_error(error_message.str());
       }
    return &framework->get_font_bin_ref();
+}
+
+bool ScreenManager::is_current_dialog_a_choice()
+{
+   return (current_dialog && current_dialog->is_type("Choice"));
 }
 } // namespace Krampus21
 

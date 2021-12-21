@@ -134,11 +134,19 @@ functions:
 
   - name: move_dialog_choice_cursor_up
     body: |
+      // TODO
       return;
 
 
   - name: move_dialog_choice_cursor_down
     body: |
+      // TODO
+      return;
+
+
+  - name: submit_dialog_choice_selection
+    body: |
+      // TODO
       return;
 
 
@@ -203,11 +211,14 @@ functions:
                break;
             case ALLEGRO_KEY_UP:
             case ALLEGRO_KEY_K:
-               move_dialog_choice_cursor_up();
+               if (is_current_dialog_a_choice()) move_dialog_choice_cursor_up();
                break;
             case ALLEGRO_KEY_DOWN:
             case ALLEGRO_KEY_J:
-               move_dialog_choice_cursor_down();
+               if (is_current_dialog_a_choice()) move_dialog_choice_cursor_down();
+               break;
+            case ALLEGRO_KEY_ENTER:
+               submit_dialog_choice_selection();
                break;
          }
          break;
@@ -249,6 +260,12 @@ functions:
     type: AllegroFlare::FontBin*
     guards: [ framework ]
     body: return &framework->get_font_bin_ref();
+
+
+  - name: is_current_dialog_a_choice
+    type: bool
+    body: |
+      return (current_dialog && current_dialog->is_type("Choice"));
 
 
 dependencies:

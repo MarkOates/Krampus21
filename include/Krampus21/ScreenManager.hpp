@@ -45,6 +45,7 @@ namespace Krampus21
       void advance_dialog();
       void move_dialog_choice_cursor_up();
       void move_dialog_choice_cursor_down();
+      void submit_dialog_choice_selection();
       void update_dialog_playing();
       bool dialog_is_finished();
       void primary_timer_func() override;
@@ -53,6 +54,7 @@ namespace Krampus21
       void joy_button_down_func(ALLEGRO_EVENT* ev=nullptr) override;
       void user_event_func(ALLEGRO_EVENT* ev=nullptr) override;
       AllegroFlare::FontBin* obtain_font_bin();
+      bool is_current_dialog_a_choice();
    };
 }
 
