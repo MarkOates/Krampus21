@@ -140,6 +140,7 @@ void ScreenManager::submit_dialog_choice_selection()
 
 void ScreenManager::update_dialog_playing()
 {
+   if (current_dialog) current_dialog->update();
    dialog_num_revealed_characters++;
    return;
 }

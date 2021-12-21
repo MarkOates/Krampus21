@@ -152,6 +152,7 @@ functions:
 
   - name: update_dialog_playing
     body: |
+      if (current_dialog) current_dialog->update();
       dialog_num_revealed_characters++;
       return;
 
