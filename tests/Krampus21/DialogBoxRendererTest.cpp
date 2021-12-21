@@ -212,3 +212,31 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_multiline_dialog)
 }
 
 
+TEST(Krampus21_DialogBoxRendererTest, render__will_propertly_render_revealing_text)
+{
+   al_init();
+   al_init_primitives_addon();
+   al_init_font_addon();
+   al_init_ttf_addon();
+   ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
+   AllegroFlare::FontBin font_bin;
+   font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
+   Krampus21::DialogBoxes::Base dialog_box;
+   std::string page_text = "Some test dialog text that will reveal characters sequentially when rendering.";
+   dialog_box.set_pages({ page_text });
+   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
+
+   for (unsigned i=0; i<page_text.size(); i++)
+   {
+      dialog_box.update();
+      dialog_box_renderer.render();
+      al_flip_display();
+      //std::this_thread::sleep_for(std::chrono::microseconds(10000)); // add sleep for more obvious visual delay
+   }
+   std::this_thread::sleep_for(std::chrono::milliseconds(500));
+
+   al_destroy_display(display);
+   al_uninstall_system();
+}
+
+

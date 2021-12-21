@@ -160,7 +160,7 @@ void ScreenManager::primary_timer_func()
    }
    else
    {
-      Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), current_dialog, dialog_num_revealed_characters);
+      Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), current_dialog);
       renderer.render();
    }
    return;

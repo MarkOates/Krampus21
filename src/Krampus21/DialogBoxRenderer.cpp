@@ -21,10 +21,9 @@ namespace Krampus21
 {
 
 
-DialogBoxRenderer::DialogBoxRenderer(AllegroFlare::FontBin* font_bin, Krampus21::DialogBoxes::Base* dialog_box, int dialog_box_num_revealed_characters)
+DialogBoxRenderer::DialogBoxRenderer(AllegroFlare::FontBin* font_bin, Krampus21::DialogBoxes::Base* dialog_box)
    : font_bin(font_bin)
    , dialog_box(dialog_box)
-   , dialog_box_num_revealed_characters(dialog_box_num_revealed_characters)
    , place({ 1920/2, 1080/4*3, 1920/5*3, 1080/4 })
 {
 }
@@ -32,12 +31,6 @@ DialogBoxRenderer::DialogBoxRenderer(AllegroFlare::FontBin* font_bin, Krampus21:
 
 DialogBoxRenderer::~DialogBoxRenderer()
 {
-}
-
-
-int DialogBoxRenderer::get_dialog_box_num_revealed_characters()
-{
-   return dialog_box_num_revealed_characters;
 }
 
 
