@@ -162,7 +162,21 @@ TEST(Krampus21_DialogBoxes_ChoiceTest, get_current_selection_text__returns_the_t
 
 TEST(Krampus21_DialogBoxes_ChoiceTest, get_current_selection_value__returns_the_value_from_the_current_selection)
 {
-   // TODO
+   std::vector<std::pair<std::string, std::string>> choice_options = {
+     { "Post a log", "GOTO A" },
+     { "Keep coding", "GOTO B" },
+     { "Drink more soylent", "GOTO C" },
+   };
+   Krampus21::DialogBoxes::Choice choice("What will you do?", choice_options);
+   choice.initialize();
+
+   EXPECT_EQ("GOTO A", choice.get_current_selection_value());
+
+   choice.move_cursor_position_down();
+   EXPECT_EQ("GOTO B", choice.get_current_selection_value());
+
+   choice.move_cursor_position_down();
+   EXPECT_EQ("GOTO C", choice.get_current_selection_value());
 }
 
 
