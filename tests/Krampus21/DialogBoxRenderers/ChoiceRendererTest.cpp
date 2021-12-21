@@ -50,6 +50,7 @@ TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererWithAllegroRenderingFixtureTes
      { "I don't think I am", "GOTO C" },
    };
    Krampus21::DialogBoxes::Choice choice_dialog_box(choice_box_prompt, choice_options);
+   choice_dialog_box.initialize();
    Krampus21::DialogBoxRenderers::ChoiceRenderer choice_renderer(
       &get_font_bin_ref(),
       &choice_dialog_box,

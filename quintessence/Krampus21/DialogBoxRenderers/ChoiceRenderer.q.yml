@@ -69,16 +69,23 @@ functions:
        int current_selection_num = obtain_choice_dialog_box_cursor_position();
        float line_height = al_get_font_line_height(text_font);
        ALLEGRO_COLOR text_color = al_color_html("66a9bc");
+       ALLEGRO_COLOR selection_hilight_color = ALLEGRO_COLOR{0.1, 0.1, 0.1, 0.1};
+       float x = 200;
 
        int option_num = 0;
        for (auto &option : options)
        {
           bool this_option_is_currently_selected = (option_num == current_selection_num);
           std::string option_text = option.first;
+          if (this_option_is_currently_selected)
+          {
+             float text_width = al_get_text_width(text_font, option_text.c_str());
+             al_draw_filled_rectangle(x, start_y, x+text_width, start_y+line_height, selection_hilight_color);
+          }
           al_draw_text(
              text_font,
              text_color,
-             200,
+             x,
              start_y + line_height*option_num,
              ALLEGRO_ALIGN_LEFT,
              option_text.c_str()
