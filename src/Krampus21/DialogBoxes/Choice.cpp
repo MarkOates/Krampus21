@@ -11,7 +11,7 @@ namespace DialogBoxes
 
 
 Choice::Choice()
-   : Krampus21::DialogBoxes::Base()
+   : Krampus21::DialogBoxes::Base("Choice")
 {
 }
 

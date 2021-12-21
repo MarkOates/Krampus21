@@ -11,7 +11,7 @@ namespace DialogBoxes
 
 
 Basic::Basic()
-   : Krampus21::DialogBoxes::Base()
+   : Krampus21::DialogBoxes::Base("Basic")
 {
 }
 
