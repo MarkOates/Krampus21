@@ -6,6 +6,7 @@
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxes/Base",
+    "Krampus21/DialogBoxes/Choice",
     "Krampus21/ScreenManager",
     "Krampus21/ScriptLoader"
   ],
@@ -46,6 +47,9 @@
   ],
   "std/vector<std/vector<std/string>>": [
     "Krampus21/DialogBoxes/Base"
+  ],
+  "std/vector<std/pair<std/string, std/string>>": [
+    "Krampus21/DialogBoxes/Choice"
   ],
   "Blast/FileExistenceChecker": [
     "Krampus21/DialogFactory"

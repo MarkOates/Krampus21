@@ -12,6 +12,9 @@ namespace DialogBoxes
 
 Choice::Choice()
    : Krampus21::DialogBoxes::Base("Choice")
+   , prompt("[prompt-question-not-set]")
+   , options({})
+   , cursor_position(-1)
 {
 }
 

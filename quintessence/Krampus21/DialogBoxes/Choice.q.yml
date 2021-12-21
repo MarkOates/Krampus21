@@ -6,10 +6,28 @@ parent_classes:
     init_with: '"Choice"'
 
 
+properties:
+
+
+  - name: prompt
+    type: std::string
+    init_with: '"[prompt-question-not-set]"'
+
+  - name: options
+    type: std::vector<std::pair<std::string, std::string>>
+    init_with: '{}'
+
+  - name: cursor_position
+    type: int
+    init_with: -1
+
+
 dependencies:
 
 
   - symbol: Krampus21::DialogBoxes::Base
     headers: [ Krampus21/DialogBoxes/Base.hpp ]
+  - symbol: std::vector<std::pair<std::string, std::string>>
+    headers: [ vector, utility, string ]
 
 

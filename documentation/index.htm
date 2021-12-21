@@ -52,6 +52,7 @@ table td
   <li><a href="#quintessence/Krampus21/DialogBoxFactory.q.yml">quintessence/Krampus21/DialogBoxFactory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderer.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/Base.q.yml">quintessence/Krampus21/DialogBoxes/Base.q.yml</a></li>
+  <li><a href="#quintessence/Krampus21/DialogBoxes/Choice.q.yml">quintessence/Krampus21/DialogBoxes/Choice.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogFactory.q.yml">quintessence/Krampus21/DialogFactory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/ProgramRunner.q.yml">quintessence/Krampus21/ProgramRunner.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/ScreenManager.q.yml">quintessence/Krampus21/ScreenManager.q.yml</a></li>
@@ -219,6 +220,35 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::vector&lt;std::string&gt;&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;string&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/Krampus21/DialogBoxes/Choice.q.yml">quintessence/Krampus21/DialogBoxes/Choice.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">prompt</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">options</td>
+  <td class="property">std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt;</td>
+</tr>
+<tr>
+  <td class="property">cursor_position</td>
+  <td class="property">int</td>
+</tr>
+    </table>
+     <table>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;utility&quot;, &quot;string&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -509,6 +539,7 @@ table td
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxes/Base",
+    "Krampus21/DialogBoxes/Choice",
     "Krampus21/ScreenManager",
     "Krampus21/ScriptLoader"
   ],
@@ -549,6 +580,9 @@ table td
   ],
   "std/vector<std/vector<std/string>>": [
     "Krampus21/DialogBoxes/Base"
+  ],
+  "std/vector<std/pair<std/string, std/string>>": [
+    "Krampus21/DialogBoxes/Choice"
   ],
   "Blast/FileExistenceChecker": [
     "Krampus21/DialogFactory"
