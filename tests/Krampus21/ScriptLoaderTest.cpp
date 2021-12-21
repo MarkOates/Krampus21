@@ -70,14 +70,24 @@ TEST(Krampus21_ScriptLoaderTest, parse_line_and_create_dialog__will_parse_a_DIAL
 TEST(Krampus21_ScriptLoaderTest, parse_line_and_create_dialog__will_parse_a_CHOICE_command)
    // note this is a private method test
 {
-   std::string script_line = "CHOICE: This is the most basic dialog line.";
+   std::string script_line = "CHOICE: What would you choose? | Apple | COLLECT APPLE | Pear | COLLECT PEAR";
    Krampus21::ScriptLoader script_loader;
 
    Krampus21::DialogBoxes::Base* created_dialog = script_loader.parse_line_and_create_dialog(script_line);
 
    ASSERT_NE(nullptr, created_dialog);
-   EXPECT_EQ("Choice", created_dialog->get_type());
-   EXPECT_EQ("Choice", created_dialog->get_type());
+   ASSERT_EQ("Choice", created_dialog->get_type());
+
+   Krampus21::DialogBoxes::Choice* created_choice_dialog = static_cast<Krampus21::DialogBoxes::Choice*>(created_dialog);
+
+   std::string expected_prompt = "What would you choose?";
+   std::vector<std::pair<std::string, std::string>> expected_options = {
+      { "Apple", "COLLECT APPLE" },
+      { "Pear", "COLLECT PEAR" },
+   };
+   EXPECT_EQ(expected_prompt, created_choice_dialog->get_prompt());
+   EXPECT_EQ(expected_options, created_choice_dialog->get_options());
+   delete created_dialog;
 }
 
 

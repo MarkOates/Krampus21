@@ -63,13 +63,25 @@ functions:
          std::string choice_prompt = "[coice-prompt-text-not-extracted]";
          std::vector<std::pair<std::string, std::string>> choice_options = {};
 
+         // tokenize
          std::vector<std::string> tokens = tokenize(argument);
-         // expect at least 3 tokens
-         // expect an odd number of tokens
-         // first token is the prompt
-         // next consecutive tokens are (choice_text, choice_value) pairs
 
-         choice_options = { { "Boobar", "boobruhh" }, { "Zoozaz", "zazzle" } };
+         // validate
+         // expect at least 3 tokens
+         assert_min_token_count(tokens, 3);
+         // expect an odd number of tokens
+         assert_odd_token_count(tokens);
+
+         // first token is the prompt
+         choice_prompt = tokens[0];
+         // next consecutive tokens are (choice_text, choice_value) pairs
+         for (unsigned i=2; i<tokens.size(); i+=2)
+         {
+            // TODO warning if token is empty
+            choice_options.push_back({ tokens[i-1], tokens[i] });
+         }
+
+         //choice_options = { { "Boobar", "boobruhh" }, { "Zoozaz", "zazzle" } };
          created_dialog = dialog_factory.create_choice_dialog(choice_prompt, choice_options);
       }
 
