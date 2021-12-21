@@ -147,7 +147,7 @@ void DialogBoxRenderer::draw_action_text(std::string text)
 
 void DialogBoxRenderer::draw_styled_revealed_text()
 {
-   std::string text = get_dialog_box_text();
+   std::string text = obtain_dialog_box_text();
    float text_padding_x = 40.0f;
    float text_padding_y = 30.0f;
    float text_box_max_width = place.size.x - (text_padding_x * 2);
@@ -168,12 +168,12 @@ void DialogBoxRenderer::draw_styled_revealed_text()
    return;
 }
 
-std::string DialogBoxRenderer::get_dialog_box_text()
+std::string DialogBoxRenderer::obtain_dialog_box_text()
 {
    if (!(dialog_box))
       {
          std::stringstream error_message;
-         error_message << "DialogBoxRenderer" << "::" << "get_dialog_box_text" << ": error: " << "guard \"dialog_box\" not met";
+         error_message << "DialogBoxRenderer" << "::" << "obtain_dialog_box_text" << ": error: " << "guard \"dialog_box\" not met";
          throw std::runtime_error(error_message.str());
       }
    return dialog_box->get_current_page_text();

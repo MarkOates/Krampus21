@@ -28,7 +28,7 @@ namespace Krampus21
       void draw_special_state_empty_text();
       void draw_action_text(std::string text="[unset-action-text]");
       void draw_styled_revealed_text();
-      std::string get_dialog_box_text();
+      std::string obtain_dialog_box_text();
       std::string concat_text(std::string source_text="", int length=0);
       ALLEGRO_FONT* obtain_dialog_font();
    };

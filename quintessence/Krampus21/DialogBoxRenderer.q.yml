@@ -113,7 +113,7 @@ functions:
 
   - name: draw_styled_revealed_text
     body: |
-      std::string text = get_dialog_box_text();
+      std::string text = obtain_dialog_box_text();
       float text_padding_x = 40.0f;
       float text_padding_y = 30.0f;
       float text_box_max_width = place.size.x - (text_padding_x * 2);
@@ -134,7 +134,7 @@ functions:
       return;
 
 
-  - name: get_dialog_box_text
+  - name: obtain_dialog_box_text
     type: std::string
     guards: [ dialog_box ]
     body: |

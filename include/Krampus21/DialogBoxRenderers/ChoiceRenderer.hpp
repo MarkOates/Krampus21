@@ -4,6 +4,7 @@
 #include <AllegroFlare/FontBin.hpp>
 #include <Krampus21/DialogBoxes/Choice.hpp>
 #include <allegro5/allegro.h>
+#include <string>
 
 
 namespace Krampus21
@@ -24,7 +25,10 @@ namespace Krampus21
 
          void render();
          ALLEGRO_FONT* obtain_dialog_font();
-         void render_frame();
+         std::string obtain_choice_dialog_box_prompt();
+         void draw_prompt_text();
+         void draw_frame();
+         std::string concat_text(std::string source_text="", int length=0);
       };
    }
 }
