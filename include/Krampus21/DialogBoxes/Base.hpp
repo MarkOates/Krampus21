@@ -19,7 +19,7 @@ namespace Krampus21
 
       public:
          Base(std::string type="Base", std::vector<std::string> pages={});
-         ~Base();
+         virtual ~Base();
 
          std::string get_type();
          std::vector<std::string> get_pages();
@@ -27,6 +27,7 @@ namespace Krampus21
          bool get_finished();
          void set_pages(std::vector<std::string> pages={});
          void reset();
+         virtual void update();
          std::string get_current_page_text();
          bool next_page();
          int num_pages();

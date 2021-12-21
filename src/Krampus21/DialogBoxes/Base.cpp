@@ -62,6 +62,11 @@ void Base::reset()
    return;
 }
 
+void Base::update()
+{
+   return;
+}
+
 std::string Base::get_current_page_text()
 {
    if (!current_page_is_valid()) return "[null]";

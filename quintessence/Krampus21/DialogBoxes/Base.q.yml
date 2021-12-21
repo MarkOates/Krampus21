@@ -45,6 +45,12 @@ functions:
       return;
 
 
+  - name: update
+    virtual: true
+    body: |
+      return;
+
+
   - name: get_current_page_text
     type: std::string
     body: |
