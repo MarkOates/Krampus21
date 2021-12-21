@@ -15,6 +15,7 @@ Base::Base(std::string type, std::vector<std::string> pages)
    , pages(pages)
    , current_page_num(-1)
    , finished(false)
+   , num_revealed_characters(999)
 {
 }
 
@@ -45,6 +46,12 @@ int Base::get_current_page_num()
 bool Base::get_finished()
 {
    return finished;
+}
+
+
+int Base::get_num_revealed_characters()
+{
+   return num_revealed_characters;
 }
 
 

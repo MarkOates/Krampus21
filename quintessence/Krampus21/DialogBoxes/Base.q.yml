@@ -23,6 +23,11 @@ properties:
     init_with: false
     getter: true
 
+  - name: num_revealed_characters
+    type: int
+    init_with: 999
+    getter: true
+
 
 functions:
 

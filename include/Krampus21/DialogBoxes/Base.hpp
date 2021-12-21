@@ -16,6 +16,7 @@ namespace Krampus21
          std::vector<std::string> pages;
          int current_page_num;
          bool finished;
+         int num_revealed_characters;
 
       public:
          Base(std::string type="Base", std::vector<std::string> pages={});
@@ -25,6 +26,7 @@ namespace Krampus21
          std::vector<std::string> get_pages();
          int get_current_page_num();
          bool get_finished();
+         int get_num_revealed_characters();
          void set_pages(std::vector<std::string> pages={});
          void reset();
          virtual void update();
