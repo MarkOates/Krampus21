@@ -62,6 +62,9 @@ functions:
       {
          std::string choice_prompt = "[coice-prompt-text-not-extracted]";
          std::vector<std::pair<std::string, std::string>> choice_options = {};
+
+         std::string DELIMITER = "|";
+
          choice_options = { { "Boobar", "boobruhh" }, { "Zoozaz", "zazzle" } };
          created_dialog = dialog_factory.create_choice_dialog(choice_prompt, choice_options);
       }
@@ -103,6 +106,26 @@ functions:
       - Blast::String::Trimmer
 
 
+  - name: tokenize
+    private: true
+    type: std::vector<std::string>
+    parameters:
+      - name: str
+        type: std::string
+        default_argument: '""'
+      - name: delim
+        type: char
+        default_argument: "'|'"
+    body: |
+      std::vector<std::string> tokens = Blast::StringSplitter(str, delim).split();
+      for (auto &token : tokens) token = Blast::String::Trimmer(token).trim();
+      return tokens;
+    body_dependency_symbols:
+      - Blast::String::Trimmer
+      - Blast::StringSplitter
+      - std::vector<std::string>
+
+
 dependencies:
 
 
@@ -118,5 +141,7 @@ dependencies:
     headers: [ utility, string ]
   - symbol: Blast::String::Trimmer
     headers: [ Blast/String/Trimmer.hpp ]
+  - symbol: Blast::StringSplitter
+    headers: [ Blast/StringSplitter.hpp ]
 
 

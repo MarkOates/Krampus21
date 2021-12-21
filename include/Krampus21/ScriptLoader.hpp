@@ -23,6 +23,7 @@ namespace Krampus21
       std::vector<Krampus21::DialogBoxes::Base*> parse();
       Krampus21::DialogBoxes::Base* parse_line_and_create_dialog(std::string script_line={});
       std::pair<std::string, std::string> parse_command_and_argument(std::string script_line={});
+      std::vector<std::string> tokenize(std::string str="", char delim='|');
    };
 }
 

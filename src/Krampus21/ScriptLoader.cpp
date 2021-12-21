@@ -3,6 +3,10 @@
 #include <Krampus21/ScriptLoader.hpp>
 #include <iostream>
 #include <Blast/String/Trimmer.hpp>
+#include <Blast/String/Trimmer.hpp>
+#include <Blast/StringSplitter.hpp>
+#include <vector>
+#include <string>
 
 
 namespace Krampus21
@@ -60,6 +64,9 @@ Krampus21::DialogBoxes::Base* ScriptLoader::parse_line_and_create_dialog(std::st
    {
       std::string choice_prompt = "[coice-prompt-text-not-extracted]";
       std::vector<std::pair<std::string, std::string>> choice_options = {};
+
+      std::string DELIMITER = "|";
+
       choice_options = { { "Boobar", "boobruhh" }, { "Zoozaz", "zazzle" } };
       created_dialog = dialog_factory.create_choice_dialog(choice_prompt, choice_options);
    }
@@ -91,6 +98,13 @@ std::pair<std::string, std::string> ScriptLoader::parse_command_and_argument(std
    }
 
    return result;
+}
+
+std::vector<std::string> ScriptLoader::tokenize(std::string str, char delim)
+{
+   std::vector<std::string> tokens = Blast::StringSplitter(str, delim).split();
+   for (auto &token : tokens) token = Blast::String::Trimmer(token).trim();
+   return tokens;
 }
 } // namespace Krampus21
 

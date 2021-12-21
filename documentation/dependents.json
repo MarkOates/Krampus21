@@ -128,5 +128,8 @@
   ],
   "Blast/String/Trimmer": [
     "Krampus21/ScriptLoader"
+  ],
+  "Blast/StringSplitter": [
+    "Krampus21/ScriptLoader"
   ]
 }

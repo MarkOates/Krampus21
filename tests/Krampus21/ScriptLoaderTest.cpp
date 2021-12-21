@@ -77,6 +77,7 @@ TEST(Krampus21_ScriptLoaderTest, parse_line_and_create_dialog__will_parse_a_CHOI
 
    ASSERT_NE(nullptr, created_dialog);
    EXPECT_EQ("Choice", created_dialog->get_type());
+   EXPECT_EQ("Choice", created_dialog->get_type());
 }
 
 
@@ -95,6 +96,13 @@ TEST(Krampus21_ScriptLoaderTest, parse__command_and_argument__will_trim_the_argu
    };
 
    EXPECT_EQ(expected_command_argument_pair, parsed_command_argument_pair);
+}
+
+
+TEST(Krampus21_ScriptLoaderTest, tokenize__will_split_a_source_string_into_trimmed_tokens)
+   // note this is a private method test
+{
+   // TODO
 }
 
 
