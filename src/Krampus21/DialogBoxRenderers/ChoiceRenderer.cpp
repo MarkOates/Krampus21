@@ -91,6 +91,8 @@ void ChoiceRenderer::draw_choices_with_cursor_and_current_selection(float start_
    float line_height = al_get_font_line_height(text_font);
    ALLEGRO_COLOR text_color = al_color_html("66a9bc");
    ALLEGRO_COLOR selection_hilight_color = ALLEGRO_COLOR{0.1, 0.1, 0.1, 0.1};
+   float selection_box_x_padding = 20;
+   float selection_box_y_padding = 0;
    float x = 200;
 
    int option_num = 0;
@@ -101,7 +103,13 @@ void ChoiceRenderer::draw_choices_with_cursor_and_current_selection(float start_
       if (this_option_is_currently_selected)
       {
          float text_width = al_get_text_width(text_font, option_text.c_str());
-         al_draw_filled_rectangle(x, start_y, x+text_width, start_y+line_height, selection_hilight_color);
+         al_draw_filled_rectangle(
+            x - selection_box_x_padding,
+            start_y - selection_box_y_padding,
+            x+text_width + selection_box_x_padding,
+            start_y+line_height + selection_box_y_padding,
+            selection_hilight_color
+         );
       }
       al_draw_text(
          text_font,
