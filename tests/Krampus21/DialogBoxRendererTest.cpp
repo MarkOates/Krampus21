@@ -153,6 +153,8 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_the_dialog_box)
    dialog_box.set_pages({ "Some test dialog text with multiple pages.", "Here's the second page." });
    Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
 
+   dialog_box.reveal_all_characters();
+
    dialog_box_renderer.render();
    al_flip_display();
    std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -175,6 +177,8 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_the_dialog_box_is_finish__ren
    dialog_box.next_page();
    Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
 
+   dialog_box.reveal_all_characters();
+
    dialog_box_renderer.render();
    al_flip_display();
    std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -196,6 +200,8 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_multiline_dialog)
    Krampus21::DialogBoxes::Base dialog_box;
    dialog_box.set_pages({ "Some test dialog text. There's actually a lot of text that will need to fit." });
    Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
+
+   dialog_box.reveal_all_characters();
 
    dialog_box_renderer.render();
    al_flip_display();

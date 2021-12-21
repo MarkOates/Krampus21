@@ -118,6 +118,11 @@ functions:
       return (possible_type == get_type());
 
 
+  - name: reveal_all_characters
+    body: |
+      num_revealed_characters = 9999;
+
+
 dependencies:
 
 

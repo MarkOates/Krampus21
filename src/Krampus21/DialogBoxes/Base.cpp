@@ -123,6 +123,11 @@ bool Base::is_type(std::string possible_type)
 {
    return (possible_type == get_type());
 }
+
+void Base::reveal_all_characters()
+{
+   num_revealed_characters = 9999;
+}
 } // namespace DialogBoxes
 } // namespace Krampus21
 

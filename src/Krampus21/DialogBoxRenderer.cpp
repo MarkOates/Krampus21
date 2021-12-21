@@ -102,7 +102,8 @@ void DialogBoxRenderer::render()
 
       // draw the player's action cursor thing at the bottom
       int current_dialog_box_page_character_count = dialog_box->get_current_page_text().length();
-      if (dialog_box_num_revealed_characters >= current_dialog_box_page_character_count)
+      int num_revealed_characters = obtain_dialog_box_num_revealed_characters();
+      if (num_revealed_characters >= current_dialog_box_page_character_count)
       {
          if (dialog_box->at_last_page()) draw_action_text("[close]");
          else draw_action_text(">>");
@@ -156,6 +157,7 @@ void DialogBoxRenderer::draw_styled_revealed_text()
    ALLEGRO_FONT* text_font = obtain_dialog_font();
    float line_height = al_get_font_line_height(text_font);
    ALLEGRO_COLOR text_color = al_color_html("66a9bc");
+   int num_revealed_characters = obtain_dialog_box_num_revealed_characters();
 
    al_draw_multiline_text(
       text_font,
@@ -165,7 +167,7 @@ void DialogBoxRenderer::draw_styled_revealed_text()
       text_box_max_width,
       line_height,
       ALLEGRO_ALIGN_LEFT,
-      concat_text(text, dialog_box_num_revealed_characters).c_str()
+      concat_text(text, num_revealed_characters).c_str()
    );
    return;
 }
