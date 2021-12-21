@@ -57,6 +57,7 @@ table td
   <li><a href="#quintessence/Krampus21/DialogFactory.q.yml">quintessence/Krampus21/DialogFactory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/ProgramRunner.q.yml">quintessence/Krampus21/ProgramRunner.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/ScreenManager.q.yml">quintessence/Krampus21/ScreenManager.q.yml</a></li>
+  <li><a href="#quintessence/Krampus21/Script.q.yml">quintessence/Krampus21/Script.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/ScriptLoader.q.yml">quintessence/Krampus21/ScriptLoader.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/UserEventEmitter.q.yml">quintessence/Krampus21/UserEventEmitter.q.yml</a></li>
 </ul>
@@ -614,6 +615,51 @@ table td
 </ul>
 <ul>
   <div class="component">
+    <h3 id="quintessence/Krampus21/Script.q.yml">quintessence/Krampus21/Script.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">lines</td>
+  <td class="property">std::vector&lt;std::string&gt;</td>
+</tr>
+<tr>
+  <td class="property">current_line_num</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">markers_index</td>
+  <td class="property">std::map&lt;std::string, int&gt;</td>
+</tr>
+<tr>
+  <td class="property">initialized</td>
+  <td class="property">bool</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">initialize()</td>
+</tr>
+<tr>
+  <td class="method">get_current_line_text()</td>
+</tr>
+<tr>
+  <td class="method">at_last_line()</td>
+</tr>
+<tr>
+  <td class="private_method">at_valid_line()</td>
+</tr>
+<tr>
+  <td class="private_method">build_markers_index()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, int&gt;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;string&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
     <h3 id="quintessence/Krampus21/ScriptLoader.q.yml">quintessence/Krampus21/ScriptLoader.q.yml</h3>
      <table>
 <tr>
@@ -636,6 +682,9 @@ table td
   <td class="private_method">parse_command_and_argument(1)</td>
 </tr>
 <tr>
+  <td class="private_method">build_markers_index(1)</td>
+</tr>
+<tr>
   <td class="private_method">tokenize(2)</td>
 </tr>
 <tr>
@@ -646,6 +695,9 @@ table td
 </tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, int&gt;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;string&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::string&gt;&amp;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;string&quot;]}</td>
 </tr>
@@ -813,6 +865,10 @@ table td
   ],
   "Krampus21/ScriptLoader": [
     "Krampus21/ScreenManager"
+  ],
+  "std/map<std/string, int>": [
+    "Krampus21/Script",
+    "Krampus21/ScriptLoader"
   ],
   "std/vector<std/string>&": [
     "Krampus21/ScriptLoader"

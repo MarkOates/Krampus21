@@ -116,6 +116,27 @@ std::pair<std::string, std::string> ScriptLoader::parse_command_and_argument(std
    return result;
 }
 
+std::map<std::string, int> ScriptLoader::build_markers_index(std::vector<std::string> script_lines)
+{
+   std::map<std::string, int> result;
+   for (unsigned i=0; i<script_lines.size(); i++)
+   {
+      std::string script_line = script_lines[i];
+      std::pair<std::string, std::string> command_and_argument = parse_command_and_argument(script_line);
+      std::string command = command_and_argument.first;
+      std::string argument = command_and_argument.second;
+
+      if (command == "MARKER")
+      {
+         // TODO ensure symbols don't appear multiple times
+
+         int line_num = i+1;
+         result[argument] = line_num;
+      }
+   }
+   return result;
+}
+
 std::vector<std::string> ScriptLoader::tokenize(std::string str, char delim)
 {
    std::vector<std::string> tokens = Blast::StringSplitter(str, delim).split();

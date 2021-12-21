@@ -147,3 +147,15 @@ TEST(Krampus21_ScriptLoaderTest, assert_odd_token_count__will_return_false_if_th
    ASSERT_EQ(false, Krampus21::ScriptLoader::assert_odd_token_count({ "t1", "t2", "t3", "t4", "t5", "t6" }));
 }
 
+TEST(Krampus21_ScriptLoaderText,
+   build_markers_index__will_build_an_index_with_the_markers_and_line_numbers_from_the_script)
+{
+   // TODO
+}
+
+TEST(Krampus21_ScriptLoaderText,
+   build_markers_index__if_a_script_has_multiple_markers_with_the_same_label__will_generate_a_warning)
+{
+   // TODO
+}
+
