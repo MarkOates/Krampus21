@@ -33,7 +33,7 @@ void Script::initialize()
       }
    // TODO
    build_markers_index();
-   current_line_num = 0;
+   current_line_num = 0; // TODO <- if not empty?
    initialized = true;
    return;
 }
