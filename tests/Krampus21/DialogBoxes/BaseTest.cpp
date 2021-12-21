@@ -198,4 +198,21 @@ TEST(Krampus21_DialogBoxes_BaseTest, reset__will_set_the_num_revealed_characters
 }
 
 
+TEST(Krampus21_DialogBoxes_BaseTest, next_page__will_set_the_num_revealed_characters_to_0)
+{
+   std::vector<std::string> pages = {
+      "This is text who's characters will reveal over time.",
+      "This line will have 0 revealed characters when first seen.",
+   };
+   MyTestDialogBox dialog_box;
+   dialog_box.set_pages(pages);
+
+   dialog_box.reveal_all_characters();
+   EXPECT_NE(0, dialog_box.get_num_revealed_characters());
+
+   dialog_box.reset();
+   EXPECT_EQ(0, dialog_box.get_num_revealed_characters());
+}
+
+
 
