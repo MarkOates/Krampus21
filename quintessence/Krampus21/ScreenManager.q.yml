@@ -84,7 +84,8 @@ functions:
       clear_all_dialogs();
 
       std::vector<std::string> script_lines = {
-         { "DIALOG: This will be the first dialog loaded through a script loader." }
+         { "DIALOG: This will be the first dialog loaded through a script loader." },
+         { "CHOICE: How will you go? | Out like a flame | GOTO FLAMING_END | Quietly in the night | GOTO CALM_END" },
       };
 
       Krampus21::ScriptLoader script_loader(script_lines);
@@ -128,6 +129,16 @@ functions:
       if (!current_dialog) return;
       current_dialog->next_page();
       dialog_num_revealed_characters = 0;
+      return;
+
+
+  - name: move_dialog_choice_cursor_up
+    body: |
+      return;
+
+
+  - name: move_dialog_choice_cursor_down
+    body: |
       return;
 
 
@@ -189,6 +200,14 @@ functions:
                break;
             case ALLEGRO_KEY_SPACE:
                advance_dialog();
+               break;
+            case ALLEGRO_KEY_UP:
+            case ALLEGRO_KEY_K:
+               move_dialog_choice_cursor_up();
+               break;
+            case ALLEGRO_KEY_DOWN:
+            case ALLEGRO_KEY_J:
+               move_dialog_choice_cursor_down();
                break;
          }
          break;

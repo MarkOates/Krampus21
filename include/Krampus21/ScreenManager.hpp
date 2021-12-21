@@ -43,6 +43,8 @@ namespace Krampus21
       void clear_all_dialogs();
       void shutdown_game();
       void advance_dialog();
+      void move_dialog_choice_cursor_up();
+      void move_dialog_choice_cursor_down();
       void update_dialog_playing();
       bool dialog_is_finished();
       void primary_timer_func() override;
