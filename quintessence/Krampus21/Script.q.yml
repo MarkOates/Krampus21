@@ -1,0 +1,62 @@
+properties:
+
+
+  - name: lines
+    type: std::vector<std::string>
+    init_with: '{}'
+    constructor_arg: true
+
+  - name: current_line_num
+    type: int
+    init_with: -1
+
+  - name: markers_index
+    type: std::map<std::string, int>
+    init_with: '{}'
+
+  - name: initialized
+    type: bool
+    init_with: false
+
+
+functions:
+
+
+  - name: initialize
+    guards: [ (!initialized) ]
+    body: |
+      // TODO
+      build_markers_index();
+      current_line_num = 0;
+      initialized = true;
+      return;
+
+
+  - name: get_current_line_text
+    type: std::string
+    body: |
+      // TODO
+      return "";
+
+
+  - name: at_end
+    type: bool
+    body: |
+      // TODO
+      return false;
+
+
+  - name: build_markers_index
+    body: |
+      // TODO
+      return;
+
+
+dependencies:
+
+
+   - symbol: std::map<std::string, int>
+     headers: [ map, string ]
+
+
+
