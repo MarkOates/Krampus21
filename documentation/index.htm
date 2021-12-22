@@ -50,6 +50,7 @@ table td
 <h1>TOC</h1>
 <ul>
   <li><a href="#quintessence/Krampus21/ApplicationController.q.yml">quintessence/Krampus21/ApplicationController.q.yml</a></li>
+  <li><a href="#quintessence/Krampus21/Character.q.yml">quintessence/Krampus21/Character.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxFactory.q.yml">quintessence/Krampus21/DialogBoxFactory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderer.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxRenderers/ChoiceRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderers/ChoiceRenderer.q.yml</a></li>
@@ -262,6 +263,34 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Blast::StringSplitter&quot;, &quot;headers&quot;=&gt;[&quot;Blast/StringSplitter.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/Krampus21/Character.q.yml">quintessence/Krampus21/Character.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">font_bin</td>
+  <td class="property">AllegroFlare::FontBin*</td>
+</tr>
+<tr>
+  <td class="property">bitmap_bin</td>
+  <td class="property">AllegroFlare::BitmapBin*</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">run()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -762,6 +791,7 @@ table td
   ],
   "AllegroFlare/FontBin": [
     "Krampus21/ApplicationController",
+    "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
@@ -838,6 +868,10 @@ table td
   "Blast/StringSplitter": [
     "Krampus21/ApplicationController"
   ],
+  "AllegroFlare/BitmapBin": [
+    "Krampus21/Character",
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+  ],
   "std/vector<std/string>": [
     "Krampus21/DialogBoxFactory"
   ],
@@ -865,9 +899,6 @@ table td
   ],
   "allegro_flare/placement2d": [
     "Krampus21/DialogBoxRenderer"
-  ],
-  "AllegroFlare/BitmapBin": [
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "Krampus21/DialogBoxes/Choice": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",

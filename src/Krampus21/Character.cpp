@@ -8,7 +8,9 @@ namespace Krampus21
 {
 
 
-Character::Character()
+Character::Character(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* bitmap_bin)
+   : font_bin(font_bin)
+   , bitmap_bin(bitmap_bin)
 {
 }
 

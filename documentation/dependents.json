@@ -23,6 +23,7 @@
   ],
   "AllegroFlare/FontBin": [
     "Krampus21/ApplicationController",
+    "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
@@ -99,6 +100,10 @@
   "Blast/StringSplitter": [
     "Krampus21/ApplicationController"
   ],
+  "AllegroFlare/BitmapBin": [
+    "Krampus21/Character",
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+  ],
   "std/vector<std/string>": [
     "Krampus21/DialogBoxFactory"
   ],
@@ -126,9 +131,6 @@
   ],
   "allegro_flare/placement2d": [
     "Krampus21/DialogBoxRenderer"
-  ],
-  "AllegroFlare/BitmapBin": [
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "Krampus21/DialogBoxes/Choice": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
