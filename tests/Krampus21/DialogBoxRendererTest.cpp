@@ -157,7 +157,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_the_dialog_box)
 
    dialog_box_renderer.render();
    al_flip_display();
-   std::this_thread::sleep_for(std::chrono::seconds(1));
+   //std::this_thread::sleep_for(std::chrono::seconds(1));
 
    al_destroy_display(display);
    al_uninstall_system();
@@ -181,7 +181,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_the_dialog_box_is_finish__ren
 
    dialog_box_renderer.render();
    al_flip_display();
-   std::this_thread::sleep_for(std::chrono::seconds(1));
+   //std::this_thread::sleep_for(std::chrono::seconds(1));
 
    al_destroy_display(display);
    al_uninstall_system();
@@ -205,7 +205,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_multiline_dialog)
 
    dialog_box_renderer.render();
    al_flip_display();
-   std::this_thread::sleep_for(std::chrono::seconds(1));
+   //std::this_thread::sleep_for(std::chrono::seconds(1));
 
    al_destroy_display(display);
    al_uninstall_system();
@@ -233,7 +233,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__will_propertly_render_revealing_te
       al_flip_display();
       //std::this_thread::sleep_for(std::chrono::microseconds(10000)); // add sleep for more obvious visual delay
    }
-   std::this_thread::sleep_for(std::chrono::milliseconds(500));
+   //std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
    al_destroy_display(display);
    al_uninstall_system();
