@@ -232,7 +232,6 @@ Krampus21::DialogBoxes::Base* ApplicationController::parse_line_and_create_dialo
 {
    std::string DIALOG = "DIALOG";
    std::string CHOICE = "CHOICE";
-   std::string PLAY_AMBIENCE = "PLAY_AMBIENCE";
    std::string PLAY_MUSIC = "PLAY_MUSIC";
 
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
@@ -269,10 +268,6 @@ Krampus21::DialogBoxes::Base* ApplicationController::parse_line_and_create_dialo
 
       //choice_options = { { "Boobar", "boobruhh" }, { "Zoozaz", "zazzle" } };
       created_dialog = dialog_factory.create_choice_dialog(choice_prompt, choice_options);
-   }
-   else if (command == PLAY_AMBIENCE)
-   {
-      // do nothing
    }
    else if (command == PLAY_MUSIC)
    {
