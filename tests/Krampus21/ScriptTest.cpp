@@ -107,7 +107,16 @@ TEST(Krampus21_ScriptText, goto_next_line__if_currently_at_the_last_line__sets_f
 
 TEST(Krampus21_ScriptText, goto_marker__sets_the_current_line_num_to_the_position_of_the_marker_and_returns_true)
 {
-   // TODO
+   std::vector<std::string> script_lines = {
+      "This is line 1.",
+      "MARKER: *A*",
+      "Lastly, a third line.",
+   };
+   Krampus21::Script script(script_lines);
+   script.initialize();
+
+   EXPECT_EQ(true, script.goto_marker("*A*"));
+   EXPECT_EQ(2, script.get_current_line_num());
 }
 
 
