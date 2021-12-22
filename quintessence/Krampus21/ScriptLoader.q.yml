@@ -125,7 +125,6 @@ functions:
 
   - name: build_markers_index
     static: true
-    private: true
     type: std::map<std::string, int>
     parameters:
       - name: script_lines
