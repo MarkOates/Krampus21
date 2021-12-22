@@ -187,8 +187,39 @@ TEST(Krampus21_ScriptLoaderText, build_markers_index__indexes_markers_at_the_beg
 }
 
 TEST(Krampus21_ScriptLoaderText,
-   build_markers_index__if_a_script_has_multiple_markers_with_the_same_label__will_generate_a_warning)
+   build_markers_index__if_a_script_has_multiple_identical_markers__will_generate_a_warning)
 {
-   // TODO
+   std::vector<std::string> lines = {
+      { "MARKER: *A_MARKER_THAT_EXISTS_IN_TWO_PLACES*" },
+      { "This is just a line in the middle." },
+      { "MARKER: *A_MARKER_THAT_EXISTS_IN_TWO_PLACES*" },
+   };
+
+   testing::internal::CaptureStdout();
+   std::map<std::string, int> built_index = Krampus21::ScriptLoader::build_markers_index(lines);
+   std::string cout_output = testing::internal::GetCapturedStdout();
+
+   std::string expected_warning_message = "Krampus21/ScriptLoader::build_markers_index: WARNING: "
+      "the marker \"*A_MARKER_THAT_EXISTS_IN_TWO_PLACES*\"is being set on line 3 but was already declared earlier "
+      "on line 1. Note that the marker will be overwritten to this new line number (3).";
+
+   ASSERT_EQ(expected_warning_message, cout_output);
+}
+
+TEST(Krampus21_ScriptLoaderText,
+   build_markers_index__if_a_script_has_multiple_identical_markers__will_set_the_line_number_to_the_last_declaration)
+{
+   std::vector<std::string> lines = {
+      { "MARKER: *A_MARKER_THAT_EXISTS_IN_TWO_PLACES*" },
+      { "This is just a line in the middle." },
+      { "MARKER: *A_MARKER_THAT_EXISTS_IN_TWO_PLACES*" },
+   };
+
+   std::map<std::string, int> built_index = Krampus21::ScriptLoader::build_markers_index(lines);
+
+   std::map<std::string, int> expected_index = {
+      { "*A_MARKER_THAT_EXISTS_IN_TWO_PLACES*", 3 },
+   };
+   ASSERT_EQ(expected_index, built_index);
 }
 

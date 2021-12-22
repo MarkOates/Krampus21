@@ -125,12 +125,21 @@ std::map<std::string, int> ScriptLoader::build_markers_index(std::vector<std::st
       std::pair<std::string, std::string> command_and_argument = parse_command_and_argument(script_line);
       std::string command = command_and_argument.first;
       std::string argument = command_and_argument.second;
+      int line_num = i+1;
 
       if (command == "MARKER")
       {
          // TODO ensure symbols don't appear multiple times
+         if (result.find(argument) != result.end())
+         {
+            std::cout << "Krampus21/ScriptLoader::build_markers_index: WARNING: the marker "
+                      << "\"" << argument << "\""
+                      << "is being set on line " << line_num
+                      << " but was already declared earlier on line " << result[argument] << ". "
+                      << "Note that the marker will be overwritten to this new line number ("
+                      << line_num << ").";
+         }
 
-         int line_num = i+1;
          result[argument] = line_num;
       }
    }
