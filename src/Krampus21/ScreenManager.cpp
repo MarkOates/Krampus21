@@ -7,8 +7,6 @@
 #include <Krampus21/ScriptLoader.hpp>
 #include <stdexcept>
 #include <sstream>
-#include <stdexcept>
-#include <sstream>
 #include <Krampus21/DialogBoxRenderer.hpp>
 #include <stdexcept>
 #include <sstream>
@@ -18,17 +16,15 @@ namespace Krampus21
 {
 
 
-ScreenManager::ScreenManager(AllegroFlare::Framework* framework, AllegroFlare::Screens* screens, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements, std::string dialog_filename)
+ScreenManager::ScreenManager(AllegroFlare::Framework* framework, AllegroFlare::Screens* screens, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements)
    : AllegroFlare::Screen()
    , framework(framework)
    , screens(screens)
    , sound_effect_elements(sound_effect_elements)
    , music_track_elements(music_track_elements)
-   , dialog_filename(dialog_filename)
    , user_event_emitter_souce({})
    , user_event_emitter({})
    , audio_controller(&framework->get_sample_bin_ref(), sound_effect_elements, music_track_elements)
-   , dialogs({})
    , current_dialog(nullptr)
    , initialized(false)
    , script()
@@ -38,12 +34,6 @@ ScreenManager::ScreenManager(AllegroFlare::Framework* framework, AllegroFlare::S
 
 ScreenManager::~ScreenManager()
 {
-}
-
-
-std::string ScreenManager::get_dialog_filename()
-{
-   return dialog_filename;
 }
 
 
@@ -60,36 +50,14 @@ void ScreenManager::initialize()
    return;
 }
 
-void ScreenManager::start_game()
+void ScreenManager::load_script(std::string identifier)
 {
-   clear_all_dialogs();
-
-   std::vector<std::string> script_lines = {
-      { "DIALOG: This will be the first dialog loaded through a script loader." },
-      { "CHOICE: How will you go? | Out like a flame | GOTO FLAMING_END | Quietly in the night | GOTO CALM_END" },
-   };
-
-   Krampus21::ScriptLoader script_loader(script_lines);
-   dialogs = script_loader.parse();
-
-   if (dialogs.empty())
-   {
-      // no dialogs are loaded
-   }
-   else
-   {
-      current_dialog = dialogs[0];
-   }
-
-   play_music_track("etherial-ambience-01.wav");
+   return;
 }
 
-void ScreenManager::clear_all_dialogs()
+void ScreenManager::start_game()
 {
-   for (auto &dialog : dialogs) { if (dialog) delete dialog; }
-   dialogs.clear();
-   current_dialog = nullptr;
-   return;
+   play_music_track("etherial-ambience-01.wav");
 }
 
 void ScreenManager::shutdown_game()
@@ -101,37 +69,6 @@ void ScreenManager::shutdown_game()
          throw std::runtime_error(error_message.str());
       }
    framework->shutdown_program = true;
-   return;
-}
-
-void ScreenManager::advance_dialog()
-{
-   if (!(framework))
-      {
-         std::stringstream error_message;
-         error_message << "ScreenManager" << "::" << "advance_dialog" << ": error: " << "guard \"framework\" not met";
-         throw std::runtime_error(error_message.str());
-      }
-   if (!current_dialog) return;
-   current_dialog->next_page();
-   return;
-}
-
-void ScreenManager::move_dialog_choice_cursor_up()
-{
-   // TODO
-   return;
-}
-
-void ScreenManager::move_dialog_choice_cursor_down()
-{
-   // TODO
-   return;
-}
-
-void ScreenManager::submit_dialog_choice_selection()
-{
-   // TODO
    return;
 }
 
@@ -179,18 +116,18 @@ void ScreenManager::key_down_func(ALLEGRO_EVENT* ev)
             shutdown_game();
             break;
          case ALLEGRO_KEY_SPACE:
-            advance_dialog();
+            // TODO advance dialog
             break;
          case ALLEGRO_KEY_UP:
          case ALLEGRO_KEY_K:
-            if (is_current_dialog_a_choice()) move_dialog_choice_cursor_up();
+            // TODO move cursor up
             break;
          case ALLEGRO_KEY_DOWN:
          case ALLEGRO_KEY_J:
-            if (is_current_dialog_a_choice()) move_dialog_choice_cursor_down();
+            // TODO move cursor down
             break;
          case ALLEGRO_KEY_ENTER:
-            submit_dialog_choice_selection();
+            // TODO submit dialog
             break;
       }
       break;
@@ -206,7 +143,7 @@ void ScreenManager::joy_button_down_func(ALLEGRO_EVENT* ev)
       shutdown_game();
       break;
    case 1:
-      advance_dialog();
+      // TODO advance dialog
       break;
    }
    return;
@@ -227,13 +164,13 @@ void ScreenManager::joy_axis_func(ALLEGRO_EVENT* ev)
          if (joystick_0_y_state < 0.5 && new_joystick_0_y_state >= 0.5)
          {
             // move cursor down
-            if (is_current_dialog_a_choice()) move_dialog_choice_cursor_down();
+            // TODO move cursor down
             std::cout << "CURSOR DOWN" << std::endl;
          }
          else if (joystick_0_y_state > -0.5 && new_joystick_0_y_state <= -0.5)
          {
             // move cursor up
-            if (is_current_dialog_a_choice()) move_dialog_choice_cursor_up();
+            // TODO move cursor down
             std::cout << "CURSOR UP" << std::endl;
          }
          joystick_0_y_state = new_joystick_0_y_state;
@@ -261,11 +198,6 @@ AllegroFlare::FontBin* ScreenManager::obtain_font_bin()
          throw std::runtime_error(error_message.str());
       }
    return &framework->get_font_bin_ref();
-}
-
-bool ScreenManager::is_current_dialog_a_choice()
-{
-   return (current_dialog && current_dialog->is_type("Choice"));
 }
 } // namespace Krampus21
 

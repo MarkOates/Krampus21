@@ -13,7 +13,6 @@
 #include <allegro5/allegro.h>
 #include <map>
 #include <string>
-#include <vector>
 
 
 namespace Krampus21
@@ -25,28 +24,21 @@ namespace Krampus21
       AllegroFlare::Screens* screens;
       std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements;
       std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements;
-      std::string dialog_filename;
       ALLEGRO_EVENT_SOURCE user_event_emitter_souce;
       Krampus21::UserEventEmitter user_event_emitter;
       AllegroFlare::AudioController audio_controller;
-      std::vector<Krampus21::DialogBoxes::Base*> dialogs;
       Krampus21::DialogBoxes::Base* current_dialog;
       bool initialized;
       Krampus21::Script script;
 
    public:
-      ScreenManager(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements={}, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements={}, std::string dialog_filename="unset-dialog-file.txt");
+      ScreenManager(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements={}, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements={});
       ~ScreenManager();
 
-      std::string get_dialog_filename();
       void initialize();
+      void load_script(std::string identifier="unset-script-filename");
       void start_game();
-      void clear_all_dialogs();
       void shutdown_game();
-      void advance_dialog();
-      void move_dialog_choice_cursor_up();
-      void move_dialog_choice_cursor_down();
-      void submit_dialog_choice_selection();
       void update_dialog();
       bool dialog_is_finished();
       void primary_timer_func() override;
@@ -56,7 +48,6 @@ namespace Krampus21
       void joy_axis_func(ALLEGRO_EVENT* ev=nullptr) override;
       void user_event_func(ALLEGRO_EVENT* ev=nullptr) override;
       AllegroFlare::FontBin* obtain_font_bin();
-      bool is_current_dialog_a_choice();
    };
 }
 

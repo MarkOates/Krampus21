@@ -31,12 +31,6 @@ properties:
     init_with: '{}'
     constructor_arg: true
 
-  - name: dialog_filename
-    type: std::string
-    init_with: '"unset-dialog-file.txt"'
-    constructor_arg: true
-    getter: true
-
   - name: user_event_emitter_souce
     type: ALLEGRO_EVENT_SOURCE
     init_with: '{}'
@@ -48,10 +42,6 @@ properties:
   - name: audio_controller
     type: AllegroFlare::AudioController
     init_with: '&framework->get_sample_bin_ref(), sound_effect_elements, music_track_elements'
-
-  - name: dialogs
-    type: std::vector<Krampus21::DialogBoxes::Base*>
-    init_with: '{}'
 
   - name: current_dialog
     type: Krampus21::DialogBoxes::Base*
@@ -79,72 +69,27 @@ functions:
       - Krampus21::DialogFactory
 
 
+  - name: load_script
+    parameters:
+      - name: identifier
+        type: std::string
+        default_argument: '"unset-script-filename"'
+    body: |
+      return;
+
+
   - name: start_game
     body: |
-      clear_all_dialogs();
-
-      std::vector<std::string> script_lines = {
-         { "DIALOG: This will be the first dialog loaded through a script loader." },
-         { "CHOICE: How will you go? | Out like a flame | GOTO FLAMING_END | Quietly in the night | GOTO CALM_END" },
-      };
-
-      Krampus21::ScriptLoader script_loader(script_lines);
-      dialogs = script_loader.parse();
-
-      if (dialogs.empty())
-      {
-         // no dialogs are loaded
-      }
-      else
-      {
-         current_dialog = dialogs[0];
-      }
-
       play_music_track("etherial-ambience-01.wav");
 
     body_dependency_symbols:
       - Krampus21::ScriptLoader
 
 
-  - name: clear_all_dialogs
-    type: void
-    body: |
-      for (auto &dialog : dialogs) { if (dialog) delete dialog; }
-      dialogs.clear();
-      current_dialog = nullptr;
-      return;
-
-
   - name: shutdown_game
     guards: [ framework ]
     body: |
       framework->shutdown_program = true;
-      return;
-
-
-  - name: advance_dialog
-    guards: [ framework ]
-    body: |
-      if (!current_dialog) return;
-      current_dialog->next_page();
-      return;
-
-
-  - name: move_dialog_choice_cursor_up
-    body: |
-      // TODO
-      return;
-
-
-  - name: move_dialog_choice_cursor_down
-    body: |
-      // TODO
-      return;
-
-
-  - name: submit_dialog_choice_selection
-    body: |
-      // TODO
       return;
 
 
@@ -205,18 +150,18 @@ functions:
                shutdown_game();
                break;
             case ALLEGRO_KEY_SPACE:
-               advance_dialog();
+               // TODO advance dialog
                break;
             case ALLEGRO_KEY_UP:
             case ALLEGRO_KEY_K:
-               if (is_current_dialog_a_choice()) move_dialog_choice_cursor_up();
+               // TODO move cursor up
                break;
             case ALLEGRO_KEY_DOWN:
             case ALLEGRO_KEY_J:
-               if (is_current_dialog_a_choice()) move_dialog_choice_cursor_down();
+               // TODO move cursor down
                break;
             case ALLEGRO_KEY_ENTER:
-               submit_dialog_choice_selection();
+               // TODO submit dialog
                break;
          }
          break;
@@ -237,7 +182,7 @@ functions:
          shutdown_game();
          break;
       case 1:
-         advance_dialog();
+         // TODO advance dialog
          break;
       }
       return;
@@ -263,13 +208,13 @@ functions:
             if (joystick_0_y_state < 0.5 && new_joystick_0_y_state >= 0.5)
             {
                // move cursor down
-               if (is_current_dialog_a_choice()) move_dialog_choice_cursor_down();
+               // TODO move cursor down
                std::cout << "CURSOR DOWN" << std::endl;
             }
             else if (joystick_0_y_state > -0.5 && new_joystick_0_y_state <= -0.5)
             {
                // move cursor up
-               if (is_current_dialog_a_choice()) move_dialog_choice_cursor_up();
+               // TODO move cursor down
                std::cout << "CURSOR UP" << std::endl;
             }
             joystick_0_y_state = new_joystick_0_y_state;
@@ -297,12 +242,6 @@ functions:
     type: AllegroFlare::FontBin*
     guards: [ framework ]
     body: return &framework->get_font_bin_ref();
-
-
-  - name: is_current_dialog_a_choice
-    type: bool
-    body: |
-      return (current_dialog && current_dialog->is_type("Choice"));
 
 
 dependencies:
