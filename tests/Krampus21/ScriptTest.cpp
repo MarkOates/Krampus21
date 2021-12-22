@@ -10,19 +10,19 @@ TEST(Krampus21_ScriptTest, can_be_created_without_blowing_up)
 }
 
 
-TEST(Krampus21_ScriptText, get_current_line_text__gets_the_text_from_the_current_line)
+TEST(Krampus21_ScriptText, DISABLED__get_current_line_text__gets_the_text_from_the_current_line)
 {
    // TODO
 }
 
 
-TEST(Krampus21_ScriptText, at_last_line__returns_true_if_on_the_last_line)
+TEST(Krampus21_ScriptText, DISABLED__at_last_line__returns_true_if_on_the_last_line)
 {
    // TODO
 }
 
 
-TEST(Krampus21_ScriptText, at_last_line__returns_false_if_not_on_the_last_line)
+TEST(Krampus21_ScriptText, DISABLED__at_last_line__returns_false_if_not_on_the_last_line)
 {
    // TODO
 }
