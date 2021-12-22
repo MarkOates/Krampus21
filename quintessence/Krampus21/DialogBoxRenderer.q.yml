@@ -55,8 +55,8 @@ functions:
          int num_revealed_characters = obtain_dialog_box_num_revealed_characters();
          if (num_revealed_characters >= current_dialog_box_page_character_count)
          {
-            if (dialog_box->at_last_page()) draw_action_text("[close]");
-            else draw_action_text(">>");
+            //if (dialog_box->at_last_page()) draw_action_text("[close]");
+            draw_action_text(">>");
          }
       }
 
