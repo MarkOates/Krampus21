@@ -31,6 +31,7 @@ ScreenManager::ScreenManager(AllegroFlare::Framework* framework, AllegroFlare::S
    , dialogs({})
    , current_dialog(nullptr)
    , initialized(false)
+   , script()
 {
 }
 

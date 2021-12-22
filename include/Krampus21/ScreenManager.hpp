@@ -8,6 +8,7 @@
 #include <AllegroFlare/Screen.hpp>
 #include <AllegroFlare/Screens.hpp>
 #include <Krampus21/DialogBoxes/Base.hpp>
+#include <Krampus21/Script.hpp>
 #include <Krampus21/UserEventEmitter.hpp>
 #include <allegro5/allegro.h>
 #include <map>
@@ -31,6 +32,7 @@ namespace Krampus21
       std::vector<Krampus21::DialogBoxes::Base*> dialogs;
       Krampus21::DialogBoxes::Base* current_dialog;
       bool initialized;
+      Krampus21::Script script;
 
    public:
       ScreenManager(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements={}, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements={}, std::string dialog_filename="unset-dialog-file.txt");

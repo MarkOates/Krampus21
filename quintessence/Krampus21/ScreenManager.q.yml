@@ -61,6 +61,10 @@ properties:
     type: bool
     init_with: false
 
+  - name: script
+    type: Krampus21::Script
+    init_with: ''
+
 
 functions:
 
@@ -338,5 +342,7 @@ dependencies:
     headers: [ Krampus21/DialogBoxes/Base.hpp ]
   - symbol: Krampus21::ScriptLoader
     headers: [ Krampus21/ScriptLoader.hpp ]
+  - symbol: Krampus21::Script
+    headers: [ Krampus21/Script.hpp ]
 
 

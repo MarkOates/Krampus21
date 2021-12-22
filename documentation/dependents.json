@@ -123,6 +123,9 @@
   "Krampus21/ScriptLoader": [
     "Krampus21/ScreenManager"
   ],
+  "Krampus21/Script": [
+    "Krampus21/ScreenManager"
+  ],
   "std/map<std/string, int>": [
     "Krampus21/Script",
     "Krampus21/ScriptLoader"
