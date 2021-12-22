@@ -115,7 +115,7 @@ functions:
             // TODO ensure symbols don't appear multiple times
             if (result.find(argument) != result.end())
             {
-               std::cout << "Krampus21/ScriptLoader::build_markers_index: WARNING: the marker "
+               std::cout << "Krampus21/ScriptLineRunner::build_markers_index: WARNING: the marker "
                          << "\"" << argument << "\""
                          << "is being set on line " << line_num
                          << " but was already declared earlier on line " << result[argument] << ". "

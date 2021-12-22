@@ -11,7 +11,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <sstream>
-#include <Krampus21/ScriptLoader.hpp>
+#include <Krampus21/ScriptLineRunner.hpp>
 
 
 namespace Krampus21
@@ -138,7 +138,7 @@ bool Script::at_valid_line()
 
 void Script::build_markers_index()
 {
-   markers_index = Krampus21::ScriptLoader::build_markers_index(lines);
+   markers_index = Krampus21::ScriptLineRunner::build_markers_index(lines);
    return;
 }
 

@@ -6,7 +6,6 @@
 #include <sstream>
 #include <AllegroFlare/UsefulPHP.hpp>
 #include <Blast/FileExistenceChecker.hpp>
-#include <Krampus21/ScriptLoader.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <Krampus21/DialogBoxRenderer.hpp>
@@ -70,13 +69,14 @@ bool ScreenManager::play_current_script_line()
 {
    //if (script->at_valid_line())
    //std::string script_line_text = script->get_current_line_text();
-   //ScriptLoader
+   //ScriptLineRunner
    return true;
 }
 
 void ScreenManager::start_game()
 {
    play_music_track("etherial-ambience-01.wav");
+   return;
 }
 
 void ScreenManager::shutdown_game()

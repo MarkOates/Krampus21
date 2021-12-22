@@ -11,14 +11,14 @@
 
 namespace Krampus21
 {
-   class ScriptLoader
+   class ScriptLineRunner
    {
    private:
       Krampus21::DialogFactory dialog_factory;
 
    public:
-      ScriptLoader();
-      ~ScriptLoader();
+      ScriptLineRunner();
+      ~ScriptLineRunner();
 
       Krampus21::DialogBoxes::Base* parse_line_and_create_dialog(std::string script_line={});
       static std::pair<std::string, std::string> parse_command_and_argument(std::string script_line={});

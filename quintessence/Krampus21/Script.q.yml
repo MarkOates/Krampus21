@@ -107,10 +107,10 @@ functions:
   - name: build_markers_index
     private: true
     body: |
-      markers_index = Krampus21::ScriptLoader::build_markers_index(lines);
+      markers_index = Krampus21::ScriptLineRunner::build_markers_index(lines);
       return;
     body_dependency_symbols:
-      - Krampus21::ScriptLoader::build_markers_index
+      - Krampus21::ScriptLineRunner::build_markers_index
 
 
   - name: infer_current_line_index_num
@@ -125,7 +125,7 @@ dependencies:
 
   - symbol: std::map<std::string, int>
     headers: [ map, string ]
-  - symbol: Krampus21::ScriptLoader::build_markers_index
-    headers: [ Krampus21/ScriptLoader.hpp ]
+  - symbol: Krampus21::ScriptLineRunner::build_markers_index
+    headers: [ Krampus21/ScriptLineRunner.hpp ]
 
 

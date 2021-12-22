@@ -96,16 +96,15 @@ functions:
     body: |
       //if (script->at_valid_line())
       //std::string script_line_text = script->get_current_line_text();
-      //ScriptLoader
+      //ScriptLineRunner
       return true;
 
 
   - name: start_game
     body: |
       play_music_track("etherial-ambience-01.wav");
-
-    body_dependency_symbols:
-      - Krampus21::ScriptLoader
+      return;
+    body_dependency_symbols: []
 
 
   - name: shutdown_game

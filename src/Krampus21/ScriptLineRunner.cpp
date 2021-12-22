@@ -1,6 +1,6 @@
 
 
-#include <Krampus21/ScriptLoader.hpp>
+#include <Krampus21/ScriptLineRunner.hpp>
 #include <Blast/String/Trimmer.hpp>
 #include <iostream>
 #include <Blast/String/Trimmer.hpp>
@@ -13,18 +13,18 @@ namespace Krampus21
 {
 
 
-ScriptLoader::ScriptLoader()
+ScriptLineRunner::ScriptLineRunner()
    : dialog_factory({})
 {
 }
 
 
-ScriptLoader::~ScriptLoader()
+ScriptLineRunner::~ScriptLineRunner()
 {
 }
 
 
-Krampus21::DialogBoxes::Base* ScriptLoader::parse_line_and_create_dialog(std::string script_line)
+Krampus21::DialogBoxes::Base* ScriptLineRunner::parse_line_and_create_dialog(std::string script_line)
 {
    std::string DIALOG = "DIALOG";
    std::string CHOICE = "CHOICE";
@@ -67,7 +67,7 @@ Krampus21::DialogBoxes::Base* ScriptLoader::parse_line_and_create_dialog(std::st
    return created_dialog;
 }
 
-std::pair<std::string, std::string> ScriptLoader::parse_command_and_argument(std::string script_line)
+std::pair<std::string, std::string> ScriptLineRunner::parse_command_and_argument(std::string script_line)
 {
    std::pair<std::string, std::string> result{"", ""};
    std::string DELIMETER = ": ";
@@ -93,7 +93,7 @@ std::pair<std::string, std::string> ScriptLoader::parse_command_and_argument(std
    return result;
 }
 
-std::map<std::string, int> ScriptLoader::build_markers_index(std::vector<std::string> script_lines)
+std::map<std::string, int> ScriptLineRunner::build_markers_index(std::vector<std::string> script_lines)
 {
    std::map<std::string, int> result;
    for (unsigned i=0; i<script_lines.size(); i++)
@@ -109,7 +109,7 @@ std::map<std::string, int> ScriptLoader::build_markers_index(std::vector<std::st
          // TODO ensure symbols don't appear multiple times
          if (result.find(argument) != result.end())
          {
-            std::cout << "Krampus21/ScriptLoader::build_markers_index: WARNING: the marker "
+            std::cout << "Krampus21/ScriptLineRunner::build_markers_index: WARNING: the marker "
                       << "\"" << argument << "\""
                       << "is being set on line " << line_num
                       << " but was already declared earlier on line " << result[argument] << ". "
@@ -123,19 +123,19 @@ std::map<std::string, int> ScriptLoader::build_markers_index(std::vector<std::st
    return result;
 }
 
-std::vector<std::string> ScriptLoader::tokenize(std::string str, char delim)
+std::vector<std::string> ScriptLineRunner::tokenize(std::string str, char delim)
 {
    std::vector<std::string> tokens = Blast::StringSplitter(str, delim).split();
    for (auto &token : tokens) token = Blast::String::Trimmer(token).trim();
    return tokens;
 }
 
-bool ScriptLoader::assert_min_token_count(std::vector<std::string> tokens, int min)
+bool ScriptLineRunner::assert_min_token_count(std::vector<std::string> tokens, int min)
 {
    return (tokens.size() >= min);
 }
 
-bool ScriptLoader::assert_odd_token_count(std::vector<std::string> tokens, int min)
+bool ScriptLineRunner::assert_odd_token_count(std::vector<std::string> tokens, int min)
 {
    return (tokens.size() % 2);
 }
