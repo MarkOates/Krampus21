@@ -267,6 +267,7 @@ bool ApplicationController::parse_and_run_line(std::string script_line)
    std::string CHOICE = "CHOICE";
    std::string PLAY_MUSIC = "PLAY_MUSIC";
    std::string MARKER = "MARKER";
+   std::string SET_CHARACTER_ART = "SET_CHARACTER_ART";
 
    bool continue_directly_to_next_script_line = false;
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
