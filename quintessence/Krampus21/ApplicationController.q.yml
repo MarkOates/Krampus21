@@ -398,7 +398,7 @@ functions:
       if (pos == std::string::npos)
       {
          result.first = "DIALOG";
-         result.second = script_line;
+         result.second = Blast::String::Trimmer(script_line).trim();
       }
       else
       {

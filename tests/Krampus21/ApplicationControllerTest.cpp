@@ -58,6 +58,25 @@ TEST(Krampus21_ApplicationControllerTest,
 }
 
 
+TEST(Krampus21_ApplicationControllerTest,
+   parse_command_and_argument__on_a_line_with_no_command__will_parse_to_a_DIALOG_and_trim_the_text)
+   // note this is a private method test
+{
+   std::string script_line = "  \tThis line will automatically become dialog, and will be trimmed. \n ";
+   std::pair<std::string, std::string> parsed_command_argument_pair;
+   Krampus21::ApplicationController script_loader;
+
+   parsed_command_argument_pair = script_loader.parse_command_and_argument(script_line);
+
+   std::pair<std::string, std::string> expected_command_argument_pair = {
+      "DIALOG",
+      "This line will automatically become dialog, and will be trimmed."
+   };
+
+   EXPECT_EQ(expected_command_argument_pair, parsed_command_argument_pair);
+}
+
+
 TEST(Krampus21_ApplicationControllerTest, parse_and_run_line__will_parse_a_DIALOG_command)
    // note this is a private method test
 {

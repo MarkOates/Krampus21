@@ -352,7 +352,7 @@ std::pair<std::string, std::string> ApplicationController::parse_command_and_arg
    if (pos == std::string::npos)
    {
       result.first = "DIALOG";
-      result.second = script_line;
+      result.second = Blast::String::Trimmer(script_line).trim();
    }
    else
    {
