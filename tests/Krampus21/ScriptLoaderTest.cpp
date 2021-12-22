@@ -151,34 +151,38 @@ TEST(Krampus21_ScriptLoaderText,
    build_markers_index__will_build_an_index_with_the_markers_and_line_numbers_from_the_script)
 {
    std::vector<std::string> lines = {
-      { "MARKER: *START*" },
+      { "MARKER: *MY_START_MARKER*" },
       { "This is the first line of the script." },
       { "This is the second line of the script." },
       { "If you've made it this far, you might have a chance." },
       { "In fact, I'll even give you a choice." },
       { "Or at least, the illusion of one ;)" },
-      { "CHOICE: Where would you like to go? | Back to the top | GOTO *START* | Take me to the end | GOTO *END*" },
-      { "MARKER: *END*" },
+      { "CHOICE: Where would you like to go? | Back to the top | GOTO *MY_START_MARKER* | "
+           "Take me to the end | GOTO *MY_END_MARKER*" },
+      { "MARKER: *MY_END_MARKER*" },
       { "Look at this kid. He might have a shot after all." },
    };
 
    std::map<std::string, int> built_index = Krampus21::ScriptLoader::build_markers_index(lines);
 
-   std::map<std::string, int> expected_index = { { "*START*", 1 }, { "*END*", 8 } };
+   std::map<std::string, int> expected_index = { { "*MY_START_MARKER*", 1 }, { "*MY_END_MARKER*", 8 } };
    ASSERT_EQ(expected_index, built_index);
 }
 
 TEST(Krampus21_ScriptLoaderText, build_markers_index__indexes_markers_at_the_beginning_and_the_end)
 {
    std::vector<std::string> lines = {
-      { "MARKER: *START*" },
+      { "MARKER: *A_MARKER_AT_THE_FIRST_LINE*" },
       { "This is just a line in the middle." },
-      { "MARKER: *END*" },
+      { "MARKER: *A_MARKER_AT_THE_LAST_LINE*" },
    };
 
    std::map<std::string, int> built_index = Krampus21::ScriptLoader::build_markers_index(lines);
 
-   std::map<std::string, int> expected_index = { { "*START*", 1 }, { "*END*", 3 } };
+   std::map<std::string, int> expected_index = {
+      { "*A_MARKER_AT_THE_FIRST_LINE*", 1 },
+      { "*A_MARKER_AT_THE_LAST_LINE*", 3 },
+   };
    ASSERT_EQ(expected_index, built_index);
 }
 
