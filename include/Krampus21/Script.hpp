@@ -30,6 +30,7 @@ namespace Krampus21
       bool at_last_line();
       bool at_valid_line();
       void build_markers_index();
+      int infer_current_line_index_num();
    };
 }
 

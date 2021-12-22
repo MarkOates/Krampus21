@@ -8,7 +8,7 @@ properties:
 
   - name: current_line_num
     type: int
-    init_with: -1
+    init_with: 0
     getter: true
 
   - name: markers_index
@@ -34,7 +34,7 @@ functions:
       build_markers_index();
       if (!lines.empty())
       {
-         current_line_num = 0;
+         current_line_num = 1;
          finished = true;
       }
       else
@@ -50,7 +50,7 @@ functions:
     type: std::string
     body: |
       if (!at_valid_line()) return "";
-      return lines[current_line_num];
+      return lines[infer_current_line_index_num()];
 
 
   - name: goto_next_line
@@ -59,7 +59,7 @@ functions:
     body: |
       if (at_last_line())
       {
-         current_line_num = -1;
+         current_line_num = 0;
          finished = true;
       }
       else
@@ -78,8 +78,10 @@ functions:
         default_argument: 0
     type: bool
     body: |
-      if (line_num < 0) return false;
-      if (line_num >= lines.size()) return false;
+      int line_index_num = line_num - 1;
+
+      if (line_index_num < 0) return false;
+      if (line_index_num >= lines.size()) return false;
       current_line_num = line_num;
       return true;
 
@@ -88,7 +90,7 @@ functions:
     guards: [ initialized ]
     type: bool
     body: |
-      if (!lines.empty() && current_line_num == (lines.size()-1));
+      if (!lines.empty() && infer_current_line_index_num() == (lines.size()-1));
 
 
   - name: at_valid_line
@@ -96,8 +98,8 @@ functions:
     type: bool
     body: |
       if (lines.empty()) return false;
-      if (current_line_num < 0) return false;
-      if (current_line_num >= lines.size()) return false;
+      if (infer_current_line_index_num() < 0) return false;
+      if (infer_current_line_index_num() >= lines.size()) return false;
       return true;
 
 
@@ -108,6 +110,13 @@ functions:
       return;
     body_dependency_symbols:
       - Krampus21::ScriptLoader::build_markers_index
+
+
+  - name: infer_current_line_index_num
+    private: true
+    type: int
+    body: |
+      return current_line_num - 1;
 
 
 dependencies:

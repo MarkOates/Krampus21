@@ -20,7 +20,7 @@ namespace Krampus21
 
 Script::Script(std::vector<std::string> lines)
    : lines(lines)
-   , current_line_num(-1)
+   , current_line_num(0)
    , markers_index({})
    , initialized(false)
    , finished(false)
@@ -56,7 +56,7 @@ void Script::initialize()
    build_markers_index();
    if (!lines.empty())
    {
-      current_line_num = 0;
+      current_line_num = 1;
       finished = true;
    }
    else
@@ -76,7 +76,7 @@ std::string Script::get_current_line_text()
          throw std::runtime_error(error_message.str());
       }
    if (!at_valid_line()) return "";
-   return lines[current_line_num];
+   return lines[infer_current_line_index_num()];
 }
 
 bool Script::goto_next_line()
@@ -89,7 +89,7 @@ bool Script::goto_next_line()
       }
    if (at_last_line())
    {
-      current_line_num = -1;
+      current_line_num = 0;
       finished = true;
    }
    else
@@ -108,8 +108,10 @@ bool Script::goto_line_num(int line_num)
          error_message << "Script" << "::" << "goto_line_num" << ": error: " << "guard \"initialized\" not met";
          throw std::runtime_error(error_message.str());
       }
-   if (line_num < 0) return false;
-   if (line_num >= lines.size()) return false;
+   int line_index_num = line_num - 1;
+
+   if (line_index_num < 0) return false;
+   if (line_index_num >= lines.size()) return false;
    current_line_num = line_num;
    return true;
 }
@@ -122,14 +124,14 @@ bool Script::at_last_line()
          error_message << "Script" << "::" << "at_last_line" << ": error: " << "guard \"initialized\" not met";
          throw std::runtime_error(error_message.str());
       }
-   if (!lines.empty() && current_line_num == (lines.size()-1));
+   if (!lines.empty() && infer_current_line_index_num() == (lines.size()-1));
 }
 
 bool Script::at_valid_line()
 {
    if (lines.empty()) return false;
-   if (current_line_num < 0) return false;
-   if (current_line_num >= lines.size()) return false;
+   if (infer_current_line_index_num() < 0) return false;
+   if (infer_current_line_index_num() >= lines.size()) return false;
    return true;
 }
 
@@ -137,6 +139,11 @@ void Script::build_markers_index()
 {
    markers_index = Krampus21::ScriptLoader::build_markers_index(lines);
    return;
+}
+
+int Script::infer_current_line_index_num()
+{
+   return current_line_num - 1;
 }
 } // namespace Krampus21
 
