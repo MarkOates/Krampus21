@@ -150,7 +150,22 @@ TEST(Krampus21_ScriptLoaderTest, assert_odd_token_count__will_return_false_if_th
 TEST(Krampus21_ScriptLoaderText,
    build_markers_index__will_build_an_index_with_the_markers_and_line_numbers_from_the_script)
 {
-   // TODO
+   std::vector<std::string> lines = {
+      { "MARKER: *START*" },
+      { "This is the first line of the script." },
+      { "This is the second line of the script." },
+      { "If you've made it this far, you might have a chance." },
+      { "In fact, I'll even give you a choice." },
+      { "Or at least, the illusion of one ;)" },
+      { "CHOICE: Where would you like to go? | Back to the top | GOTO *START* | Take me to the end | GOTO *END*" },
+      { "MARKER: *END*" },
+      { "Look at this kid. He might have a shot after all." },
+   };
+
+   std::map<std::string, int> built_index = Krampus21::ScriptLoader::build_markers_index(lines);
+
+   std::map<std::string, int> expected_index = { { "*START*", 1 }, { "*END*", 8 } };
+   ASSERT_EQ(expected_index, built_index);
 }
 
 TEST(Krampus21_ScriptLoaderText,
