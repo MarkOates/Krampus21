@@ -25,7 +25,8 @@ TEST(Krampus21_ScriptLineRunnerTest, parse__command_and_argument__will_not_blow_
 }
 
 
-TEST(Krampus21_ScriptLineRunnerTest, parse_command_and_argument__will_parse_a_script_line_into_an_expected_set_of_elements)
+TEST(Krampus21_ScriptLineRunnerTest,
+   parse_command_and_argument__will_parse_a_script_line_into_an_expected_set_of_elements)
    // note this is a private method test
 {
    std::string script_line = "DIALOG: This is the most basic dialog.";
