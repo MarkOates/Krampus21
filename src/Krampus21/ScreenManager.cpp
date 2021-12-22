@@ -4,6 +4,7 @@
 #include <Krampus21/DialogFactory.hpp>
 #include <stdexcept>
 #include <sstream>
+#include <AllegroFlare/UsefulPHP.hpp>
 #include <Krampus21/ScriptLoader.hpp>
 #include <stdexcept>
 #include <sstream>
@@ -50,8 +51,11 @@ void ScreenManager::initialize()
    return;
 }
 
-void ScreenManager::load_script(std::string identifier)
+void ScreenManager::load_script(std::string filename)
 {
+   std::vector<std::string> script_lines = AllegroFlare::php::file_get_contents_split(filename);
+   script = Krampus21::Script(script_lines);
+   script.initialize();
    return;
 }
 

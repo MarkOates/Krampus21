@@ -71,11 +71,17 @@ functions:
 
   - name: load_script
     parameters:
-      - name: identifier
+      - name: filename
         type: std::string
-        default_argument: '"unset-script-filename"'
+        default_argument: '"unset-script-filename.txt"'
     body: |
+      std::vector<std::string> script_lines = AllegroFlare::php::file_get_contents_split(filename);
+      script = Krampus21::Script(script_lines);
+      script.initialize();
       return;
+    body_dependency_symbols:
+      - AllegroFlare::php::file_get_contents_split
+
 
 
   - name: start_game
@@ -283,5 +289,7 @@ dependencies:
     headers: [ Krampus21/ScriptLoader.hpp ]
   - symbol: Krampus21::Script
     headers: [ Krampus21/Script.hpp ]
+  - symbol: AllegroFlare::php::file_get_contents_split
+    headers: [ AllegroFlare/UsefulPHP.hpp ]
 
 

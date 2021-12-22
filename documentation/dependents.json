@@ -70,7 +70,8 @@
     "Krampus21/DialogFactory"
   ],
   "AllegroFlare/php/file_get_contents_split": [
-    "Krampus21/DialogFactory"
+    "Krampus21/DialogFactory",
+    "Krampus21/ScreenManager"
   ],
   "AllegroFlare/Display": [
     "Krampus21/ProgramRunner",

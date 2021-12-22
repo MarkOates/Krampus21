@@ -36,7 +36,7 @@ namespace Krampus21
       ~ScreenManager();
 
       void initialize();
-      void load_script(std::string identifier="unset-script-filename");
+      void load_script(std::string filename="unset-script-filename.txt");
       void start_game();
       void shutdown_game();
       void update_dialog();
