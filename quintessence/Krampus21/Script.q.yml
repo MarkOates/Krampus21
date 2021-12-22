@@ -18,6 +18,10 @@ properties:
     type: bool
     init_with: false
 
+  - name: finished
+    type: bool
+    init_with: false
+
 
 functions:
 
@@ -26,7 +30,15 @@ functions:
     guards: [ (!initialized) ]
     body: |
       build_markers_index();
-      if (!lines.empty()) current_line_num = 0;
+      if (!lines.empty())
+      {
+         current_line_num = 0;
+         finished = true;
+      }
+      else
+      {
+         finished = false;
+      }
       initialized = true;
       return;
 
@@ -37,6 +49,35 @@ functions:
     body: |
       if (!at_valid_line()) return "";
       return lines[current_line_num];
+
+
+  - name: goto_next_line
+    guards: [ initialized ]
+    type: bool
+    body: |
+      if (at_last_line())
+      {
+         current_line_num = -1;
+         finished = true;
+      }
+      else
+      {
+         if (!at_valid_line()) return false;
+         current_line_num++;
+      }
+      return !finished;
+
+
+  - name: goto_line_num
+    guards: [ initialized ]
+    parameters:
+      - name: line_num
+        type: int
+        default_argument: 0
+    type: bool
+    body: |
+      // TODO
+      return false;
 
 
   - name: at_last_line
