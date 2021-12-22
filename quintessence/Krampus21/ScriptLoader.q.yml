@@ -1,42 +1,12 @@
 properties:
 
 
-  - name: script_lines
-    type: std::vector<std::string>
-    init_with: '{}'
-    constructor_arg: true
-
   - name: dialog_factory
     type: Krampus21::DialogFactory
     init_with: '{}'
 
 
 functions:
-
-
-  - name: parse
-    type: std::vector<Krampus21::DialogBoxes::Base*>
-    body: |
-      std::vector<Krampus21::DialogBoxes::Base*> result;
-
-      int line_num = 0;
-      for (auto &script_line : script_lines)
-      {
-         Krampus21::DialogBoxes::Base* created_dialog = parse_line_and_create_dialog(script_line);
-         if (!created_dialog)
-         {
-            std::cout << "Script loading/parsing error on line [" << line_num << "]" << std::endl;
-         }
-         else
-         {
-            result.push_back(created_dialog);
-         }
-         line_num++;
-      }
-
-      return result;
-    body_dependency_symbols:
-      - std::cout
 
 
   - name: parse_line_and_create_dialog
@@ -157,6 +127,8 @@ functions:
          }
       }
       return result;
+    body_dependency_symbols:
+      - std::cout
 
 
   - name: tokenize

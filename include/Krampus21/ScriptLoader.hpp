@@ -14,14 +14,12 @@ namespace Krampus21
    class ScriptLoader
    {
    private:
-      std::vector<std::string> script_lines;
       Krampus21::DialogFactory dialog_factory;
 
    public:
-      ScriptLoader(std::vector<std::string> script_lines={});
+      ScriptLoader();
       ~ScriptLoader();
 
-      std::vector<Krampus21::DialogBoxes::Base*> parse();
       Krampus21::DialogBoxes::Base* parse_line_and_create_dialog(std::string script_line={});
       static std::pair<std::string, std::string> parse_command_and_argument(std::string script_line={});
       static std::map<std::string, int> build_markers_index(std::vector<std::string> script_lines={});

@@ -1,8 +1,8 @@
 
 
 #include <Krampus21/ScriptLoader.hpp>
-#include <iostream>
 #include <Blast/String/Trimmer.hpp>
+#include <iostream>
 #include <Blast/String/Trimmer.hpp>
 #include <Blast/StringSplitter.hpp>
 #include <vector>
@@ -13,9 +13,8 @@ namespace Krampus21
 {
 
 
-ScriptLoader::ScriptLoader(std::vector<std::string> script_lines)
-   : script_lines(script_lines)
-   , dialog_factory({})
+ScriptLoader::ScriptLoader()
+   : dialog_factory({})
 {
 }
 
@@ -24,28 +23,6 @@ ScriptLoader::~ScriptLoader()
 {
 }
 
-
-std::vector<Krampus21::DialogBoxes::Base*> ScriptLoader::parse()
-{
-   std::vector<Krampus21::DialogBoxes::Base*> result;
-
-   int line_num = 0;
-   for (auto &script_line : script_lines)
-   {
-      Krampus21::DialogBoxes::Base* created_dialog = parse_line_and_create_dialog(script_line);
-      if (!created_dialog)
-      {
-         std::cout << "Script loading/parsing error on line [" << line_num << "]" << std::endl;
-      }
-      else
-      {
-         result.push_back(created_dialog);
-      }
-      line_num++;
-   }
-
-   return result;
-}
 
 Krampus21::DialogBoxes::Base* ScriptLoader::parse_line_and_create_dialog(std::string script_line)
 {
