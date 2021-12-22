@@ -33,6 +33,18 @@ Script::~Script()
 }
 
 
+int Script::get_current_line_num()
+{
+   return current_line_num;
+}
+
+
+bool Script::get_finished()
+{
+   return finished;
+}
+
+
 void Script::initialize()
 {
    if (!((!initialized)))
@@ -96,8 +108,10 @@ bool Script::goto_line_num(int line_num)
          error_message << "Script" << "::" << "goto_line_num" << ": error: " << "guard \"initialized\" not met";
          throw std::runtime_error(error_message.str());
       }
-   // TODO
-   return false;
+   if (line_num < 0) return false;
+   if (line_num >= lines.size()) return false;
+   current_line_num = line_num;
+   return true;
 }
 
 bool Script::at_last_line()

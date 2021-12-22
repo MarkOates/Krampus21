@@ -50,7 +50,16 @@ TEST(Krampus21_ScriptText, goto_next_line__if_currently_at_the_last_line__sets_t
 
 TEST(Krampus21_ScriptText, goto_line_num__sets_the_current_line_num)
 {
-   // TODO
+   std::vector<std::string> script_lines = {
+      "This is line 1.",
+      "And another line making one line 2.",
+      "Lastly, a third line.",
+   };
+   Krampus21::Script script(script_lines);
+   script.initialize();
+
+   script.goto_line_num(2);
+   ASSERT_EQ(2, script.get_current_line_num());
 }
 
 TEST(Krampus21_ScriptText, goto_line_num__if_outside_the_range_of_lines__does_nothing)

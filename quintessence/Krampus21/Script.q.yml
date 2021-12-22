@@ -9,6 +9,7 @@ properties:
   - name: current_line_num
     type: int
     init_with: -1
+    getter: true
 
   - name: markers_index
     type: std::map<std::string, int>
@@ -21,6 +22,7 @@ properties:
   - name: finished
     type: bool
     init_with: false
+    getter: true
 
 
 functions:
@@ -76,8 +78,10 @@ functions:
         default_argument: 0
     type: bool
     body: |
-      // TODO
-      return false;
+      if (line_num < 0) return false;
+      if (line_num >= lines.size()) return false;
+      current_line_num = line_num;
+      return true;
 
 
   - name: at_last_line

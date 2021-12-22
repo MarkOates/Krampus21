@@ -21,6 +21,8 @@ namespace Krampus21
       Script(std::vector<std::string> lines={});
       ~Script();
 
+      int get_current_line_num();
+      bool get_finished();
       void initialize();
       std::string get_current_line_text();
       bool goto_next_line();
