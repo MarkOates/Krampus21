@@ -1,17 +1,101 @@
 {
-  "std/vector<std/string>": [
-    "Krampus21/DialogBoxFactory"
+  "ALLEGRO_EVENT": [
+    "Krampus21/ApplicationController"
+  ],
+  "ALLEGRO_EVENT_SOURCE": [
+    "Krampus21/ApplicationController"
+  ],
+  "AllegroFlare/Screen": [
+    "Krampus21/ApplicationController"
+  ],
+  "AllegroFlare/Screens": [
+    "Krampus21/ApplicationController",
+    "Krampus21/ProgramRunner"
+  ],
+  "AllegroFlare/Framework": [
+    "Krampus21/ApplicationController",
+    "Krampus21/ProgramRunner"
+  ],
+  "AllegroFlare/FontBin": [
+    "Krampus21/ApplicationController",
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+  ],
+  "AllegroFlare/Display": [
+    "Krampus21/ApplicationController",
+    "Krampus21/ProgramRunner"
+  ],
+  "AllegroFlare/AudioController": [
+    "Krampus21/ApplicationController"
+  ],
+  "Krampus21/Screens/Base": [
+    "Krampus21/ApplicationController"
+  ],
+  "Krampus21/UserEventEmitter": [
+    "Krampus21/ApplicationController"
+  ],
+  "std/map<std/string, AllegroFlare/AudioRepositoryElement>": [
+    "Krampus21/ApplicationController",
+    "Krampus21/ProgramRunner"
+  ],
+  "Krampus21/DialogBoxes/Basic": [
+    "Krampus21/ApplicationController",
+    "Krampus21/ApplicationController",
+    "Krampus21/DialogBoxFactory",
+    "Krampus21/DialogFactory",
+    "Krampus21/DialogFactory"
+  ],
+  "Krampus21/DialogBoxRenderer": [
+    "Krampus21/ApplicationController"
+  ],
+  "Krampus21/DialogFactory": [
+    "Krampus21/ApplicationController",
+    "Krampus21/ApplicationController"
+  ],
+  "std/vector<Krampus21/DialogBoxes/Base>": [
+    "Krampus21/ApplicationController",
+    "Krampus21/ApplicationController"
   ],
   "Krampus21/DialogBoxes/Base": [
+    "Krampus21/ApplicationController",
+    "Krampus21/ApplicationController",
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxes/Base",
     "Krampus21/DialogBoxes/Choice"
   ],
-  "Krampus21/DialogBoxes/Basic": [
-    "Krampus21/DialogBoxFactory",
-    "Krampus21/DialogFactory",
+  "Krampus21/ScriptLoader": [
+    "Krampus21/ApplicationController"
+  ],
+  "Krampus21/Script": [
+    "Krampus21/ApplicationController"
+  ],
+  "AllegroFlare/php/file_get_contents_split": [
+    "Krampus21/ApplicationController",
     "Krampus21/DialogFactory"
+  ],
+  "Blast/FileExistenceChecker": [
+    "Krampus21/ApplicationController",
+    "Krampus21/DialogFactory"
+  ],
+  "std/map<std/string, int>": [
+    "Krampus21/ApplicationController",
+    "Krampus21/Script"
+  ],
+  "std/vector<std/string>&": [
+    "Krampus21/ApplicationController"
+  ],
+  "std/pair<std/string, std/string>": [
+    "Krampus21/ApplicationController"
+  ],
+  "Blast/String/Trimmer": [
+    "Krampus21/ApplicationController"
+  ],
+  "Blast/StringSplitter": [
+    "Krampus21/ApplicationController"
+  ],
+  "std/vector<std/string>": [
+    "Krampus21/DialogBoxFactory"
   ],
   "ALLEGRO_FONT": [
     "Krampus21/DialogBoxRenderer",
@@ -39,10 +123,6 @@
   "Blast/StringJoiner": [
     "Krampus21/DialogBoxRenderer"
   ],
-  "AllegroFlare/FontBin": [
-    "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
-  ],
   "allegro_flare/placement2d": [
     "Krampus21/DialogBoxRenderer"
   ],
@@ -61,29 +141,8 @@
   "std/vector<std/vector<std/string>>": [
     "Krampus21/DialogBoxes/Base"
   ],
-  "Blast/FileExistenceChecker": [
-    "Krampus21/DialogFactory"
-  ],
-  "AllegroFlare/php/file_get_contents_split": [
-    "Krampus21/DialogFactory"
-  ],
-  "AllegroFlare/Display": [
-    "Krampus21/ProgramRunner"
-  ],
-  "AllegroFlare/Screens": [
-    "Krampus21/ProgramRunner"
-  ],
-  "AllegroFlare/Framework": [
-    "Krampus21/ProgramRunner"
-  ],
-  "std/map<std/string, AllegroFlare/AudioRepositoryElement>": [
-    "Krampus21/ProgramRunner"
-  ],
   "Krampus21/ApplicationController": [
     "Krampus21/ProgramRunner"
-  ],
-  "std/map<std/string, int>": [
-    "Krampus21/Script"
   ],
   "Krampus21/ApplicationController/build_markers_index": [
     "Krampus21/Script"

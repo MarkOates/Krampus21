@@ -49,6 +49,7 @@ table td
 <body>
 <h1>TOC</h1>
 <ul>
+  <li><a href="#quintessence/Krampus21/ApplicationController.q.yml">quintessence/Krampus21/ApplicationController.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxFactory.q.yml">quintessence/Krampus21/DialogBoxFactory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderer.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxRenderers/ChoiceRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderers/ChoiceRenderer.q.yml</a></li>
@@ -60,6 +61,211 @@ table td
   <li><a href="#quintessence/Krampus21/UserEventEmitter.q.yml">quintessence/Krampus21/UserEventEmitter.q.yml</a></li>
 </ul>
 <h1>Components</h1>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/Krampus21/ApplicationController.q.yml">quintessence/Krampus21/ApplicationController.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">framework</td>
+  <td class="property">AllegroFlare::Framework*</td>
+</tr>
+<tr>
+  <td class="property">screens</td>
+  <td class="property">AllegroFlare::Screens*</td>
+</tr>
+<tr>
+  <td class="private_property">sound_effect_elements</td>
+  <td class="private_property">std::map&lt;std::string, AllegroFlare::AudioRepositoryElement&gt;</td>
+</tr>
+<tr>
+  <td class="private_property">music_track_elements</td>
+  <td class="private_property">std::map&lt;std::string, AllegroFlare::AudioRepositoryElement&gt;</td>
+</tr>
+<tr>
+  <td class="property">user_event_emitter_souce</td>
+  <td class="property">ALLEGRO_EVENT_SOURCE</td>
+</tr>
+<tr>
+  <td class="property">user_event_emitter</td>
+  <td class="property">Krampus21::UserEventEmitter</td>
+</tr>
+<tr>
+  <td class="property">audio_controller</td>
+  <td class="property">AllegroFlare::AudioController</td>
+</tr>
+<tr>
+  <td class="property">current_dialog</td>
+  <td class="property">Krampus21::DialogBoxes::Base*</td>
+</tr>
+<tr>
+  <td class="property">initialized</td>
+  <td class="property">bool</td>
+</tr>
+<tr>
+  <td class="property">script</td>
+  <td class="property">Krampus21::Script</td>
+</tr>
+<tr>
+  <td class="property">dialog_factory</td>
+  <td class="property">Krampus21::DialogFactory</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">initialize()</td>
+</tr>
+<tr>
+  <td class="method">load_script(1)</td>
+</tr>
+<tr>
+  <td class="method">advance()</td>
+</tr>
+<tr>
+  <td class="method">play_current_script_line()</td>
+</tr>
+<tr>
+  <td class="method">start_game()</td>
+</tr>
+<tr>
+  <td class="method">shutdown_game()</td>
+</tr>
+<tr>
+  <td class="method">update_dialog()</td>
+</tr>
+<tr>
+  <td class="method">dialog_is_finished()</td>
+</tr>
+<tr>
+  <td class="method">primary_timer_func()</td>
+</tr>
+<tr>
+  <td class="method">play_music_track(1)</td>
+</tr>
+<tr>
+  <td class="method">key_down_func(1)</td>
+</tr>
+<tr>
+  <td class="method">joy_button_down_func(1)</td>
+</tr>
+<tr>
+  <td class="method">joy_axis_func(1)</td>
+</tr>
+<tr>
+  <td class="method">user_event_func(1)</td>
+</tr>
+<tr>
+  <td class="private_method">obtain_font_bin()</td>
+</tr>
+<tr>
+  <td class="private_method">parse_line_and_create_dialog(1)</td>
+</tr>
+<tr>
+  <td class="private_method">parse_command_and_argument(1)</td>
+</tr>
+<tr>
+  <td class="method">build_markers_index(1)</td>
+</tr>
+<tr>
+  <td class="private_method">tokenize(2)</td>
+</tr>
+<tr>
+  <td class="private_method">assert_min_token_count(2)</td>
+</tr>
+<tr>
+  <td class="private_method">assert_odd_token_count(2)</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_EVENT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_EVENT_SOURCE&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Screen&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Screen.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Screens*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Screens.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Framework*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Framework.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Display&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Display.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::AudioController&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/AudioController.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Screens::Base*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Screens/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::UserEventEmitter&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/UserEventEmitter.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, AllegroFlare::AudioRepositoryElement&gt;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;string&quot;, &quot;AllegroFlare/AudioRepositoryElement.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Basic&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Basic.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxRenderer&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxRenderer.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogFactory&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogFactory.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;Krampus21::DialogBoxes::Base*&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::ScriptLoader&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/ScriptLoader.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Script&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Script.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::php::file_get_contents_split&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/UsefulPHP.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Blast::FileExistenceChecker&quot;, &quot;headers&quot;=&gt;[&quot;Blast/FileExistenceChecker.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, int&gt;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;string&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::string&gt;&amp;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;string&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;Krampus21::DialogBoxes::Base*&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogFactory&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogFactory.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Basic*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Basic.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::pair&lt;std::string, std::string&gt;&quot;, &quot;headers&quot;=&gt;[&quot;utility&quot;, &quot;string&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Blast::String::Trimmer&quot;, &quot;headers&quot;=&gt;[&quot;Blast/String/Trimmer.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Blast::StringSplitter&quot;, &quot;headers&quot;=&gt;[&quot;Blast/StringSplitter.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
 <ul>
   <div class="component">
     <h3 id="quintessence/Krampus21/DialogBoxFactory.q.yml">quintessence/Krampus21/DialogBoxFactory.q.yml</h3>
@@ -529,19 +735,103 @@ table td
 <h1>Dependents</h1>
 <pre>
 {
-  "std/vector<std/string>": [
-    "Krampus21/DialogBoxFactory"
+  "ALLEGRO_EVENT": [
+    "Krampus21/ApplicationController"
+  ],
+  "ALLEGRO_EVENT_SOURCE": [
+    "Krampus21/ApplicationController"
+  ],
+  "AllegroFlare/Screen": [
+    "Krampus21/ApplicationController"
+  ],
+  "AllegroFlare/Screens": [
+    "Krampus21/ApplicationController",
+    "Krampus21/ProgramRunner"
+  ],
+  "AllegroFlare/Framework": [
+    "Krampus21/ApplicationController",
+    "Krampus21/ProgramRunner"
+  ],
+  "AllegroFlare/FontBin": [
+    "Krampus21/ApplicationController",
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+  ],
+  "AllegroFlare/Display": [
+    "Krampus21/ApplicationController",
+    "Krampus21/ProgramRunner"
+  ],
+  "AllegroFlare/AudioController": [
+    "Krampus21/ApplicationController"
+  ],
+  "Krampus21/Screens/Base": [
+    "Krampus21/ApplicationController"
+  ],
+  "Krampus21/UserEventEmitter": [
+    "Krampus21/ApplicationController"
+  ],
+  "std/map<std/string, AllegroFlare/AudioRepositoryElement>": [
+    "Krampus21/ApplicationController",
+    "Krampus21/ProgramRunner"
+  ],
+  "Krampus21/DialogBoxes/Basic": [
+    "Krampus21/ApplicationController",
+    "Krampus21/ApplicationController",
+    "Krampus21/DialogBoxFactory",
+    "Krampus21/DialogFactory",
+    "Krampus21/DialogFactory"
+  ],
+  "Krampus21/DialogBoxRenderer": [
+    "Krampus21/ApplicationController"
+  ],
+  "Krampus21/DialogFactory": [
+    "Krampus21/ApplicationController",
+    "Krampus21/ApplicationController"
+  ],
+  "std/vector<Krampus21/DialogBoxes/Base>": [
+    "Krampus21/ApplicationController",
+    "Krampus21/ApplicationController"
   ],
   "Krampus21/DialogBoxes/Base": [
+    "Krampus21/ApplicationController",
+    "Krampus21/ApplicationController",
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxes/Base",
     "Krampus21/DialogBoxes/Choice"
   ],
-  "Krampus21/DialogBoxes/Basic": [
-    "Krampus21/DialogBoxFactory",
-    "Krampus21/DialogFactory",
+  "Krampus21/ScriptLoader": [
+    "Krampus21/ApplicationController"
+  ],
+  "Krampus21/Script": [
+    "Krampus21/ApplicationController"
+  ],
+  "AllegroFlare/php/file_get_contents_split": [
+    "Krampus21/ApplicationController",
     "Krampus21/DialogFactory"
+  ],
+  "Blast/FileExistenceChecker": [
+    "Krampus21/ApplicationController",
+    "Krampus21/DialogFactory"
+  ],
+  "std/map<std/string, int>": [
+    "Krampus21/ApplicationController",
+    "Krampus21/Script"
+  ],
+  "std/vector<std/string>&": [
+    "Krampus21/ApplicationController"
+  ],
+  "std/pair<std/string, std/string>": [
+    "Krampus21/ApplicationController"
+  ],
+  "Blast/String/Trimmer": [
+    "Krampus21/ApplicationController"
+  ],
+  "Blast/StringSplitter": [
+    "Krampus21/ApplicationController"
+  ],
+  "std/vector<std/string>": [
+    "Krampus21/DialogBoxFactory"
   ],
   "ALLEGRO_FONT": [
     "Krampus21/DialogBoxRenderer",
@@ -569,10 +859,6 @@ table td
   "Blast/StringJoiner": [
     "Krampus21/DialogBoxRenderer"
   ],
-  "AllegroFlare/FontBin": [
-    "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
-  ],
   "allegro_flare/placement2d": [
     "Krampus21/DialogBoxRenderer"
   ],
@@ -591,29 +877,8 @@ table td
   "std/vector<std/vector<std/string>>": [
     "Krampus21/DialogBoxes/Base"
   ],
-  "Blast/FileExistenceChecker": [
-    "Krampus21/DialogFactory"
-  ],
-  "AllegroFlare/php/file_get_contents_split": [
-    "Krampus21/DialogFactory"
-  ],
-  "AllegroFlare/Display": [
-    "Krampus21/ProgramRunner"
-  ],
-  "AllegroFlare/Screens": [
-    "Krampus21/ProgramRunner"
-  ],
-  "AllegroFlare/Framework": [
-    "Krampus21/ProgramRunner"
-  ],
-  "std/map<std/string, AllegroFlare/AudioRepositoryElement>": [
-    "Krampus21/ProgramRunner"
-  ],
   "Krampus21/ApplicationController": [
     "Krampus21/ProgramRunner"
-  ],
-  "std/map<std/string, int>": [
-    "Krampus21/Script"
   ],
   "Krampus21/ApplicationController/build_markers_index": [
     "Krampus21/Script"
