@@ -58,13 +58,13 @@ TEST(Krampus21_ApplicationControllerTest,
 }
 
 
-TEST(Krampus21_ApplicationControllerTest, parse_line__will_parse_a_DIALOG_command)
+TEST(Krampus21_ApplicationControllerTest, parse_and_run_line__will_parse_a_DIALOG_command)
    // note this is a private method test
 {
    std::string script_line = "DIALOG: This is the most basic dialog line.";
    Krampus21::ApplicationController script_loader;
 
-   script_loader.parse_line(script_line);
+   script_loader.parse_and_run_line(script_line);
    Krampus21::DialogBoxes::Base* created_dialog = script_loader.get_current_dialog();
 
    ASSERT_NE(nullptr, created_dialog);
@@ -72,13 +72,13 @@ TEST(Krampus21_ApplicationControllerTest, parse_line__will_parse_a_DIALOG_comman
 }
 
 
-TEST(Krampus21_ApplicationControllerTest, parse_line__will_parse_a_CHOICE_command)
+TEST(Krampus21_ApplicationControllerTest, parse_and_run_line__will_parse_a_CHOICE_command)
    // note this is a private method test
 {
    std::string script_line = "CHOICE: What would you choose? | Apple | COLLECT APPLE | Pear | COLLECT PEAR";
    Krampus21::ApplicationController script_loader;
 
-   script_loader.parse_line(script_line);
+   script_loader.parse_and_run_line(script_line);
    Krampus21::DialogBoxes::Base* created_dialog = script_loader.get_current_dialog();
 
    ASSERT_NE(nullptr, created_dialog);

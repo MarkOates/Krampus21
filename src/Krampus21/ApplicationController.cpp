@@ -89,8 +89,26 @@ void ApplicationController::advance()
 
 void ApplicationController::play_current_script_line()
 {
-   std::string script_line = script.get_current_line_text();
-   parse_line(script_line);
+   bool continue_directly_to_next_script_line = false;
+   int continue_count = 0;
+
+   do
+   {
+      std::string script_line = script.get_current_line_text();
+      continue_directly_to_next_script_line = parse_and_run_line(script_line);
+
+      if (continue_directly_to_next_script_line)
+      {
+         script.goto_next_line();
+         continue_count++;
+      }
+      if (continue_count > 500)
+      {
+         continue_directly_to_next_script_line = false;
+         std::cout << "ApplicationController::play_current_script_line: continued unstopped playing more than "
+                   << "500 script lines without a stop. Assuming error and halting to avoid infinite loop.";
+      }
+   } while (continue_directly_to_next_script_line);
 }
 
 void ApplicationController::start_game()
@@ -227,12 +245,14 @@ AllegroFlare::FontBin* ApplicationController::obtain_font_bin()
    return &framework->get_font_bin_ref();
 }
 
-void ApplicationController::parse_line(std::string script_line)
+bool ApplicationController::parse_and_run_line(std::string script_line)
 {
    std::string DIALOG = "DIALOG";
    std::string CHOICE = "CHOICE";
    std::string PLAY_MUSIC = "PLAY_MUSIC";
+   std::string MARKER = "MARKER";
 
+   bool continue_directly_to_next_script_line = false;
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
    std::pair<std::string, std::string> command_and_argument = parse_command_and_argument(script_line);
    std::string command = command_and_argument.first;
@@ -272,10 +292,16 @@ void ApplicationController::parse_line(std::string script_line)
    {
       std::string identifier = "etherial-ambience-01.wav";
       audio_controller.play_music_track_by_identifier(identifier);
+      continue_directly_to_next_script_line = true;
+   }
+   else if (command == MARKER)
+   {
+      continue_directly_to_next_script_line = true;
    }
    else
    {
       std::cout << "WARNING: Unrecognized command \"" << command << "\"" << std::endl;
+      continue_directly_to_next_script_line = true;
    }
 
    if (created_dialog)
@@ -284,7 +310,7 @@ void ApplicationController::parse_line(std::string script_line)
       current_dialog = created_dialog;
    }
 
-   return;
+   return continue_directly_to_next_script_line;
 }
 
 std::pair<std::string, std::string> ApplicationController::parse_command_and_argument(std::string script_line)
