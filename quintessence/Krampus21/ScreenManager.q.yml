@@ -91,6 +91,15 @@ functions:
       - Blast::FileExistenceChecker
 
 
+  - name: play_current_script_line
+    type: bool
+    body: |
+      //if (script->at_valid_line())
+      //std::string script_line_text = script->get_current_line_text();
+      //ScriptLoader
+      return true;
+
+
   - name: start_game
     body: |
       play_music_track("etherial-ambience-01.wav");

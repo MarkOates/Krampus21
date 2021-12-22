@@ -37,6 +37,7 @@ namespace Krampus21
 
       void initialize();
       bool load_script(std::string filename="unset-script-filename.txt");
+      bool play_current_script_line();
       void start_game();
       void shutdown_game();
       void update_dialog();
