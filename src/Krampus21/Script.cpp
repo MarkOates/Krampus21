@@ -89,8 +89,9 @@ bool Script::goto_next_line()
       }
    if (at_last_line())
    {
-      current_line_num = 0;
+      current_line_num = -1;
       finished = true;
+      return true;
    }
    else
    {
@@ -124,7 +125,7 @@ bool Script::at_last_line()
          error_message << "Script" << "::" << "at_last_line" << ": error: " << "guard \"initialized\" not met";
          throw std::runtime_error(error_message.str());
       }
-   if (!lines.empty() && infer_current_line_index_num() == (lines.size()-1));
+   return (!lines.empty() && (current_line_num == lines.size()));
 }
 
 bool Script::at_valid_line()

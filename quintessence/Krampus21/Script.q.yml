@@ -59,8 +59,9 @@ functions:
     body: |
       if (at_last_line())
       {
-         current_line_num = 0;
+         current_line_num = -1;
          finished = true;
+         return true;
       }
       else
       {
@@ -90,7 +91,7 @@ functions:
     guards: [ initialized ]
     type: bool
     body: |
-      if (!lines.empty() && infer_current_line_index_num() == (lines.size()-1));
+      return (!lines.empty() && (current_line_num == lines.size()));
 
 
   - name: at_valid_line

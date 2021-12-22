@@ -43,9 +43,20 @@ TEST(Krampus21_ScriptText, goto_next_line__will_advance_the_current_line_num__an
 }
 
 
-TEST(Krampus21_ScriptText, goto_next_line__if_currently_at_the_last_line__returns_false)
+TEST(Krampus21_ScriptText, goto_next_line__if_currently_at_the_last_line__returns_true)
 {
-   // TODO
+   std::vector<std::string> script_lines = {
+      "This is line 1.",
+      "And another line making one line 2.",
+      "Lastly, a third line.",
+   };
+   Krampus21::Script script(script_lines);
+   script.initialize();
+
+   int last_line_num = script_lines.size();
+   script.goto_line_num(last_line_num);
+
+   ASSERT_EQ(true, script.goto_next_line());
 }
 
 
@@ -60,7 +71,19 @@ TEST(Krampus21_ScriptText, goto_next_line__with_no_lines_returns_false)
 
 TEST(Krampus21_ScriptText, goto_next_line__if_currently_at_the_last_line__sets_the_current_line_num_to_negative_1)
 {
-   // TODO
+   std::vector<std::string> script_lines = {
+      "This is line 1.",
+      "And another line making one line 2.",
+      "Lastly, a third line.",
+   };
+   Krampus21::Script script(script_lines);
+   script.initialize();
+
+   int last_line_num = script_lines.size();
+   script.goto_line_num(last_line_num);
+
+   ASSERT_EQ(true, script.goto_next_line());
+   ASSERT_EQ(-1, script.get_current_line_num());
 }
 
 
