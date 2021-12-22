@@ -67,7 +67,8 @@
     "Krampus21/DialogBoxes/Base"
   ],
   "Blast/FileExistenceChecker": [
-    "Krampus21/DialogFactory"
+    "Krampus21/DialogFactory",
+    "Krampus21/ScreenManager"
   ],
   "AllegroFlare/php/file_get_contents_split": [
     "Krampus21/DialogFactory",

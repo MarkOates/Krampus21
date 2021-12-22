@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <sstream>
 #include <AllegroFlare/UsefulPHP.hpp>
+#include <Blast/FileExistenceChecker.hpp>
 #include <Krampus21/ScriptLoader.hpp>
 #include <stdexcept>
 #include <sstream>
@@ -51,12 +52,18 @@ void ScreenManager::initialize()
    return;
 }
 
-void ScreenManager::load_script(std::string filename)
+bool ScreenManager::load_script(std::string filename)
 {
+   if (!Blast::FileExistenceChecker(filename).exists())
+   {
+      std::cout << "ScreenManager::load_script: file \"" << filename
+                << "\" does not exist and could not be loaded." << std::endl;
+      return false;
+   }
    std::vector<std::string> script_lines = AllegroFlare::php::file_get_contents_split(filename);
    script = Krampus21::Script(script_lines);
    script.initialize();
-   return;
+   return true;
 }
 
 void ScreenManager::start_game()

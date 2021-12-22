@@ -70,18 +70,25 @@ functions:
 
 
   - name: load_script
+    type: bool
     parameters:
       - name: filename
         type: std::string
         default_argument: '"unset-script-filename.txt"'
     body: |
+      if (!Blast::FileExistenceChecker(filename).exists())
+      {
+         std::cout << "ScreenManager::load_script: file \"" << filename
+                   << "\" does not exist and could not be loaded." << std::endl;
+         return false;
+      }
       std::vector<std::string> script_lines = AllegroFlare::php::file_get_contents_split(filename);
       script = Krampus21::Script(script_lines);
       script.initialize();
-      return;
+      return true;
     body_dependency_symbols:
       - AllegroFlare::php::file_get_contents_split
-
+      - Blast::FileExistenceChecker
 
 
   - name: start_game
@@ -291,5 +298,7 @@ dependencies:
     headers: [ Krampus21/Script.hpp ]
   - symbol: AllegroFlare::php::file_get_contents_split
     headers: [ AllegroFlare/UsefulPHP.hpp ]
+  - symbol: Blast::FileExistenceChecker
+    headers: [ Blast/FileExistenceChecker.hpp ]
 
 
