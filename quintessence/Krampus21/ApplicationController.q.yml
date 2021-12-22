@@ -325,6 +325,10 @@ functions:
          std::string identifier = "etherial-ambience-01.wav";
          audio_controller.play_music_track_by_identifier(identifier);
       }
+      else
+      {
+         std::cout << "WARNING: Unrecognized command \"" << command << "\"" << std::endl;
+      }
 
       return created_dialog;
 

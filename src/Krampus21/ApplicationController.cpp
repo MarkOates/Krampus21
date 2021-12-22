@@ -279,6 +279,10 @@ Krampus21::DialogBoxes::Base* ApplicationController::parse_line_and_create_dialo
       std::string identifier = "etherial-ambience-01.wav";
       audio_controller.play_music_track_by_identifier(identifier);
    }
+   else
+   {
+      std::cout << "WARNING: Unrecognized command \"" << command << "\"" << std::endl;
+   }
 
    return created_dialog;
 }
