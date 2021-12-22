@@ -123,7 +123,15 @@ TEST(Krampus21_ScriptText, goto_marker__sets_the_current_line_num_to_the_positio
 TEST(Krampus21_ScriptText,
    goto_marker__if_the_marker_does_not_exist__returns_false)
 {
-   // TODO
+   std::vector<std::string> script_lines = {
+      "This is line 1.",
+      "MARKER: *A*",
+      "Lastly, a third line.",
+   };
+   Krampus21::Script script(script_lines);
+   script.initialize();
+
+   EXPECT_EQ(false, script.goto_marker("*A_MARKER_THAT_DOES_NOT_EXIST*"));
 }
 
 
