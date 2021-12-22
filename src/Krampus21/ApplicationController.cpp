@@ -81,9 +81,8 @@ void ApplicationController::advance()
    return;
 }
 
-bool ApplicationController::play_current_script_line()
+void ApplicationController::play_current_script_line()
 {
-   //if (script->at_valid_line())
    std::string script_line_text = script.get_current_line_text();
    Krampus21::DialogBoxes::Base *created_dialog = parse_line_and_create_dialog(script_line_text);
    if (created_dialog)
@@ -91,7 +90,6 @@ bool ApplicationController::play_current_script_line()
       if (current_dialog) delete current_dialog;
       current_dialog = created_dialog;
    }
-   return true;
 }
 
 void ApplicationController::start_game()

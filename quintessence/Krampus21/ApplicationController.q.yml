@@ -103,9 +103,7 @@ functions:
 
 
   - name: play_current_script_line
-    type: bool
     body: |
-      //if (script->at_valid_line())
       std::string script_line_text = script.get_current_line_text();
       Krampus21::DialogBoxes::Base *created_dialog = parse_line_and_create_dialog(script_line_text);
       if (created_dialog)
@@ -113,7 +111,6 @@ functions:
          if (current_dialog) delete current_dialog;
          current_dialog = created_dialog;
       }
-      return true;
     body_dependency_symbols:
       - Krampus21::DialogFactory
 
