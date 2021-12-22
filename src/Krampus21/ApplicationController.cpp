@@ -277,7 +277,14 @@ bool ApplicationController::parse_and_run_line(std::string script_line)
 
    if (command.empty() || command == DIALOG)
    {
-      created_dialog = dialog_factory.create_basic_dialog(std::vector<std::string>{script_line});
+      if (script_line.empty())
+      {
+         continue_directly_to_next_script_line = true;
+      }
+      else
+      {
+         created_dialog = dialog_factory.create_basic_dialog(std::vector<std::string>{script_line});
+      }
    }
    else if (command == CHOICE)
    {
