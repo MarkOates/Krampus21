@@ -168,10 +168,16 @@ table td
 <tr>
   <td class="private_method">assert_odd_token_count(2)</td>
 </tr>
+<tr>
+  <td class="private_method">obtain_dialog_font()</td>
+</tr>
     </table>
      <table>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_EVENT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_EVENT_SOURCE&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
@@ -735,6 +741,11 @@ table td
   "ALLEGRO_EVENT": [
     "Krampus21/ApplicationController"
   ],
+  "ALLEGRO_FONT": [
+    "Krampus21/ApplicationController",
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+  ],
   "ALLEGRO_EVENT_SOURCE": [
     "Krampus21/ApplicationController"
   ],
@@ -829,10 +840,6 @@ table td
   ],
   "std/vector<std/string>": [
     "Krampus21/DialogBoxFactory"
-  ],
-  "ALLEGRO_FONT": [
-    "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "al_is_system_installed": [
     "Krampus21/DialogBoxRenderer",

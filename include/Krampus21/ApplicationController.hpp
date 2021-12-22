@@ -12,6 +12,7 @@
 #include <Krampus21/Script.hpp>
 #include <Krampus21/UserEventEmitter.hpp>
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_font.h>
 #include <map>
 #include <string>
 #include <utility>
@@ -59,6 +60,7 @@ namespace Krampus21
       static std::vector<std::string> tokenize(std::string str="", char delim='|');
       static bool assert_min_token_count(std::vector<std::string> tokens={}, int min=0);
       static bool assert_odd_token_count(std::vector<std::string> tokens={}, int min=0);
+      ALLEGRO_FONT* obtain_dialog_font();
    };
 }
 

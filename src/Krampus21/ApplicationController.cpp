@@ -17,6 +17,8 @@
 #include <Blast/StringSplitter.hpp>
 #include <vector>
 #include <string>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace Krampus21
@@ -139,8 +141,21 @@ void ApplicationController::primary_timer_func()
 {
    al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
    if (current_dialog) current_dialog->update();
-   if (dialog_is_finished())
+   //if (dialog_is_finished())
+   //{
+   //}
+   if (script.get_finished())
    {
+      ALLEGRO_FONT* font = obtain_dialog_font();
+      std::string script_finished_text = "GAME OVER";
+      al_draw_text(
+         font,
+         ALLEGRO_COLOR{0.1,0.1,0.1,0.1},
+         1920/2,
+         1080/2-20-al_get_font_line_height(font),
+         ALLEGRO_ALIGN_CENTER,
+         script_finished_text.c_str()
+      );
    }
    else if (current_dialog)
    {
@@ -301,7 +316,6 @@ bool ApplicationController::parse_and_run_line(std::string script_line)
    }
    else if (command == GOTO)
    {
-      // TODO
       script.goto_marker(argument);
       continue_directly_to_next_script_line = true;
    }
@@ -391,6 +405,25 @@ bool ApplicationController::assert_min_token_count(std::vector<std::string> toke
 bool ApplicationController::assert_odd_token_count(std::vector<std::string> tokens, int min)
 {
    return (tokens.size() % 2);
+}
+
+ALLEGRO_FONT* ApplicationController::obtain_dialog_font()
+{
+   if (!(al_is_font_addon_initialized()))
+      {
+         std::stringstream error_message;
+         error_message << "ApplicationController" << "::" << "obtain_dialog_font" << ": error: " << "guard \"al_is_font_addon_initialized()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!(al_is_ttf_addon_initialized()))
+      {
+         std::stringstream error_message;
+         error_message << "ApplicationController" << "::" << "obtain_dialog_font" << ": error: " << "guard \"al_is_ttf_addon_initialized()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   static const std::string FONT_IDENTIFIER = "Purista Medium.ttf -50";
+   ALLEGRO_FONT* result_font = obtain_font_bin()->operator[](FONT_IDENTIFIER);
+   return result_font;
 }
 } // namespace Krampus21
 

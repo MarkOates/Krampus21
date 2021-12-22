@@ -156,8 +156,21 @@ functions:
     body: |
       al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
       if (current_dialog) current_dialog->update();
-      if (dialog_is_finished())
+      //if (dialog_is_finished())
+      //{
+      //}
+      if (script.get_finished())
       {
+         ALLEGRO_FONT* font = obtain_dialog_font();
+         std::string script_finished_text = "GAME OVER";
+         al_draw_text(
+            font,
+            ALLEGRO_COLOR{0.1,0.1,0.1,0.1},
+            1920/2,
+            1080/2-20-al_get_font_line_height(font),
+            ALLEGRO_ALIGN_CENTER,
+            script_finished_text.c_str()
+         );
       }
       else if (current_dialog)
       {
@@ -342,7 +355,6 @@ functions:
       }
       else if (command == GOTO)
       {
-         // TODO
          script.goto_marker(argument);
          continue_directly_to_next_script_line = true;
       }
@@ -486,11 +498,23 @@ functions:
       return (tokens.size() % 2);
 
 
+  - name: obtain_dialog_font
+    guards: [ al_is_font_addon_initialized(), al_is_ttf_addon_initialized() ]
+    private: true
+    type: ALLEGRO_FONT*
+    body: |
+      static const std::string FONT_IDENTIFIER = "Purista Medium.ttf -50";
+      ALLEGRO_FONT* result_font = obtain_font_bin()->operator[](FONT_IDENTIFIER);
+      return result_font;
+
+
 dependencies:
 
 
   - symbol: ALLEGRO_EVENT*
     headers: [ allegro5/allegro.h ]
+  - symbol: ALLEGRO_FONT*
+    headers: [ allegro5/allegro_font.h ]
   - symbol: ALLEGRO_EVENT_SOURCE
     headers: [ allegro5/allegro.h ]
   - symbol: AllegroFlare::Screen
