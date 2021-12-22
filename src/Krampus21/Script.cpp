@@ -57,11 +57,11 @@ void Script::initialize()
    if (!lines.empty())
    {
       current_line_num = 1;
-      finished = true;
+      finished = false;
    }
    else
    {
-      finished = false;
+      finished = true;
    }
    initialized = true;
    return;
