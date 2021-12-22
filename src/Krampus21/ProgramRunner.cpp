@@ -55,7 +55,7 @@ void ProgramRunner::run()
          //{ BULLET_DEFLECTED_SOUND_EFFECT, { "sfx_wpn_noammo1.wav", false } },
       };
 
-   std::string script_filename = "/Users/markoates/Repos/Krampus21/bin/programs/data/dialogs/dialog-1.txt";
+   std::string script_filename = "/Users/markoates/Repos/Krampus21/bin/programs/data/dialogs/test-dialog-2.txt";
 
    Krampus21::ScreenManager *screen_manager = new Krampus21::ScreenManager(
       &framework,
