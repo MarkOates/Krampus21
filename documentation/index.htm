@@ -497,6 +497,10 @@ table td
   <td class="property">script</td>
   <td class="property">Krampus21::Script</td>
 </tr>
+<tr>
+  <td class="property">dialog_factory</td>
+  <td class="property">Krampus21::DialogFactory</td>
+</tr>
     </table>
      <table>
 <tr>
@@ -543,6 +547,24 @@ table td
 </tr>
 <tr>
   <td class="method">obtain_font_bin()</td>
+</tr>
+<tr>
+  <td class="private_method">parse_line_and_create_dialog(1)</td>
+</tr>
+<tr>
+  <td class="private_method">parse_command_and_argument(1)</td>
+</tr>
+<tr>
+  <td class="method">build_markers_index(1)</td>
+</tr>
+<tr>
+  <td class="private_method">tokenize(2)</td>
+</tr>
+<tr>
+  <td class="private_method">assert_min_token_count(2)</td>
+</tr>
+<tr>
+  <td class="private_method">assert_odd_token_count(2)</td>
 </tr>
     </table>
      <table>
@@ -607,7 +629,31 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Blast::FileExistenceChecker&quot;, &quot;headers&quot;=&gt;[&quot;Blast/FileExistenceChecker.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::ScriptLineRunner&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/ScriptLineRunner.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, int&gt;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;string&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::string&gt;&amp;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;string&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;Krampus21::DialogBoxes::Base*&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogFactory&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogFactory.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Basic*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Basic.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::pair&lt;std::string, std::string&gt;&quot;, &quot;headers&quot;=&gt;[&quot;utility&quot;, &quot;string&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Blast::String::Trimmer&quot;, &quot;headers&quot;=&gt;[&quot;Blast/String/Trimmer.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Blast::StringSplitter&quot;, &quot;headers&quot;=&gt;[&quot;Blast/StringSplitter.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -759,12 +805,14 @@ table td
     "Krampus21/DialogBoxes/Base",
     "Krampus21/DialogBoxes/Choice",
     "Krampus21/ScreenManager",
+    "Krampus21/ScreenManager",
     "Krampus21/ScriptLineRunner"
   ],
   "Krampus21/DialogBoxes/Basic": [
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogFactory",
     "Krampus21/DialogFactory",
+    "Krampus21/ScreenManager",
     "Krampus21/ScreenManager",
     "Krampus21/ScriptLineRunner"
   ],
@@ -867,9 +915,11 @@ table td
   ],
   "Krampus21/DialogFactory": [
     "Krampus21/ScreenManager",
+    "Krampus21/ScreenManager",
     "Krampus21/ScriptLineRunner"
   ],
   "std/vector<Krampus21/DialogBoxes/Base>": [
+    "Krampus21/ScreenManager",
     "Krampus21/ScreenManager",
     "Krampus21/ScriptLineRunner"
   ],
@@ -879,27 +929,29 @@ table td
   "Krampus21/Script": [
     "Krampus21/ScreenManager"
   ],
-  "Krampus21/ScriptLineRunner": [
-    "Krampus21/ScreenManager"
-  ],
   "std/map<std/string, int>": [
+    "Krampus21/ScreenManager",
     "Krampus21/Script",
+    "Krampus21/ScriptLineRunner"
+  ],
+  "std/vector<std/string>&": [
+    "Krampus21/ScreenManager",
+    "Krampus21/ScriptLineRunner"
+  ],
+  "std/pair<std/string, std/string>": [
+    "Krampus21/ScreenManager",
+    "Krampus21/ScriptLineRunner"
+  ],
+  "Blast/String/Trimmer": [
+    "Krampus21/ScreenManager",
+    "Krampus21/ScriptLineRunner"
+  ],
+  "Blast/StringSplitter": [
+    "Krampus21/ScreenManager",
     "Krampus21/ScriptLineRunner"
   ],
   "Krampus21/ScriptLineRunner/build_markers_index": [
     "Krampus21/Script"
-  ],
-  "std/vector<std/string>&": [
-    "Krampus21/ScriptLineRunner"
-  ],
-  "std/pair<std/string, std/string>": [
-    "Krampus21/ScriptLineRunner"
-  ],
-  "Blast/String/Trimmer": [
-    "Krampus21/ScriptLineRunner"
-  ],
-  "Blast/StringSplitter": [
-    "Krampus21/ScriptLineRunner"
   ]
 }
 </pre>

@@ -8,12 +8,14 @@
     "Krampus21/DialogBoxes/Base",
     "Krampus21/DialogBoxes/Choice",
     "Krampus21/ScreenManager",
+    "Krampus21/ScreenManager",
     "Krampus21/ScriptLineRunner"
   ],
   "Krampus21/DialogBoxes/Basic": [
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogFactory",
     "Krampus21/DialogFactory",
+    "Krampus21/ScreenManager",
     "Krampus21/ScreenManager",
     "Krampus21/ScriptLineRunner"
   ],
@@ -116,9 +118,11 @@
   ],
   "Krampus21/DialogFactory": [
     "Krampus21/ScreenManager",
+    "Krampus21/ScreenManager",
     "Krampus21/ScriptLineRunner"
   ],
   "std/vector<Krampus21/DialogBoxes/Base>": [
+    "Krampus21/ScreenManager",
     "Krampus21/ScreenManager",
     "Krampus21/ScriptLineRunner"
   ],
@@ -128,26 +132,28 @@
   "Krampus21/Script": [
     "Krampus21/ScreenManager"
   ],
-  "Krampus21/ScriptLineRunner": [
-    "Krampus21/ScreenManager"
-  ],
   "std/map<std/string, int>": [
+    "Krampus21/ScreenManager",
     "Krampus21/Script",
+    "Krampus21/ScriptLineRunner"
+  ],
+  "std/vector<std/string>&": [
+    "Krampus21/ScreenManager",
+    "Krampus21/ScriptLineRunner"
+  ],
+  "std/pair<std/string, std/string>": [
+    "Krampus21/ScreenManager",
+    "Krampus21/ScriptLineRunner"
+  ],
+  "Blast/String/Trimmer": [
+    "Krampus21/ScreenManager",
+    "Krampus21/ScriptLineRunner"
+  ],
+  "Blast/StringSplitter": [
+    "Krampus21/ScreenManager",
     "Krampus21/ScriptLineRunner"
   ],
   "Krampus21/ScriptLineRunner/build_markers_index": [
     "Krampus21/Script"
-  ],
-  "std/vector<std/string>&": [
-    "Krampus21/ScriptLineRunner"
-  ],
-  "std/pair<std/string, std/string>": [
-    "Krampus21/ScriptLineRunner"
-  ],
-  "Blast/String/Trimmer": [
-    "Krampus21/ScriptLineRunner"
-  ],
-  "Blast/StringSplitter": [
-    "Krampus21/ScriptLineRunner"
   ]
 }

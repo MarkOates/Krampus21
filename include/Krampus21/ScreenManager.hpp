@@ -8,11 +8,14 @@
 #include <AllegroFlare/Screen.hpp>
 #include <AllegroFlare/Screens.hpp>
 #include <Krampus21/DialogBoxes/Base.hpp>
+#include <Krampus21/DialogFactory.hpp>
 #include <Krampus21/Script.hpp>
 #include <Krampus21/UserEventEmitter.hpp>
 #include <allegro5/allegro.h>
 #include <map>
 #include <string>
+#include <utility>
+#include <vector>
 
 
 namespace Krampus21
@@ -30,6 +33,7 @@ namespace Krampus21
       Krampus21::DialogBoxes::Base* current_dialog;
       bool initialized;
       Krampus21::Script script;
+      Krampus21::DialogFactory dialog_factory;
 
    public:
       ScreenManager(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements={}, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements={});
@@ -50,6 +54,12 @@ namespace Krampus21
       void joy_axis_func(ALLEGRO_EVENT* ev=nullptr) override;
       void user_event_func(ALLEGRO_EVENT* ev=nullptr) override;
       AllegroFlare::FontBin* obtain_font_bin();
+      Krampus21::DialogBoxes::Base* parse_line_and_create_dialog(std::string script_line={});
+      static std::pair<std::string, std::string> parse_command_and_argument(std::string script_line={});
+      static std::map<std::string, int> build_markers_index(std::vector<std::string> script_lines={});
+      static std::vector<std::string> tokenize(std::string str="", char delim='|');
+      static bool assert_min_token_count(std::vector<std::string> tokens={}, int min=0);
+      static bool assert_odd_token_count(std::vector<std::string> tokens={}, int min=0);
    };
 }
 
