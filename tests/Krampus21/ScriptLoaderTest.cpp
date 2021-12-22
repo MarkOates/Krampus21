@@ -168,6 +168,20 @@ TEST(Krampus21_ScriptLoaderText,
    ASSERT_EQ(expected_index, built_index);
 }
 
+TEST(Krampus21_ScriptLoaderText, build_markers_index__indexes_markers_at_the_beginning_and_the_end)
+{
+   std::vector<std::string> lines = {
+      { "MARKER: *START*" },
+      { "This is just a line in the middle." },
+      { "MARKER: *END*" },
+   };
+
+   std::map<std::string, int> built_index = Krampus21::ScriptLoader::build_markers_index(lines);
+
+   std::map<std::string, int> expected_index = { { "*START*", 1 }, { "*END*", 3 } };
+   ASSERT_EQ(expected_index, built_index);
+}
+
 TEST(Krampus21_ScriptLoaderText,
    build_markers_index__if_a_script_has_multiple_markers_with_the_same_label__will_generate_a_warning)
 {
