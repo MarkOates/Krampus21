@@ -105,6 +105,19 @@ TEST(Krampus21_ScriptText, goto_next_line__if_currently_at_the_last_line__sets_f
 }
 
 
+TEST(Krampus21_ScriptText, goto_marker__sets_the_current_line_num_to_the_position_of_the_marker_and_returns_true)
+{
+   // TODO
+}
+
+
+TEST(Krampus21_ScriptText,
+   goto_marker__if_the_marker_does_not_exist__returns_false)
+{
+   // TODO
+}
+
+
 TEST(Krampus21_ScriptText, goto_line_num__sets_the_current_line_num__and_returns_true)
 {
    std::vector<std::string> script_lines = {

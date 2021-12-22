@@ -248,6 +248,7 @@ AllegroFlare::FontBin* ApplicationController::obtain_font_bin()
 bool ApplicationController::parse_and_run_line(std::string script_line)
 {
    std::string DIALOG = "DIALOG";
+   std::string GOTO = "GOTO";
    std::string CHOICE = "CHOICE";
    std::string PLAY_MUSIC = "PLAY_MUSIC";
    std::string MARKER = "MARKER";
@@ -296,6 +297,12 @@ bool ApplicationController::parse_and_run_line(std::string script_line)
    }
    else if (command == MARKER)
    {
+      continue_directly_to_next_script_line = true;
+   }
+   else if (command == GOTO)
+   {
+      // TODO
+      script.goto_marker(argument);
       continue_directly_to_next_script_line = true;
    }
    else

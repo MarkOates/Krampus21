@@ -26,6 +26,7 @@ namespace Krampus21
       void initialize();
       std::string get_current_line_text();
       bool goto_next_line();
+      bool goto_marker(std::string identifier="[unset-marker-to-goto]");
       bool goto_line_num(int line_num=0);
       bool at_last_line();
       bool at_valid_line();

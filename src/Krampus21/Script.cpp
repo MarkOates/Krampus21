@@ -11,6 +11,8 @@
 #include <sstream>
 #include <stdexcept>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
 #include <Krampus21/ApplicationController.hpp>
 
 
@@ -99,6 +101,20 @@ bool Script::goto_next_line()
       current_line_num++;
    }
    return !finished;
+}
+
+bool Script::goto_marker(std::string identifier)
+{
+   if (!(initialized))
+      {
+         std::stringstream error_message;
+         error_message << "Script" << "::" << "goto_marker" << ": error: " << "guard \"initialized\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (markers_index.find(identifier) == markers_index.end()) return false;
+   int line_num_to_go_to = markers_index[identifier];
+   goto_line_num(line_num_to_go_to);
+   return true;
 }
 
 bool Script::goto_line_num(int line_num)

@@ -71,6 +71,20 @@ functions:
       return !finished;
 
 
+  - name: goto_marker
+    guards: [ initialized ]
+    parameters:
+      - name: identifier
+        type: std::string
+        default_argument: '"[unset-marker-to-goto]"'
+    type: bool
+    body: |
+      if (markers_index.find(identifier) == markers_index.end()) return false;
+      int line_num_to_go_to = markers_index[identifier];
+      goto_line_num(line_num_to_go_to);
+      return true;
+
+
   - name: goto_line_num
     guards: [ initialized ]
     parameters:
