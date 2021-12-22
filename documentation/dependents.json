@@ -104,6 +104,13 @@
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
+  "allegro_flare/placement2d": [
+    "Krampus21/Character",
+    "Krampus21/DialogBoxRenderer"
+  ],
+  "ALLEGRO_BITMAP": [
+    "Krampus21/Character"
+  ],
   "std/vector<std/string>": [
     "Krampus21/DialogBoxFactory"
   ],
@@ -127,9 +134,6 @@
     "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "Blast/StringJoiner": [
-    "Krampus21/DialogBoxRenderer"
-  ],
-  "allegro_flare/placement2d": [
     "Krampus21/DialogBoxRenderer"
   ],
   "Krampus21/DialogBoxes/Choice": [

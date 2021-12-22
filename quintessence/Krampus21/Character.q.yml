@@ -11,13 +11,31 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
+  - name: place
+    type: allegro_flare::placement2d
+    init_with: '{ 1920/2, 1080/2, 800, 800 }'
+    getter: true
+
 
 functions:
 
 
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+  - name: render
+    body: |
+      ALLEGRO_BITMAP *sprite = infer_current_sprite();
+      if (!sprite) return;
+
+      place.start_transform();
+      al_draw_bitmap(sprite, 0, 0, 0);
+      place.restore_transform();
+      return;
+
+
+  - name: infer_current_sprite
+    type: ALLEGRO_BITMAP*
+    guards: [ bitmap_bin ]
+    body: |
+      return bitmap_bin->auto_get("character-test-01.png");
 
 
 dependencies:
@@ -27,5 +45,9 @@ dependencies:
     headers: [ AllegroFlare/BitmapBin.hpp ]
   - symbol: AllegroFlare::FontBin*
     headers: [ AllegroFlare/FontBin.hpp ]
+  - symbol: allegro_flare::placement2d
+    headers: [ allegro_flare/placement2d.h ]
+  - symbol: ALLEGRO_BITMAP*
+    headers: [ allegro5/allegro.h ]
 
 

@@ -279,10 +279,17 @@ table td
   <td class="property">bitmap_bin</td>
   <td class="property">AllegroFlare::BitmapBin*</td>
 </tr>
+<tr>
+  <td class="property">place</td>
+  <td class="property">allegro_flare::placement2d</td>
+</tr>
     </table>
      <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">render()</td>
+</tr>
+<tr>
+  <td class="method">infer_current_sprite()</td>
 </tr>
     </table>
      <table>
@@ -291,6 +298,12 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement2d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement2d.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -872,6 +885,13 @@ table td
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
+  "allegro_flare/placement2d": [
+    "Krampus21/Character",
+    "Krampus21/DialogBoxRenderer"
+  ],
+  "ALLEGRO_BITMAP": [
+    "Krampus21/Character"
+  ],
   "std/vector<std/string>": [
     "Krampus21/DialogBoxFactory"
   ],
@@ -895,9 +915,6 @@ table td
     "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "Blast/StringJoiner": [
-    "Krampus21/DialogBoxRenderer"
-  ],
-  "allegro_flare/placement2d": [
     "Krampus21/DialogBoxRenderer"
   ],
   "Krampus21/DialogBoxes/Choice": [
