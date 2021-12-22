@@ -39,6 +39,7 @@ namespace Krampus21
       ApplicationController(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements={}, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements={});
       ~ApplicationController();
 
+      Krampus21::DialogBoxes::Base* get_current_dialog();
       void initialize();
       bool load_script(std::string filename="unset-script-filename.txt");
       void advance();
@@ -52,7 +53,7 @@ namespace Krampus21
       void joy_axis_func(ALLEGRO_EVENT* ev=nullptr) override;
       void user_event_func(ALLEGRO_EVENT* ev=nullptr) override;
       AllegroFlare::FontBin* obtain_font_bin();
-      Krampus21::DialogBoxes::Base* parse_line_and_create_dialog(std::string script_line={});
+      void parse_line(std::string script_line="[empty-script-line]");
       static std::pair<std::string, std::string> parse_command_and_argument(std::string script_line={});
       static std::map<std::string, int> build_markers_index(std::vector<std::string> script_lines={});
       static std::vector<std::string> tokenize(std::string str="", char delim='|');

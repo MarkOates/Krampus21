@@ -45,6 +45,12 @@ ApplicationController::~ApplicationController()
 }
 
 
+Krampus21::DialogBoxes::Base* ApplicationController::get_current_dialog()
+{
+   return current_dialog;
+}
+
+
 void ApplicationController::initialize()
 {
    if (!((!initialized)))
@@ -83,13 +89,8 @@ void ApplicationController::advance()
 
 void ApplicationController::play_current_script_line()
 {
-   std::string script_line_text = script.get_current_line_text();
-   Krampus21::DialogBoxes::Base *created_dialog = parse_line_and_create_dialog(script_line_text);
-   if (created_dialog)
-   {
-      if (current_dialog) delete current_dialog;
-      current_dialog = created_dialog;
-   }
+   std::string script_line = script.get_current_line_text();
+   parse_line(script_line);
 }
 
 void ApplicationController::start_game()
@@ -226,7 +227,7 @@ AllegroFlare::FontBin* ApplicationController::obtain_font_bin()
    return &framework->get_font_bin_ref();
 }
 
-Krampus21::DialogBoxes::Base* ApplicationController::parse_line_and_create_dialog(std::string script_line)
+void ApplicationController::parse_line(std::string script_line)
 {
    std::string DIALOG = "DIALOG";
    std::string CHOICE = "CHOICE";
@@ -277,7 +278,13 @@ Krampus21::DialogBoxes::Base* ApplicationController::parse_line_and_create_dialo
       std::cout << "WARNING: Unrecognized command \"" << command << "\"" << std::endl;
    }
 
-   return created_dialog;
+   if (created_dialog)
+   {
+      if (current_dialog) delete current_dialog;
+      current_dialog = created_dialog;
+   }
+
+   return;
 }
 
 std::pair<std::string, std::string> ApplicationController::parse_command_and_argument(std::string script_line)
