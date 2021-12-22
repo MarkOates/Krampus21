@@ -87,9 +87,21 @@ TEST(Krampus21_ScriptText, goto_next_line__if_currently_at_the_last_line__sets_t
 }
 
 
-TEST(Krampus21_ScriptText, goto_next_line__if_currently_at_the_last_line__sets_the_finished_to_true)
+TEST(Krampus21_ScriptText, goto_next_line__if_currently_at_the_last_line__sets_finished_to_true)
 {
-   // TODO
+   std::vector<std::string> script_lines = {
+      "This is line 1.",
+      "And another line making one line 2.",
+      "Lastly, a third line.",
+   };
+   Krampus21::Script script(script_lines);
+   script.initialize();
+
+   int last_line_num = script_lines.size();
+   script.goto_line_num(last_line_num);
+
+   script.goto_next_line();
+   ASSERT_EQ(true, script.get_finished());
 }
 
 
