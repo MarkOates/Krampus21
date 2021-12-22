@@ -20,7 +20,7 @@
 
 namespace Krampus21
 {
-   class ScreenManager : public AllegroFlare::Screen
+   class ApplicationController : public AllegroFlare::Screen
    {
    private:
       AllegroFlare::Framework* framework;
@@ -36,8 +36,8 @@ namespace Krampus21
       Krampus21::DialogFactory dialog_factory;
 
    public:
-      ScreenManager(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements={}, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements={});
-      ~ScreenManager();
+      ApplicationController(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements={}, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements={});
+      ~ApplicationController();
 
       void initialize();
       bool load_script(std::string filename="unset-script-filename.txt");

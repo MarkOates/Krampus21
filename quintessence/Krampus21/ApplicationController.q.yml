@@ -80,7 +80,7 @@ functions:
     body: |
       if (!Blast::FileExistenceChecker(filename).exists())
       {
-         std::cout << "ScreenManager::load_script: file \"" << filename
+         std::cout << "ApplicationController::load_script: file \"" << filename
                    << "\" does not exist and could not be loaded." << std::endl;
          return false;
       }
@@ -390,7 +390,7 @@ functions:
             // TODO ensure symbols don't appear multiple times
             if (result.find(argument) != result.end())
             {
-               std::cout << "Krampus21/ScreenManager::build_markers_index: WARNING: the marker "
+               std::cout << "Krampus21/ApplicationController::build_markers_index: WARNING: the marker "
                          << "\"" << argument << "\""
                          << "is being set on line " << line_num
                          << " but was already declared earlier on line " << result[argument] << ". "

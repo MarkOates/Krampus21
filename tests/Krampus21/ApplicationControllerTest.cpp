@@ -1,24 +1,24 @@
 
 #include <gtest/gtest.h>
 
-#include <Krampus21/ScreenManager.hpp>
+#include <Krampus21/ApplicationController.hpp>
 
-TEST(Krampus21_ScreenManagerTest, can_be_created_without_blowing_up)
+TEST(Krampus21_ApplicationControllerTest, can_be_created_without_blowing_up)
 {
-   Krampus21::ScreenManager screen_manager;
+   Krampus21::ApplicationController screen_manager;
 }
 
-TEST(Krampus21_ScreenManagerTest, load_script__when_the_file_does_not_exist__responds_with_an_error)
-{
-   // TODO
-}
-
-TEST(Krampus21_ScreenManagerTest, load_script__when_the_file_does_not_exist__returns_false)
+TEST(Krampus21_ApplicationControllerTest, load_script__when_the_file_does_not_exist__responds_with_an_error)
 {
    // TODO
 }
 
-TEST(Krampus21_ScreenManagerTest, load_script__loads_the_script)
+TEST(Krampus21_ApplicationControllerTest, load_script__when_the_file_does_not_exist__returns_false)
+{
+   // TODO
+}
+
+TEST(Krampus21_ApplicationControllerTest, load_script__loads_the_script)
 {
    // TODO
 }
@@ -27,12 +27,12 @@ TEST(Krampus21_ScreenManagerTest, load_script__loads_the_script)
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-TEST(Krampus21_ScreenManagerTest, parse__command_and_argument__will_not_blow_up_on_an_empty_line)
+TEST(Krampus21_ApplicationControllerTest, parse__command_and_argument__will_not_blow_up_on_an_empty_line)
    // note this is a private method test
 {
    std::string script_line = "";
    std::pair<std::string, std::string> parsed_command_argument_pair;
-   Krampus21::ScreenManager script_loader;
+   Krampus21::ApplicationController script_loader;
 
    parsed_command_argument_pair = script_loader.parse_command_and_argument(script_line);
 
@@ -42,13 +42,13 @@ TEST(Krampus21_ScreenManagerTest, parse__command_and_argument__will_not_blow_up_
 }
 
 
-TEST(Krampus21_ScreenManagerTest,
+TEST(Krampus21_ApplicationControllerTest,
    parse_command_and_argument__will_parse_a_script_line_into_an_expected_set_of_elements)
    // note this is a private method test
 {
    std::string script_line = "DIALOG: This is the most basic dialog.";
    std::pair<std::string, std::string> parsed_command_argument_pair;
-   Krampus21::ScreenManager script_loader;
+   Krampus21::ApplicationController script_loader;
 
    parsed_command_argument_pair = script_loader.parse_command_and_argument(script_line);
 
@@ -58,11 +58,11 @@ TEST(Krampus21_ScreenManagerTest,
 }
 
 
-TEST(Krampus21_ScreenManagerTest, parse_line_and_create_dialog__will_parse_a_DIALOG_command)
+TEST(Krampus21_ApplicationControllerTest, parse_line_and_create_dialog__will_parse_a_DIALOG_command)
    // note this is a private method test
 {
    std::string script_line = "DIALOG: This is the most basic dialog line.";
-   Krampus21::ScreenManager script_loader;
+   Krampus21::ApplicationController script_loader;
 
    Krampus21::DialogBoxes::Base* created_dialog = script_loader.parse_line_and_create_dialog(script_line);
 
@@ -71,11 +71,11 @@ TEST(Krampus21_ScreenManagerTest, parse_line_and_create_dialog__will_parse_a_DIA
 }
 
 
-TEST(Krampus21_ScreenManagerTest, parse_line_and_create_dialog__will_parse_a_CHOICE_command)
+TEST(Krampus21_ApplicationControllerTest, parse_line_and_create_dialog__will_parse_a_CHOICE_command)
    // note this is a private method test
 {
    std::string script_line = "CHOICE: What would you choose? | Apple | COLLECT APPLE | Pear | COLLECT PEAR";
-   Krampus21::ScreenManager script_loader;
+   Krampus21::ApplicationController script_loader;
 
    Krampus21::DialogBoxes::Base* created_dialog = script_loader.parse_line_and_create_dialog(script_line);
 
@@ -95,12 +95,12 @@ TEST(Krampus21_ScreenManagerTest, parse_line_and_create_dialog__will_parse_a_CHO
 }
 
 
-TEST(Krampus21_ScreenManagerTest, parse__command_and_argument__will_trim_the_argument_fragment)
+TEST(Krampus21_ApplicationControllerTest, parse__command_and_argument__will_trim_the_argument_fragment)
    // note this is a private method test
 {
    std::string script_line = "  DIALOG  :  This is the most basic dialog that should be trimmed  \n  ";
    std::pair<std::string, std::string> parsed_command_argument_pair;
-   Krampus21::ScreenManager script_loader;
+   Krampus21::ApplicationController script_loader;
 
    parsed_command_argument_pair = script_loader.parse_command_and_argument(script_line);
 
@@ -113,45 +113,45 @@ TEST(Krampus21_ScreenManagerTest, parse__command_and_argument__will_trim_the_arg
 }
 
 
-TEST(Krampus21_ScreenManagerTest, tokenize__will_split_a_source_string_into_trimmed_tokens)
+TEST(Krampus21_ApplicationControllerTest, tokenize__will_split_a_source_string_into_trimmed_tokens)
    // note this is a private method test
 {
    std::string source_string = "  Voo| do |daah || \t dang ";
    std::vector<std::string> expected_tokens = { "Voo", "do", "daah", "", "dang" };
-   std::vector<std::string> actual_tokens = Krampus21::ScreenManager::tokenize(source_string);
+   std::vector<std::string> actual_tokens = Krampus21::ApplicationController::tokenize(source_string);
    EXPECT_EQ(expected_tokens, actual_tokens);
 }
 
 
-TEST(Krampus21_ScreenManagerTest, assert_min_token_count__will_return_true_if_there_are_at_least_n_tokens)
+TEST(Krampus21_ApplicationControllerTest, assert_min_token_count__will_return_true_if_there_are_at_least_n_tokens)
 {
-   ASSERT_EQ(true, Krampus21::ScreenManager::assert_min_token_count({}, 0));
-   ASSERT_EQ(true, Krampus21::ScreenManager::assert_min_token_count({ "t1", "t2", "t3" }, 3));
-   ASSERT_EQ(true, Krampus21::ScreenManager::assert_min_token_count({ "t1", "t2", "t3", "t4" }, 2));
+   ASSERT_EQ(true, Krampus21::ApplicationController::assert_min_token_count({}, 0));
+   ASSERT_EQ(true, Krampus21::ApplicationController::assert_min_token_count({ "t1", "t2", "t3" }, 3));
+   ASSERT_EQ(true, Krampus21::ApplicationController::assert_min_token_count({ "t1", "t2", "t3", "t4" }, 2));
 }
 
-TEST(Krampus21_ScreenManagerTest, assert_min_token_count__will_return_false_if_there_are_less_than_n_tokens)
+TEST(Krampus21_ApplicationControllerTest, assert_min_token_count__will_return_false_if_there_are_less_than_n_tokens)
 {
-   ASSERT_EQ(false, Krampus21::ScreenManager::assert_min_token_count({}, 1));
-   ASSERT_EQ(false, Krampus21::ScreenManager::assert_min_token_count({ "t1", "t2", "t3" }, 4));
-   ASSERT_EQ(false, Krampus21::ScreenManager::assert_min_token_count({ "t1", "t2", "t3", "t4" }, 999));
+   ASSERT_EQ(false, Krampus21::ApplicationController::assert_min_token_count({}, 1));
+   ASSERT_EQ(false, Krampus21::ApplicationController::assert_min_token_count({ "t1", "t2", "t3" }, 4));
+   ASSERT_EQ(false, Krampus21::ApplicationController::assert_min_token_count({ "t1", "t2", "t3", "t4" }, 999));
 }
 
-TEST(Krampus21_ScreenManagerTest, assert_odd_token_count__will_return_true_if_the_number_of_tokens_is_odd)
+TEST(Krampus21_ApplicationControllerTest, assert_odd_token_count__will_return_true_if_the_number_of_tokens_is_odd)
 {
-   ASSERT_EQ(true, Krampus21::ScreenManager::assert_min_token_count({ "t1" }));
-   ASSERT_EQ(true, Krampus21::ScreenManager::assert_min_token_count({ "t1", "t2", "t3" }));
-   ASSERT_EQ(true, Krampus21::ScreenManager::assert_min_token_count({ "t1", "t2", "t3", "t4", "t5", "t6", "t7" }));
+   ASSERT_EQ(true, Krampus21::ApplicationController::assert_min_token_count({ "t1" }));
+   ASSERT_EQ(true, Krampus21::ApplicationController::assert_min_token_count({ "t1", "t2", "t3" }));
+   ASSERT_EQ(true, Krampus21::ApplicationController::assert_min_token_count({ "t1", "t2", "t3", "t4", "t5", "t6", "t7" }));
 }
 
-TEST(Krampus21_ScreenManagerTest, assert_odd_token_count__will_return_false_if_the_number_of_tokens_is_not_odd)
+TEST(Krampus21_ApplicationControllerTest, assert_odd_token_count__will_return_false_if_the_number_of_tokens_is_not_odd)
 {
-   ASSERT_EQ(false, Krampus21::ScreenManager::assert_odd_token_count({ }));
-   ASSERT_EQ(false, Krampus21::ScreenManager::assert_odd_token_count({ "t1", "t2" }));
-   ASSERT_EQ(false, Krampus21::ScreenManager::assert_odd_token_count({ "t1", "t2", "t3", "t4", "t5", "t6" }));
+   ASSERT_EQ(false, Krampus21::ApplicationController::assert_odd_token_count({ }));
+   ASSERT_EQ(false, Krampus21::ApplicationController::assert_odd_token_count({ "t1", "t2" }));
+   ASSERT_EQ(false, Krampus21::ApplicationController::assert_odd_token_count({ "t1", "t2", "t3", "t4", "t5", "t6" }));
 }
 
-TEST(Krampus21_ScreenManagerText,
+TEST(Krampus21_ApplicationControllerText,
    build_markers_index__will_build_an_index_with_the_markers_and_line_numbers_from_the_script)
 {
    std::vector<std::string> lines = {
@@ -167,13 +167,13 @@ TEST(Krampus21_ScreenManagerText,
       { "Look at this kid. He might have a shot after all." },
    };
 
-   std::map<std::string, int> built_index = Krampus21::ScreenManager::build_markers_index(lines);
+   std::map<std::string, int> built_index = Krampus21::ApplicationController::build_markers_index(lines);
 
    std::map<std::string, int> expected_index = { { "*MY_START_MARKER*", 1 }, { "*MY_END_MARKER*", 8 } };
    ASSERT_EQ(expected_index, built_index);
 }
 
-TEST(Krampus21_ScreenManagerText, build_markers_index__indexes_markers_at_the_beginning_and_the_end)
+TEST(Krampus21_ApplicationControllerText, build_markers_index__indexes_markers_at_the_beginning_and_the_end)
 {
    std::vector<std::string> lines = {
       { "MARKER: *A_MARKER_AT_THE_FIRST_LINE*" },
@@ -181,7 +181,7 @@ TEST(Krampus21_ScreenManagerText, build_markers_index__indexes_markers_at_the_be
       { "MARKER: *A_MARKER_AT_THE_LAST_LINE*" },
    };
 
-   std::map<std::string, int> built_index = Krampus21::ScreenManager::build_markers_index(lines);
+   std::map<std::string, int> built_index = Krampus21::ApplicationController::build_markers_index(lines);
 
    std::map<std::string, int> expected_index = {
       { "*A_MARKER_AT_THE_FIRST_LINE*", 1 },
@@ -190,7 +190,7 @@ TEST(Krampus21_ScreenManagerText, build_markers_index__indexes_markers_at_the_be
    ASSERT_EQ(expected_index, built_index);
 }
 
-TEST(Krampus21_ScreenManagerText,
+TEST(Krampus21_ApplicationControllerText,
    build_markers_index__if_a_script_has_multiple_identical_markers__will_generate_a_warning)
 {
    std::vector<std::string> lines = {
@@ -200,17 +200,17 @@ TEST(Krampus21_ScreenManagerText,
    };
 
    testing::internal::CaptureStdout();
-   std::map<std::string, int> built_index = Krampus21::ScreenManager::build_markers_index(lines);
+   std::map<std::string, int> built_index = Krampus21::ApplicationController::build_markers_index(lines);
    std::string cout_output = testing::internal::GetCapturedStdout();
 
-   std::string expected_warning_message = "Krampus21/ScreenManager::build_markers_index: WARNING: "
+   std::string expected_warning_message = "Krampus21/ApplicationController::build_markers_index: WARNING: "
       "the marker \"*A_MARKER_THAT_EXISTS_IN_TWO_PLACES*\"is being set on line 3 but was already declared earlier "
       "on line 1. Note that the marker will be overwritten to this new line number (3).";
 
    ASSERT_EQ(expected_warning_message, cout_output);
 }
 
-TEST(Krampus21_ScreenManagerText,
+TEST(Krampus21_ApplicationControllerText,
    build_markers_index__if_a_script_has_multiple_identical_markers__will_set_the_line_number_to_the_last_declaration)
 {
    std::vector<std::string> lines = {
@@ -219,7 +219,7 @@ TEST(Krampus21_ScreenManagerText,
       { "MARKER: *A_MARKER_THAT_EXISTS_IN_TWO_PLACES*" },
    };
 
-   std::map<std::string, int> built_index = Krampus21::ScreenManager::build_markers_index(lines);
+   std::map<std::string, int> built_index = Krampus21::ApplicationController::build_markers_index(lines);
 
    std::map<std::string, int> expected_index = {
       { "*A_MARKER_THAT_EXISTS_IN_TWO_PLACES*", 3 },

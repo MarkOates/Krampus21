@@ -6,16 +6,12 @@
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxes/Base",
-    "Krampus21/DialogBoxes/Choice",
-    "Krampus21/ScreenManager",
-    "Krampus21/ScreenManager"
+    "Krampus21/DialogBoxes/Choice"
   ],
   "Krampus21/DialogBoxes/Basic": [
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogFactory",
-    "Krampus21/DialogFactory",
-    "Krampus21/ScreenManager",
-    "Krampus21/ScreenManager"
+    "Krampus21/DialogFactory"
   ],
   "ALLEGRO_FONT": [
     "Krampus21/DialogBoxRenderer",
@@ -45,8 +41,7 @@
   ],
   "AllegroFlare/FontBin": [
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/ScreenManager"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "allegro_flare/placement2d": [
     "Krampus21/DialogBoxRenderer"
@@ -67,84 +62,30 @@
     "Krampus21/DialogBoxes/Base"
   ],
   "Blast/FileExistenceChecker": [
-    "Krampus21/DialogFactory",
-    "Krampus21/ScreenManager"
+    "Krampus21/DialogFactory"
   ],
   "AllegroFlare/php/file_get_contents_split": [
-    "Krampus21/DialogFactory",
-    "Krampus21/ScreenManager"
+    "Krampus21/DialogFactory"
   ],
   "AllegroFlare/Display": [
-    "Krampus21/ProgramRunner",
-    "Krampus21/ScreenManager"
-  ],
-  "AllegroFlare/Screens": [
-    "Krampus21/ProgramRunner",
-    "Krampus21/ScreenManager"
-  ],
-  "AllegroFlare/Framework": [
-    "Krampus21/ProgramRunner",
-    "Krampus21/ScreenManager"
-  ],
-  "std/map<std/string, AllegroFlare/AudioRepositoryElement>": [
-    "Krampus21/ProgramRunner",
-    "Krampus21/ScreenManager"
-  ],
-  "Krampus21/ScreenManager": [
     "Krampus21/ProgramRunner"
   ],
-  "ALLEGRO_EVENT": [
-    "Krampus21/ScreenManager"
+  "AllegroFlare/Screens": [
+    "Krampus21/ProgramRunner"
   ],
-  "ALLEGRO_EVENT_SOURCE": [
-    "Krampus21/ScreenManager"
+  "AllegroFlare/Framework": [
+    "Krampus21/ProgramRunner"
   ],
-  "AllegroFlare/Screen": [
-    "Krampus21/ScreenManager"
+  "std/map<std/string, AllegroFlare/AudioRepositoryElement>": [
+    "Krampus21/ProgramRunner"
   ],
-  "AllegroFlare/AudioController": [
-    "Krampus21/ScreenManager"
-  ],
-  "Krampus21/Screens/Base": [
-    "Krampus21/ScreenManager"
-  ],
-  "Krampus21/UserEventEmitter": [
-    "Krampus21/ScreenManager"
-  ],
-  "Krampus21/DialogBoxRenderer": [
-    "Krampus21/ScreenManager"
-  ],
-  "Krampus21/DialogFactory": [
-    "Krampus21/ScreenManager",
-    "Krampus21/ScreenManager"
-  ],
-  "std/vector<Krampus21/DialogBoxes/Base>": [
-    "Krampus21/ScreenManager",
-    "Krampus21/ScreenManager"
-  ],
-  "Krampus21/ScriptLoader": [
-    "Krampus21/ScreenManager"
-  ],
-  "Krampus21/Script": [
-    "Krampus21/ScreenManager"
+  "Krampus21/ApplicationController": [
+    "Krampus21/ProgramRunner"
   ],
   "std/map<std/string, int>": [
-    "Krampus21/ScreenManager",
     "Krampus21/Script"
   ],
-  "std/vector<std/string>&": [
-    "Krampus21/ScreenManager"
-  ],
-  "std/pair<std/string, std/string>": [
-    "Krampus21/ScreenManager"
-  ],
-  "Blast/String/Trimmer": [
-    "Krampus21/ScreenManager"
-  ],
-  "Blast/StringSplitter": [
-    "Krampus21/ScreenManager"
-  ],
-  "Krampus21/ScreenManager/build_markers_index": [
+  "Krampus21/ApplicationController/build_markers_index": [
     "Krampus21/Script"
   ]
 }

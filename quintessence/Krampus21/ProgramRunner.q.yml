@@ -35,7 +35,7 @@ functions:
 
       std::string script_filename = "/Users/markoates/Repos/Krampus21/bin/programs/data/dialogs/test-dialog-2.txt";
 
-      Krampus21::ScreenManager *screen_manager = new Krampus21::ScreenManager(
+      Krampus21::ApplicationController *screen_manager = new Krampus21::ApplicationController(
          &framework,
          &screens,
          sound_effect_elements,
@@ -55,7 +55,7 @@ functions:
       - AllegroFlare::Screens
       - AllegroFlare::Framework
       - std::map<std::string, AllegroFlare::AudioRepositoryElement>
-      - Krampus21::ScreenManager
+      - Krampus21::ApplicationController
 
 
 dependencies:
@@ -69,7 +69,7 @@ dependencies:
     headers: [ AllegroFlare/Framework.hpp ]
   - symbol: std::map<std::string, AllegroFlare::AudioRepositoryElement>
     headers: [ map, string, AllegroFlare/AudioRepositoryElement.hpp ]
-  - symbol: Krampus21::ScreenManager
-    headers: [ Krampus21/ScreenManager.hpp ]
+  - symbol: Krampus21::ApplicationController
+    headers: [ Krampus21/ApplicationController.hpp ]
 
 

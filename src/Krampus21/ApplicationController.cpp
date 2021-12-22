@@ -1,6 +1,6 @@
 
 
-#include <Krampus21/ScreenManager.hpp>
+#include <Krampus21/ApplicationController.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <AllegroFlare/UsefulPHP.hpp>
@@ -23,7 +23,7 @@ namespace Krampus21
 {
 
 
-ScreenManager::ScreenManager(AllegroFlare::Framework* framework, AllegroFlare::Screens* screens, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements)
+ApplicationController::ApplicationController(AllegroFlare::Framework* framework, AllegroFlare::Screens* screens, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements)
    : AllegroFlare::Screen()
    , framework(framework)
    , screens(screens)
@@ -40,17 +40,17 @@ ScreenManager::ScreenManager(AllegroFlare::Framework* framework, AllegroFlare::S
 }
 
 
-ScreenManager::~ScreenManager()
+ApplicationController::~ApplicationController()
 {
 }
 
 
-void ScreenManager::initialize()
+void ApplicationController::initialize()
 {
    if (!((!initialized)))
       {
          std::stringstream error_message;
-         error_message << "ScreenManager" << "::" << "initialize" << ": error: " << "guard \"(!initialized)\" not met";
+         error_message << "ApplicationController" << "::" << "initialize" << ": error: " << "guard \"(!initialized)\" not met";
          throw std::runtime_error(error_message.str());
       }
    audio_controller.initialize();
@@ -58,11 +58,11 @@ void ScreenManager::initialize()
    return;
 }
 
-bool ScreenManager::load_script(std::string filename)
+bool ApplicationController::load_script(std::string filename)
 {
    if (!Blast::FileExistenceChecker(filename).exists())
    {
-      std::cout << "ScreenManager::load_script: file \"" << filename
+      std::cout << "ApplicationController::load_script: file \"" << filename
                 << "\" does not exist and could not be loaded." << std::endl;
       return false;
    }
@@ -72,7 +72,7 @@ bool ScreenManager::load_script(std::string filename)
    return true;
 }
 
-void ScreenManager::advance()
+void ApplicationController::advance()
 {
    script.goto_next_line();
    play_current_script_line();
@@ -81,7 +81,7 @@ void ScreenManager::advance()
    return;
 }
 
-bool ScreenManager::play_current_script_line()
+bool ApplicationController::play_current_script_line()
 {
    //if (script->at_valid_line())
    std::string script_line_text = script.get_current_line_text();
@@ -94,38 +94,38 @@ bool ScreenManager::play_current_script_line()
    return true;
 }
 
-void ScreenManager::start_game()
+void ApplicationController::start_game()
 {
    play_current_script_line();
    play_music_track("etherial-ambience-01.wav");
    return;
 }
 
-void ScreenManager::shutdown_game()
+void ApplicationController::shutdown_game()
 {
    if (!(framework))
       {
          std::stringstream error_message;
-         error_message << "ScreenManager" << "::" << "shutdown_game" << ": error: " << "guard \"framework\" not met";
+         error_message << "ApplicationController" << "::" << "shutdown_game" << ": error: " << "guard \"framework\" not met";
          throw std::runtime_error(error_message.str());
       }
    framework->shutdown_program = true;
    return;
 }
 
-void ScreenManager::update_dialog()
+void ApplicationController::update_dialog()
 {
    if (current_dialog) current_dialog->update();
    return;
 }
 
-bool ScreenManager::dialog_is_finished()
+bool ApplicationController::dialog_is_finished()
 {
    if (!current_dialog) return true;
    return current_dialog->get_finished();
 }
 
-void ScreenManager::primary_timer_func()
+void ApplicationController::primary_timer_func()
 {
    al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
    update_dialog();
@@ -140,13 +140,13 @@ void ScreenManager::primary_timer_func()
    return;
 }
 
-void ScreenManager::play_music_track(std::string identifier)
+void ApplicationController::play_music_track(std::string identifier)
 {
    audio_controller.play_music_track_by_identifier(identifier);
    return;
 }
 
-void ScreenManager::key_down_func(ALLEGRO_EVENT* ev)
+void ApplicationController::key_down_func(ALLEGRO_EVENT* ev)
 {
    switch (ev->type)
    {
@@ -176,7 +176,7 @@ void ScreenManager::key_down_func(ALLEGRO_EVENT* ev)
    return;
 }
 
-void ScreenManager::joy_button_down_func(ALLEGRO_EVENT* ev)
+void ApplicationController::joy_button_down_func(ALLEGRO_EVENT* ev)
 {
    switch (ev->joystick.button)
    {
@@ -190,7 +190,7 @@ void ScreenManager::joy_button_down_func(ALLEGRO_EVENT* ev)
    return;
 }
 
-void ScreenManager::joy_axis_func(ALLEGRO_EVENT* ev)
+void ApplicationController::joy_axis_func(ALLEGRO_EVENT* ev)
 {
    static float joystick_0_y_state = 0.0;
    static float joystick_1_y_state = 0.0;
@@ -225,23 +225,23 @@ void ScreenManager::joy_axis_func(ALLEGRO_EVENT* ev)
    return;
 }
 
-void ScreenManager::user_event_func(ALLEGRO_EVENT* ev)
+void ApplicationController::user_event_func(ALLEGRO_EVENT* ev)
 {
    return;
 }
 
-AllegroFlare::FontBin* ScreenManager::obtain_font_bin()
+AllegroFlare::FontBin* ApplicationController::obtain_font_bin()
 {
    if (!(framework))
       {
          std::stringstream error_message;
-         error_message << "ScreenManager" << "::" << "obtain_font_bin" << ": error: " << "guard \"framework\" not met";
+         error_message << "ApplicationController" << "::" << "obtain_font_bin" << ": error: " << "guard \"framework\" not met";
          throw std::runtime_error(error_message.str());
       }
    return &framework->get_font_bin_ref();
 }
 
-Krampus21::DialogBoxes::Base* ScreenManager::parse_line_and_create_dialog(std::string script_line)
+Krampus21::DialogBoxes::Base* ApplicationController::parse_line_and_create_dialog(std::string script_line)
 {
    std::string DIALOG = "DIALOG";
    std::string CHOICE = "CHOICE";
@@ -284,7 +284,7 @@ Krampus21::DialogBoxes::Base* ScreenManager::parse_line_and_create_dialog(std::s
    return created_dialog;
 }
 
-std::pair<std::string, std::string> ScreenManager::parse_command_and_argument(std::string script_line)
+std::pair<std::string, std::string> ApplicationController::parse_command_and_argument(std::string script_line)
 {
    std::pair<std::string, std::string> result{"", ""};
    std::string DELIMETER = ": ";
@@ -310,7 +310,7 @@ std::pair<std::string, std::string> ScreenManager::parse_command_and_argument(st
    return result;
 }
 
-std::map<std::string, int> ScreenManager::build_markers_index(std::vector<std::string> script_lines)
+std::map<std::string, int> ApplicationController::build_markers_index(std::vector<std::string> script_lines)
 {
    std::map<std::string, int> result;
    for (unsigned i=0; i<script_lines.size(); i++)
@@ -326,7 +326,7 @@ std::map<std::string, int> ScreenManager::build_markers_index(std::vector<std::s
          // TODO ensure symbols don't appear multiple times
          if (result.find(argument) != result.end())
          {
-            std::cout << "Krampus21/ScreenManager::build_markers_index: WARNING: the marker "
+            std::cout << "Krampus21/ApplicationController::build_markers_index: WARNING: the marker "
                       << "\"" << argument << "\""
                       << "is being set on line " << line_num
                       << " but was already declared earlier on line " << result[argument] << ". "
@@ -340,19 +340,19 @@ std::map<std::string, int> ScreenManager::build_markers_index(std::vector<std::s
    return result;
 }
 
-std::vector<std::string> ScreenManager::tokenize(std::string str, char delim)
+std::vector<std::string> ApplicationController::tokenize(std::string str, char delim)
 {
    std::vector<std::string> tokens = Blast::StringSplitter(str, delim).split();
    for (auto &token : tokens) token = Blast::String::Trimmer(token).trim();
    return tokens;
 }
 
-bool ScreenManager::assert_min_token_count(std::vector<std::string> tokens, int min)
+bool ApplicationController::assert_min_token_count(std::vector<std::string> tokens, int min)
 {
    return (tokens.size() >= min);
 }
 
-bool ScreenManager::assert_odd_token_count(std::vector<std::string> tokens, int min)
+bool ApplicationController::assert_odd_token_count(std::vector<std::string> tokens, int min)
 {
    return (tokens.size() % 2);
 }

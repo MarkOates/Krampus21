@@ -7,7 +7,7 @@
 #include <map>
 #include <string>
 #include <AllegroFlare/AudioRepositoryElement.hpp>
-#include <Krampus21/ScreenManager.hpp>
+#include <Krampus21/ApplicationController.hpp>
 
 
 namespace Krampus21
@@ -57,7 +57,7 @@ void ProgramRunner::run()
 
    std::string script_filename = "/Users/markoates/Repos/Krampus21/bin/programs/data/dialogs/test-dialog-2.txt";
 
-   Krampus21::ScreenManager *screen_manager = new Krampus21::ScreenManager(
+   Krampus21::ApplicationController *screen_manager = new Krampus21::ApplicationController(
       &framework,
       &screens,
       sound_effect_elements,
