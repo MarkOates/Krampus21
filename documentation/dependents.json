@@ -127,6 +127,9 @@
     "Krampus21/Script",
     "Krampus21/ScriptLoader"
   ],
+  "Krampus21/ScriptLoader/build_markers_index": [
+    "Krampus21/Script"
+  ],
   "std/vector<std/string>&": [
     "Krampus21/ScriptLoader"
   ],

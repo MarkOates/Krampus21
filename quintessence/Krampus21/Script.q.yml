@@ -59,8 +59,10 @@ functions:
   - name: build_markers_index
     private: true
     body: |
-      // TODO
+      markers_index = Krampus21::ScriptLoader::build_markers_index(lines);
       return;
+    body_dependency_symbols:
+      - Krampus21::ScriptLoader::build_markers_index
 
 
 dependencies:
@@ -68,6 +70,7 @@ dependencies:
 
   - symbol: std::map<std::string, int>
     headers: [ map, string ]
-
+  - symbol: Krampus21::ScriptLoader::build_markers_index
+    headers: [ Krampus21/ScriptLoader.hpp ]
 
 
