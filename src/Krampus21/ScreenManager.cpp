@@ -1,11 +1,12 @@
 
 
 #include <Krampus21/ScreenManager.hpp>
-#include <Krampus21/DialogFactory.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <AllegroFlare/UsefulPHP.hpp>
 #include <Blast/FileExistenceChecker.hpp>
+#include <Krampus21/ScriptLineRunner.hpp>
+#include <Krampus21/DialogFactory.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <Krampus21/DialogBoxRenderer.hpp>
@@ -65,16 +66,32 @@ bool ScreenManager::load_script(std::string filename)
    return true;
 }
 
+void ScreenManager::advance()
+{
+   script.goto_next_line();
+   play_current_script_line();
+   // if it's a dialog and the dialog is finished, play the next script line
+   //if (current_dialog) current_dialog->
+   return;
+}
+
 bool ScreenManager::play_current_script_line()
 {
    //if (script->at_valid_line())
-   //std::string script_line_text = script->get_current_line_text();
-   //ScriptLineRunner
+   std::string script_line_text = script.get_current_line_text();
+   Krampus21::ScriptLineRunner script_line_runner;
+   Krampus21::DialogBoxes::Base *created_dialog = script_line_runner.parse_line_and_create_dialog(script_line_text);
+   if (created_dialog)
+   {
+      if (current_dialog) delete current_dialog;
+      current_dialog = created_dialog;
+   }
    return true;
 }
 
 void ScreenManager::start_game()
 {
+   play_current_script_line();
    play_music_track("etherial-ambience-01.wav");
    return;
 }
@@ -110,7 +127,7 @@ void ScreenManager::primary_timer_func()
    if (dialog_is_finished())
    {
    }
-   else
+   else if (current_dialog)
    {
       Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), current_dialog);
       renderer.render();
@@ -135,7 +152,7 @@ void ScreenManager::key_down_func(ALLEGRO_EVENT* ev)
             shutdown_game();
             break;
          case ALLEGRO_KEY_SPACE:
-            // TODO advance dialog
+            advance();
             break;
          case ALLEGRO_KEY_UP:
          case ALLEGRO_KEY_K:
@@ -162,7 +179,7 @@ void ScreenManager::joy_button_down_func(ALLEGRO_EVENT* ev)
       shutdown_game();
       break;
    case 1:
-      // TODO advance dialog
+      advance();
       break;
    }
    return;

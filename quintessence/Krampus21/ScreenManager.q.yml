@@ -65,8 +65,6 @@ functions:
       audio_controller.initialize();
       initialized = true;
       return;
-    body_dependency_symbols:
-      - Krampus21::DialogFactory
 
 
   - name: load_script
@@ -91,17 +89,36 @@ functions:
       - Blast::FileExistenceChecker
 
 
+  - name: advance
+    body: |
+      script.goto_next_line();
+      play_current_script_line();
+      // if it's a dialog and the dialog is finished, play the next script line
+      //if (current_dialog) current_dialog->
+      return;
+
+
   - name: play_current_script_line
     type: bool
     body: |
       //if (script->at_valid_line())
-      //std::string script_line_text = script->get_current_line_text();
-      //ScriptLineRunner
+      std::string script_line_text = script.get_current_line_text();
+      Krampus21::ScriptLineRunner script_line_runner;
+      Krampus21::DialogBoxes::Base *created_dialog = script_line_runner.parse_line_and_create_dialog(script_line_text);
+      if (created_dialog)
+      {
+         if (current_dialog) delete current_dialog;
+         current_dialog = created_dialog;
+      }
       return true;
+    body_dependency_symbols:
+      - Krampus21::ScriptLineRunner
+      - Krampus21::DialogFactory
 
 
   - name: start_game
     body: |
+      play_current_script_line();
       play_music_track("etherial-ambience-01.wav");
       return;
     body_dependency_symbols: []
@@ -135,7 +152,7 @@ functions:
       if (dialog_is_finished())
       {
       }
-      else
+      else if (current_dialog)
       {
          Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), current_dialog);
          renderer.render();
@@ -171,7 +188,7 @@ functions:
                shutdown_game();
                break;
             case ALLEGRO_KEY_SPACE:
-               // TODO advance dialog
+               advance();
                break;
             case ALLEGRO_KEY_UP:
             case ALLEGRO_KEY_K:
@@ -203,7 +220,7 @@ functions:
          shutdown_game();
          break;
       case 1:
-         // TODO advance dialog
+         advance();
          break;
       }
       return;
@@ -308,5 +325,7 @@ dependencies:
     headers: [ AllegroFlare/UsefulPHP.hpp ]
   - symbol: Blast::FileExistenceChecker
     headers: [ Blast/FileExistenceChecker.hpp ]
+  - symbol: Krampus21::ScriptLineRunner
+    headers: [ Krampus21/ScriptLineRunner.hpp ]
 
 

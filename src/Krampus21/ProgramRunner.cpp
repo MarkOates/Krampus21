@@ -63,8 +63,9 @@ void ProgramRunner::run()
       sound_effect_elements,
       music_track_elements
    );
-   screen_manager->load_script(script_filename);
    screens.add(screen_manager);
+
+   screen_manager->load_script(script_filename);
    screen_manager->initialize();
    screen_manager->start_game();
 
