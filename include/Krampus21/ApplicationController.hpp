@@ -45,10 +45,8 @@ namespace Krampus21
       bool play_current_script_line();
       void start_game();
       void shutdown_game();
-      void update_dialog();
       bool dialog_is_finished();
       void primary_timer_func() override;
-      void play_music_track(std::string identifier="unset-music-identifier");
       void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
       void joy_button_down_func(ALLEGRO_EVENT* ev=nullptr) override;
       void joy_axis_func(ALLEGRO_EVENT* ev=nullptr) override;

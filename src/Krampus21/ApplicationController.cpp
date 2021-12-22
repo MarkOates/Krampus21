@@ -97,7 +97,6 @@ bool ApplicationController::play_current_script_line()
 void ApplicationController::start_game()
 {
    play_current_script_line();
-   play_music_track("etherial-ambience-01.wav");
    return;
 }
 
@@ -113,12 +112,6 @@ void ApplicationController::shutdown_game()
    return;
 }
 
-void ApplicationController::update_dialog()
-{
-   if (current_dialog) current_dialog->update();
-   return;
-}
-
 bool ApplicationController::dialog_is_finished()
 {
    if (!current_dialog) return true;
@@ -128,7 +121,7 @@ bool ApplicationController::dialog_is_finished()
 void ApplicationController::primary_timer_func()
 {
    al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
-   update_dialog();
+   if (current_dialog) current_dialog->update();
    if (dialog_is_finished())
    {
    }
@@ -137,12 +130,6 @@ void ApplicationController::primary_timer_func()
       Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), current_dialog);
       renderer.render();
    }
-   return;
-}
-
-void ApplicationController::play_music_track(std::string identifier)
-{
-   audio_controller.play_music_track_by_identifier(identifier);
    return;
 }
 
@@ -245,7 +232,8 @@ Krampus21::DialogBoxes::Base* ApplicationController::parse_line_and_create_dialo
 {
    std::string DIALOG = "DIALOG";
    std::string CHOICE = "CHOICE";
-   std::string START_AMBIENCE = "START_AMBIENCE";
+   std::string PLAY_AMBIENCE = "PLAY_AMBIENCE";
+   std::string PLAY_MUSIC = "PLAY_MUSIC";
 
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
    std::pair<std::string, std::string> command_and_argument = parse_command_and_argument(script_line);
@@ -282,9 +270,14 @@ Krampus21::DialogBoxes::Base* ApplicationController::parse_line_and_create_dialo
       //choice_options = { { "Boobar", "boobruhh" }, { "Zoozaz", "zazzle" } };
       created_dialog = dialog_factory.create_choice_dialog(choice_prompt, choice_options);
    }
-   else if (command == START_AMBIENCE)
+   else if (command == PLAY_AMBIENCE)
    {
       // do nothing
+   }
+   else if (command == PLAY_MUSIC)
+   {
+      std::string identifier = "etherial-ambience-01.wav";
+      audio_controller.play_music_track_by_identifier(identifier);
    }
 
    return created_dialog;

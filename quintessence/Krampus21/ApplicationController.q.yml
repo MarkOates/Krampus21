@@ -121,7 +121,6 @@ functions:
   - name: start_game
     body: |
       play_current_script_line();
-      play_music_track("etherial-ambience-01.wav");
       return;
     body_dependency_symbols: []
 
@@ -130,12 +129,6 @@ functions:
     guards: [ framework ]
     body: |
       framework->shutdown_program = true;
-      return;
-
-
-  - name: update_dialog
-    body: |
-      if (current_dialog) current_dialog->update();
       return;
 
 
@@ -150,7 +143,7 @@ functions:
     override: true
     body: |
       al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
-      update_dialog();
+      if (current_dialog) current_dialog->update();
       if (dialog_is_finished())
       {
       }
@@ -162,16 +155,6 @@ functions:
       return;
     body_dependency_symbols:
       - Krampus21::DialogBoxRenderer
-
-
-  - name: play_music_track
-    parameters:
-      - name: identifier
-        type: std::string
-        default_argument: '"unset-music-identifier"'
-    body: |
-      audio_controller.play_music_track_by_identifier(identifier);
-      return;
 
 
   - name: key_down_func
@@ -295,7 +278,8 @@ functions:
     body: |
       std::string DIALOG = "DIALOG";
       std::string CHOICE = "CHOICE";
-      std::string START_AMBIENCE = "START_AMBIENCE";
+      std::string PLAY_AMBIENCE = "PLAY_AMBIENCE";
+      std::string PLAY_MUSIC = "PLAY_MUSIC";
 
       Krampus21::DialogBoxes::Base* created_dialog = nullptr;
       std::pair<std::string, std::string> command_and_argument = parse_command_and_argument(script_line);
@@ -332,9 +316,14 @@ functions:
          //choice_options = { { "Boobar", "boobruhh" }, { "Zoozaz", "zazzle" } };
          created_dialog = dialog_factory.create_choice_dialog(choice_prompt, choice_options);
       }
-      else if (command == START_AMBIENCE)
+      else if (command == PLAY_AMBIENCE)
       {
          // do nothing
+      }
+      else if (command == PLAY_MUSIC)
+      {
+         std::string identifier = "etherial-ambience-01.wav";
+         audio_controller.play_music_track_by_identifier(identifier);
       }
 
       return created_dialog;
