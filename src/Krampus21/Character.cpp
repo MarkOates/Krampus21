@@ -12,7 +12,7 @@ namespace Krampus21
 Character::Character(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* bitmap_bin)
    : font_bin(font_bin)
    , bitmap_bin(bitmap_bin)
-   , place({ 1920/2, 1080/3*1, 800, 800 })
+   , place({ 1920/2, 1080/5*2, 800, 800 })
    , sprite_record_identifier("[character-sprite-default-and-unset]")
 {
 }
@@ -61,6 +61,27 @@ void Character::render()
    place.start_transform();
    al_draw_bitmap(sprite, 0, 0, 0);
    place.restore_transform();
+   return;
+}
+
+void Character::frame_mid()
+{
+   place.scale.x = 1.0;
+   place.scale.y = 1.0;
+   return;
+}
+
+void Character::frame_wide()
+{
+   place.scale.x = 0.8;
+   place.scale.y = 0.8;
+   return;
+}
+
+void Character::frame_closeup()
+{
+   place.scale.x = 2.0;
+   place.scale.y = 2.0;
    return;
 }
 

@@ -28,6 +28,9 @@ namespace Krampus21
       allegro_flare::placement2d get_place();
       std::string get_sprite_record_identifier();
       void render();
+      void frame_mid();
+      void frame_wide();
+      void frame_closeup();
       ALLEGRO_BITMAP* infer_current_sprite();
    };
 }

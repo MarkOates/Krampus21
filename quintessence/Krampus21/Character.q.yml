@@ -15,7 +15,7 @@ properties:
 
   - name: place
     type: allegro_flare::placement2d
-    init_with: '{ 1920/2, 1080/3*1, 800, 800 }'
+    init_with: '{ 1920/2, 1080/5*2, 800, 800 }'
     getter: true
 
   - name: sprite_record_identifier
@@ -36,6 +36,27 @@ functions:
       place.start_transform();
       al_draw_bitmap(sprite, 0, 0, 0);
       place.restore_transform();
+      return;
+
+
+  - name: frame_mid
+    body: |
+      place.scale.x = 1.0;
+      place.scale.y = 1.0;
+      return;
+
+
+  - name: frame_wide
+    body: |
+      place.scale.x = 0.8;
+      place.scale.y = 0.8;
+      return;
+
+
+  - name: frame_closeup
+    body: |
+      place.scale.x = 2.0;
+      place.scale.y = 2.0;
       return;
 
 

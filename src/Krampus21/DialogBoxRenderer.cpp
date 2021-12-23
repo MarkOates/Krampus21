@@ -69,7 +69,9 @@ void DialogBoxRenderer::render()
    float roundness = 18.0f;
    float border_thickness = 5.0f;
    float border_inner_padding = border_thickness * 3;
-   ALLEGRO_COLOR fill_color = al_color_html("162428");
+   //ALLEGRO_COLOR fill_color = al_color_html("162428");
+   float opacity = 0.7;
+   ALLEGRO_COLOR fill_color = ALLEGRO_COLOR{0.02f*opacity, 0.0f*opacity, 0.1f*opacity, opacity};
    ALLEGRO_COLOR border_color = al_color_html("244751");
 
    // draw backfill
