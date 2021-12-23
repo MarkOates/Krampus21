@@ -27,6 +27,11 @@
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
+  "AllegroFlare/BitmapBin": [
+    "Krampus21/ApplicationController",
+    "Krampus21/Character",
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+  ],
   "AllegroFlare/Display": [
     "Krampus21/ApplicationController",
     "Krampus21/ProgramRunner"
@@ -100,9 +105,8 @@
   "Blast/StringSplitter": [
     "Krampus21/ApplicationController"
   ],
-  "AllegroFlare/BitmapBin": [
-    "Krampus21/Character",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+  "Krampus21/Character": [
+    "Krampus21/ApplicationController"
   ],
   "allegro_flare/placement2d": [
     "Krampus21/Character",

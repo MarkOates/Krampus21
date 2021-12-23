@@ -99,6 +99,10 @@ table td
   <td class="property">Krampus21::DialogBoxes::Base*</td>
 </tr>
 <tr>
+  <td class="property">character</td>
+  <td class="property">Krampus21::Character</td>
+</tr>
+<tr>
   <td class="property">initialized</td>
   <td class="property">bool</td>
 </tr>
@@ -152,6 +156,9 @@ table td
   <td class="private_method">obtain_font_bin()</td>
 </tr>
 <tr>
+  <td class="private_method">obtain_bitmap_bin()</td>
+</tr>
+<tr>
   <td class="private_method">parse_and_run_line(1)</td>
 </tr>
 <tr>
@@ -194,6 +201,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Display&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Display.hpp&quot;]}</td>
@@ -264,6 +274,9 @@ table td
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Blast::StringSplitter&quot;, &quot;headers&quot;=&gt;[&quot;Blast/StringSplitter.hpp&quot;]}</td>
 </tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Character&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Character.hpp&quot;]}</td>
+</tr>
     </table>
   </div>
 </ul>
@@ -282,6 +295,10 @@ table td
 <tr>
   <td class="property">place</td>
   <td class="property">allegro_flare::placement2d</td>
+</tr>
+<tr>
+  <td class="property">sprite_record_identifier</td>
+  <td class="property">std::string</td>
 </tr>
     </table>
      <table>
@@ -808,6 +825,11 @@ table td
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
+  "AllegroFlare/BitmapBin": [
+    "Krampus21/ApplicationController",
+    "Krampus21/Character",
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+  ],
   "AllegroFlare/Display": [
     "Krampus21/ApplicationController",
     "Krampus21/ProgramRunner"
@@ -881,9 +903,8 @@ table td
   "Blast/StringSplitter": [
     "Krampus21/ApplicationController"
   ],
-  "AllegroFlare/BitmapBin": [
-    "Krampus21/Character",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+  "Krampus21/Character": [
+    "Krampus21/ApplicationController"
   ],
   "allegro_flare/placement2d": [
     "Krampus21/Character",

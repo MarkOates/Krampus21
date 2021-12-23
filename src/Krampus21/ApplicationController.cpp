@@ -11,6 +11,8 @@
 #include <Krampus21/DialogBoxRenderer.hpp>
 #include <stdexcept>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
 #include <Blast/String/Trimmer.hpp>
 #include <iostream>
 #include <Blast/String/Trimmer.hpp>
@@ -35,6 +37,7 @@ ApplicationController::ApplicationController(AllegroFlare::Framework* framework,
    , user_event_emitter({})
    , audio_controller(&framework->get_sample_bin_ref(), sound_effect_elements, music_track_elements)
    , current_dialog(nullptr)
+   , character({})
    , initialized(false)
    , script()
    , dialog_factory({})
@@ -62,6 +65,8 @@ void ApplicationController::initialize()
          throw std::runtime_error(error_message.str());
       }
    audio_controller.initialize();
+   character.set_font_bin(obtain_font_bin());
+   character.set_bitmap_bin(obtain_bitmap_bin());
    initialized = true;
    return;
 }
@@ -157,10 +162,14 @@ void ApplicationController::primary_timer_func()
          script_finished_text.c_str()
       );
    }
-   else if (current_dialog)
+   else
    {
-      Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), current_dialog);
-      renderer.render();
+      character.render();
+      if (current_dialog)
+      {
+         Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), current_dialog);
+         renderer.render();
+      }
    }
    return;
 }
@@ -258,6 +267,17 @@ AllegroFlare::FontBin* ApplicationController::obtain_font_bin()
          throw std::runtime_error(error_message.str());
       }
    return &framework->get_font_bin_ref();
+}
+
+AllegroFlare::BitmapBin* ApplicationController::obtain_bitmap_bin()
+{
+   if (!(framework))
+      {
+         std::stringstream error_message;
+         error_message << "ApplicationController" << "::" << "obtain_bitmap_bin" << ": error: " << "guard \"framework\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   return &framework->get_bitmap_bin_ref();
 }
 
 bool ApplicationController::parse_and_run_line(std::string script_line)

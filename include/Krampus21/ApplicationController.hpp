@@ -3,10 +3,12 @@
 
 #include <AllegroFlare/AudioController.hpp>
 #include <AllegroFlare/AudioRepositoryElement.hpp>
+#include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/Framework.hpp>
 #include <AllegroFlare/Screen.hpp>
 #include <AllegroFlare/Screens.hpp>
+#include <Krampus21/Character.hpp>
 #include <Krampus21/DialogBoxes/Base.hpp>
 #include <Krampus21/DialogFactory.hpp>
 #include <Krampus21/Script.hpp>
@@ -32,6 +34,7 @@ namespace Krampus21
       Krampus21::UserEventEmitter user_event_emitter;
       AllegroFlare::AudioController audio_controller;
       Krampus21::DialogBoxes::Base* current_dialog;
+      Krampus21::Character character;
       bool initialized;
       Krampus21::Script script;
       Krampus21::DialogFactory dialog_factory;
@@ -54,6 +57,7 @@ namespace Krampus21
       void joy_axis_func(ALLEGRO_EVENT* ev=nullptr) override;
       void user_event_func(ALLEGRO_EVENT* ev=nullptr) override;
       AllegroFlare::FontBin* obtain_font_bin();
+      AllegroFlare::BitmapBin* obtain_bitmap_bin();
       bool parse_and_run_line(std::string script_line="[empty-script-line]");
       static std::pair<std::string, std::string> parse_command_and_argument(std::string script_line={});
       static std::map<std::string, int> build_markers_index(std::vector<std::string> script_lines={});

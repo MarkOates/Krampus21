@@ -12,7 +12,8 @@ namespace Krampus21
 Character::Character(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* bitmap_bin)
    : font_bin(font_bin)
    , bitmap_bin(bitmap_bin)
-   , place({ 1920/2, 1080/2, 800, 800 })
+   , place({ 1920/2, 1080/3*1, 800, 800 })
+   , sprite_record_identifier("[character-sprite-default-and-unset]")
 {
 }
 
@@ -22,9 +23,33 @@ Character::~Character()
 }
 
 
+void Character::set_font_bin(AllegroFlare::FontBin* font_bin)
+{
+   this->font_bin = font_bin;
+}
+
+
+void Character::set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin)
+{
+   this->bitmap_bin = bitmap_bin;
+}
+
+
+void Character::set_sprite_record_identifier(std::string sprite_record_identifier)
+{
+   this->sprite_record_identifier = sprite_record_identifier;
+}
+
+
 allegro_flare::placement2d Character::get_place()
 {
    return place;
+}
+
+
+std::string Character::get_sprite_record_identifier()
+{
+   return sprite_record_identifier;
 }
 
 
@@ -47,7 +72,7 @@ ALLEGRO_BITMAP* Character::infer_current_sprite()
          error_message << "Character" << "::" << "infer_current_sprite" << ": error: " << "guard \"bitmap_bin\" not met";
          throw std::runtime_error(error_message.str());
       }
-   return bitmap_bin->auto_get("character-test-01.png");
+   return bitmap_bin->auto_get(get_sprite_record_identifier());
 }
 } // namespace Krampus21
 
