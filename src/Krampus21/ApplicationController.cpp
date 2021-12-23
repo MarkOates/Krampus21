@@ -288,6 +288,7 @@ bool ApplicationController::parse_and_run_line(std::string script_line)
    std::string PLAY_MUSIC = "PLAY_MUSIC";
    std::string MARKER = "MARKER";
    std::string SET_CHARACTER_ART = "SET_CHARACTER_ART";
+   std::string SET_CHARACTER_FRAMING = "SET_CHARACTER_FRAMING";
 
    bool continue_directly_to_next_script_line = false;
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
@@ -341,6 +342,18 @@ bool ApplicationController::parse_and_run_line(std::string script_line)
    else if (command == SET_CHARACTER_ART)
    {
       character.set_sprite_record_identifier(argument);
+      continue_directly_to_next_script_line = true;
+   }
+   else if (command == SET_CHARACTER_FRAMING)
+   {
+      if (argument == "wide") character.frame_wide();
+      else if (argument == "mid") character.frame_mid();
+      else if (argument == "close-up") character.frame_closeup();
+      else
+      {
+         std::cout << "WARNING: Unrecognized argument \"" << argument << "\" "
+                   << "for command \"" << command << "\"" << std::endl;
+      }
       continue_directly_to_next_script_line = true;
    }
    else if (command == MARKER)
