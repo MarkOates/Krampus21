@@ -338,6 +338,11 @@ bool ApplicationController::parse_and_run_line(std::string script_line)
       audio_controller.play_music_track_by_identifier(identifier);
       continue_directly_to_next_script_line = true;
    }
+   else if (command == SET_CHARACTER_ART)
+   {
+      character.set_sprite_record_identifier(argument);
+      continue_directly_to_next_script_line = true;
+   }
    else if (command == MARKER)
    {
       continue_directly_to_next_script_line = true;
