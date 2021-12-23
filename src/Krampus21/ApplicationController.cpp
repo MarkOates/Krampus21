@@ -41,6 +41,9 @@ ApplicationController::ApplicationController(AllegroFlare::Framework* framework,
    , initialized(false)
    , script()
    , dialog_factory({})
+   , background_color(ALLEGRO_COLOR{0.1, 0.1, 0.2, 1.0})
+   , letterbox_frame_height(200)
+   , letterbox_color(ALLEGRO_COLOR{0.0, 0.0, 0.0, 1.0})
 {
 }
 
@@ -144,11 +147,13 @@ bool ApplicationController::dialog_is_finished()
 
 void ApplicationController::primary_timer_func()
 {
-   al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
+   // update
    if (current_dialog) current_dialog->update();
-   //if (dialog_is_finished())
-   //{
-   //}
+
+   // draw
+   //al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
+   al_clear_to_color(background_color);
+
    if (script.get_finished())
    {
       ALLEGRO_FONT* font = obtain_dialog_font();
@@ -164,13 +169,30 @@ void ApplicationController::primary_timer_func()
    }
    else
    {
+      // render background here
+      // TODO
+
+      // render character
       character.render();
+
+      // render hud
+      draw_letterbox();
+      // TODO
+
+      // render dialog
       if (current_dialog)
       {
          Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), current_dialog);
          renderer.render();
       }
    }
+   return;
+}
+
+void ApplicationController::draw_letterbox()
+{
+   al_draw_filled_rectangle(0, 0, 1920, letterbox_frame_height, letterbox_color);
+   al_draw_filled_rectangle(0, 1080-letterbox_frame_height, 1920, 1080, letterbox_color);
    return;
 }
 

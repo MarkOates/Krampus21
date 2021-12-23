@@ -64,6 +64,18 @@ properties:
     type: Krampus21::DialogFactory
     init_with: '{}'
 
+  - name: background_color
+    type: ALLEGRO_COLOR
+    init_with: 'ALLEGRO_COLOR{0.1, 0.1, 0.2, 1.0}'
+
+  - name: letterbox_frame_height
+    type: float
+    init_with: 200
+
+  - name: letterbox_color
+    type: ALLEGRO_COLOR
+    init_with: 'ALLEGRO_COLOR{0.0, 0.0, 0.0, 1.0}'
+
 
 functions:
 
@@ -160,11 +172,13 @@ functions:
   - name: primary_timer_func
     override: true
     body: |
-      al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
+      // update
       if (current_dialog) current_dialog->update();
-      //if (dialog_is_finished())
-      //{
-      //}
+
+      // draw
+      //al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
+      al_clear_to_color(background_color);
+
       if (script.get_finished())
       {
          ALLEGRO_FONT* font = obtain_dialog_font();
@@ -180,7 +194,17 @@ functions:
       }
       else
       {
+         // render background here
+         // TODO
+
+         // render character
          character.render();
+
+         // render hud
+         draw_letterbox();
+         // TODO
+
+         // render dialog
          if (current_dialog)
          {
             Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), current_dialog);
@@ -190,6 +214,13 @@ functions:
       return;
     body_dependency_symbols:
       - Krampus21::DialogBoxRenderer
+
+
+  - name: draw_letterbox
+    body: |
+      al_draw_filled_rectangle(0, 0, 1920, letterbox_frame_height, letterbox_color);
+      al_draw_filled_rectangle(0, 1080-letterbox_frame_height, 1920, 1080, letterbox_color);
+      return;
 
 
   - name: key_down_func
@@ -567,6 +598,8 @@ functions:
 dependencies:
 
 
+  - symbol: ALLEGRO_COLOR
+    headers: [ allegro5/allegro_color.h ]
   - symbol: ALLEGRO_EVENT*
     headers: [ allegro5/allegro.h ]
   - symbol: ALLEGRO_FONT*

@@ -114,6 +114,18 @@ table td
   <td class="property">dialog_factory</td>
   <td class="property">Krampus21::DialogFactory</td>
 </tr>
+<tr>
+  <td class="property">background_color</td>
+  <td class="property">ALLEGRO_COLOR</td>
+</tr>
+<tr>
+  <td class="property">letterbox_frame_height</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">letterbox_color</td>
+  <td class="property">ALLEGRO_COLOR</td>
+</tr>
     </table>
      <table>
 <tr>
@@ -139,6 +151,9 @@ table td
 </tr>
 <tr>
   <td class="method">primary_timer_func()</td>
+</tr>
+<tr>
+  <td class="method">draw_letterbox()</td>
 </tr>
 <tr>
   <td class="method">key_down_func(1)</td>
@@ -181,6 +196,9 @@ table td
 </tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_EVENT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
@@ -806,6 +824,9 @@ table td
 <h1>Dependents</h1>
 <pre>
 {
+  "ALLEGRO_COLOR": [
+    "Krampus21/ApplicationController"
+  ],
   "ALLEGRO_EVENT": [
     "Krampus21/ApplicationController"
   ],

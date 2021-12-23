@@ -14,6 +14,7 @@
 #include <Krampus21/Script.hpp>
 #include <Krampus21/UserEventEmitter.hpp>
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_color.h>
 #include <allegro5/allegro_font.h>
 #include <map>
 #include <string>
@@ -38,6 +39,9 @@ namespace Krampus21
       bool initialized;
       Krampus21::Script script;
       Krampus21::DialogFactory dialog_factory;
+      ALLEGRO_COLOR background_color;
+      float letterbox_frame_height;
+      ALLEGRO_COLOR letterbox_color;
 
    public:
       ApplicationController(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements={}, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements={});
@@ -52,6 +56,7 @@ namespace Krampus21
       void shutdown_game();
       bool dialog_is_finished();
       void primary_timer_func() override;
+      void draw_letterbox();
       void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
       void joy_button_down_func(ALLEGRO_EVENT* ev=nullptr) override;
       void joy_axis_func(ALLEGRO_EVENT* ev=nullptr) override;
