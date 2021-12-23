@@ -83,7 +83,16 @@ void DialogBoxRenderer::render()
       roundness * 0.5,
       fill_color
    );
-   al_draw_rounded_rectangle(0, 0, place.size.x, place.size.y, roundness, roundness, border_color, border_thickness);
+   al_draw_rounded_rectangle(
+      0,
+      0,
+      place.size.x,
+      place.size.y,
+      roundness,
+      roundness,
+      border_color,
+      border_thickness
+   );
 
    if (dialog_box->get_finished())
    {
