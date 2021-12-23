@@ -7,7 +7,7 @@
    catch (...) { FAIL() << "Expected " # raised_exception_type; }
 
 
-#include <Krampus21/DialogBoxRenderer.hpp>
+#include <Krampus21/Elements/DialogBox.hpp>
 
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
@@ -21,48 +21,48 @@
 #endif
 
 
-TEST(Krampus21_DialogBoxRendererTest, can_be_created_without_blowing_up)
+TEST(Krampus21_Elements_DialogBoxTest, can_be_created_without_blowing_up)
 {
-   Krampus21::DialogBoxRenderer dialog_box_renderer;
+   Krampus21::Elements::DialogBox dialog_box_renderer;
 }
 
 
-TEST(Krampus21_DialogBoxRendererTest, render__when_allegro_is_not_installed__raises_an_exception)
+TEST(Krampus21_Elements_DialogBoxTest, render__when_allegro_is_not_installed__raises_an_exception)
 {
-   Krampus21::DialogBoxRenderer dialog_box_renderer;
-   std::string expected_error_message = "DialogBoxRenderer::render: error: guard \"al_is_system_installed()\" not met";
+   Krampus21::Elements::DialogBox dialog_box_renderer;
+   std::string expected_error_message = "DialogBox::render: error: guard \"al_is_system_installed()\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 }
 
 
-TEST(Krampus21_DialogBoxRendererTest, render__when_allegro_primitives_are_not_installed__raises_an_exception)
+TEST(Krampus21_Elements_DialogBoxTest, render__when_allegro_primitives_are_not_installed__raises_an_exception)
 {
    al_init();
 
-   Krampus21::DialogBoxRenderer dialog_box_renderer;
+   Krampus21::Elements::DialogBox dialog_box_renderer;
    std::string expected_error_message =
-      "DialogBoxRenderer::render: error: guard \"al_is_primitives_addon_initialized()\" not met";
+      "DialogBox::render: error: guard \"al_is_primitives_addon_initialized()\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_uninstall_system();
 }
 
 
-TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_allegro_display__raises_an_exception)
+TEST(Krampus21_Elements_DialogBoxTest, render__when_there_is_no_allegro_display__raises_an_exception)
 {
    al_init();
    al_init_primitives_addon();
-   Krampus21::DialogBoxRenderer dialog_box_renderer;
+   Krampus21::Elements::DialogBox dialog_box_renderer;
 
    std::string expected_error_message =
-      "DialogBoxRenderer::render: error: guard \"al_get_current_display()\" not met";
+      "DialogBox::render: error: guard \"al_get_current_display()\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_uninstall_system();
 }
 
 
-TEST(Krampus21_DialogBoxRendererTest, render__when_the_allegro_font_addon_has_not_been_initialized__raises_an_exception)
+TEST(Krampus21_Elements_DialogBoxTest, render__when_the_allegro_font_addon_has_not_been_initialized__raises_an_exception)
 {
    al_init();
    al_init_primitives_addon();
@@ -70,10 +70,10 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_the_allegro_font_addon_has_no
    ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
    Krampus21::DialogBoxes::Base dialog_box;
    dialog_box.set_pages({ { "Some test dialog text." } });
-   Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, &dialog_box);
+   Krampus21::Elements::DialogBox dialog_box_renderer(nullptr, &dialog_box);
 
    std::string expected_error_message =
-      "DialogBoxRenderer::obtain_dialog_font: error: guard \"al_is_font_addon_initialized()\" not met";
+      "DialogBox::obtain_dialog_font: error: guard \"al_is_font_addon_initialized()\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_destroy_display(display);
@@ -81,7 +81,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_the_allegro_font_addon_has_no
 }
 
 
-TEST(Krampus21_DialogBoxRendererTest, render__when_the_allegro_ttf_addon_has_not_been_initialized__raises_an_exception)
+TEST(Krampus21_Elements_DialogBoxTest, render__when_the_allegro_ttf_addon_has_not_been_initialized__raises_an_exception)
 {
    al_init();
    al_init_primitives_addon();
@@ -90,10 +90,10 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_the_allegro_ttf_addon_has_not
    ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
    Krampus21::DialogBoxes::Base dialog_box;
    dialog_box.set_pages({ { "Some test dialog text." } });
-   Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, &dialog_box);
+   Krampus21::Elements::DialogBox dialog_box_renderer(nullptr, &dialog_box);
 
    std::string expected_error_message =
-      "DialogBoxRenderer::obtain_dialog_font: error: guard \"font_bin\" not met";
+      "DialogBox::obtain_dialog_font: error: guard \"font_bin\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_destroy_display(display);
@@ -101,7 +101,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_the_allegro_ttf_addon_has_not
 }
 
 
-TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_font_bin__raises_an_exception)
+TEST(Krampus21_Elements_DialogBoxTest, render__when_there_is_no_font_bin__raises_an_exception)
 {
    al_init();
    al_init_primitives_addon();
@@ -110,10 +110,10 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_font_bin__raises_
    ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
    Krampus21::DialogBoxes::Base dialog_box;
    dialog_box.set_pages({ { "Some test dialog text." } });
-   Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, &dialog_box);
+   Krampus21::Elements::DialogBox dialog_box_renderer(nullptr, &dialog_box);
 
    std::string expected_error_message =
-      "DialogBoxRenderer::obtain_dialog_font: error: guard \"font_bin\" not met";
+      "DialogBox::obtain_dialog_font: error: guard \"font_bin\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_destroy_display(display);
@@ -121,7 +121,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_font_bin__raises_
 }
 
 
-TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_dialog_box__raises_an_exception)
+TEST(Krampus21_Elements_DialogBoxTest, render__when_there_is_no_dialog_box__raises_an_exception)
 {
    al_init();
    al_init_primitives_addon();
@@ -129,10 +129,10 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_dialog_box__raise
    al_init_ttf_addon();
    ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
    AllegroFlare::FontBin font_bin;
-   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin);
+   Krampus21::Elements::DialogBox dialog_box_renderer(&font_bin);
 
    std::string expected_error_message =
-      "DialogBoxRenderer::render: error: guard \"dialog_box\" not met";
+      "DialogBox::render: error: guard \"dialog_box\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_destroy_display(display);
@@ -140,7 +140,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_dialog_box__raise
 }
 
 
-TEST(Krampus21_DialogBoxRendererTest, render__draws_the_dialog_box)
+TEST(Krampus21_Elements_DialogBoxTest, render__draws_the_dialog_box)
 {
    al_init();
    al_init_primitives_addon();
@@ -151,7 +151,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_the_dialog_box)
    font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
    Krampus21::DialogBoxes::Base dialog_box;
    dialog_box.set_pages({ "Some test dialog text with multiple pages.", "Here's the second page." });
-   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
+   Krampus21::Elements::DialogBox dialog_box_renderer(&font_bin, &dialog_box);
 
    dialog_box.reveal_all_characters();
 
@@ -164,7 +164,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_the_dialog_box)
 }
 
 
-TEST(Krampus21_DialogBoxRendererTest, render__when_the_dialog_box_is_finish__renders_special_empty_text)
+TEST(Krampus21_Elements_DialogBoxTest, render__when_the_dialog_box_is_finish__renders_special_empty_text)
 {
    al_init();
    al_init_primitives_addon();
@@ -175,7 +175,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_the_dialog_box_is_finish__ren
    font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
    Krampus21::DialogBoxes::Base dialog_box;
    dialog_box.next_page();
-   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
+   Krampus21::Elements::DialogBox dialog_box_renderer(&font_bin, &dialog_box);
 
    dialog_box.reveal_all_characters();
 
@@ -188,7 +188,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_the_dialog_box_is_finish__ren
 }
 
 
-TEST(Krampus21_DialogBoxRendererTest, render__draws_multiline_dialog)
+TEST(Krampus21_Elements_DialogBoxTest, render__draws_multiline_dialog)
 {
    al_init();
    al_init_primitives_addon();
@@ -199,7 +199,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_multiline_dialog)
    font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
    Krampus21::DialogBoxes::Base dialog_box;
    dialog_box.set_pages({ "Some test dialog text. There's actually a lot of text that will need to fit." });
-   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
+   Krampus21::Elements::DialogBox dialog_box_renderer(&font_bin, &dialog_box);
 
    dialog_box.reveal_all_characters();
 
@@ -212,7 +212,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_multiline_dialog)
 }
 
 
-TEST(Krampus21_DialogBoxRendererTest, render__will_propertly_render_revealing_text)
+TEST(Krampus21_Elements_DialogBoxTest, render__will_propertly_render_revealing_text)
 {
    al_init();
    al_init_primitives_addon();
@@ -224,7 +224,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__will_propertly_render_revealing_te
    Krampus21::DialogBoxes::Base dialog_box;
    std::string page_text = "Some test dialog text that will reveal characters sequentially when rendering.";
    dialog_box.set_pages({ page_text });
-   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
+   Krampus21::Elements::DialogBox dialog_box_renderer(&font_bin, &dialog_box);
 
    for (unsigned i=0; i<page_text.size(); i++)
    {
