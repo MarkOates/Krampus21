@@ -72,7 +72,7 @@ void DialogBoxRenderer::render()
    ALLEGRO_COLOR fill_color = al_color_html("162428");
    ALLEGRO_COLOR border_color = al_color_html("244751");
 
-   // draw backfill and border
+   // draw backfill
    place.start_transform();
    al_draw_filled_rounded_rectangle(
       0 + border_inner_padding,
@@ -83,6 +83,7 @@ void DialogBoxRenderer::render()
       roundness * 0.5,
       fill_color
    );
+   // draw border
    al_draw_rounded_rectangle(
       0,
       0,
