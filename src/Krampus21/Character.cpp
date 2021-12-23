@@ -80,8 +80,8 @@ void Character::frame_wide()
 
 void Character::frame_closeup()
 {
-   place.scale.x = 1.57;
-   place.scale.y = 1.57;
+   place.scale.x = 1.8;
+   place.scale.y = 1.8;
    return;
 }
 
