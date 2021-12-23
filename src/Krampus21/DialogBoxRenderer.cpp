@@ -157,7 +157,8 @@ void DialogBoxRenderer::draw_styled_revealed_text()
    float text_box_max_width = place.size.x - (text_padding_x * 2);
    ALLEGRO_FONT* text_font = obtain_dialog_font();
    float line_height = al_get_font_line_height(text_font);
-   ALLEGRO_COLOR text_color = al_color_html("66a9bc");
+   //ALLEGRO_COLOR text_color = al_color_html("66a9bc");
+   ALLEGRO_COLOR text_color = al_color_name("skyblue");
    int num_revealed_characters = obtain_dialog_box_num_revealed_characters();
 
    al_draw_multiline_text(
