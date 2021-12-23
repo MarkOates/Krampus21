@@ -66,15 +66,15 @@ void Character::render()
 
 void Character::frame_mid()
 {
-   place.scale.x = 1.0;
-   place.scale.y = 1.0;
+   place.scale.x = 0.95;
+   place.scale.y = 0.95;
    return;
 }
 
 void Character::frame_wide()
 {
-   place.scale.x = 0.8;
-   place.scale.y = 0.8;
+   place.scale.x = 0.76;
+   place.scale.y = 0.76;
    return;
 }
 

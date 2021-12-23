@@ -289,6 +289,7 @@ bool ApplicationController::parse_and_run_line(std::string script_line)
    std::string MARKER = "MARKER";
    std::string SET_CHARACTER_ART = "SET_CHARACTER_ART";
    std::string SET_CHARACTER_FRAMING = "SET_CHARACTER_FRAMING";
+   std::string BEAT = "BEAT";
 
    bool continue_directly_to_next_script_line = false;
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
@@ -338,6 +339,18 @@ bool ApplicationController::parse_and_run_line(std::string script_line)
       std::string identifier = "etherial-ambience-01.wav";
       audio_controller.play_music_track_by_identifier(identifier);
       continue_directly_to_next_script_line = true;
+   }
+   else if (command == BEAT)
+   {
+      // essentially, this will add a pause or "beat" to the story.
+      //std::string identifier = "etherial-ambience-01.wav";
+      //audio_controller.play_music_track_by_identifier(identifier);
+      //continue_directly_to_next_script_line = true;
+      if (current_dialog)
+      {
+         delete current_dialog;
+         current_dialog = nullptr;
+      }
    }
    else if (command == SET_CHARACTER_ART)
    {

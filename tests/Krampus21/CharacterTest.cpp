@@ -29,7 +29,7 @@ TEST_F(Krampus21_CharacterWithAllegroRenderingFixtureTest, frame_mid__will_set_t
    character.frame_mid();
    character.render();
    al_flip_display();
-   sleep(1);
+   //sleep(1);
 }
 
 TEST_F(Krampus21_CharacterWithAllegroRenderingFixtureTest, frame_wide__will_set_the_sprite_framing_to_a_mid_shot)
@@ -39,7 +39,7 @@ TEST_F(Krampus21_CharacterWithAllegroRenderingFixtureTest, frame_wide__will_set_
    character.frame_wide();
    character.render();
    al_flip_display();
-   sleep(1);
+   //sleep(1);
 }
 
 TEST_F(Krampus21_CharacterWithAllegroRenderingFixtureTest, frame_closeup__will_set_the_sprite_framing_to_a_mid_shot)
@@ -49,6 +49,6 @@ TEST_F(Krampus21_CharacterWithAllegroRenderingFixtureTest, frame_closeup__will_s
    character.frame_closeup();
    character.render();
    al_flip_display();
-   sleep(1);
+   //sleep(1);
 }
 
