@@ -8,7 +8,8 @@
   "ALLEGRO_FONT": [
     "Krampus21/ApplicationController",
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/Elements/DialogBox"
   ],
   "ALLEGRO_EVENT_SOURCE": [
     "Krampus21/ApplicationController"
@@ -28,7 +29,8 @@
     "Krampus21/ApplicationController",
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/Elements/DialogBox"
   ],
   "AllegroFlare/BitmapBin": [
     "Krampus21/ApplicationController",
@@ -76,7 +78,8 @@
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxes/Base",
-    "Krampus21/DialogBoxes/Choice"
+    "Krampus21/DialogBoxes/Choice",
+    "Krampus21/Elements/DialogBox"
   ],
   "Krampus21/ScriptLoader": [
     "Krampus21/ApplicationController"
@@ -113,7 +116,8 @@
   ],
   "allegro_flare/placement2d": [
     "Krampus21/Character",
-    "Krampus21/DialogBoxRenderer"
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/Elements/DialogBox"
   ],
   "ALLEGRO_BITMAP": [
     "Krampus21/Character"
@@ -123,25 +127,31 @@
   ],
   "al_is_system_installed": [
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/Elements/DialogBox"
   ],
   "al_get_current_display": [
-    "Krampus21/DialogBoxRenderer"
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/Elements/DialogBox"
   ],
   "al_color_html": [
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/Elements/DialogBox"
   ],
   "al_is_primitives_addon_initialized": [
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/Elements/DialogBox"
   ],
   "al_draw_filled_rounded_rectangle": [
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/Elements/DialogBox"
   ],
   "Blast/StringJoiner": [
-    "Krampus21/DialogBoxRenderer"
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/Elements/DialogBox"
   ],
   "Krampus21/DialogBoxes/Choice": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
