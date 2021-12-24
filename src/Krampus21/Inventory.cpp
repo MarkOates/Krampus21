@@ -7,6 +7,14 @@
 #include <allegro5/allegro_color.h>
 #include <stdexcept>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
+#include <stdexcept>
+#include <sstream>
+#include <stdexcept>
+#include <sstream>
+#include <stdexcept>
+#include <sstream>
 #include <cmath>
 #include <AllegroFlare/Color.hpp>
 #include <AllegroFlare/Interpolators.hpp>
@@ -59,6 +67,18 @@ void Inventory::set_af_inventory(AllegroFlare::Inventory* af_inventory)
 allegro_flare::placement2d Inventory::get_place()
 {
    return place;
+}
+
+
+int Inventory::get_cursor_x()
+{
+   return cursor_x;
+}
+
+
+int Inventory::get_cursor_y()
+{
+   return cursor_y;
 }
 
 
@@ -215,24 +235,48 @@ void Inventory::draw_details_frame()
 
 void Inventory::move_cursor_up()
 {
+   if (!(has_valid_size()))
+      {
+         std::stringstream error_message;
+         error_message << "Inventory" << "::" << "move_cursor_up" << ": error: " << "guard \"has_valid_size()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
    // TODO
    return;
 }
 
 void Inventory::move_cursor_down()
 {
+   if (!(has_valid_size()))
+      {
+         std::stringstream error_message;
+         error_message << "Inventory" << "::" << "move_cursor_down" << ": error: " << "guard \"has_valid_size()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
    // TODO
    return;
 }
 
 void Inventory::move_cursor_left()
 {
-   // TODO
+   if (!(has_valid_size()))
+      {
+         std::stringstream error_message;
+         error_message << "Inventory" << "::" << "move_cursor_left" << ": error: " << "guard \"has_valid_size()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   while(cursor_x < 0) cursor_x += num_columns;
    return;
 }
 
 void Inventory::move_cursor_right()
 {
+   if (!(has_valid_size()))
+      {
+         std::stringstream error_message;
+         error_message << "Inventory" << "::" << "move_cursor_right" << ": error: " << "guard \"has_valid_size()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
    // TODO
    return;
 }
@@ -247,6 +291,11 @@ void Inventory::deactivate()
 {
    // TODO
    return;
+}
+
+bool Inventory::has_valid_size()
+{
+   return (num_columns == 0 || num_rows == 0);
 }
 
 void Inventory::draw_item_selection_cursor(float x, float y)

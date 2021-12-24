@@ -27,10 +27,12 @@ properties:
   - name: cursor_x
     type: int
     init_with: 0
+    getter: true
 
   - name: cursor_y
     type: int
     init_with: 0
+    getter: true
 
   - name: num_columns
     type: int
@@ -184,24 +186,28 @@ functions:
 
 
   - name: move_cursor_up
+    guards: [ has_valid_size() ]
     body: |
       // TODO
       return;
 
 
   - name: move_cursor_down
+    guards: [ has_valid_size() ]
     body: |
       // TODO
       return;
 
 
   - name: move_cursor_left
+    guards: [ has_valid_size() ]
     body: |
-      // TODO
+      while(cursor_x < 0) cursor_x += num_columns;
       return;
 
 
   - name: move_cursor_right
+    guards: [ has_valid_size() ]
     body: |
       // TODO
       return;
@@ -217,6 +223,13 @@ functions:
     body: |
       // TODO
       return;
+
+
+  - name: has_valid_size
+    type: bool
+    private: true
+    body: |
+      return (num_columns == 0 || num_rows == 0);
 
 
   - name: draw_item_selection_cursor

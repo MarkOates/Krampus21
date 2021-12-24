@@ -37,6 +37,8 @@ namespace Krampus21
       void set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin);
       void set_af_inventory(AllegroFlare::Inventory* af_inventory);
       allegro_flare::placement2d get_place();
+      int get_cursor_x();
+      int get_cursor_y();
       void update();
       void render();
       void draw_backframe();
@@ -49,6 +51,7 @@ namespace Krampus21
       void move_cursor_right();
       void activate();
       void deactivate();
+      bool has_valid_size();
       void draw_item_selection_cursor(float x=0.0f, float y=0.0f);
       void draw_inventory_item_box(float x=0.0f, float y=0.0f, int item=0);
       std::tuple<std::string, std::string, std::string> get_item_definition(int index=0);

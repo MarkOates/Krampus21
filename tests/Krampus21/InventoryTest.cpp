@@ -70,4 +70,24 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, draw_item_selection_c
    }
 }
 
+TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_left__wraps_the_cursor_when_at_the_edge)
+{
+   // TODO
+}
+
+TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_right__wraps_the_cursor_when_at_the_edge)
+{
+   // TODO
+}
+
+TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_up__wraps_the_cursor_when_at_the_edge)
+{
+   // TODO
+}
+
+TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_down__wraps_the_cursor_when_at_the_edge)
+{
+   // TODO
+}
+
 
