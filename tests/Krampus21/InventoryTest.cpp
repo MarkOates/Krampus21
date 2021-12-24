@@ -80,7 +80,8 @@ TEST_F(Krampus21_InventoryTest, move_cursor_left__wraps_the_cursor_when_at_the_e
 TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_right__wraps_the_cursor_when_at_the_edge)
 {
    Krampus21::Inventory inventory;
-   for (unsigned i=0; i<3; i++) inventory.move_cursor_right();
+   int num_rows = 4;
+   for (unsigned i=0; i<(num_rows-1); i++) inventory.move_cursor_right();
 
    inventory.move_cursor_right();
 
@@ -89,12 +90,19 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_right__wr
 
 TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_up__wraps_the_cursor_when_at_the_edge)
 {
-   // TODO
+   Krampus21::Inventory inventory;
+   inventory.move_cursor_up();
+   EXPECT_EQ(2, inventory.get_cursor_y());
 }
 
 TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_down__wraps_the_cursor_when_at_the_edge)
 {
-   // TODO
+   Krampus21::Inventory inventory;
+   int num_columns = 3;
+   for (unsigned i=0; i<(num_columns-1); i++) inventory.move_cursor_down();
+
+   inventory.move_cursor_down();
+   EXPECT_EQ(0, inventory.get_cursor_y());
 }
 
 
