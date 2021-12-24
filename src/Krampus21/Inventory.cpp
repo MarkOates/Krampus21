@@ -125,15 +125,23 @@ void Inventory::draw_inventory_title_text()
 
 void Inventory::draw_inventory_boxes_and_elevated_item_selection()
 {
+   std::vector<int> items_in_inventory = af_inventory->get_items_ref();
+
    float x = 80;
    float y = 80;
    float spacing = 150 + 20;
+   int inventory_position = 0;
    for (unsigned row=0; row<3; row++)
    {
       for (unsigned column=0; column<4; column++)
       {
+         int item_to_draw = 0;
+         if (inventory_position >= items_in_inventory.size()) {}
+         else { item_to_draw = items_in_inventory[inventory_position]; }
+
          draw_inventory_item_box(x + column * spacing, y + row * spacing);
       }
+      inventory_position++;
    }
    return;
 }
