@@ -13,13 +13,13 @@ properties:
 
   - name: width
     type: float
-    init_with: '200'
+    init_with: '240'
     constructor_arg: true
     getter: true
 
   - name: height
     type: float
-    init_with: '80'
+    init_with: '70'
     constructor_arg: true
     getter: true
 
@@ -64,6 +64,8 @@ functions:
          border_thickness
       );
 
+      draw_text();
+
       return;
     body_dependency_symbols:
       - al_is_system_installed
@@ -72,9 +74,39 @@ functions:
       - al_color_html
 
 
+  - name: draw_text
+    private: true
+    body: |
+      ALLEGRO_FONT* font = obtain_dialog_font();
+      ALLEGRO_COLOR text_color = al_color_html("66a9bc");
+      al_draw_text(
+         font,
+         text_color,
+         width/2,
+         height/2 - al_get_font_line_height(font)/2 - 2,
+         ALLEGRO_ALIGN_CENTER,
+         name.c_str()
+      );
+      return;
+    body_dependency_symbols:
+      - al_color_html
+
+
+  - name: obtain_dialog_font
+    guards: [ al_is_font_addon_initialized(), al_is_ttf_addon_initialized(), font_bin ]
+    private: true
+    type: ALLEGRO_FONT*
+    body: |
+      static const std::string FONT_IDENTIFIER = "Purista Medium.ttf -50";
+      ALLEGRO_FONT* result_font = font_bin->operator[](FONT_IDENTIFIER);
+      return result_font;
+
+
 dependencies:
 
 
+  - symbol: al_draw_text
+    headers: [ allegro5/allegro.h ]
   - symbol: al_is_system_installed
     headers: [ allegro5/allegro.h ]
   - symbol: al_get_current_display
@@ -87,5 +119,9 @@ dependencies:
     headers: [ allegro5/allegro_primitives.h ]
   - symbol: AllegroFlare::FontBin*
     headers: [ AllegroFlare/FontBin.hpp ]
+  - symbol: ALLEGRO_FONT*
+    headers: [ allegro5/allegro_font.h ]
+  - symbol: al_color_html
+    headers: [ allegro5/allegro_color.h ]
 
 

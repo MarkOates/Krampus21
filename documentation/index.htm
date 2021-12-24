@@ -790,8 +790,17 @@ table td
 <tr>
   <td class="method">render()</td>
 </tr>
+<tr>
+  <td class="private_method">draw_text()</td>
+</tr>
+<tr>
+  <td class="private_method">obtain_dialog_font()</td>
+</tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_text&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_is_system_installed&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
@@ -809,6 +818,12 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_html&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -932,7 +947,8 @@ table td
   "ALLEGRO_FONT": [
     "Krampus21/ApplicationController",
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/Elements/DialogBoxNameTag"
   ],
   "ALLEGRO_EVENT_SOURCE": [
     "Krampus21/ApplicationController"
@@ -1061,6 +1077,7 @@ table td
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/Elements/DialogBoxFrame",
+    "Krampus21/Elements/DialogBoxNameTag",
     "Krampus21/Elements/DialogBoxNameTag"
   ],
   "al_is_primitives_addon_initialized": [
@@ -1102,6 +1119,9 @@ table td
   ],
   "std/vector<std/vector<std/string>>": [
     "Krampus21/DialogBoxes/Base"
+  ],
+  "al_draw_text": [
+    "Krampus21/Elements/DialogBoxNameTag"
   ],
   "Krampus21/ApplicationController": [
     "Krampus21/ProgramRunner"

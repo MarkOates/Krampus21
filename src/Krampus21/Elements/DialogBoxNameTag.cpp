@@ -7,6 +7,9 @@
 #include <allegro5/allegro_color.h>
 #include <stdexcept>
 #include <sstream>
+#include <allegro5/allegro_color.h>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace Krampus21
@@ -97,7 +100,49 @@ void DialogBoxNameTag::render()
       border_thickness
    );
 
+   draw_text();
+
    return;
+}
+
+void DialogBoxNameTag::draw_text()
+{
+   ALLEGRO_FONT* font = obtain_dialog_font();
+   ALLEGRO_COLOR text_color = al_color_html("66a9bc");
+   al_draw_text(
+      font,
+      text_color,
+      width/2,
+      height/2 - al_get_font_line_height(font)/2 - 2,
+      ALLEGRO_ALIGN_CENTER,
+      name.c_str()
+   );
+   return;
+}
+
+ALLEGRO_FONT* DialogBoxNameTag::obtain_dialog_font()
+{
+   if (!(al_is_font_addon_initialized()))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBoxNameTag" << "::" << "obtain_dialog_font" << ": error: " << "guard \"al_is_font_addon_initialized()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!(al_is_ttf_addon_initialized()))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBoxNameTag" << "::" << "obtain_dialog_font" << ": error: " << "guard \"al_is_ttf_addon_initialized()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!(font_bin))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBoxNameTag" << "::" << "obtain_dialog_font" << ": error: " << "guard \"font_bin\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   static const std::string FONT_IDENTIFIER = "Purista Medium.ttf -50";
+   ALLEGRO_FONT* result_font = font_bin->operator[](FONT_IDENTIFIER);
+   return result_font;
 }
 } // namespace Elements
 } // namespace Krampus21

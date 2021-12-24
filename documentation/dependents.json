@@ -8,7 +8,8 @@
   "ALLEGRO_FONT": [
     "Krampus21/ApplicationController",
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/Elements/DialogBoxNameTag"
   ],
   "ALLEGRO_EVENT_SOURCE": [
     "Krampus21/ApplicationController"
@@ -137,6 +138,7 @@
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/Elements/DialogBoxFrame",
+    "Krampus21/Elements/DialogBoxNameTag",
     "Krampus21/Elements/DialogBoxNameTag"
   ],
   "al_is_primitives_addon_initialized": [
@@ -178,6 +180,9 @@
   ],
   "std/vector<std/vector<std/string>>": [
     "Krampus21/DialogBoxes/Base"
+  ],
+  "al_draw_text": [
+    "Krampus21/Elements/DialogBoxNameTag"
   ],
   "Krampus21/ApplicationController": [
     "Krampus21/ProgramRunner"
