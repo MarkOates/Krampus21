@@ -139,7 +139,7 @@ void Inventory::draw_inventory_boxes_and_elevated_item_selection()
          if (inventory_position >= items_in_inventory.size()) {}
          else { item_to_draw = items_in_inventory[inventory_position]; }
 
-         draw_inventory_item_box(x + column * spacing, y + row * spacing);
+         draw_inventory_item_box(x + column * spacing, y + row * spacing, item_to_draw);
       }
       inventory_position++;
    }
@@ -188,17 +188,33 @@ void Inventory::deactivate()
    return;
 }
 
-void Inventory::draw_inventory_item_box(float x, float y)
+void Inventory::draw_inventory_item_box(float x, float y, int item)
 {
    ALLEGRO_COLOR backfill_color = ALLEGRO_COLOR{0.0, 0.0, 0.0, 0.3};
    float roundness = 6.0f;
+
+   // draw frame
    al_draw_filled_rounded_rectangle(x+0, y+0, x+150, y+150, roundness, roundness, backfill_color);
+
+   bool contains_item = true;
+   if (contains_item)
+   {
+      std::string item_name = "Item name";
+      ALLEGRO_FONT *font = obtain_item_name_font();
+      ALLEGRO_COLOR color = ALLEGRO_COLOR{1.0, 1.0, 1.0, 1.0};
+      al_draw_text(font, color, x, y + 150 - 20, ALLEGRO_ALIGN_LEFT, item_name.c_str());
+   }
    return;
 }
 
 ALLEGRO_FONT* Inventory::obtain_title_font()
 {
    return font_bin->auto_get("Lato-Bold.ttf -40");
+}
+
+ALLEGRO_FONT* Inventory::obtain_item_name_font()
+{
+   return font_bin->auto_get("Lato-Regular.ttf -30");
 }
 
 std::map<int, std::tuple<std::string, std::string, std::string>> Inventory::build_inventory_index()

@@ -46,8 +46,9 @@ namespace Krampus21
       void move_cursor_right();
       void activate();
       void deactivate();
-      void draw_inventory_item_box(float x=0.0f, float y=0.0f);
+      void draw_inventory_item_box(float x=0.0f, float y=0.0f, int item=0);
       ALLEGRO_FONT* obtain_title_font();
+      ALLEGRO_FONT* obtain_item_name_font();
       static std::map<int, std::tuple<std::string, std::string, std::string>> build_inventory_index();
    };
 }

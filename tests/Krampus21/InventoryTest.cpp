@@ -38,7 +38,7 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, render__displays_the_
    AllegroFlare::Inventory af_inventory;
    Krampus21::Inventory inventory(&get_font_bin_ref(), &get_bitmap_bin_ref(), &af_inventory);
    inventory.render();
-   SHOW_RENDER();
+   //SHOW_RENDER();
 }
 
 
