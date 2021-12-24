@@ -46,17 +46,17 @@ properties:
     type: bool
     init_with: false
 
-  - name: active_animation_counter
-    type: float
-    init_with: 0
-
   - name: focus_selection_animation_counter
-    type: float
-    init_with: 0
+    type: bool
+    init_with: 0.0f
 
   - name: inventory_index
     type: std::map<int, std::tuple<std::string, std::string, std::string>>
     init_with: 'build_inventory_index()'
+
+  - name: reveal_counter
+    type: float
+    init_with: 0
 
 
 functions:
@@ -65,7 +65,21 @@ functions:
   - name: update
     guards: [ font_bin, bitmap_bin, af_inventory ]
     body: |
-      // TODO
+      float reveal_speed = 1.0f/60.0f;  // 60 fps
+      if (active) reveal_counter += 60.0f;
+      else reveal_counter -= 60.0f;
+      return;
+
+
+  - name: show
+    body: |
+      reveal_counter = 1.0;
+      return;
+
+
+  - name: hide
+    body: |
+      reveal_counter = 0.0;
       return;
 
 
@@ -218,15 +232,19 @@ functions:
 
 
   - name: activate
+    type: bool
     body: |
-      // TODO
-      return;
+      if (active) return false;
+      active = true;
+      return active;
 
 
   - name: deactivate
+    type: bool
     body: |
-      // TODO
-      return;
+      if (!active) return false;
+      active = false;
+      return active;
 
 
   - name: has_valid_size

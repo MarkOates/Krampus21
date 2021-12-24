@@ -34,9 +34,9 @@ Inventory::Inventory(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* b
    , num_columns(4)
    , num_rows(3)
    , active(false)
-   , active_animation_counter(0)
-   , focus_selection_animation_counter(0)
+   , focus_selection_animation_counter(0.0f)
    , inventory_index(build_inventory_index())
+   , reveal_counter(0)
 {
 }
 
@@ -102,7 +102,21 @@ void Inventory::update()
          error_message << "Inventory" << "::" << "update" << ": error: " << "guard \"af_inventory\" not met";
          throw std::runtime_error(error_message.str());
       }
-   // TODO
+   float reveal_speed = 1.0f/60.0f;  // 60 fps
+   if (active) reveal_counter += 60.0f;
+   else reveal_counter -= 60.0f;
+   return;
+}
+
+void Inventory::show()
+{
+   reveal_counter = 1.0;
+   return;
+}
+
+void Inventory::hide()
+{
+   reveal_counter = 0.0;
    return;
 }
 
@@ -285,16 +299,18 @@ void Inventory::move_cursor_right()
    return;
 }
 
-void Inventory::activate()
+bool Inventory::activate()
 {
-   // TODO
-   return;
+   if (active) return false;
+   active = true;
+   return active;
 }
 
-void Inventory::deactivate()
+bool Inventory::deactivate()
 {
-   // TODO
-   return;
+   if (!active) return false;
+   active = false;
+   return active;
 }
 
 bool Inventory::has_valid_size()

@@ -25,9 +25,9 @@ namespace Krampus21
       int num_columns;
       int num_rows;
       bool active;
-      float active_animation_counter;
-      float focus_selection_animation_counter;
+      bool focus_selection_animation_counter;
       std::map<int, std::tuple<std::string, std::string, std::string>> inventory_index;
+      float reveal_counter;
 
    public:
       Inventory(AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::Inventory* af_inventory=nullptr);
@@ -40,6 +40,8 @@ namespace Krampus21
       int get_cursor_x();
       int get_cursor_y();
       void update();
+      void show();
+      void hide();
       void render();
       void draw_backframe();
       void draw_inventory_title_text();
@@ -49,8 +51,8 @@ namespace Krampus21
       void move_cursor_down();
       void move_cursor_left();
       void move_cursor_right();
-      void activate();
-      void deactivate();
+      bool activate();
+      bool deactivate();
       bool has_valid_size();
       void draw_item_selection_cursor(float x=0.0f, float y=0.0f);
       void draw_inventory_item_box(float x=0.0f, float y=0.0f, int item=0);

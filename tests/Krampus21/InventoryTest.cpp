@@ -107,4 +107,3 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_down__wra
 }
 
 
-
