@@ -11,6 +11,9 @@
 
 #include <AllegroFlare/Testing/WithAllegroRenderingFixture.hpp>
 
+#include <chrono>
+#include <thread>
+void SLEEP(int seconds=1) { std::this_thread::sleep_for(std::chrono::seconds(seconds)); }
 
 class Krampus21_InventoryTest : public ::testing::Test {};
 class Krampus21_InventoryWithAllegroRenderingFixtureTest : public AllegroFlare::Testing::WithAllegroRenderingFixture {};
@@ -28,6 +31,7 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, render__does_not_blow
    Krampus21::Inventory inventory(&get_font_bin_ref(), &get_bitmap_bin_ref(), &af_inventory);
    inventory.render();
    al_flip_display();
+   SLEEP();
 }
 
 
