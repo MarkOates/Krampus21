@@ -59,6 +59,7 @@ functions:
       // TODO
       return;
 
+
   - name: render
     guards: [ font_bin, bitmap_bin, af_inventory ]
     body: |
@@ -75,6 +76,7 @@ functions:
     body_dependency_symbols:
      - X
 
+
   - name: draw_backframe
     private: true
     body: |
@@ -89,11 +91,13 @@ functions:
       al_draw_line(0, place.size.y, place.size.x, place.size.y, top_and_bottom_pin_line_color, 2.0);
       return;
 
+
   - name: draw_inventory_title_text
     private: true
     body: |
       // TODO
       return;
+
 
   - name: draw_inventory_boxes_and_elevated_item_selection
     private: true
@@ -101,36 +105,43 @@ functions:
       // TODO
       return;
 
+
   - name: draw_details_frame
     private: true
     body: |
       // TODO
       return;
 
+
   - name: move_cursor_up
     body: |
       // TODO
       return;
+
 
   - name: move_cursor_down
     body: |
       // TODO
       return;
 
+
   - name: move_cursor_left
     body: |
       // TODO
       return;
+
 
   - name: move_cursor_right
     body: |
       // TODO
       return;
 
+
   - name: activate
     body: |
       // TODO
       return;
+
 
   - name: deactivate
     body: |
