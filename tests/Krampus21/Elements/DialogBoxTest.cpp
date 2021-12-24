@@ -73,7 +73,7 @@ TEST(Krampus21_Elements_DialogBoxTest, render__when_the_allegro_font_addon_has_n
    Krampus21::Elements::DialogBox dialog_box_renderer(nullptr, &dialog_box);
 
    std::string expected_error_message =
-      "DialogBox::obtain_dialog_font: error: guard \"al_is_font_addon_initialized()\" not met";
+      "DialogBox::render: error: guard \"al_is_font_addon_initialized()\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_destroy_display(display);
@@ -93,7 +93,7 @@ TEST(Krampus21_Elements_DialogBoxTest, render__when_the_allegro_ttf_addon_has_no
    Krampus21::Elements::DialogBox dialog_box_renderer(nullptr, &dialog_box);
 
    std::string expected_error_message =
-      "DialogBox::obtain_dialog_font: error: guard \"font_bin\" not met";
+      "DialogBox::render: error: guard \"font_bin\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_destroy_display(display);
@@ -113,7 +113,7 @@ TEST(Krampus21_Elements_DialogBoxTest, render__when_there_is_no_font_bin__raises
    Krampus21::Elements::DialogBox dialog_box_renderer(nullptr, &dialog_box);
 
    std::string expected_error_message =
-      "DialogBox::obtain_dialog_font: error: guard \"font_bin\" not met";
+      "DialogBox::render: error: guard \"font_bin\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_destroy_display(display);
@@ -182,58 +182,6 @@ TEST(Krampus21_Elements_DialogBoxTest, render__when_the_dialog_box_is_finish__re
    dialog_box_renderer.render();
    al_flip_display();
    //std::this_thread::sleep_for(std::chrono::seconds(1));
-
-   al_destroy_display(display);
-   al_uninstall_system();
-}
-
-
-TEST(Krampus21_Elements_DialogBoxTest, render__draws_multiline_dialog)
-{
-   al_init();
-   al_init_primitives_addon();
-   al_init_font_addon();
-   al_init_ttf_addon();
-   ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
-   AllegroFlare::FontBin font_bin;
-   font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
-   Krampus21::DialogBoxes::Base dialog_box;
-   dialog_box.set_pages({ "Some test dialog text. There's actually a lot of text that will need to fit." });
-   Krampus21::Elements::DialogBox dialog_box_renderer(&font_bin, &dialog_box);
-
-   dialog_box.reveal_all_characters();
-
-   dialog_box_renderer.render();
-   al_flip_display();
-   //std::this_thread::sleep_for(std::chrono::seconds(1));
-
-   al_destroy_display(display);
-   al_uninstall_system();
-}
-
-
-TEST(Krampus21_Elements_DialogBoxTest, render__will_propertly_render_revealing_text)
-{
-   al_init();
-   al_init_primitives_addon();
-   al_init_font_addon();
-   al_init_ttf_addon();
-   ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
-   AllegroFlare::FontBin font_bin;
-   font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
-   Krampus21::DialogBoxes::Base dialog_box;
-   std::string page_text = "Some test dialog text that will reveal characters sequentially when rendering.";
-   dialog_box.set_pages({ page_text });
-   Krampus21::Elements::DialogBox dialog_box_renderer(&font_bin, &dialog_box);
-
-   for (unsigned i=0; i<page_text.size(); i++)
-   {
-      dialog_box.update();
-      dialog_box_renderer.render();
-      al_flip_display();
-      //std::this_thread::sleep_for(std::chrono::microseconds(10000)); // add sleep for more obvious visual delay
-   }
-   //std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
    al_destroy_display(display);
    al_uninstall_system();

@@ -69,6 +69,24 @@ void DialogBox::render()
          error_message << "DialogBox" << "::" << "render" << ": error: " << "guard \"al_get_current_display()\" not met";
          throw std::runtime_error(error_message.str());
       }
+   if (!(al_is_font_addon_initialized()))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBox" << "::" << "render" << ": error: " << "guard \"al_is_font_addon_initialized()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!(al_is_ttf_addon_initialized()))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBox" << "::" << "render" << ": error: " << "guard \"al_is_ttf_addon_initialized()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!(font_bin))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBox" << "::" << "render" << ": error: " << "guard \"font_bin\" not met";
+         throw std::runtime_error(error_message.str());
+      }
    if (!(dialog_box))
       {
          std::stringstream error_message;
@@ -111,8 +129,6 @@ void DialogBox::render()
    }
    else
    {
-      draw_styled_revealed_text();
-
       // draw the player's action cursor thing at the bottom
       int current_dialog_box_page_character_count = dialog_box->get_current_page_text().length();
       int num_revealed_characters = obtain_dialog_box_num_revealed_characters();
@@ -155,31 +171,6 @@ void DialogBox::draw_action_text(std::string text)
       height-line_height-10,
       ALLEGRO_ALIGN_RIGHT,
       text.c_str()
-   );
-   return;
-}
-
-void DialogBox::draw_styled_revealed_text()
-{
-   std::string text = obtain_dialog_box_text();
-   float text_padding_x = 40.0f;
-   float text_padding_y = 30.0f;
-   float text_box_max_width = width - (text_padding_x * 2);
-   ALLEGRO_FONT* text_font = obtain_dialog_font();
-   float line_height = al_get_font_line_height(text_font);
-   //ALLEGRO_COLOR text_color = al_color_html("66a9bc");
-   ALLEGRO_COLOR text_color = al_color_name("skyblue");
-   int num_revealed_characters = obtain_dialog_box_num_revealed_characters();
-
-   al_draw_multiline_text(
-      text_font,
-      text_color,
-      text_padding_x,
-      text_padding_y,
-      text_box_max_width,
-      line_height,
-      ALLEGRO_ALIGN_LEFT,
-      concat_text(text, num_revealed_characters).c_str()
    );
    return;
 }

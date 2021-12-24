@@ -26,7 +26,14 @@ functions:
 
 
   - name: render
-    guards: [ al_is_system_installed(), al_is_primitives_addon_initialized(), al_get_current_display(), dialog_box ]
+    guards:
+      - al_is_system_installed()
+      - al_is_primitives_addon_initialized()
+      - al_get_current_display()
+      - al_is_font_addon_initialized()
+      - al_is_ttf_addon_initialized()
+      - font_bin
+      - dialog_box
     body: |
       float roundness = 18.0f;
       float border_thickness = 5.0f;
@@ -64,8 +71,6 @@ functions:
       }
       else
       {
-         draw_styled_revealed_text();
-
          // draw the player's action cursor thing at the bottom
          int current_dialog_box_page_character_count = dialog_box->get_current_page_text().length();
          int num_revealed_characters = obtain_dialog_box_num_revealed_characters();
@@ -117,31 +122,6 @@ functions:
          height-line_height-10,
          ALLEGRO_ALIGN_RIGHT,
          text.c_str()
-      );
-      return;
-
-
-  - name: draw_styled_revealed_text
-    body: |
-      std::string text = obtain_dialog_box_text();
-      float text_padding_x = 40.0f;
-      float text_padding_y = 30.0f;
-      float text_box_max_width = width - (text_padding_x * 2);
-      ALLEGRO_FONT* text_font = obtain_dialog_font();
-      float line_height = al_get_font_line_height(text_font);
-      //ALLEGRO_COLOR text_color = al_color_html("66a9bc");
-      ALLEGRO_COLOR text_color = al_color_name("skyblue");
-      int num_revealed_characters = obtain_dialog_box_num_revealed_characters();
-
-      al_draw_multiline_text(
-         text_font,
-         text_color,
-         text_padding_x,
-         text_padding_y,
-         text_box_max_width,
-         line_height,
-         ALLEGRO_ALIGN_LEFT,
-         concat_text(text, num_revealed_characters).c_str()
       );
       return;
 
