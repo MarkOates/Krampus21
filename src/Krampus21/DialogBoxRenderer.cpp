@@ -5,6 +5,7 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_color.h>
+#include <Krampus21/Elements/DialogBoxFrame.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -76,6 +77,7 @@ void DialogBoxRenderer::render()
 
    // draw backfill
    place.start_transform();
+   //Krampus21::Elements::DialogBoxFrame frame.render();
    al_draw_filled_rounded_rectangle(
       0 + border_inner_padding,
       0 + border_inner_padding,

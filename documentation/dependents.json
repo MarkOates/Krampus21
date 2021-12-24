@@ -124,28 +124,31 @@
   "al_is_system_installed": [
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBox"
+    "Krampus21/Elements/DialogBoxFrame"
   ],
   "al_get_current_display": [
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/Elements/DialogBox"
+    "Krampus21/Elements/DialogBoxFrame"
   ],
   "al_color_html": [
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBox"
+    "Krampus21/Elements/DialogBoxFrame"
   ],
   "al_is_primitives_addon_initialized": [
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBox"
+    "Krampus21/Elements/DialogBoxFrame"
   ],
   "al_draw_filled_rounded_rectangle": [
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBox"
+    "Krampus21/Elements/DialogBoxFrame"
   ],
   "Blast/StringJoiner": [
+    "Krampus21/DialogBoxRenderer"
+  ],
+  "Krampus21/Elements/DialogBoxFrame": [
     "Krampus21/DialogBoxRenderer"
   ],
   "Krampus21/DialogBoxes/Choice": [

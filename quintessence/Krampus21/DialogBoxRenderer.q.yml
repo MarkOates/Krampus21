@@ -33,6 +33,7 @@ functions:
 
       // draw backfill
       place.start_transform();
+      //Krampus21::Elements::DialogBoxFrame frame.render();
       al_draw_filled_rounded_rectangle(
          0 + border_inner_padding,
          0 + border_inner_padding,
@@ -79,6 +80,7 @@ functions:
       - al_is_primitives_addon_initialized
       - al_draw_filled_rounded_rectangle
       - al_color_html
+      - Krampus21::Elements::DialogBoxFrame
 
 
   - name: draw_special_state_empty_text
@@ -204,5 +206,9 @@ dependencies:
     headers: [ Krampus21/DialogBoxes/Base.hpp ]
   - symbol: allegro_flare::placement2d
     headers: [ allegro_flare/placement2d.h ]
+  - symbol: Krampus21::Elements::DialogBoxFrame
+    headers: [ Krampus21/Elements/DialogBoxFrame.hpp ]
+
+
 
 

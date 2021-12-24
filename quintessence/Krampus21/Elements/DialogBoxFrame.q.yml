@@ -11,16 +11,6 @@ properties:
     init_with: '1080/4'
     getter: true
 
-  - name: in_finished_state
-    type: bool
-    init_with: false
-    getter: true
-
-  - name: draw_next_action_cursor
-    type: bool
-    init_with: false
-    getter: true
-
 
 functions:
 

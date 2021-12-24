@@ -57,7 +57,7 @@ table td
   <li><a href="#quintessence/Krampus21/DialogBoxes/Base.q.yml">quintessence/Krampus21/DialogBoxes/Base.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/Choice.q.yml">quintessence/Krampus21/DialogBoxes/Choice.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogFactory.q.yml">quintessence/Krampus21/DialogFactory.q.yml</a></li>
-  <li><a href="#quintessence/Krampus21/Elements/DialogBox.q.yml">quintessence/Krampus21/Elements/DialogBox.q.yml</a></li>
+  <li><a href="#quintessence/Krampus21/Elements/DialogBoxFrame.q.yml">quintessence/Krampus21/Elements/DialogBoxFrame.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/ProgramRunner.q.yml">quintessence/Krampus21/ProgramRunner.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Script.q.yml">quintessence/Krampus21/Script.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/UserEventEmitter.q.yml">quintessence/Krampus21/UserEventEmitter.q.yml</a></li>
@@ -453,6 +453,9 @@ table td
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement2d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement2d.h&quot;]}</td>
 </tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Elements::DialogBoxFrame&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Elements/DialogBoxFrame.hpp&quot;]}</td>
+</tr>
     </table>
   </div>
 </ul>
@@ -717,7 +720,7 @@ table td
 </ul>
 <ul>
   <div class="component">
-    <h3 id="quintessence/Krampus21/Elements/DialogBox.q.yml">quintessence/Krampus21/Elements/DialogBox.q.yml</h3>
+    <h3 id="quintessence/Krampus21/Elements/DialogBoxFrame.q.yml">quintessence/Krampus21/Elements/DialogBoxFrame.q.yml</h3>
      <table>
 <tr>
   <td class="property">width</td>
@@ -726,14 +729,6 @@ table td
 <tr>
   <td class="property">height</td>
   <td class="property">float</td>
-</tr>
-<tr>
-  <td class="property">in_finished_state</td>
-  <td class="property">bool</td>
-</tr>
-<tr>
-  <td class="property">draw_next_action_cursor</td>
-  <td class="property">bool</td>
 </tr>
     </table>
      <table>
@@ -995,28 +990,31 @@ table td
   "al_is_system_installed": [
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBox"
+    "Krampus21/Elements/DialogBoxFrame"
   ],
   "al_get_current_display": [
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/Elements/DialogBox"
+    "Krampus21/Elements/DialogBoxFrame"
   ],
   "al_color_html": [
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBox"
+    "Krampus21/Elements/DialogBoxFrame"
   ],
   "al_is_primitives_addon_initialized": [
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBox"
+    "Krampus21/Elements/DialogBoxFrame"
   ],
   "al_draw_filled_rounded_rectangle": [
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBox"
+    "Krampus21/Elements/DialogBoxFrame"
   ],
   "Blast/StringJoiner": [
+    "Krampus21/DialogBoxRenderer"
+  ],
+  "Krampus21/Elements/DialogBoxFrame": [
     "Krampus21/DialogBoxRenderer"
   ],
   "Krampus21/DialogBoxes/Choice": [
