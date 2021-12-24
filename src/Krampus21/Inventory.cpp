@@ -166,6 +166,14 @@ void Inventory::deactivate()
    return;
 }
 
+void Inventory::draw_inventory_item_box(float x, float y)
+{
+   ALLEGRO_COLOR backfill_color = ALLEGRO_COLOR{0.3, 0.3, 0.3, 0.3};
+   float roundness = 6.0f;
+   al_draw_filled_rounded_rectangle(x+0, y+0, x+150, y+150, roundness, roundness, backfill_color);
+   return;
+}
+
 ALLEGRO_FONT* Inventory::obtain_title_font()
 {
    return font_bin->auto_get("Lato-Bold.ttf -40");

@@ -42,6 +42,7 @@ namespace Krampus21
       void move_cursor_right();
       void activate();
       void deactivate();
+      void draw_inventory_item_box(float x=0.0f, float y=0.0f);
       ALLEGRO_FONT* obtain_title_font();
    };
 }
