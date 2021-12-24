@@ -202,6 +202,7 @@ functions:
   - name: move_cursor_left
     guards: [ has_valid_size() ]
     body: |
+      cursor_x--;
       while(cursor_x < 0) cursor_x += num_columns;
       return;
 
@@ -209,7 +210,8 @@ functions:
   - name: move_cursor_right
     guards: [ has_valid_size() ]
     body: |
-      // TODO
+      cursor_x++;
+      cursor_x = cursor_x % num_columns;
       return;
 
 
@@ -229,7 +231,7 @@ functions:
     type: bool
     private: true
     body: |
-      return (num_columns == 0 || num_rows == 0);
+      return !(num_columns == 0 || num_rows == 0);
 
 
   - name: draw_item_selection_cursor

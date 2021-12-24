@@ -265,6 +265,7 @@ void Inventory::move_cursor_left()
          error_message << "Inventory" << "::" << "move_cursor_left" << ": error: " << "guard \"has_valid_size()\" not met";
          throw std::runtime_error(error_message.str());
       }
+   cursor_x--;
    while(cursor_x < 0) cursor_x += num_columns;
    return;
 }
@@ -277,7 +278,8 @@ void Inventory::move_cursor_right()
          error_message << "Inventory" << "::" << "move_cursor_right" << ": error: " << "guard \"has_valid_size()\" not met";
          throw std::runtime_error(error_message.str());
       }
-   // TODO
+   cursor_x++;
+   cursor_x = cursor_x % num_columns;
    return;
 }
 
@@ -295,7 +297,7 @@ void Inventory::deactivate()
 
 bool Inventory::has_valid_size()
 {
-   return (num_columns == 0 || num_rows == 0);
+   return !(num_columns == 0 || num_rows == 0);
 }
 
 void Inventory::draw_item_selection_cursor(float x, float y)

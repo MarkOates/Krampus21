@@ -70,14 +70,21 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, draw_item_selection_c
    }
 }
 
-TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_left__wraps_the_cursor_when_at_the_edge)
+TEST_F(Krampus21_InventoryTest, move_cursor_left__wraps_the_cursor_when_at_the_edge)
 {
-   // TODO
+   Krampus21::Inventory inventory;
+   inventory.move_cursor_left();
+   EXPECT_EQ(3, inventory.get_cursor_x());
 }
 
 TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_right__wraps_the_cursor_when_at_the_edge)
 {
-   // TODO
+   Krampus21::Inventory inventory;
+   for (unsigned i=0; i<3; i++) inventory.move_cursor_right();
+
+   inventory.move_cursor_right();
+
+   EXPECT_EQ(0, inventory.get_cursor_x());
 }
 
 TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_up__wraps_the_cursor_when_at_the_edge)
