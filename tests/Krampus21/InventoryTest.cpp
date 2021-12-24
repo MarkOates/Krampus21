@@ -42,3 +42,13 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, render__displays_the_
 }
 
 
+TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, render__when_an_item_is_selected__renders_the_details_pane)
+{
+   AllegroFlare::Inventory af_inventory;
+   af_inventory.add_item(1);
+   Krampus21::Inventory inventory(&get_font_bin_ref(), &get_bitmap_bin_ref(), &af_inventory);
+   inventory.render();
+   SHOW_RENDER();
+}
+
+

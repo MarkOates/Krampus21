@@ -195,7 +195,10 @@ ALLEGRO_FONT* Inventory::obtain_title_font()
 
 std::map<int, std::tuple<std::string, std::string, std::string>> Inventory::build_inventory_index()
 {
-   std::map<int, std::tuple<std::string, std::string, std::string>> result;
+   std::map<int, std::tuple<std::string, std::string, std::string>> result = {
+      //{ 1, "Bracelet", "bracelet.png", "A gift given to you by Ami" },
+      //{ 2, "Watch", "watch.png", "Useful tool to keep you on track." },
+   };
    return result;
 }
 } // namespace Krampus21

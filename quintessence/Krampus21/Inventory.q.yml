@@ -194,7 +194,10 @@ functions:
     type: std::map<int, std::tuple<std::string, std::string, std::string>>
     static: true
     body: |
-      std::map<int, std::tuple<std::string, std::string, std::string>> result;
+      std::map<int, std::tuple<std::string, std::string, std::string>> result = {
+         //{ 1, "Bracelet", "bracelet.png", "A gift given to you by Ami" },
+         //{ 2, "Watch", "watch.png", "Useful tool to keep you on track." },
+      };
       return result;
 
 
