@@ -35,6 +35,7 @@ Inventory::Inventory(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* b
    , num_rows(3)
    , active(false)
    , details_reveal_counter(0.0f)
+   , details_num_revealed_characters(999)
    , inventory_index(build_inventory_index())
    , reveal_counter(0)
 {
@@ -108,9 +109,12 @@ void Inventory::update()
    if (reveal_counter < 0.0) reveal_counter = 0.0;
    if (reveal_counter >= 1.0) reveal_counter = 1.0;
 
-   float details_reveal_speed = (1.0f/60.0f) * 3;  // 60 fps
+   float details_reveal_speed = (1.0f/60.0f) * 4;  // 60 fps
    details_reveal_counter += details_reveal_speed;
    if (details_reveal_counter >= 1.0) details_reveal_counter = 1.0;
+
+   details_num_revealed_characters++;
+   if (details_num_revealed_characters > 999) details_num_revealed_characters = 999;
    return;
 }
 
@@ -118,6 +122,8 @@ void Inventory::reveal()
 {
    active = true;
    reveal_counter = 1.0;
+   details_num_revealed_characters = 999;
+   details_reveal_counter = 1.0;
    return;
 }
 
@@ -125,6 +131,8 @@ void Inventory::unreveal()
 {
    active = false;
    reveal_counter = 0.0;
+   details_num_revealed_characters = 0;
+   details_reveal_counter = 0.0;
    return;
 }
 
@@ -237,9 +245,18 @@ void Inventory::draw_inventory_boxes_and_elevated_item_selection()
 void Inventory::draw_details_frame()
 {
    ALLEGRO_COLOR revealed_white = opaquify(ALLEGRO_COLOR{1.0, 1.0, 1.0, 1.0});
+
    // draw label
-   ALLEGRO_FONT* font = obtain_item_name_font();
-   al_draw_text(font, opaquify(ALLEGRO_COLOR{1, 1, 1, 1}), 850, 100, ALLEGRO_ALIGN_LEFT, "Watch");
+   ALLEGRO_FONT* font = obtain_details_header_font();
+   float details_header_reveal_offset = 80 * (1.0 - AllegroFlare::interpolator::fast_in(details_reveal_counter));
+   al_draw_text(
+      font,
+      opaquify(ALLEGRO_COLOR{details_reveal_counter, details_reveal_counter, details_reveal_counter, details_reveal_counter}),
+      850 + details_header_reveal_offset,
+      100,
+      ALLEGRO_ALIGN_LEFT,
+      "Watch"
+   );
 
    // draw graphic
    ALLEGRO_BITMAP *bitmap = bitmap_bin->auto_get("watch-01.png");
@@ -250,8 +267,13 @@ void Inventory::draw_details_frame()
    box_place.size.y = 800;
    box_place.scale.x = 0.6;
    box_place.scale.y = 0.6;
+
    box_place.position.y = box_place.position.y +
-      80 * (1.0 - AllegroFlare::interpolator::fast_in(details_reveal_counter));
+      50 * (1.0 - AllegroFlare::interpolator::fast_in(details_reveal_counter));
+   float scale_reveal_multiplier = 0.94 + 0.06 * (AllegroFlare::interpolator::fast_in(details_reveal_counter));
+   box_place.scale.x = box_place.scale.x * scale_reveal_multiplier;
+   box_place.scale.y = box_place.scale.y * scale_reveal_multiplier;
+
    box_place.start_transform();
    al_draw_tinted_bitmap(bitmap, revealed_white, 0, 0, 0);
    box_place.restore_transform();
@@ -260,7 +282,7 @@ void Inventory::draw_details_frame()
    float x = 820;
    float y = 420;
    float width = 1300 - 800- 50 + 5;
-   int dialog_box_num_revealed_characters = 999;
+   //int dialog_box_num_revealed_characters = 999;
    std::string text = "This is the details text that will be shown in the right pane.";
    float text_padding_x = 40.0f;
    float text_padding_y = 30.0f;
@@ -277,7 +299,7 @@ void Inventory::draw_details_frame()
       text_box_max_width,
       line_height,
       ALLEGRO_ALIGN_LEFT,
-      concat_text(text, dialog_box_num_revealed_characters).c_str()
+      concat_text(text, details_num_revealed_characters).c_str()
    );
    return;
 }
@@ -293,6 +315,7 @@ void Inventory::move_cursor_up()
    cursor_y--;
    while(cursor_y < 0) cursor_y += num_rows;
    details_reveal_counter = 0.0f;
+   details_num_revealed_characters = 0;
    return;
 }
 
@@ -307,6 +330,7 @@ void Inventory::move_cursor_down()
    cursor_y++;
    cursor_y = cursor_y % num_rows;
    details_reveal_counter = 0.0f;
+   details_num_revealed_characters = 0;
    return;
 }
 
@@ -321,6 +345,7 @@ void Inventory::move_cursor_left()
    cursor_x--;
    while(cursor_x < 0) cursor_x += num_columns;
    details_reveal_counter = 0.0f;
+   details_num_revealed_characters = 0;
    return;
 }
 
@@ -335,6 +360,7 @@ void Inventory::move_cursor_right()
    cursor_x++;
    cursor_x = cursor_x % num_columns;
    details_reveal_counter = 0.0f;
+   details_num_revealed_characters = 0;
    return;
 }
 
@@ -442,6 +468,11 @@ ALLEGRO_FONT* Inventory::obtain_description_font()
 ALLEGRO_FONT* Inventory::obtain_item_name_font()
 {
    return font_bin->auto_get("Lato-Bold.ttf -46");
+}
+
+ALLEGRO_FONT* Inventory::obtain_details_header_font()
+{
+   return font_bin->auto_get("Lato-Bold.ttf -48");
 }
 
 std::map<int, std::tuple<std::string, std::string, std::string>> Inventory::build_inventory_index()
