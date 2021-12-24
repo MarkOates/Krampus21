@@ -214,8 +214,8 @@ void Inventory::draw_inventory_item_box(float x, float y, int item)
       box_place.position.y = y + 150/2;
       box_place.size.x = 800;
       box_place.size.y = 800;
-      box_place.scale.x = 0.2;
-      box_place.scale.y = 0.2;
+      box_place.scale.x = 0.25;
+      box_place.scale.y = 0.25;
 
       box_place.start_transform();
       al_draw_bitmap(bitmap, 0, 0, 0);

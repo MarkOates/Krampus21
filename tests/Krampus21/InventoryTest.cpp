@@ -13,7 +13,7 @@
 
 #include <chrono>
 #include <thread>
-void SHOW_RENDER(int seconds=1) { al_flip_display(); std::this_thread::sleep_for(std::chrono::seconds(seconds)); }
+void SHOW_RENDER(int seconds=5) { al_flip_display(); std::this_thread::sleep_for(std::chrono::seconds(seconds)); }
 
 class Krampus21_InventoryTest : public ::testing::Test {};
 class Krampus21_InventoryWithAllegroRenderingFixtureTest : public AllegroFlare::Testing::WithAllegroRenderingFixture {};
@@ -45,6 +45,8 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, render__displays_the_
 TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, render__when_an_item_is_selected__renders_the_details_pane)
 {
    AllegroFlare::Inventory af_inventory;
+   af_inventory.add_item(2);
+   af_inventory.add_item(2);
    af_inventory.add_item(2);
    Krampus21::Inventory inventory(&get_font_bin_ref(), &get_bitmap_bin_ref(), &af_inventory);
    inventory.render();
