@@ -109,6 +109,12 @@ functions:
       return;
 
 
+  - name: get_currently_selected_item
+    private: true
+    body: |
+      return;
+
+
   - name: draw_inventory_boxes_and_elevated_item_selection
     private: true
     body: |
@@ -204,9 +210,9 @@ functions:
          std::string item_bitmap_identifier = std::get<1>(item_definition); //"watch-01.png";
          ALLEGRO_BITMAP *bitmap = bitmap_bin->auto_get(item_bitmap_identifier);
 
-         ALLEGRO_COLOR color = ALLEGRO_COLOR{1.0, 1.0, 1.0, 1.0};
-         ALLEGRO_FONT *font = obtain_item_name_font();
-         al_draw_text(font, color, x, y + 150 - 20, ALLEGRO_ALIGN_LEFT, item_name.c_str());
+         //ALLEGRO_COLOR color = ALLEGRO_COLOR{1.0, 1.0, 1.0, 1.0};
+         //ALLEGRO_FONT *font = obtain_item_name_font();
+         //al_draw_text(font, color, x, y + 150 - 20, ALLEGRO_ALIGN_LEFT, item_name.c_str());
 
          allegro_flare::placement2d box_place;
          box_place.position.x = x + 150/2;

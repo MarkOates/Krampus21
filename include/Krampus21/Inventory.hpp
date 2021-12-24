@@ -38,6 +38,7 @@ namespace Krampus21
       void render();
       void draw_backframe();
       void draw_inventory_title_text();
+      void get_currently_selected_item();
       void draw_inventory_boxes_and_elevated_item_selection();
       void draw_details_frame();
       void move_cursor_up();
