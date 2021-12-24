@@ -81,10 +81,14 @@ functions:
     private: true
     body: |
       ALLEGRO_COLOR backfill_color = ALLEGRO_COLOR{0.05, 0.05, 0.1, 0.7};
+      ALLEGRO_COLOR left_overbackfill_color = ALLEGRO_COLOR{1.0 * 0.02, 0.8 * 0.02, 0.02 * 0.02, 0.02};
       ALLEGRO_COLOR top_and_bottom_pin_line_color = ALLEGRO_COLOR{0.2, 0.2, 0.2, 0.2};
 
       // backfill
       al_draw_filled_rectangle(0, 0, place.size.x, place.size.y, backfill_color);
+
+      // left "overbackfill"
+      al_draw_filled_rectangle(0, 0, 800, place.size.y, left_overbackfill_color);
 
       // top and bottom pin lines
       al_draw_line(0, 0, place.size.x, 0, top_and_bottom_pin_line_color, 2.0);
