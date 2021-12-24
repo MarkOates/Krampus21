@@ -112,7 +112,9 @@ void Inventory::draw_backframe()
 
 void Inventory::draw_inventory_title_text()
 {
-   // TODO
+   ALLEGRO_FONT *font = obtain_title_font();
+   ALLEGRO_COLOR color = ALLEGRO_COLOR{1.0, 1.0, 1.0, 1.0};
+   al_draw_text(font, color, 0, -50, ALLEGRO_ALIGN_LEFT, "I N V E N T O R Y");
    return;
 }
 
@@ -162,6 +164,11 @@ void Inventory::deactivate()
 {
    // TODO
    return;
+}
+
+ALLEGRO_FONT* Inventory::obtain_title_font()
+{
+   return font_bin->auto_get("Lato-Bold.ttf -40");
 }
 } // namespace Krampus21
 

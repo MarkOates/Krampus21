@@ -9,7 +9,8 @@
     "Krampus21/ApplicationController",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBoxNameTag"
+    "Krampus21/Elements/DialogBoxNameTag",
+    "Krampus21/Inventory"
   ],
   "ALLEGRO_EVENT_SOURCE": [
     "Krampus21/ApplicationController"

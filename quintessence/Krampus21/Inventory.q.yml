@@ -95,7 +95,9 @@ functions:
   - name: draw_inventory_title_text
     private: true
     body: |
-      // TODO
+      ALLEGRO_FONT *font = obtain_title_font();
+      ALLEGRO_COLOR color = ALLEGRO_COLOR{1.0, 1.0, 1.0, 1.0};
+      al_draw_text(font, color, 0, -50, ALLEGRO_ALIGN_LEFT, "I N V E N T O R Y");
       return;
 
 
@@ -149,6 +151,12 @@ functions:
       return;
 
 
+  - name: obtain_title_font
+    type: ALLEGRO_FONT*
+    body: |
+      return font_bin->auto_get("Lato-Bold.ttf -40");
+
+
 dependencies:
 
 
@@ -160,6 +168,8 @@ dependencies:
     headers: [ AllegroFlare/BitmapBin.hpp ]
   - symbol: AllegroFlare::FontBin*
     headers: [ AllegroFlare/FontBin.hpp ]
+  - symbol: ALLEGRO_FONT*
+    headers: [ allegro5/allegro_font.h ]
   - symbol: X
     headers:
       - allegro5/allegro_primitives.h

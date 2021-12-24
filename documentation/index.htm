@@ -918,6 +918,9 @@ table td
 <tr>
   <td class="method">deactivate()</td>
 </tr>
+<tr>
+  <td class="method">obtain_title_font()</td>
+</tr>
     </table>
      <table>
 <tr>
@@ -931,6 +934,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;X&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;, &quot;allegro5/allegro_color.h&quot;]}</td>
@@ -1058,7 +1064,8 @@ table td
     "Krampus21/ApplicationController",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBoxNameTag"
+    "Krampus21/Elements/DialogBoxNameTag",
+    "Krampus21/Inventory"
   ],
   "ALLEGRO_EVENT_SOURCE": [
     "Krampus21/ApplicationController"

@@ -4,6 +4,7 @@
 #include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/Inventory.hpp>
+#include <allegro5/allegro_font.h>
 #include <allegro_flare/placement2d.h>
 
 
@@ -41,6 +42,7 @@ namespace Krampus21
       void move_cursor_right();
       void activate();
       void deactivate();
+      ALLEGRO_FONT* obtain_title_font();
    };
 }
 
