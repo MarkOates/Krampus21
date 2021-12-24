@@ -5,17 +5,16 @@ properties:
     type: AllegroFlare::FontBin*
     init_with: nullptr
     constructor_arg: true
-    setter: true
 
   - name: bitmap_bin
     type: AllegroFlare::BitmapBin*
     init_with: nullptr
     constructor_arg: true
-    setter: true
 
   - name: af_inventory
     type: AllegroFlare::Inventory*
     init_with: nullptr
+    constructor_arg: true
 
   - name: place
     type: allegro_flare::placement2d
@@ -55,12 +54,13 @@ functions:
 
 
   - name: update
+    guards: [ font_bin, bitmap_bin, af_inventory ]
     body: |
       // TODO
       return;
 
   - name: render
-    guards: [ af_inventory ]
+    guards: [ font_bin, bitmap_bin, af_inventory ]
     body: |
       draw_backframe();
       draw_inventory_title_text();

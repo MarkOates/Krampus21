@@ -25,11 +25,9 @@ namespace Krampus21
       float focus_selection_animation_counter;
 
    public:
-      Inventory(AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr);
+      Inventory(AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::Inventory* af_inventory=nullptr);
       ~Inventory();
 
-      void set_font_bin(AllegroFlare::FontBin* font_bin);
-      void set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin);
       allegro_flare::placement2d get_place();
       void update();
       void render();

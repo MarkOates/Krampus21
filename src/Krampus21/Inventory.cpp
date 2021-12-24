@@ -3,16 +3,18 @@
 #include <Krampus21/Inventory.hpp>
 #include <stdexcept>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace Krampus21
 {
 
 
-Inventory::Inventory(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* bitmap_bin)
+Inventory::Inventory(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::Inventory* af_inventory)
    : font_bin(font_bin)
    , bitmap_bin(bitmap_bin)
-   , af_inventory(nullptr)
+   , af_inventory(af_inventory)
    , place({ 1920/2, 1080/5*2, 800, 800 })
    , cursor_x(0)
    , cursor_y(0)
@@ -30,18 +32,6 @@ Inventory::~Inventory()
 }
 
 
-void Inventory::set_font_bin(AllegroFlare::FontBin* font_bin)
-{
-   this->font_bin = font_bin;
-}
-
-
-void Inventory::set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin)
-{
-   this->bitmap_bin = bitmap_bin;
-}
-
-
 allegro_flare::placement2d Inventory::get_place()
 {
    return place;
@@ -50,12 +40,42 @@ allegro_flare::placement2d Inventory::get_place()
 
 void Inventory::update()
 {
+   if (!(font_bin))
+      {
+         std::stringstream error_message;
+         error_message << "Inventory" << "::" << "update" << ": error: " << "guard \"font_bin\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!(bitmap_bin))
+      {
+         std::stringstream error_message;
+         error_message << "Inventory" << "::" << "update" << ": error: " << "guard \"bitmap_bin\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!(af_inventory))
+      {
+         std::stringstream error_message;
+         error_message << "Inventory" << "::" << "update" << ": error: " << "guard \"af_inventory\" not met";
+         throw std::runtime_error(error_message.str());
+      }
    // TODO
    return;
 }
 
 void Inventory::render()
 {
+   if (!(font_bin))
+      {
+         std::stringstream error_message;
+         error_message << "Inventory" << "::" << "render" << ": error: " << "guard \"font_bin\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!(bitmap_bin))
+      {
+         std::stringstream error_message;
+         error_message << "Inventory" << "::" << "render" << ": error: " << "guard \"bitmap_bin\" not met";
+         throw std::runtime_error(error_message.str());
+      }
    if (!(af_inventory))
       {
          std::stringstream error_message;
