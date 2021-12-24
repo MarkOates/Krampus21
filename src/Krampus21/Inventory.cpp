@@ -140,6 +140,7 @@ void Inventory::draw_inventory_boxes_and_elevated_item_selection()
          else { item_to_draw = items_in_inventory[inventory_position]; }
 
          draw_inventory_item_box(x + column * spacing, y + row * spacing, item_to_draw);
+         inventory_position++;
       }
       inventory_position++;
    }
@@ -197,14 +198,15 @@ void Inventory::draw_inventory_item_box(float x, float y, int item)
    al_draw_filled_rounded_rectangle(x+0, y+0, x+150, y+150, roundness, roundness, backfill_color);
 
    std::tuple<std::string, std::string, std::string> item_definition = get_item_definition(item);
-   bool contains_item = std::get<0>(item_definition).empty();
+   bool contains_item = !std::get<0>(item_definition).empty();
    if (contains_item)
    {
-      std::string item_name = "Item name";
-      std::string item_bitmap_identifier = "watch-01.png";
-      ALLEGRO_FONT *font = obtain_item_name_font();
+      std::string item_name = std::get<0>(item_definition);
+      std::string item_bitmap_identifier = std::get<1>(item_definition); //"watch-01.png";
       ALLEGRO_BITMAP *bitmap = bitmap_bin->auto_get(item_bitmap_identifier);
+
       ALLEGRO_COLOR color = ALLEGRO_COLOR{1.0, 1.0, 1.0, 1.0};
+      ALLEGRO_FONT *font = obtain_item_name_font();
       al_draw_text(font, color, x, y + 150 - 20, ALLEGRO_ALIGN_LEFT, item_name.c_str());
       al_draw_bitmap(bitmap, x, y, 0);
    }
@@ -231,7 +233,7 @@ std::map<int, std::tuple<std::string, std::string, std::string>> Inventory::buil
 {
    std::map<int, std::tuple<std::string, std::string, std::string>> result = {
       //{ 1, { "Bracelet", "bracelet.png", "A gift given to you." } },
-      { 2, { "Watch", "watch.png", "Useful tool to keep you on track." } },
+      { 2, { "Watch", "watch-01.png", "Useful tool to keep you on track." } },
    };
    return result;
 }
