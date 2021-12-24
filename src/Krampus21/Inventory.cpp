@@ -130,8 +130,8 @@ void Inventory::render()
 
    draw_backframe();
    draw_inventory_title_text();
-   draw_inventory_boxes_and_elevated_item_selection();
    draw_item_selection_cursor();
+   draw_inventory_boxes_and_elevated_item_selection();
    draw_details_frame();
 
    place.restore_transform();
@@ -304,6 +304,12 @@ bool Inventory::has_valid_size()
 
 void Inventory::draw_item_selection_cursor(float x, float y)
 {
+   // position
+   x = 80;
+   y = 80;
+   float spacing = 150 + 20;
+
+    // color
    ALLEGRO_COLOR color_a = al_color_name("aquamarine");
    ALLEGRO_COLOR color_b = AllegroFlare::color::transparent;
    float speed_multiplier = 0.9;
@@ -311,7 +317,17 @@ void Inventory::draw_item_selection_cursor(float x, float y)
    ALLEGRO_COLOR color = AllegroFlare::color::mix(color_a, color_b, 0.7 * mix_factor);
    float r = 8;
    float thickness = 6.0;
-   al_draw_rounded_rectangle(x, y, x+150, y+150, r, r, color, thickness);
+
+   al_draw_rounded_rectangle(
+      x + cursor_x*spacing,
+      y + cursor_y*spacing,
+      x + cursor_x*spacing + 150,
+      y + cursor_y*spacing + 150,
+      r,
+      r,
+      color,
+      thickness
+   );
    return;
 }
 

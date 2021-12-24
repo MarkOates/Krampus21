@@ -46,11 +46,12 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, render__when_an_item_
 {
    AllegroFlare::Inventory af_inventory;
    af_inventory.add_item(2);
-   //af_inventory.add_item(2);
-   //af_inventory.add_item(2);
    Krampus21::Inventory inventory(&get_font_bin_ref(), &get_bitmap_bin_ref(), &af_inventory);
+   inventory.move_cursor_right();
+   inventory.move_cursor_right();
+   inventory.move_cursor_down();
    inventory.render();
-   //SHOW_RENDER();
+   SHOW_RENDER();
 }
 
 
@@ -104,5 +105,6 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_down__wra
    inventory.move_cursor_down();
    EXPECT_EQ(0, inventory.get_cursor_y());
 }
+
 
 
