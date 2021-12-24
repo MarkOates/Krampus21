@@ -30,12 +30,14 @@
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBoxNameTag"
+    "Krampus21/Elements/DialogBoxNameTag",
+    "Krampus21/Inventory"
   ],
   "AllegroFlare/BitmapBin": [
     "Krampus21/ApplicationController",
     "Krampus21/Character",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/Inventory"
   ],
   "AllegroFlare/Display": [
     "Krampus21/ApplicationController",
@@ -115,7 +117,8 @@
   ],
   "allegro_flare/placement2d": [
     "Krampus21/Character",
-    "Krampus21/DialogBoxRenderer"
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/Inventory"
   ],
   "ALLEGRO_BITMAP": [
     "Krampus21/Character"

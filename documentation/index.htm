@@ -837,8 +837,20 @@ table td
     <h3 id="quintessence/Krampus21/Inventory.q.yml">quintessence/Krampus21/Inventory.q.yml</h3>
      <table>
 <tr>
+  <td class="property">font_bin</td>
+  <td class="property">AllegroFlare::FontBin*</td>
+</tr>
+<tr>
+  <td class="property">bitmap_bin</td>
+  <td class="property">AllegroFlare::BitmapBin*</td>
+</tr>
+<tr>
   <td class="property">af_inventory</td>
   <td class="property">AllegroFlare::Inventory*</td>
+</tr>
+<tr>
+  <td class="property">place</td>
+  <td class="property">allegro_flare::placement2d</td>
 </tr>
     </table>
      <table>
@@ -849,6 +861,15 @@ table td
      <table>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Inventory*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Inventory.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement2d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement2d.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -994,12 +1015,14 @@ table td
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBoxNameTag"
+    "Krampus21/Elements/DialogBoxNameTag",
+    "Krampus21/Inventory"
   ],
   "AllegroFlare/BitmapBin": [
     "Krampus21/ApplicationController",
     "Krampus21/Character",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/Inventory"
   ],
   "AllegroFlare/Display": [
     "Krampus21/ApplicationController",
@@ -1079,7 +1102,8 @@ table td
   ],
   "allegro_flare/placement2d": [
     "Krampus21/Character",
-    "Krampus21/DialogBoxRenderer"
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/Inventory"
   ],
   "ALLEGRO_BITMAP": [
     "Krampus21/Character"
