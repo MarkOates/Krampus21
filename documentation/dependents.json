@@ -185,6 +185,9 @@
   "al_draw_text": [
     "Krampus21/Elements/DialogBoxNameTag"
   ],
+  "AllegroFlare/Inventory": [
+    "Krampus21/Inventory"
+  ],
   "Krampus21/ApplicationController": [
     "Krampus21/ProgramRunner"
   ],

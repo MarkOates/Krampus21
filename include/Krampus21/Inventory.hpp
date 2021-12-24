@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <string>
+#include <AllegroFlare/Inventory.hpp>
 
 
 namespace Krampus21
@@ -9,12 +9,13 @@ namespace Krampus21
    class Inventory
    {
    private:
+      AllegroFlare::Inventory* inventory;
 
    public:
       Inventory();
       ~Inventory();
 
-      std::string run();
+      void render();
    };
 }
 
