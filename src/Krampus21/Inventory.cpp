@@ -35,6 +35,24 @@ Inventory::~Inventory()
 }
 
 
+void Inventory::set_font_bin(AllegroFlare::FontBin* font_bin)
+{
+   this->font_bin = font_bin;
+}
+
+
+void Inventory::set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin)
+{
+   this->bitmap_bin = bitmap_bin;
+}
+
+
+void Inventory::set_af_inventory(AllegroFlare::Inventory* af_inventory)
+{
+   this->af_inventory = af_inventory;
+}
+
+
 allegro_flare::placement2d Inventory::get_place()
 {
    return place;

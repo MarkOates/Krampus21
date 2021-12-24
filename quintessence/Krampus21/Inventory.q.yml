@@ -4,17 +4,20 @@ properties:
   - name: font_bin
     type: AllegroFlare::FontBin*
     init_with: nullptr
+    setter: true
     constructor_arg: true
 
   - name: bitmap_bin
     type: AllegroFlare::BitmapBin*
     init_with: nullptr
     constructor_arg: true
+    setter: true
 
   - name: af_inventory
     type: AllegroFlare::Inventory*
     init_with: nullptr
     constructor_arg: true
+    setter: true
 
   - name: place
     type: allegro_flare::placement2d

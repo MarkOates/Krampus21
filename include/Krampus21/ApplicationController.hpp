@@ -6,11 +6,13 @@
 #include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/Framework.hpp>
+#include <AllegroFlare/Inventory.hpp>
 #include <AllegroFlare/Screen.hpp>
 #include <AllegroFlare/Screens.hpp>
 #include <Krampus21/Character.hpp>
 #include <Krampus21/DialogBoxes/Base.hpp>
 #include <Krampus21/DialogFactory.hpp>
+#include <Krampus21/Inventory.hpp>
 #include <Krampus21/Script.hpp>
 #include <Krampus21/UserEventEmitter.hpp>
 #include <allegro5/allegro.h>
@@ -42,6 +44,8 @@ namespace Krampus21
       ALLEGRO_COLOR background_color;
       float letterbox_frame_height;
       ALLEGRO_COLOR letterbox_color;
+      AllegroFlare::Inventory af_inventory;
+      Krampus21::Inventory inventory;
 
    public:
       ApplicationController(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements={}, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements={});

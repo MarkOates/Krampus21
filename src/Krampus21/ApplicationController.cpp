@@ -44,6 +44,8 @@ ApplicationController::ApplicationController(AllegroFlare::Framework* framework,
    , background_color(ALLEGRO_COLOR{0.1, 0.1, 0.2, 1.0})
    , letterbox_frame_height(200)
    , letterbox_color(ALLEGRO_COLOR{0.0, 0.0, 0.0, 1.0})
+   , af_inventory({})
+   , inventory({})
 {
 }
 
@@ -70,6 +72,11 @@ void ApplicationController::initialize()
    audio_controller.initialize();
    character.set_font_bin(obtain_font_bin());
    character.set_bitmap_bin(obtain_bitmap_bin());
+
+   inventory.set_font_bin(obtain_font_bin());
+   inventory.set_bitmap_bin(obtain_bitmap_bin());
+   inventory.set_af_inventory(&af_inventory);
+
    initialized = true;
    return;
 }
@@ -177,7 +184,9 @@ void ApplicationController::primary_timer_func()
 
       // render hud
       draw_letterbox();
-      // TODO
+
+      // TODO render inventory
+      //inventory.render();
 
       // render dialog
       if (current_dialog)

@@ -116,6 +116,13 @@
   "Krampus21/Character": [
     "Krampus21/ApplicationController"
   ],
+  "AllegroFlare/Inventory": [
+    "Krampus21/ApplicationController",
+    "Krampus21/Inventory"
+  ],
+  "Krampus21/Inventory": [
+    "Krampus21/ApplicationController"
+  ],
   "allegro_flare/placement2d": [
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
@@ -188,9 +195,6 @@
   ],
   "al_draw_text": [
     "Krampus21/Elements/DialogBoxNameTag"
-  ],
-  "AllegroFlare/Inventory": [
-    "Krampus21/Inventory"
   ],
   "X": [
     "Krampus21/Inventory"

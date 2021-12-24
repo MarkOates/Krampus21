@@ -129,6 +129,14 @@ table td
   <td class="property">letterbox_color</td>
   <td class="property">ALLEGRO_COLOR</td>
 </tr>
+<tr>
+  <td class="property">af_inventory</td>
+  <td class="property">AllegroFlare::Inventory</td>
+</tr>
+<tr>
+  <td class="property">inventory</td>
+  <td class="property">Krampus21::Inventory</td>
+</tr>
     </table>
      <table>
 <tr>
@@ -297,6 +305,12 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Character&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Character.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Inventory&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Inventory.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Inventory&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Inventory.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -1202,6 +1216,13 @@ table td
   "Krampus21/Character": [
     "Krampus21/ApplicationController"
   ],
+  "AllegroFlare/Inventory": [
+    "Krampus21/ApplicationController",
+    "Krampus21/Inventory"
+  ],
+  "Krampus21/Inventory": [
+    "Krampus21/ApplicationController"
+  ],
   "allegro_flare/placement2d": [
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
@@ -1274,9 +1295,6 @@ table td
   ],
   "al_draw_text": [
     "Krampus21/Elements/DialogBoxNameTag"
-  ],
-  "AllegroFlare/Inventory": [
-    "Krampus21/Inventory"
   ],
   "X": [
     "Krampus21/Inventory"

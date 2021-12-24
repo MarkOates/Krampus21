@@ -33,6 +33,9 @@ namespace Krampus21
       Inventory(AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::Inventory* af_inventory=nullptr);
       ~Inventory();
 
+      void set_font_bin(AllegroFlare::FontBin* font_bin);
+      void set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin);
+      void set_af_inventory(AllegroFlare::Inventory* af_inventory);
       allegro_flare::placement2d get_place();
       void update();
       void render();

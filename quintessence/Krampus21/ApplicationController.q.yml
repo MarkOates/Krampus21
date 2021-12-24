@@ -76,6 +76,13 @@ properties:
     type: ALLEGRO_COLOR
     init_with: 'ALLEGRO_COLOR{0.0, 0.0, 0.0, 1.0}'
 
+  - name: af_inventory
+    type: AllegroFlare::Inventory
+    init_with: '{}'
+
+  - name: inventory
+    type: Krampus21::Inventory
+    init_with: '{}'
 
 functions:
 
@@ -86,6 +93,11 @@ functions:
       audio_controller.initialize();
       character.set_font_bin(obtain_font_bin());
       character.set_bitmap_bin(obtain_bitmap_bin());
+
+      inventory.set_font_bin(obtain_font_bin());
+      inventory.set_bitmap_bin(obtain_bitmap_bin());
+      inventory.set_af_inventory(&af_inventory);
+
       initialized = true;
       return;
 
@@ -202,7 +214,9 @@ functions:
 
          // render hud
          draw_letterbox();
-         // TODO
+
+         // TODO render inventory
+         //inventory.render();
 
          // render dialog
          if (current_dialog)
@@ -664,4 +678,8 @@ dependencies:
     headers: [ Blast/StringSplitter.hpp ]
   - symbol: Krampus21::Character
     headers: [ Krampus21/Character.hpp ]
+  - symbol: AllegroFlare::Inventory
+    headers: [ AllegroFlare/Inventory.hpp ]
+  - symbol: Krampus21::Inventory
+    headers: [ Krampus21/Inventory.hpp ]
 
