@@ -4,6 +4,7 @@
 #include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/Inventory.hpp>
+#include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
 #include <allegro_flare/placement2d.h>
 #include <map>
@@ -42,6 +43,7 @@ namespace Krampus21
       void update();
       void reveal();
       void unreveal();
+      ALLEGRO_COLOR opaquify(ALLEGRO_COLOR color={0,0,0,0});
       float inv_reveal_counter();
       void render();
       void draw_backframe();

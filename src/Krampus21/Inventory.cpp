@@ -102,7 +102,7 @@ void Inventory::update()
          error_message << "Inventory" << "::" << "update" << ": error: " << "guard \"af_inventory\" not met";
          throw std::runtime_error(error_message.str());
       }
-   float reveal_speed = (1.0f/60.0f) * 3;  // 60 fps
+   float reveal_speed = (1.0f/60.0f) * 4;  // 60 fps
    if (active) reveal_counter += reveal_speed;
    else reveal_counter -= reveal_speed;
    if (reveal_counter < 0.0) reveal_counter = 0.0;
@@ -120,6 +120,18 @@ void Inventory::unreveal()
 {
    reveal_counter = 0.0;
    return;
+}
+
+ALLEGRO_COLOR Inventory::opaquify(ALLEGRO_COLOR color)
+{
+   //AllegroFlare::color::change_alpha(color, reveal_counter);
+   //AllegroFlare::color::change_alpha(color, 1.0);
+   float alpha = reveal_counter;
+      color.a *= alpha;
+      color.r *= color.a;
+      color.g *= color.a;
+      color.b *= color.a;
+   return color;
 }
 
 float Inventory::inv_reveal_counter()
@@ -147,6 +159,8 @@ void Inventory::render()
          error_message << "Inventory" << "::" << "render" << ": error: " << "guard \"af_inventory\" not met";
          throw std::runtime_error(error_message.str());
       }
+   if (reveal_counter <= 0.001) return;
+
    allegro_flare::placement2d time_based_place = place;
    time_based_place.position.y = place.position.y +
       100 * (1.0 - AllegroFlare::interpolator::fast_in(reveal_counter));
@@ -166,9 +180,9 @@ void Inventory::render()
 
 void Inventory::draw_backframe()
 {
-   ALLEGRO_COLOR backfill_color = ALLEGRO_COLOR{0.05, 0.05, 0.1, 0.7};
-   ALLEGRO_COLOR left_overbackfill_color = ALLEGRO_COLOR{1.0 * 0.02, 0.8 * 0.02, 0.02 * 0.02, 0.02};
-   ALLEGRO_COLOR top_and_bottom_pin_line_color = ALLEGRO_COLOR{0.2, 0.2, 0.2, 0.2};
+   ALLEGRO_COLOR backfill_color = opaquify(al_color_html("11111d"));
+   ALLEGRO_COLOR left_overbackfill_color = opaquify(al_color_html("16151c"));
+   ALLEGRO_COLOR top_and_bottom_pin_line_color = opaquify(ALLEGRO_COLOR{0.6, 0.6, 0.6, 1.0});
 
    // backfill
    al_draw_filled_rectangle(0, 0, place.size.x, place.size.y, backfill_color);
@@ -185,7 +199,7 @@ void Inventory::draw_backframe()
 void Inventory::draw_inventory_title_text()
 {
    ALLEGRO_FONT *font = obtain_title_font();
-   ALLEGRO_COLOR color = ALLEGRO_COLOR{1.0, 1.0, 1.0, 1.0};
+   ALLEGRO_COLOR color = opaquify(ALLEGRO_COLOR{1.0, 1.0, 1.0, 1.0});
    al_draw_text(font, color, 0, -50, ALLEGRO_ALIGN_LEFT, "I N V E N T O R Y");
    return;
 }
@@ -216,9 +230,10 @@ void Inventory::draw_inventory_boxes_and_elevated_item_selection()
 
 void Inventory::draw_details_frame()
 {
+   ALLEGRO_COLOR revealed_white = opaquify(ALLEGRO_COLOR{1.0, 1.0, 1.0, 1.0});
    // draw label
    ALLEGRO_FONT* font = obtain_item_name_font();
-   al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 850, 100, ALLEGRO_ALIGN_LEFT, "Watch");
+   al_draw_text(font, opaquify(ALLEGRO_COLOR{1, 1, 1, 1}), 850, 100, ALLEGRO_ALIGN_LEFT, "Watch");
 
    // draw graphic
    ALLEGRO_BITMAP *bitmap = bitmap_bin->auto_get("watch-01.png");
@@ -230,7 +245,7 @@ void Inventory::draw_details_frame()
    box_place.scale.x = 0.6;
    box_place.scale.y = 0.6;
    box_place.start_transform();
-   al_draw_bitmap(bitmap, 0, 0, 0);
+   al_draw_tinted_bitmap(bitmap, revealed_white, 0, 0, 0);
    box_place.restore_transform();
 
    // draw multiline description
@@ -244,7 +259,7 @@ void Inventory::draw_details_frame()
    float text_box_max_width = width - (text_padding_x * 2);
    ALLEGRO_FONT* text_font = obtain_description_font();
    float line_height = al_get_font_line_height(text_font) * 1.2;
-   ALLEGRO_COLOR text_color = al_color_html("ffffff");
+   ALLEGRO_COLOR text_color = opaquify(al_color_html("ffffff"));
    al_draw_multiline_text(
       text_font,
       text_color,
@@ -360,7 +375,8 @@ void Inventory::draw_item_selection_cursor(float x, float y)
 
 void Inventory::draw_inventory_item_box(float x, float y, int item)
 {
-   ALLEGRO_COLOR backfill_color = ALLEGRO_COLOR{0.0, 0.0, 0.0, 0.3};
+   ALLEGRO_COLOR revealed_white = opaquify(ALLEGRO_COLOR{1.0, 1.0, 1.0, 1.0});
+   ALLEGRO_COLOR backfill_color = opaquify(ALLEGRO_COLOR{0.0, 0.0, 0.0, 0.4});
    float roundness = 6.0f;
 
    // draw frame
@@ -387,7 +403,7 @@ void Inventory::draw_inventory_item_box(float x, float y, int item)
       box_place.scale.y = 0.25;
 
       box_place.start_transform();
-      al_draw_bitmap(bitmap, 0, 0, 0);
+      al_draw_tinted_bitmap(bitmap, revealed_white, 0, 0, 0);
       box_place.restore_transform();
    }
    return;

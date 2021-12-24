@@ -64,7 +64,7 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, draw_item_selection_c
    float passes = 0;
    for (unsigned i=0; i<passes; i++)
    {
-      al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
+      al_clear_to_color(ALLEGRO_COLOR{0.1, 0.1, 0.1, 1.0});
       inventory.draw_item_selection_cursor(1920/2, 1080/2);
       al_flip_display();
       std::this_thread::sleep_for(std::chrono::milliseconds(1000/60));
@@ -76,13 +76,35 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, show__does_a_cool_ani
    AllegroFlare::Inventory af_inventory;
    af_inventory.add_item(2);
    Krampus21::Inventory inventory(&get_font_bin_ref(), &get_bitmap_bin_ref(), &af_inventory);
-   float passes = 60 * 2;
+   float passes = 60 * 1;
+   //float passes = 0;
    inventory.show();
    for (unsigned i=0; i<passes; i++)
    {
       inventory.update();
 
-      al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
+      al_clear_to_color(ALLEGRO_COLOR{0.1, 0.1, 0.1, 1.0});
+      //al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
+      inventory.render();
+      al_flip_display();
+      std::this_thread::sleep_for(std::chrono::milliseconds(1000/60));
+   }
+}
+
+TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, hide__does_a_cool_animation)
+{
+   AllegroFlare::Inventory af_inventory;
+   af_inventory.add_item(2);
+   Krampus21::Inventory inventory(&get_font_bin_ref(), &get_bitmap_bin_ref(), &af_inventory);
+   float passes = 60 * 1;
+   inventory.reveal();
+   inventory.hide();
+   for (unsigned i=0; i<passes; i++)
+   {
+      inventory.update();
+
+      al_clear_to_color(ALLEGRO_COLOR{0.1, 0.1, 0.1, 1.0});
+      //al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
       inventory.render();
       al_flip_display();
       std::this_thread::sleep_for(std::chrono::milliseconds(1000/60));
