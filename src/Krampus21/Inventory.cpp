@@ -10,7 +10,7 @@ namespace Krampus21
 
 
 Inventory::Inventory()
-   : inventory(nullptr)
+   : af_inventory(nullptr)
 {
 }
 
@@ -22,10 +22,10 @@ Inventory::~Inventory()
 
 void Inventory::render()
 {
-   if (!(inventory))
+   if (!(af_inventory))
       {
          std::stringstream error_message;
-         error_message << "Inventory" << "::" << "render" << ": error: " << "guard \"inventory\" not met";
+         error_message << "Inventory" << "::" << "render" << ": error: " << "guard \"af_inventory\" not met";
          throw std::runtime_error(error_message.str());
       }
    return;

@@ -1,7 +1,7 @@
 properties:
 
 
-  - name: inventory
+  - name: af_inventory
     type: AllegroFlare::Inventory*
     init_with: nullptr
 
@@ -10,7 +10,7 @@ functions:
 
 
   - name: render
-    guards: [ inventory ]
+    guards: [ af_inventory ]
     body: |
       return;
 

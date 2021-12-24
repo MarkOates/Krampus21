@@ -9,7 +9,7 @@ namespace Krampus21
    class Inventory
    {
    private:
-      AllegroFlare::Inventory* inventory;
+      AllegroFlare::Inventory* af_inventory;
 
    public:
       Inventory();
