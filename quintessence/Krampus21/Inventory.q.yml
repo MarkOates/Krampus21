@@ -75,6 +75,7 @@ functions:
       draw_backframe();
       draw_inventory_title_text();
       draw_inventory_boxes_and_elevated_item_selection();
+      draw_item_selection_cursor();
       draw_details_frame();
 
       place.restore_transform();
@@ -218,6 +219,31 @@ functions:
       return;
 
 
+  - name: draw_item_selection_cursor
+    private: true
+    parameters:
+      - name: x
+        type: float
+        default_argument: 0.0f
+      - name: y
+        type: float
+        default_argument: 0.0f
+    body: |
+      ALLEGRO_COLOR color_a = al_color_name("aquamarine");
+      ALLEGRO_COLOR color_b = AllegroFlare::color::transparent;
+      float speed_multiplier = 1.1;
+      float mix_factor = AllegroFlare::interpolator::slow_in_out(fmod(al_get_time() * speed_multiplier, 1.0));
+      ALLEGRO_COLOR color = AllegroFlare::color::mix(color_a, color_b, mix_factor);
+      float r = 8;
+      float thickness = 6.0;
+      al_draw_rounded_rectangle(x, y, x+150, y+150, r, r, color, thickness);
+      return;
+    body_dependency_symbols:
+      - fmod
+      - AllegroFlare::Color
+      - AllegroFlare::interpolator
+
+
   - name: draw_inventory_item_box
     private: true
     parameters:
@@ -342,5 +368,11 @@ dependencies:
     headers: [ vector, utility, string ]
   - symbol: std::tuple<std::string, std::string, std::string>
     headers: [ utility, string ]
+  - symbol: AllegroFlare::Color
+    headers: [ AllegroFlare/Color.hpp ]
+  - symbol: AllegroFlare::interpolator
+    headers: [ AllegroFlare/Interpolators.hpp ]
+  - symbol: fmod
+    headers: [ cmath ]
 
 

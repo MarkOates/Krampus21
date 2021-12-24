@@ -54,3 +54,17 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, render__when_an_item_
 }
 
 
+TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, draw_item_selection_cursor__renders_an_animated_style)
+{
+   AllegroFlare::Inventory af_inventory;
+   af_inventory.add_item(2);
+   Krampus21::Inventory inventory(&get_font_bin_ref(), &get_bitmap_bin_ref(), &af_inventory);
+   for (unsigned i=0; i<60 * 4; i++)
+   {
+      al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
+      inventory.draw_item_selection_cursor(1920/2, 1080/2);
+      al_flip_display();
+   }
+}
+
+

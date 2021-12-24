@@ -76,6 +76,7 @@ void ApplicationController::initialize()
    inventory.set_font_bin(obtain_font_bin());
    inventory.set_bitmap_bin(obtain_bitmap_bin());
    inventory.set_af_inventory(&af_inventory);
+   af_inventory.add_item(2);
 
    initialized = true;
    return;
@@ -158,8 +159,8 @@ void ApplicationController::primary_timer_func()
    if (current_dialog) current_dialog->update();
 
    // draw
-   //al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
-   al_clear_to_color(background_color);
+   al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
+   //al_clear_to_color(background_color);
 
    if (script.get_finished())
    {
@@ -180,13 +181,14 @@ void ApplicationController::primary_timer_func()
       // TODO
 
       // render character
-      character.render();
+      //character.render();
 
       // render hud
       draw_letterbox();
 
       // TODO render inventory
-      //inventory.render();
+      inventory.render();
+      return;
 
       // render dialog
       if (current_dialog)

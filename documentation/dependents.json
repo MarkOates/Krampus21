@@ -208,6 +208,15 @@
   "std/tuple<std/string, std/string, std/string>": [
     "Krampus21/Inventory"
   ],
+  "AllegroFlare/Color": [
+    "Krampus21/Inventory"
+  ],
+  "AllegroFlare/interpolator": [
+    "Krampus21/Inventory"
+  ],
+  "fmod": [
+    "Krampus21/Inventory"
+  ],
   "Krampus21/ApplicationController": [
     "Krampus21/ProgramRunner"
   ],
