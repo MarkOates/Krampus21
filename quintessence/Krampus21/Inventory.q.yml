@@ -112,6 +112,8 @@ functions:
   - name: draw_inventory_boxes_and_elevated_item_selection
     private: true
     body: |
+      std::vector<std::tuple<std::string, std::string, std::string>> inventory_list = build_inventory_list();
+
       float x = 80;
       float y = 80;
       float spacing = 150 + 20;
@@ -190,13 +192,20 @@ functions:
       return font_bin->auto_get("Lato-Bold.ttf -40");
 
 
+  - name: build_inventory_list
+    type: std::vector<std::tuple<std::string, std::string, std::string>>
+    body: |
+      std::vector<std::tuple<std::string, std::string, std::string>> result;
+      return result;
+
+
   - name: build_inventory_index
     type: std::map<int, std::tuple<std::string, std::string, std::string>>
     static: true
     body: |
       std::map<int, std::tuple<std::string, std::string, std::string>> result = {
-         //{ 1, "Bracelet", "bracelet.png", "A gift given to you by Ami" },
-         //{ 2, "Watch", "watch.png", "Useful tool to keep you on track." },
+         { 1, { "Bracelet", "bracelet.png", "A gift given to you by Ami" } },
+         //{ 2, { "Watch", "watch.png", "Useful tool to keep you on track." } },
       };
       return result;
 
@@ -220,5 +229,7 @@ dependencies:
       - allegro5/allegro_color.h
   - symbol: std::map<int, std::tuple<std::string, std::string, std::string>>
     headers: [ map, utility, string ]
+  - symbol: std::vector<std::tuple<std::string, std::string, std::string>>
+    headers: [ vector, utility, string ]
 
 
