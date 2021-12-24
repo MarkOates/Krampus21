@@ -1,0 +1,90 @@
+properties:
+
+
+  - name: font_bin
+    type: AllegroFlare::FontBin*
+    init_with: nullptr
+    constructor_arg: true
+
+  - name: name
+    type: std::string
+    init_with: '"[name-not-set]"'
+    constructor_arg: true
+
+  - name: width
+    type: float
+    init_with: '200'
+    constructor_arg: true
+    getter: true
+
+  - name: height
+    type: float
+    init_with: '80'
+    constructor_arg: true
+    getter: true
+
+
+functions:
+
+
+  - name: render
+    guards:
+      - al_is_system_installed()
+      - al_is_primitives_addon_initialized()
+      - al_get_current_display()
+    body: |
+      float roundness = 18.0f;
+      float border_thickness = 5.0f;
+      float border_inner_padding = border_thickness * 3;
+      //ALLEGRO_COLOR fill_color = al_color_html("162428");
+      float opacity = 0.7;
+      ALLEGRO_COLOR fill_color = ALLEGRO_COLOR{0.02f*opacity, 0.0f*opacity, 0.1f*opacity, opacity};
+      ALLEGRO_COLOR border_color = al_color_html("244751");
+
+      // draw backfill
+      al_draw_filled_rounded_rectangle(
+         0 + border_inner_padding,
+         0 + border_inner_padding,
+         width - border_inner_padding,
+         height - border_inner_padding,
+         roundness * 0.5,
+         roundness * 0.5,
+         fill_color
+      );
+      // draw border
+      al_draw_rounded_rectangle(
+         0,
+         0,
+         width,
+         height,
+         roundness,
+         roundness,
+         border_color,
+         border_thickness
+      );
+
+      return;
+    body_dependency_symbols:
+      - al_is_system_installed
+      - al_is_primitives_addon_initialized
+      - al_draw_filled_rounded_rectangle
+      - al_color_html
+
+
+dependencies:
+
+
+  - symbol: al_is_system_installed
+    headers: [ allegro5/allegro.h ]
+  - symbol: al_get_current_display
+    headers: [ allegro5/allegro.h ]
+  - symbol: al_color_html
+    headers: [ allegro5/allegro_color.h ]
+  - symbol: al_is_primitives_addon_initialized
+    headers: [ allegro5/allegro_primitives.h ]
+  - symbol: al_draw_filled_rounded_rectangle
+    headers: [ allegro5/allegro_primitives.h ]
+  - symbol: AllegroFlare::FontBin*
+    headers: [ AllegroFlare/FontBin.hpp ]
+
+
