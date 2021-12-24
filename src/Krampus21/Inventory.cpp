@@ -34,7 +34,7 @@ Inventory::Inventory(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* b
    , num_columns(4)
    , num_rows(3)
    , active(false)
-   , focus_selection_animation_counter(0.0f)
+   , details_reveal_counter(0.0f)
    , inventory_index(build_inventory_index())
    , reveal_counter(0)
 {
@@ -107,17 +107,23 @@ void Inventory::update()
    else reveal_counter -= reveal_speed;
    if (reveal_counter < 0.0) reveal_counter = 0.0;
    if (reveal_counter >= 1.0) reveal_counter = 1.0;
+
+   float details_reveal_speed = (1.0f/60.0f) * 3;  // 60 fps
+   details_reveal_counter += details_reveal_speed;
+   if (details_reveal_counter >= 1.0) details_reveal_counter = 1.0;
    return;
 }
 
 void Inventory::reveal()
 {
+   active = true;
    reveal_counter = 1.0;
    return;
 }
 
 void Inventory::unreveal()
 {
+   active = false;
    reveal_counter = 0.0;
    return;
 }
@@ -163,7 +169,7 @@ void Inventory::render()
 
    allegro_flare::placement2d time_based_place = place;
    time_based_place.position.y = place.position.y +
-      100 * (1.0 - AllegroFlare::interpolator::fast_in(reveal_counter));
+      80 * (1.0 - AllegroFlare::interpolator::fast_in(reveal_counter));
 
    time_based_place.start_transform();
 
@@ -244,6 +250,8 @@ void Inventory::draw_details_frame()
    box_place.size.y = 800;
    box_place.scale.x = 0.6;
    box_place.scale.y = 0.6;
+   box_place.position.y = box_place.position.y +
+      80 * (1.0 - AllegroFlare::interpolator::fast_in(details_reveal_counter));
    box_place.start_transform();
    al_draw_tinted_bitmap(bitmap, revealed_white, 0, 0, 0);
    box_place.restore_transform();
@@ -260,6 +268,7 @@ void Inventory::draw_details_frame()
    ALLEGRO_FONT* text_font = obtain_description_font();
    float line_height = al_get_font_line_height(text_font) * 1.2;
    ALLEGRO_COLOR text_color = opaquify(al_color_html("ffffff"));
+
    al_draw_multiline_text(
       text_font,
       text_color,
@@ -283,6 +292,7 @@ void Inventory::move_cursor_up()
       }
    cursor_y--;
    while(cursor_y < 0) cursor_y += num_rows;
+   details_reveal_counter = 0.0f;
    return;
 }
 
@@ -296,6 +306,7 @@ void Inventory::move_cursor_down()
       }
    cursor_y++;
    cursor_y = cursor_y % num_rows;
+   details_reveal_counter = 0.0f;
    return;
 }
 
@@ -309,6 +320,7 @@ void Inventory::move_cursor_left()
       }
    cursor_x--;
    while(cursor_x < 0) cursor_x += num_columns;
+   details_reveal_counter = 0.0f;
    return;
 }
 
@@ -322,6 +334,7 @@ void Inventory::move_cursor_right()
       }
    cursor_x++;
    cursor_x = cursor_x % num_columns;
+   details_reveal_counter = 0.0f;
    return;
 }
 
@@ -329,6 +342,7 @@ bool Inventory::show()
 {
    if (active) return false;
    active = true;
+   details_reveal_counter = 0.0f;
    return active;
 }
 

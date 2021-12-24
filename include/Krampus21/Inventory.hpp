@@ -26,7 +26,7 @@ namespace Krampus21
       int num_columns;
       int num_rows;
       bool active;
-      bool focus_selection_animation_counter;
+      float details_reveal_counter;
       std::map<int, std::tuple<std::string, std::string, std::string>> inventory_index;
       float reveal_counter;
 
