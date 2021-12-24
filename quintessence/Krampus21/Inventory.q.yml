@@ -65,28 +65,40 @@ functions:
   - name: update
     guards: [ font_bin, bitmap_bin, af_inventory ]
     body: |
-      float reveal_speed = 1.0f/60.0f;  // 60 fps
-      if (active) reveal_counter += 60.0f;
-      else reveal_counter -= 60.0f;
+      float reveal_speed = (1.0f/60.0f) * 3;  // 60 fps
+      if (active) reveal_counter += reveal_speed;
+      else reveal_counter -= reveal_speed;
+      if (reveal_counter < 0.0) reveal_counter = 0.0;
+      if (reveal_counter >= 1.0) reveal_counter = 1.0;
       return;
 
 
-  - name: show
+  - name: reveal
     body: |
       reveal_counter = 1.0;
       return;
 
 
-  - name: hide
+  - name: unreveal
     body: |
       reveal_counter = 0.0;
       return;
 
 
+  - name: inv_reveal_counter
+    type: float
+    body: |
+      return 1.0 - reveal_counter;
+
+
   - name: render
     guards: [ font_bin, bitmap_bin, af_inventory ]
     body: |
-      place.start_transform();
+      allegro_flare::placement2d time_based_place = place;
+      time_based_place.position.y = place.position.y +
+         100 * (1.0 - AllegroFlare::interpolator::fast_in(reveal_counter));
+
+      time_based_place.start_transform();
 
       draw_backframe();
       draw_inventory_title_text();
@@ -94,7 +106,7 @@ functions:
       draw_inventory_boxes_and_elevated_item_selection();
       draw_details_frame();
 
-      place.restore_transform();
+      time_based_place.restore_transform();
 
       return;
     body_dependency_symbols:
@@ -231,7 +243,7 @@ functions:
       return;
 
 
-  - name: activate
+  - name: show
     type: bool
     body: |
       if (active) return false;
@@ -239,7 +251,7 @@ functions:
       return active;
 
 
-  - name: deactivate
+  - name: hide
     type: bool
     body: |
       if (!active) return false;

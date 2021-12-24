@@ -102,22 +102,29 @@ void Inventory::update()
          error_message << "Inventory" << "::" << "update" << ": error: " << "guard \"af_inventory\" not met";
          throw std::runtime_error(error_message.str());
       }
-   float reveal_speed = 1.0f/60.0f;  // 60 fps
-   if (active) reveal_counter += 60.0f;
-   else reveal_counter -= 60.0f;
+   float reveal_speed = (1.0f/60.0f) * 3;  // 60 fps
+   if (active) reveal_counter += reveal_speed;
+   else reveal_counter -= reveal_speed;
+   if (reveal_counter < 0.0) reveal_counter = 0.0;
+   if (reveal_counter >= 1.0) reveal_counter = 1.0;
    return;
 }
 
-void Inventory::show()
+void Inventory::reveal()
 {
    reveal_counter = 1.0;
    return;
 }
 
-void Inventory::hide()
+void Inventory::unreveal()
 {
    reveal_counter = 0.0;
    return;
+}
+
+float Inventory::inv_reveal_counter()
+{
+   return 1.0 - reveal_counter;
 }
 
 void Inventory::render()
@@ -140,7 +147,11 @@ void Inventory::render()
          error_message << "Inventory" << "::" << "render" << ": error: " << "guard \"af_inventory\" not met";
          throw std::runtime_error(error_message.str());
       }
-   place.start_transform();
+   allegro_flare::placement2d time_based_place = place;
+   time_based_place.position.y = place.position.y +
+      100 * (1.0 - AllegroFlare::interpolator::fast_in(reveal_counter));
+
+   time_based_place.start_transform();
 
    draw_backframe();
    draw_inventory_title_text();
@@ -148,7 +159,7 @@ void Inventory::render()
    draw_inventory_boxes_and_elevated_item_selection();
    draw_details_frame();
 
-   place.restore_transform();
+   time_based_place.restore_transform();
 
    return;
 }
@@ -299,14 +310,14 @@ void Inventory::move_cursor_right()
    return;
 }
 
-bool Inventory::activate()
+bool Inventory::show()
 {
    if (active) return false;
    active = true;
    return active;
 }
 
-bool Inventory::deactivate()
+bool Inventory::hide()
 {
    if (!active) return false;
    active = false;

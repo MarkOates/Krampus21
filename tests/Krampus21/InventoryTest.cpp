@@ -51,7 +51,7 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, render__when_an_item_
    inventory.move_cursor_right();
    inventory.move_cursor_down();
    inventory.render();
-   SHOW_RENDER();
+   //SHOW_RENDER();
 }
 
 
@@ -66,6 +66,24 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, draw_item_selection_c
    {
       al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
       inventory.draw_item_selection_cursor(1920/2, 1080/2);
+      al_flip_display();
+      std::this_thread::sleep_for(std::chrono::milliseconds(1000/60));
+   }
+}
+
+TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, show__does_a_cool_animation)
+{
+   AllegroFlare::Inventory af_inventory;
+   af_inventory.add_item(2);
+   Krampus21::Inventory inventory(&get_font_bin_ref(), &get_bitmap_bin_ref(), &af_inventory);
+   float passes = 60 * 2;
+   inventory.show();
+   for (unsigned i=0; i<passes; i++)
+   {
+      inventory.update();
+
+      al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
+      inventory.render();
       al_flip_display();
       std::this_thread::sleep_for(std::chrono::milliseconds(1000/60));
    }

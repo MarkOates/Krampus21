@@ -40,8 +40,9 @@ namespace Krampus21
       int get_cursor_x();
       int get_cursor_y();
       void update();
-      void show();
-      void hide();
+      void reveal();
+      void unreveal();
+      float inv_reveal_counter();
       void render();
       void draw_backframe();
       void draw_inventory_title_text();
@@ -51,8 +52,8 @@ namespace Krampus21
       void move_cursor_down();
       void move_cursor_left();
       void move_cursor_right();
-      bool activate();
-      bool deactivate();
+      bool show();
+      bool hide();
       bool has_valid_size();
       void draw_item_selection_cursor(float x=0.0f, float y=0.0f);
       void draw_inventory_item_box(float x=0.0f, float y=0.0f, int item=0);
