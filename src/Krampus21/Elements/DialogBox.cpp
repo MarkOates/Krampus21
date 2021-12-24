@@ -7,8 +7,6 @@
 #include <allegro5/allegro_color.h>
 #include <stdexcept>
 #include <sstream>
-#include <stdexcept>
-#include <sstream>
 
 
 namespace Krampus21
@@ -17,9 +15,8 @@ namespace Elements
 {
 
 
-DialogBox::DialogBox(AllegroFlare::FontBin* font_bin)
-   : font_bin(font_bin)
-   , width(1920/5*3)
+DialogBox::DialogBox()
+   : width(1920/5*3)
    , height(1080/4)
    , in_finished_state(false)
    , draw_next_action_cursor(false)
@@ -76,24 +73,6 @@ void DialogBox::render()
          error_message << "DialogBox" << "::" << "render" << ": error: " << "guard \"al_get_current_display()\" not met";
          throw std::runtime_error(error_message.str());
       }
-   if (!(al_is_font_addon_initialized()))
-      {
-         std::stringstream error_message;
-         error_message << "DialogBox" << "::" << "render" << ": error: " << "guard \"al_is_font_addon_initialized()\" not met";
-         throw std::runtime_error(error_message.str());
-      }
-   if (!(al_is_ttf_addon_initialized()))
-      {
-         std::stringstream error_message;
-         error_message << "DialogBox" << "::" << "render" << ": error: " << "guard \"al_is_ttf_addon_initialized()\" not met";
-         throw std::runtime_error(error_message.str());
-      }
-   if (!(font_bin))
-      {
-         std::stringstream error_message;
-         error_message << "DialogBox" << "::" << "render" << ": error: " << "guard \"font_bin\" not met";
-         throw std::runtime_error(error_message.str());
-      }
    float roundness = 18.0f;
    float border_thickness = 5.0f;
    float border_inner_padding = border_thickness * 3;
@@ -124,74 +103,7 @@ void DialogBox::render()
       border_thickness
    );
 
-   if (get_in_finished_state())
-   {
-      draw_special_state_empty_text();
-   }
-   else if (get_draw_next_action_cursor())
-   {
-      draw_action_text(">>");
-   }
-
    return;
-}
-
-void DialogBox::draw_special_state_empty_text()
-{
-   ALLEGRO_FONT* text_font = obtain_dialog_font();
-   ALLEGRO_COLOR text_color = al_color_name("darkslategray");
-   float line_height = al_get_font_line_height(text_font);
-   std::string text = "[dialog finished]";
-   al_draw_text(
-      text_font,
-      text_color,
-      width * 0.5,
-      height * 0.5 - line_height * 0.5,
-      ALLEGRO_ALIGN_CENTER,
-      text.c_str()
-   );
-   return;
-}
-
-void DialogBox::draw_action_text(std::string text)
-{
-   ALLEGRO_FONT* text_font = obtain_dialog_font();
-   ALLEGRO_COLOR text_color = al_color_html("66a9bc");
-   float line_height = al_get_font_line_height(text_font);
-   al_draw_text(
-      text_font,
-      text_color,
-      width-20,
-      height-line_height-10,
-      ALLEGRO_ALIGN_RIGHT,
-      text.c_str()
-   );
-   return;
-}
-
-ALLEGRO_FONT* DialogBox::obtain_dialog_font()
-{
-   if (!(al_is_font_addon_initialized()))
-      {
-         std::stringstream error_message;
-         error_message << "DialogBox" << "::" << "obtain_dialog_font" << ": error: " << "guard \"al_is_font_addon_initialized()\" not met";
-         throw std::runtime_error(error_message.str());
-      }
-   if (!(al_is_ttf_addon_initialized()))
-      {
-         std::stringstream error_message;
-         error_message << "DialogBox" << "::" << "obtain_dialog_font" << ": error: " << "guard \"al_is_ttf_addon_initialized()\" not met";
-         throw std::runtime_error(error_message.str());
-      }
-   if (!(font_bin))
-      {
-         std::stringstream error_message;
-         error_message << "DialogBox" << "::" << "obtain_dialog_font" << ": error: " << "guard \"font_bin\" not met";
-         throw std::runtime_error(error_message.str());
-      }
-   static const std::string FONT_IDENTIFIER = "Purista Medium.ttf -50";
-   ALLEGRO_FONT* result_font = font_bin->operator[](FONT_IDENTIFIER);
-   return result_font;
 }
 } // namespace Elements
 } // namespace Krampus21

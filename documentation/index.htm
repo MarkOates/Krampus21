@@ -720,10 +720,6 @@ table td
     <h3 id="quintessence/Krampus21/Elements/DialogBox.q.yml">quintessence/Krampus21/Elements/DialogBox.q.yml</h3>
      <table>
 <tr>
-  <td class="property">font_bin</td>
-  <td class="property">AllegroFlare::FontBin*</td>
-</tr>
-<tr>
   <td class="property">width</td>
   <td class="property">float</td>
 </tr>
@@ -744,20 +740,8 @@ table td
 <tr>
   <td class="method">render()</td>
 </tr>
-<tr>
-  <td class="method">draw_special_state_empty_text()</td>
-</tr>
-<tr>
-  <td class="method">draw_action_text(1)</td>
-</tr>
-<tr>
-  <td class="private_method">obtain_dialog_font()</td>
-</tr>
     </table>
      <table>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
-</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_is_system_installed&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
@@ -772,18 +756,6 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_filled_rounded_rectangle&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Blast::StringJoiner&quot;, &quot;headers&quot;=&gt;[&quot;Blast/StringJoiner.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement2d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement2d.h&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -907,8 +879,7 @@ table td
   "ALLEGRO_FONT": [
     "Krampus21/ApplicationController",
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBox"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "ALLEGRO_EVENT_SOURCE": [
     "Krampus21/ApplicationController"
@@ -928,8 +899,7 @@ table td
     "Krampus21/ApplicationController",
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBox"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "AllegroFlare/BitmapBin": [
     "Krampus21/ApplicationController",
@@ -977,8 +947,7 @@ table td
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxes/Base",
-    "Krampus21/DialogBoxes/Choice",
-    "Krampus21/Elements/DialogBox"
+    "Krampus21/DialogBoxes/Choice"
   ],
   "Krampus21/ScriptLoader": [
     "Krampus21/ApplicationController"
@@ -1015,8 +984,7 @@ table td
   ],
   "allegro_flare/placement2d": [
     "Krampus21/Character",
-    "Krampus21/DialogBoxRenderer",
-    "Krampus21/Elements/DialogBox"
+    "Krampus21/DialogBoxRenderer"
   ],
   "ALLEGRO_BITMAP": [
     "Krampus21/Character"
@@ -1049,8 +1017,7 @@ table td
     "Krampus21/Elements/DialogBox"
   ],
   "Blast/StringJoiner": [
-    "Krampus21/DialogBoxRenderer",
-    "Krampus21/Elements/DialogBox"
+    "Krampus21/DialogBoxRenderer"
   ],
   "Krampus21/DialogBoxes/Choice": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",

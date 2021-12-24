@@ -1,11 +1,6 @@
 properties:
 
 
-  - name: font_bin
-    type: AllegroFlare::FontBin*
-    init_with: nullptr
-    constructor_arg: true
-
   - name: width
     type: float
     init_with: '1920/5*3'
@@ -35,9 +30,6 @@ functions:
       - al_is_system_installed()
       - al_is_primitives_addon_initialized()
       - al_get_current_display()
-      - al_is_font_addon_initialized()
-      - al_is_ttf_addon_initialized()
-      - font_bin
     body: |
       float roundness = 18.0f;
       float border_thickness = 5.0f;
@@ -69,15 +61,6 @@ functions:
          border_thickness
       );
 
-      if (get_in_finished_state())
-      {
-         draw_special_state_empty_text();
-      }
-      else if (get_draw_next_action_cursor())
-      {
-         draw_action_text(">>");
-      }
-
       return;
     body_dependency_symbols:
       - al_is_system_installed
@@ -86,58 +69,9 @@ functions:
       - al_color_html
 
 
-  - name: draw_special_state_empty_text
-    body: |
-      ALLEGRO_FONT* text_font = obtain_dialog_font();
-      ALLEGRO_COLOR text_color = al_color_name("darkslategray");
-      float line_height = al_get_font_line_height(text_font);
-      std::string text = "[dialog finished]";
-      al_draw_text(
-         text_font,
-         text_color,
-         width * 0.5,
-         height * 0.5 - line_height * 0.5,
-         ALLEGRO_ALIGN_CENTER,
-         text.c_str()
-      );
-      return;
-
-
-  - name: draw_action_text
-    parameters:
-      - name: text
-        type: std::string
-        default_argument: '"[unset-action-text]"'
-    body: |
-      ALLEGRO_FONT* text_font = obtain_dialog_font();
-      ALLEGRO_COLOR text_color = al_color_html("66a9bc");
-      float line_height = al_get_font_line_height(text_font);
-      al_draw_text(
-         text_font,
-         text_color,
-         width-20,
-         height-line_height-10,
-         ALLEGRO_ALIGN_RIGHT,
-         text.c_str()
-      );
-      return;
-
-
-  - name: obtain_dialog_font
-    guards: [ al_is_font_addon_initialized(), al_is_ttf_addon_initialized(), font_bin ]
-    private: true
-    type: ALLEGRO_FONT*
-    body: |
-      static const std::string FONT_IDENTIFIER = "Purista Medium.ttf -50";
-      ALLEGRO_FONT* result_font = font_bin->operator[](FONT_IDENTIFIER);
-      return result_font;
-
-
 dependencies:
 
 
-  - symbol: ALLEGRO_FONT*
-    headers: [ allegro5/allegro.h ]
   - symbol: al_is_system_installed
     headers: [ allegro5/allegro.h ]
   - symbol: al_get_current_display
@@ -148,13 +82,5 @@ dependencies:
     headers: [ allegro5/allegro_primitives.h ]
   - symbol: al_draw_filled_rounded_rectangle
     headers: [ allegro5/allegro_primitives.h ]
-  - symbol: Blast::StringJoiner
-    headers: [ Blast/StringJoiner.hpp ]
-  - symbol: AllegroFlare::FontBin*
-    headers: [ AllegroFlare/FontBin.hpp ]
-  - symbol: Krampus21::DialogBoxes::Base*
-    headers: [ Krampus21/DialogBoxes/Base.hpp ]
-  - symbol: allegro_flare::placement2d
-    headers: [ allegro_flare/placement2d.h ]
 
 
