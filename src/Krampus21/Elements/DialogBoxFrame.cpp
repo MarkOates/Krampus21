@@ -15,9 +15,9 @@ namespace Elements
 {
 
 
-DialogBoxFrame::DialogBoxFrame()
-   : width(1920/5*3)
-   , height(1080/4)
+DialogBoxFrame::DialogBoxFrame(float width, float height)
+   : width(width)
+   , height(height)
 {
 }
 

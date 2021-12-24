@@ -77,27 +77,7 @@ void DialogBoxRenderer::render()
 
    // draw backfill
    place.start_transform();
-   //Krampus21::Elements::DialogBoxFrame frame.render();
-   al_draw_filled_rounded_rectangle(
-      0 + border_inner_padding,
-      0 + border_inner_padding,
-      place.size.x - border_inner_padding,
-      place.size.y - border_inner_padding,
-      roundness * 0.5,
-      roundness * 0.5,
-      fill_color
-   );
-   // draw border
-   al_draw_rounded_rectangle(
-      0,
-      0,
-      place.size.x,
-      place.size.y,
-      roundness,
-      roundness,
-      border_color,
-      border_thickness
-   );
+   Krampus21::Elements::DialogBoxFrame(place.size.x, place.size.y).render();
 
    if (dialog_box->get_finished())
    {
