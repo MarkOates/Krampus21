@@ -120,7 +120,16 @@ void Inventory::draw_inventory_title_text()
 
 void Inventory::draw_inventory_boxes_and_elevated_item_selection()
 {
-   // TODO
+   float x = 80;
+   float y = 80;
+   float spacing = 150 + 20;
+   for (unsigned row=0; row<3; row++)
+   {
+      for (unsigned column=0; column<4; column++)
+      {
+         draw_inventory_item_box(x + column * spacing, y + row * spacing);
+      }
+   }
    return;
 }
 
@@ -168,7 +177,7 @@ void Inventory::deactivate()
 
 void Inventory::draw_inventory_item_box(float x, float y)
 {
-   ALLEGRO_COLOR backfill_color = ALLEGRO_COLOR{0.3, 0.3, 0.3, 0.3};
+   ALLEGRO_COLOR backfill_color = ALLEGRO_COLOR{0.0, 0.0, 0.0, 0.3};
    float roundness = 6.0f;
    al_draw_filled_rounded_rectangle(x+0, y+0, x+150, y+150, roundness, roundness, backfill_color);
    return;
