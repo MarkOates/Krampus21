@@ -28,6 +28,8 @@ DialogBox::DialogBox(AllegroFlare::FontBin* font_bin, Krampus21::DialogBoxes::Ba
    , dialog_box(dialog_box)
    , width(1920/5*3)
    , height(1080/4)
+   , in_finished_state(false)
+   , draw_next_action_cursor(false)
 {
 }
 
@@ -46,6 +48,18 @@ float DialogBox::get_width()
 float DialogBox::get_height()
 {
    return height;
+}
+
+
+bool DialogBox::get_in_finished_state()
+{
+   return in_finished_state;
+}
+
+
+bool DialogBox::get_draw_next_action_cursor()
+{
+   return draw_next_action_cursor;
 }
 
 
@@ -123,20 +137,13 @@ void DialogBox::render()
       border_thickness
    );
 
-   if (dialog_box->get_finished())
+   if (get_in_finished_state())
    {
       draw_special_state_empty_text();
    }
-   else
+   else if (get_draw_next_action_cursor())
    {
-      // draw the player's action cursor thing at the bottom
-      int current_dialog_box_page_character_count = dialog_box->get_current_page_text().length();
-      int num_revealed_characters = obtain_dialog_box_num_revealed_characters();
-      if (num_revealed_characters >= current_dialog_box_page_character_count)
-      {
-         //if (dialog_box->at_last_page()) draw_action_text("[close]");
-         draw_action_text(">>");
-      }
+      draw_action_text(">>");
    }
 
    return;

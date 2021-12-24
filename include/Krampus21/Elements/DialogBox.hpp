@@ -18,6 +18,8 @@ namespace Krampus21
          Krampus21::DialogBoxes::Base* dialog_box;
          float width;
          float height;
+         bool in_finished_state;
+         bool draw_next_action_cursor;
 
       public:
          DialogBox(AllegroFlare::FontBin* font_bin=nullptr, Krampus21::DialogBoxes::Base* dialog_box=nullptr);
@@ -25,6 +27,8 @@ namespace Krampus21
 
          float get_width();
          float get_height();
+         bool get_in_finished_state();
+         bool get_draw_next_action_cursor();
          void render();
          void draw_special_state_empty_text();
          void draw_action_text(std::string text="[unset-action-text]");

@@ -21,6 +21,16 @@ properties:
     init_with: '1080/4'
     getter: true
 
+  - name: in_finished_state
+    type: bool
+    init_with: false
+    getter: true
+
+  - name: draw_next_action_cursor
+    type: bool
+    init_with: false
+    getter: true
+
 
 functions:
 
@@ -65,20 +75,13 @@ functions:
          border_thickness
       );
 
-      if (dialog_box->get_finished())
+      if (get_in_finished_state())
       {
          draw_special_state_empty_text();
       }
-      else
+      else if (get_draw_next_action_cursor())
       {
-         // draw the player's action cursor thing at the bottom
-         int current_dialog_box_page_character_count = dialog_box->get_current_page_text().length();
-         int num_revealed_characters = obtain_dialog_box_num_revealed_characters();
-         if (num_revealed_characters >= current_dialog_box_page_character_count)
-         {
-            //if (dialog_box->at_last_page()) draw_action_text("[close]");
-            draw_action_text(">>");
-         }
+         draw_action_text(">>");
       }
 
       return;
