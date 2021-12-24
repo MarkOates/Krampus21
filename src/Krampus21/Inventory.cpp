@@ -200,9 +200,12 @@ void Inventory::draw_inventory_item_box(float x, float y, int item)
    if (contains_item)
    {
       std::string item_name = "Item name";
+      std::string item_bitmap_identifier = "watch-01.png";
       ALLEGRO_FONT *font = obtain_item_name_font();
+      ALLEGRO_BITMAP *bitmap = bitmap_bin->auto_get(item_bitmap_identifier);
       ALLEGRO_COLOR color = ALLEGRO_COLOR{1.0, 1.0, 1.0, 1.0};
       al_draw_text(font, color, x, y + 150 - 20, ALLEGRO_ALIGN_LEFT, item_name.c_str());
+      al_draw_bitmap(bitmap, x, y, 0);
    }
    return;
 }
@@ -220,8 +223,8 @@ ALLEGRO_FONT* Inventory::obtain_item_name_font()
 std::map<int, std::tuple<std::string, std::string, std::string>> Inventory::build_inventory_index()
 {
    std::map<int, std::tuple<std::string, std::string, std::string>> result = {
-      { 1, { "Bracelet", "bracelet.png", "A gift given to you by Ami" } },
-      //{ 2, { "Watch", "watch.png", "Useful tool to keep you on track." } },
+      //{ 1, { "Bracelet", "bracelet.png", "A gift given to you by Ami" } },
+      { 2, { "Watch", "watch.png", "Useful tool to keep you on track." } },
    };
    return result;
 }
