@@ -9,12 +9,6 @@
 #include <sstream>
 #include <stdexcept>
 #include <sstream>
-#include <stdexcept>
-#include <sstream>
-#include <stdexcept>
-#include <sstream>
-#include <stdexcept>
-#include <sstream>
 
 
 namespace Krampus21
@@ -23,9 +17,8 @@ namespace Elements
 {
 
 
-DialogBox::DialogBox(AllegroFlare::FontBin* font_bin, Krampus21::DialogBoxes::Base* dialog_box)
+DialogBox::DialogBox(AllegroFlare::FontBin* font_bin)
    : font_bin(font_bin)
-   , dialog_box(dialog_box)
    , width(1920/5*3)
    , height(1080/4)
    , in_finished_state(false)
@@ -101,12 +94,6 @@ void DialogBox::render()
          error_message << "DialogBox" << "::" << "render" << ": error: " << "guard \"font_bin\" not met";
          throw std::runtime_error(error_message.str());
       }
-   if (!(dialog_box))
-      {
-         std::stringstream error_message;
-         error_message << "DialogBox" << "::" << "render" << ": error: " << "guard \"dialog_box\" not met";
-         throw std::runtime_error(error_message.str());
-      }
    float roundness = 18.0f;
    float border_thickness = 5.0f;
    float border_inner_padding = border_thickness * 3;
@@ -180,39 +167,6 @@ void DialogBox::draw_action_text(std::string text)
       text.c_str()
    );
    return;
-}
-
-std::string DialogBox::obtain_dialog_box_text()
-{
-   if (!(dialog_box))
-      {
-         std::stringstream error_message;
-         error_message << "DialogBox" << "::" << "obtain_dialog_box_text" << ": error: " << "guard \"dialog_box\" not met";
-         throw std::runtime_error(error_message.str());
-      }
-   return dialog_box->get_current_page_text();
-}
-
-int DialogBox::obtain_dialog_box_num_revealed_characters()
-{
-   if (!(dialog_box))
-      {
-         std::stringstream error_message;
-         error_message << "DialogBox" << "::" << "obtain_dialog_box_num_revealed_characters" << ": error: " << "guard \"dialog_box\" not met";
-         throw std::runtime_error(error_message.str());
-      }
-   return dialog_box->get_num_revealed_characters();
-}
-
-std::string DialogBox::concat_text(std::string source_text, int length)
-{
-   if (!(dialog_box))
-      {
-         std::stringstream error_message;
-         error_message << "DialogBox" << "::" << "concat_text" << ": error: " << "guard \"dialog_box\" not met";
-         throw std::runtime_error(error_message.str());
-      }
-   return source_text.substr(0, length);
 }
 
 ALLEGRO_FONT* DialogBox::obtain_dialog_font()

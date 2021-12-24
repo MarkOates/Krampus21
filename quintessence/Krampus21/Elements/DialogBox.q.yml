@@ -6,11 +6,6 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
-  - name: dialog_box
-    type: Krampus21::DialogBoxes::Base*
-    init_with: nullptr
-    constructor_arg: true
-
   - name: width
     type: float
     init_with: '1920/5*3'
@@ -43,7 +38,6 @@ functions:
       - al_is_font_addon_initialized()
       - al_is_ttf_addon_initialized()
       - font_bin
-      - dialog_box
     body: |
       float roundness = 18.0f;
       float border_thickness = 5.0f;
@@ -127,34 +121,6 @@ functions:
          text.c_str()
       );
       return;
-
-
-  - name: obtain_dialog_box_text
-    type: std::string
-    guards: [ dialog_box ]
-    body: |
-      return dialog_box->get_current_page_text();
-
-
-  - name: obtain_dialog_box_num_revealed_characters
-    type: int
-    guards: [ dialog_box ]
-    body: |
-      return dialog_box->get_num_revealed_characters();
-
-
-  - name: concat_text
-    type: std::string
-    guards: [ dialog_box ]
-    parameters:
-      - name: source_text
-        type: std::string
-        default_argument: '""'
-      - name: length
-        type: int
-        default_argument: 0
-    body: |
-      return source_text.substr(0, length);
 
 
   - name: obtain_dialog_font
