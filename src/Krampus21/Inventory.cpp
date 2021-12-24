@@ -241,7 +241,8 @@ void Inventory::move_cursor_up()
          error_message << "Inventory" << "::" << "move_cursor_up" << ": error: " << "guard \"has_valid_size()\" not met";
          throw std::runtime_error(error_message.str());
       }
-   // TODO
+   cursor_y--;
+   while(cursor_y < 0) cursor_y += num_rows;
    return;
 }
 
@@ -253,7 +254,8 @@ void Inventory::move_cursor_down()
          error_message << "Inventory" << "::" << "move_cursor_down" << ": error: " << "guard \"has_valid_size()\" not met";
          throw std::runtime_error(error_message.str());
       }
-   // TODO
+   cursor_y++;
+   cursor_y = cursor_y % num_rows;
    return;
 }
 

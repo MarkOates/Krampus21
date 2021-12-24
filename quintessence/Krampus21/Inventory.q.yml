@@ -188,14 +188,16 @@ functions:
   - name: move_cursor_up
     guards: [ has_valid_size() ]
     body: |
-      // TODO
+      cursor_y--;
+      while(cursor_y < 0) cursor_y += num_rows;
       return;
 
 
   - name: move_cursor_down
     guards: [ has_valid_size() ]
     body: |
-      // TODO
+      cursor_y++;
+      cursor_y = cursor_y % num_rows;
       return;
 
 
