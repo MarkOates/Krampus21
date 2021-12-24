@@ -26,7 +26,8 @@ namespace Elements
 DialogBox::DialogBox(AllegroFlare::FontBin* font_bin, Krampus21::DialogBoxes::Base* dialog_box)
    : font_bin(font_bin)
    , dialog_box(dialog_box)
-   , place({ 1920/2, 1080/5*4, 1920/5*3, 1080/4 })
+   , width(1920/5*3)
+   , height(1080/4)
 {
 }
 
@@ -36,9 +37,15 @@ DialogBox::~DialogBox()
 }
 
 
-allegro_flare::placement2d DialogBox::get_place()
+float DialogBox::get_width()
 {
-   return place;
+   return width;
+}
+
+
+float DialogBox::get_height()
+{
+   return height;
 }
 
 
@@ -77,12 +84,11 @@ void DialogBox::render()
    ALLEGRO_COLOR border_color = al_color_html("244751");
 
    // draw backfill
-   place.start_transform();
    al_draw_filled_rounded_rectangle(
       0 + border_inner_padding,
       0 + border_inner_padding,
-      place.size.x - border_inner_padding,
-      place.size.y - border_inner_padding,
+      width - border_inner_padding,
+      height - border_inner_padding,
       roundness * 0.5,
       roundness * 0.5,
       fill_color
@@ -91,8 +97,8 @@ void DialogBox::render()
    al_draw_rounded_rectangle(
       0,
       0,
-      place.size.x,
-      place.size.y,
+      width,
+      height,
       roundness,
       roundness,
       border_color,
@@ -117,7 +123,6 @@ void DialogBox::render()
       }
    }
 
-   place.restore_transform();
    return;
 }
 
@@ -130,8 +135,8 @@ void DialogBox::draw_special_state_empty_text()
    al_draw_text(
       text_font,
       text_color,
-      place.size.x * 0.5,
-      place.size.y * 0.5 - line_height * 0.5,
+      width * 0.5,
+      height * 0.5 - line_height * 0.5,
       ALLEGRO_ALIGN_CENTER,
       text.c_str()
    );
@@ -146,8 +151,8 @@ void DialogBox::draw_action_text(std::string text)
    al_draw_text(
       text_font,
       text_color,
-      place.size.x-20,
-      place.size.y-line_height-10,
+      width-20,
+      height-line_height-10,
       ALLEGRO_ALIGN_RIGHT,
       text.c_str()
    );
@@ -159,7 +164,7 @@ void DialogBox::draw_styled_revealed_text()
    std::string text = obtain_dialog_box_text();
    float text_padding_x = 40.0f;
    float text_padding_y = 30.0f;
-   float text_box_max_width = place.size.x - (text_padding_x * 2);
+   float text_box_max_width = width - (text_padding_x * 2);
    ALLEGRO_FONT* text_font = obtain_dialog_font();
    float line_height = al_get_font_line_height(text_font);
    //ALLEGRO_COLOR text_color = al_color_html("66a9bc");

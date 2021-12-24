@@ -4,7 +4,6 @@
 #include <AllegroFlare/FontBin.hpp>
 #include <Krampus21/DialogBoxes/Base.hpp>
 #include <allegro5/allegro.h>
-#include <allegro_flare/placement2d.h>
 #include <string>
 
 
@@ -17,13 +16,15 @@ namespace Krampus21
       private:
          AllegroFlare::FontBin* font_bin;
          Krampus21::DialogBoxes::Base* dialog_box;
-         allegro_flare::placement2d place;
+         float width;
+         float height;
 
       public:
          DialogBox(AllegroFlare::FontBin* font_bin=nullptr, Krampus21::DialogBoxes::Base* dialog_box=nullptr);
          ~DialogBox();
 
-         allegro_flare::placement2d get_place();
+         float get_width();
+         float get_height();
          void render();
          void draw_special_state_empty_text();
          void draw_action_text(std::string text="[unset-action-text]");
