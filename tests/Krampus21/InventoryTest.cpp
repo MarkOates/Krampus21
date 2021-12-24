@@ -59,11 +59,13 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, draw_item_selection_c
    AllegroFlare::Inventory af_inventory;
    af_inventory.add_item(2);
    Krampus21::Inventory inventory(&get_font_bin_ref(), &get_bitmap_bin_ref(), &af_inventory);
-   for (unsigned i=0; i<60 * 4; i++)
+   float passes = 60 * 2;
+   for (unsigned i=0; i<passes; i++)
    {
       al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
       inventory.draw_item_selection_cursor(1920/2, 1080/2);
       al_flip_display();
+      std::this_thread::sleep_for(std::chrono::milliseconds(1000/60));
    }
 }
 
