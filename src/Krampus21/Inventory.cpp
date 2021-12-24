@@ -125,8 +125,6 @@ void Inventory::draw_inventory_title_text()
 
 void Inventory::draw_inventory_boxes_and_elevated_item_selection()
 {
-   std::vector<std::tuple<std::string, std::string, std::string>> inventory_list = build_inventory_list();
-
    float x = 80;
    float y = 80;
    float spacing = 150 + 20;
@@ -193,12 +191,6 @@ void Inventory::draw_inventory_item_box(float x, float y)
 ALLEGRO_FONT* Inventory::obtain_title_font()
 {
    return font_bin->auto_get("Lato-Bold.ttf -40");
-}
-
-std::vector<std::tuple<std::string, std::string, std::string>> Inventory::build_inventory_list()
-{
-   std::vector<std::tuple<std::string, std::string, std::string>> result;
-   return result;
 }
 
 std::map<int, std::tuple<std::string, std::string, std::string>> Inventory::build_inventory_index()

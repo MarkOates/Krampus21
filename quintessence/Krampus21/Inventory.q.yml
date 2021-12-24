@@ -112,8 +112,6 @@ functions:
   - name: draw_inventory_boxes_and_elevated_item_selection
     private: true
     body: |
-      std::vector<std::tuple<std::string, std::string, std::string>> inventory_list = build_inventory_list();
-
       float x = 80;
       float y = 80;
       float spacing = 150 + 20;
@@ -190,13 +188,6 @@ functions:
     type: ALLEGRO_FONT*
     body: |
       return font_bin->auto_get("Lato-Bold.ttf -40");
-
-
-  - name: build_inventory_list
-    type: std::vector<std::tuple<std::string, std::string, std::string>>
-    body: |
-      std::vector<std::tuple<std::string, std::string, std::string>> result;
-      return result;
 
 
   - name: build_inventory_index

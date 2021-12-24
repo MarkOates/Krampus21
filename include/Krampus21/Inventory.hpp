@@ -9,7 +9,6 @@
 #include <map>
 #include <string>
 #include <utility>
-#include <vector>
 
 
 namespace Krampus21
@@ -49,7 +48,6 @@ namespace Krampus21
       void deactivate();
       void draw_inventory_item_box(float x=0.0f, float y=0.0f);
       ALLEGRO_FONT* obtain_title_font();
-      std::vector<std::tuple<std::string, std::string, std::string>> build_inventory_list();
       static std::map<int, std::tuple<std::string, std::string, std::string>> build_inventory_index();
    };
 }
