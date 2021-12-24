@@ -1,12 +1,12 @@
 
 
 #include <Krampus21/DialogBoxRenderers/ChoiceRenderer.hpp>
+#include <Krampus21/Elements/DialogBoxFrame.hpp>
 #include <stdexcept>
 #include <sstream>
-#include <allegro5/allegro.h>
-#include <allegro5/allegro_primitives.h>
-#include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_color.h>
+#include <allegro5/allegro_primitives.h>
+#include <allegro5/allegro_primitives.h>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -54,7 +54,7 @@ void ChoiceRenderer::render()
          error_message << "ChoiceRenderer" << "::" << "render" << ": error: " << "guard \"choice_dialog_box\" not met";
          throw std::runtime_error(error_message.str());
       }
-   draw_frame();
+   Krampus21::Elements::DialogBoxFrame(width, height).render();
    draw_prompt_text();
    draw_choices_with_cursor_and_current_selection(85);
    return;
@@ -122,25 +122,6 @@ void ChoiceRenderer::draw_choices_with_cursor_and_current_selection(float start_
       );
       option_num++;
    }
-   return;
-}
-
-void ChoiceRenderer::draw_frame()
-{
-   float roundness = 18.0f;
-   float border_thickness = 5.0f;
-   float border_inner_padding = border_thickness * 3;
-   ALLEGRO_COLOR fill_color = al_color_html("162428");
-   //ALLEGRO_COLOR border_color = al_color_html("244751");
-   al_draw_filled_rounded_rectangle(
-      0 + border_inner_padding,
-      0 + border_inner_padding,
-      width - border_inner_padding,
-      height - border_inner_padding,
-      roundness * 0.5,
-      roundness * 0.5,
-      fill_color
-   );
    return;
 }
 

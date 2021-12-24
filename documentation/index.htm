@@ -495,9 +495,6 @@ table td
   <td class="method">draw_choices_with_cursor_and_current_selection(1)</td>
 </tr>
 <tr>
-  <td class="method">draw_frame()</td>
-</tr>
-<tr>
   <td class="private_method">obtain_dialog_font()</td>
 </tr>
 <tr>
@@ -539,7 +536,19 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_html&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
 </tr>
 <tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_rectangle&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_filled_rectangle&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
+</tr>
+<tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;utility&quot;, &quot;string&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Elements::DialogBoxFrame&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Elements/DialogBoxFrame.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -1015,11 +1024,21 @@ table td
     "Krampus21/DialogBoxRenderer"
   ],
   "Krampus21/Elements/DialogBoxFrame": [
-    "Krampus21/DialogBoxRenderer"
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "Krampus21/DialogBoxes/Choice": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/DialogFactory"
+  ],
+  "al_color_name": [
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+  ],
+  "al_draw_rectangle": [
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+  ],
+  "al_draw_filled_rectangle": [
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
   ],
   "std/vector<std/pair<std/string, std/string>>": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",

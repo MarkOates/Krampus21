@@ -30,7 +30,6 @@ namespace Krampus21
          void render();
          void draw_prompt_text();
          void draw_choices_with_cursor_and_current_selection(float start_y=0);
-         void draw_frame();
          ALLEGRO_FONT* obtain_dialog_font();
          std::string obtain_choice_dialog_box_prompt();
          std::vector<std::pair<std::string, std::string>> obtain_choice_dialog_box_options();
