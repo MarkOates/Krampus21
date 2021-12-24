@@ -43,6 +43,12 @@ float DialogBoxNameTag::get_height()
 
 void DialogBoxNameTag::render()
 {
+   if (!(font_bin))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBoxNameTag" << "::" << "render" << ": error: " << "guard \"font_bin\" not met";
+         throw std::runtime_error(error_message.str());
+      }
    if (!(al_is_system_installed()))
       {
          std::stringstream error_message;

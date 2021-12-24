@@ -28,7 +28,8 @@
     "Krampus21/ApplicationController",
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/Elements/DialogBoxNameTag"
   ],
   "AllegroFlare/BitmapBin": [
     "Krampus21/ApplicationController",
@@ -124,26 +125,31 @@
   "al_is_system_installed": [
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBoxFrame"
+    "Krampus21/Elements/DialogBoxFrame",
+    "Krampus21/Elements/DialogBoxNameTag"
   ],
   "al_get_current_display": [
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/Elements/DialogBoxFrame"
+    "Krampus21/Elements/DialogBoxFrame",
+    "Krampus21/Elements/DialogBoxNameTag"
   ],
   "al_color_html": [
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBoxFrame"
+    "Krampus21/Elements/DialogBoxFrame",
+    "Krampus21/Elements/DialogBoxNameTag"
   ],
   "al_is_primitives_addon_initialized": [
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBoxFrame"
+    "Krampus21/Elements/DialogBoxFrame",
+    "Krampus21/Elements/DialogBoxNameTag"
   ],
   "al_draw_filled_rounded_rectangle": [
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
-    "Krampus21/Elements/DialogBoxFrame"
+    "Krampus21/Elements/DialogBoxFrame",
+    "Krampus21/Elements/DialogBoxNameTag"
   ],
   "Blast/StringJoiner": [
     "Krampus21/DialogBoxRenderer"

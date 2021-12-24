@@ -29,6 +29,7 @@ functions:
 
   - name: render
     guards:
+      - font_bin
       - al_is_system_installed()
       - al_is_primitives_addon_initialized()
       - al_get_current_display()
