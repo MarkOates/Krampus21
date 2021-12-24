@@ -196,7 +196,8 @@ void Inventory::draw_inventory_item_box(float x, float y, int item)
    // draw frame
    al_draw_filled_rounded_rectangle(x+0, y+0, x+150, y+150, roundness, roundness, backfill_color);
 
-   bool contains_item = true;
+   std::tuple<std::string, std::string, std::string> item_definition = get_item_definition(item);
+   bool contains_item = std::get<0>(item_definition).empty();
    if (contains_item)
    {
       std::string item_name = "Item name";
@@ -208,6 +209,12 @@ void Inventory::draw_inventory_item_box(float x, float y, int item)
       al_draw_bitmap(bitmap, x, y, 0);
    }
    return;
+}
+
+std::tuple<std::string, std::string, std::string> Inventory::get_item_definition(int index)
+{
+   if (inventory_index.find(index) == inventory_index.end()) return {};
+   return inventory_index[index];
 }
 
 ALLEGRO_FONT* Inventory::obtain_title_font()
@@ -223,7 +230,7 @@ ALLEGRO_FONT* Inventory::obtain_item_name_font()
 std::map<int, std::tuple<std::string, std::string, std::string>> Inventory::build_inventory_index()
 {
    std::map<int, std::tuple<std::string, std::string, std::string>> result = {
-      //{ 1, { "Bracelet", "bracelet.png", "A gift given to you by Ami" } },
+      //{ 1, { "Bracelet", "bracelet.png", "A gift given to you." } },
       { 2, { "Watch", "watch.png", "Useful tool to keep you on track." } },
    };
    return result;

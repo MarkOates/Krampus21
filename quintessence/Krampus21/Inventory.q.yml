@@ -195,7 +195,8 @@ functions:
       // draw frame
       al_draw_filled_rounded_rectangle(x+0, y+0, x+150, y+150, roundness, roundness, backfill_color);
 
-      bool contains_item = true;
+      std::tuple<std::string, std::string, std::string> item_definition = get_item_definition(item);
+      bool contains_item = std::get<0>(item_definition).empty();
       if (contains_item)
       {
          std::string item_name = "Item name";
@@ -207,6 +208,18 @@ functions:
          al_draw_bitmap(bitmap, x, y, 0);
       }
       return;
+
+
+  - name: get_item_definition
+    type: std::tuple<std::string, std::string, std::string>
+    private: true
+    parameters:
+      - name: index
+        type: int
+        default_argument: 0
+    body: |
+      if (inventory_index.find(index) == inventory_index.end()) return {};
+      return inventory_index[index];
 
 
   - name: obtain_title_font
@@ -226,7 +239,7 @@ functions:
     static: true
     body: |
       std::map<int, std::tuple<std::string, std::string, std::string>> result = {
-         //{ 1, { "Bracelet", "bracelet.png", "A gift given to you by Ami" } },
+         //{ 1, { "Bracelet", "bracelet.png", "A gift given to you." } },
          { 2, { "Watch", "watch.png", "Useful tool to keep you on track." } },
       };
       return result;
@@ -253,5 +266,7 @@ dependencies:
     headers: [ map, utility, string ]
   - symbol: std::vector<std::tuple<std::string, std::string, std::string>>
     headers: [ vector, utility, string ]
+  - symbol: std::tuple<std::string, std::string, std::string>
+    headers: [ utility, string ]
 
 
