@@ -880,6 +880,10 @@ table td
   <td class="property">focus_selection_animation_counter</td>
   <td class="property">float</td>
 </tr>
+<tr>
+  <td class="property">inventory_index</td>
+  <td class="property">std::map&lt;int, std::tuple&lt;std::string, std::string, std::string&gt;&gt;</td>
+</tr>
     </table>
      <table>
 <tr>
@@ -924,6 +928,9 @@ table td
 <tr>
   <td class="method">obtain_title_font()</td>
 </tr>
+<tr>
+  <td class="method">build_inventory_index()</td>
+</tr>
     </table>
      <table>
 <tr>
@@ -943,6 +950,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;X&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;, &quot;allegro5/allegro_color.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;int, std::tuple&lt;std::string, std::string, std::string&gt;&gt;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;utility&quot;, &quot;string&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -1251,6 +1261,9 @@ table td
     "Krampus21/Inventory"
   ],
   "X": [
+    "Krampus21/Inventory"
+  ],
+  "std/map<int, std/tuple<std/string, std/string, std/string>>": [
     "Krampus21/Inventory"
   ],
   "Krampus21/ApplicationController": [

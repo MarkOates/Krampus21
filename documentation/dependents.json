@@ -195,6 +195,9 @@
   "X": [
     "Krampus21/Inventory"
   ],
+  "std/map<int, std/tuple<std/string, std/string, std/string>>": [
+    "Krampus21/Inventory"
+  ],
   "Krampus21/ApplicationController": [
     "Krampus21/ProgramRunner"
   ],

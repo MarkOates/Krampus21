@@ -25,6 +25,7 @@ Inventory::Inventory(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* b
    , active(false)
    , active_animation_counter(0)
    , focus_selection_animation_counter(0)
+   , inventory_index(build_inventory_index())
 {
 }
 
@@ -190,6 +191,12 @@ void Inventory::draw_inventory_item_box(float x, float y)
 ALLEGRO_FONT* Inventory::obtain_title_font()
 {
    return font_bin->auto_get("Lato-Bold.ttf -40");
+}
+
+std::map<int, std::tuple<std::string, std::string, std::string>> Inventory::build_inventory_index()
+{
+   std::map<int, std::tuple<std::string, std::string, std::string>> result;
+   return result;
 }
 } // namespace Krampus21
 
