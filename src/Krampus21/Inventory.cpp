@@ -123,11 +123,6 @@ void Inventory::draw_inventory_title_text()
    return;
 }
 
-void Inventory::get_currently_selected_item()
-{
-   return;
-}
-
 void Inventory::draw_inventory_boxes_and_elevated_item_selection()
 {
    std::vector<int> items_in_inventory = af_inventory->get_items_ref();
@@ -154,7 +149,34 @@ void Inventory::draw_inventory_boxes_and_elevated_item_selection()
 
 void Inventory::draw_details_frame()
 {
-   // TODO
+   // draw label
+   ALLEGRO_FONT* font = obtain_item_name_font();
+   al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 850, 100, ALLEGRO_ALIGN_LEFT, "Watch");
+
+   // draw graphic
+
+   // draw multiline description
+   float x = 820;
+   float y = 340;
+   float width = 1300 - 800- 50 + 5;
+   int dialog_box_num_revealed_characters = 999;
+   std::string text = "This is the details text that will be shown in the right pane.";
+   float text_padding_x = 40.0f;
+   float text_padding_y = 30.0f;
+   float text_box_max_width = width - (text_padding_x * 2);
+   ALLEGRO_FONT* text_font = obtain_description_font();
+   float line_height = al_get_font_line_height(text_font) * 1.2;
+   ALLEGRO_COLOR text_color = al_color_html("ffffff");
+   al_draw_multiline_text(
+      text_font,
+      text_color,
+      x + text_padding_x,
+      y + text_padding_y,
+      text_box_max_width,
+      line_height,
+      ALLEGRO_ALIGN_LEFT,
+      concat_text(text, dialog_box_num_revealed_characters).c_str()
+   );
    return;
 }
 
@@ -240,9 +262,14 @@ ALLEGRO_FONT* Inventory::obtain_title_font()
    return font_bin->auto_get("Lato-Bold.ttf -40");
 }
 
+ALLEGRO_FONT* Inventory::obtain_description_font()
+{
+   return font_bin->auto_get("Lato-Regular.ttf -36");
+}
+
 ALLEGRO_FONT* Inventory::obtain_item_name_font()
 {
-   return font_bin->auto_get("Lato-Regular.ttf -30");
+   return font_bin->auto_get("Lato-Bold.ttf -46");
 }
 
 std::map<int, std::tuple<std::string, std::string, std::string>> Inventory::build_inventory_index()
@@ -252,6 +279,11 @@ std::map<int, std::tuple<std::string, std::string, std::string>> Inventory::buil
       { 2, { "Watch", "watch-01.png", "Useful tool to keep you on track." } },
    };
    return result;
+}
+
+std::string Inventory::concat_text(std::string source_text, int length)
+{
+   return source_text.substr(0, length);
 }
 } // namespace Krampus21
 
