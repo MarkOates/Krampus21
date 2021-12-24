@@ -3,6 +3,8 @@
 #include <Krampus21/Inventory.hpp>
 #include <stdexcept>
 #include <sstream>
+#include <allegro5/allegro_primitives.h>
+#include <allegro5/allegro_color.h>
 #include <stdexcept>
 #include <sstream>
 
@@ -15,7 +17,7 @@ Inventory::Inventory(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* b
    : font_bin(font_bin)
    , bitmap_bin(bitmap_bin)
    , af_inventory(af_inventory)
-   , place({ 1920/2, 1080/5*2, 800, 800 })
+   , place({ 1920/2, 1080/2, 1300, 700 })
    , cursor_x(0)
    , cursor_y(0)
    , num_columns(4)
@@ -82,16 +84,29 @@ void Inventory::render()
          error_message << "Inventory" << "::" << "render" << ": error: " << "guard \"af_inventory\" not met";
          throw std::runtime_error(error_message.str());
       }
+   place.start_transform();
+
    draw_backframe();
    draw_inventory_title_text();
    draw_inventory_boxes_and_elevated_item_selection();
    draw_details_frame();
+
+   place.restore_transform();
+
    return;
 }
 
 void Inventory::draw_backframe()
 {
-   // TODO
+   ALLEGRO_COLOR backfill_color = ALLEGRO_COLOR{0.05, 0.05, 0.1, 0.7};
+   ALLEGRO_COLOR top_and_bottom_pin_line_color = ALLEGRO_COLOR{0.2, 0.2, 0.2, 0.2};
+
+   // backfill
+   al_draw_filled_rectangle(0, 0, place.size.x, place.size.y, backfill_color);
+
+   // top and bottom pin lines
+   al_draw_line(0, 0, place.size.x, 0, top_and_bottom_pin_line_color, 2.0);
+   al_draw_line(0, place.size.y, place.size.x, place.size.y, top_and_bottom_pin_line_color, 2.0);
    return;
 }
 

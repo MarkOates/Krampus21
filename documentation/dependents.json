@@ -191,6 +191,9 @@
   "AllegroFlare/Inventory": [
     "Krampus21/Inventory"
   ],
+  "X": [
+    "Krampus21/Inventory"
+  ],
   "Krampus21/ApplicationController": [
     "Krampus21/ProgramRunner"
   ],
