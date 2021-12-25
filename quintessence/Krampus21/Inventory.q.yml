@@ -62,6 +62,10 @@ properties:
     type: float
     init_with: 0
 
+  - name: item_in_details_pane
+    type: int
+    init_with: 0
+
 
 functions:
 
@@ -99,6 +103,15 @@ functions:
       reveal_counter = 0.0;
       details_num_revealed_characters = 0;
       details_reveal_counter = 0.0;
+      return;
+
+
+  - name: set_details_pane
+    body: |
+      if (!af_inventory) return;
+      int cursor_position_abs = cursor_y * num_columns + cursor_x;
+      if (cursor_position_abs >= af_inventory->get_items_ref().size()) item_in_details_pane = 0;
+      else item_in_details_pane = af_inventory->get_items_ref()[cursor_position_abs];
       return;
 
 
@@ -272,6 +285,7 @@ functions:
       while(cursor_y < 0) cursor_y += num_rows;
       details_reveal_counter = 0.0f;
       details_num_revealed_characters = 0;
+      set_details_pane();
       return;
 
 
@@ -282,6 +296,7 @@ functions:
       cursor_y = cursor_y % num_rows;
       details_reveal_counter = 0.0f;
       details_num_revealed_characters = 0;
+      set_details_pane();
       return;
 
 
@@ -292,6 +307,7 @@ functions:
       while(cursor_x < 0) cursor_x += num_columns;
       details_reveal_counter = 0.0f;
       details_num_revealed_characters = 0;
+      set_details_pane();
       return;
 
 
@@ -302,6 +318,7 @@ functions:
       cursor_x = cursor_x % num_columns;
       details_reveal_counter = 0.0f;
       details_num_revealed_characters = 0;
+      set_details_pane();
       return;
 
 
@@ -311,6 +328,7 @@ functions:
       if (active) return false;
       active = true;
       details_reveal_counter = 0.0f;
+      set_details_pane();
       return active;
 
 
@@ -458,7 +476,7 @@ functions:
     static: true
     body: |
       std::map<int, std::tuple<std::string, std::string, std::string>> result = {
-         //{ 1, { "Bracelet", "bracelet.png", "A gift given to you." } },
+         { 1, { "Pack of Gum", "pack-of-gum-01.png", "Refreshing and long-lasting." } },
          { 2, { "Watch", "watch-01.png", "Useful tool to keep you on track." } },
       };
       return result;

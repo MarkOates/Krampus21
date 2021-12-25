@@ -30,6 +30,7 @@ namespace Krampus21
       int details_num_revealed_characters;
       std::map<int, std::tuple<std::string, std::string, std::string>> inventory_index;
       float reveal_counter;
+      int item_in_details_pane;
 
    public:
       Inventory(AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::Inventory* af_inventory=nullptr);
@@ -44,6 +45,7 @@ namespace Krampus21
       void update();
       void reveal();
       void unreveal();
+      void set_details_pane();
       ALLEGRO_COLOR opaquify(ALLEGRO_COLOR color={0,0,0,0});
       float inv_reveal_counter();
       void render();

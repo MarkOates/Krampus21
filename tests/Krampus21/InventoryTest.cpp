@@ -60,8 +60,8 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, draw_item_selection_c
    AllegroFlare::Inventory af_inventory;
    af_inventory.add_item(2);
    Krampus21::Inventory inventory(&get_font_bin_ref(), &get_bitmap_bin_ref(), &af_inventory);
-   int passes = 60 * 2;
-   //int passes = 0;
+   //int passes = 60 * 2;
+   int passes = 0;
    for (unsigned i=0; i<passes; i++)
    {
       al_clear_to_color(ALLEGRO_COLOR{0.1, 0.1, 0.1, 1.0});
@@ -76,8 +76,8 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, show__does_a_cool_ani
    AllegroFlare::Inventory af_inventory;
    af_inventory.add_item(2);
    Krampus21::Inventory inventory(&get_font_bin_ref(), &get_bitmap_bin_ref(), &af_inventory);
-   int passes = 60 * 1;
-   //int passes = 0;
+   //int passes = 60 * 1;
+   int passes = 0;
    inventory.show();
    for (unsigned i=0; i<passes; i++)
    {
@@ -96,8 +96,8 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, hide__does_a_cool_ani
    AllegroFlare::Inventory af_inventory;
    af_inventory.add_item(2);
    Krampus21::Inventory inventory(&get_font_bin_ref(), &get_bitmap_bin_ref(), &af_inventory);
-   int passes = 60 * 1;
-   //int passes = 0;
+   //int passes = 60 * 1;
+   int passes = 0;
    inventory.reveal();
    inventory.hide();
    for (unsigned i=0; i<passes; i++)
@@ -116,7 +116,7 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, moving_the_cursor__an
 {
    AllegroFlare::Inventory af_inventory;
    af_inventory.add_item(2);
-   af_inventory.add_item(2);
+   af_inventory.add_item(1);
    af_inventory.add_item(2);
    Krampus21::Inventory inventory(&get_font_bin_ref(), &get_bitmap_bin_ref(), &af_inventory);
    int passes = 60 * 3;

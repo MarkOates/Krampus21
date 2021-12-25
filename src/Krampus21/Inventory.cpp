@@ -38,6 +38,7 @@ Inventory::Inventory(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* b
    , details_num_revealed_characters(999)
    , inventory_index(build_inventory_index())
    , reveal_counter(0)
+   , item_in_details_pane(0)
 {
 }
 
@@ -133,6 +134,15 @@ void Inventory::unreveal()
    reveal_counter = 0.0;
    details_num_revealed_characters = 0;
    details_reveal_counter = 0.0;
+   return;
+}
+
+void Inventory::set_details_pane()
+{
+   if (!af_inventory) return;
+   int cursor_position_abs = cursor_y * num_columns + cursor_x;
+   if (cursor_position_abs >= af_inventory->get_items_ref().size()) item_in_details_pane = 0;
+   else item_in_details_pane = af_inventory->get_items_ref()[cursor_position_abs];
    return;
 }
 
@@ -316,6 +326,7 @@ void Inventory::move_cursor_up()
    while(cursor_y < 0) cursor_y += num_rows;
    details_reveal_counter = 0.0f;
    details_num_revealed_characters = 0;
+   set_details_pane();
    return;
 }
 
@@ -331,6 +342,7 @@ void Inventory::move_cursor_down()
    cursor_y = cursor_y % num_rows;
    details_reveal_counter = 0.0f;
    details_num_revealed_characters = 0;
+   set_details_pane();
    return;
 }
 
@@ -346,6 +358,7 @@ void Inventory::move_cursor_left()
    while(cursor_x < 0) cursor_x += num_columns;
    details_reveal_counter = 0.0f;
    details_num_revealed_characters = 0;
+   set_details_pane();
    return;
 }
 
@@ -361,6 +374,7 @@ void Inventory::move_cursor_right()
    cursor_x = cursor_x % num_columns;
    details_reveal_counter = 0.0f;
    details_num_revealed_characters = 0;
+   set_details_pane();
    return;
 }
 
@@ -369,6 +383,7 @@ bool Inventory::show()
    if (active) return false;
    active = true;
    details_reveal_counter = 0.0f;
+   set_details_pane();
    return active;
 }
 
@@ -478,7 +493,7 @@ ALLEGRO_FONT* Inventory::obtain_details_header_font()
 std::map<int, std::tuple<std::string, std::string, std::string>> Inventory::build_inventory_index()
 {
    std::map<int, std::tuple<std::string, std::string, std::string>> result = {
-      //{ 1, { "Bracelet", "bracelet.png", "A gift given to you." } },
+      { 1, { "Pack of Gum", "pack-of-gum-01.png", "Refreshing and long-lasting." } },
       { 2, { "Watch", "watch-01.png", "Useful tool to keep you on track." } },
    };
    return result;
