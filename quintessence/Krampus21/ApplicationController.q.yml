@@ -346,13 +346,13 @@ functions:
             float new_joystick_0_x_state = ev->joystick.pos;
             if (joystick_0_x_state < 0.5 && new_joystick_0_x_state >= 0.5)
             {
-               // TODO move cursor right
                std::cout << "CURSOR RIGHT" << std::endl;
+               inventory.move_cursor_right();
             }
             else if (joystick_0_x_state > -0.5 && new_joystick_0_x_state <= -0.5)
             {
-               // TODO move cursor left
                std::cout << "CURSOR LEFT" << std::endl;
+               inventory.move_cursor_left();
             }
             joystick_0_x_state = new_joystick_0_x_state;
          }
@@ -361,22 +361,22 @@ functions:
             float new_joystick_0_y_state = ev->joystick.pos;
             if (joystick_0_y_state < 0.5 && new_joystick_0_y_state >= 0.5)
             {
-               // move cursor down
-               // TODO move cursor down
                std::cout << "CURSOR DOWN" << std::endl;
+               inventory.move_cursor_down();
             }
             else if (joystick_0_y_state > -0.5 && new_joystick_0_y_state <= -0.5)
             {
-               // move cursor up
-               // TODO move cursor down
                std::cout << "CURSOR UP" << std::endl;
+               inventory.move_cursor_up();
             }
             joystick_0_y_state = new_joystick_0_y_state;
          }
          break;
       case 1:
          break;
-      case 2: // the hat
+      case 2: // stick 2, the hat
+         // pretty sure this is buggy in mac. I think there's a problem with the mapping in vanilla allegro
+         std::cout << "AXIS " << ev->joystick.axis << "; pos " << ev->joystick.pos << std::endl;
          break;
       }
       return;
