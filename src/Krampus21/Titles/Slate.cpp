@@ -65,7 +65,6 @@ void Slate::render()
 
 std::string Slate::kern(std::string text, int amount)
 {
-   //string s("string");
    std::vector<char> v(text.begin(), text.end());
    std::vector<std::string> strs;
 

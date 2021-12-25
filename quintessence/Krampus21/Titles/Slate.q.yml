@@ -64,7 +64,6 @@ functions:
         type: int
         default_argument: 6
     body: |
-      //string s("string");
       std::vector<char> v(text.begin(), text.end());
       std::vector<std::string> strs;
 
