@@ -119,7 +119,7 @@ void Inventory::update()
    return;
 }
 
-void Inventory::reveal()
+void Inventory::activate()
 {
    active = true;
    reveal_counter = 1.0;
@@ -128,7 +128,7 @@ void Inventory::reveal()
    return;
 }
 
-void Inventory::unreveal()
+void Inventory::deactivate()
 {
    active = false;
    reveal_counter = 0.0;
@@ -330,6 +330,7 @@ void Inventory::move_cursor_up()
          error_message << "Inventory" << "::" << "move_cursor_up" << ": error: " << "guard \"has_valid_size()\" not met";
          throw std::runtime_error(error_message.str());
       }
+   if (!active) return;
    cursor_y--;
    while(cursor_y < 0) cursor_y += num_rows;
    details_reveal_counter = 0.0f;
@@ -346,6 +347,7 @@ void Inventory::move_cursor_down()
          error_message << "Inventory" << "::" << "move_cursor_down" << ": error: " << "guard \"has_valid_size()\" not met";
          throw std::runtime_error(error_message.str());
       }
+   if (!active) return;
    cursor_y++;
    cursor_y = cursor_y % num_rows;
    details_reveal_counter = 0.0f;
@@ -362,6 +364,7 @@ void Inventory::move_cursor_left()
          error_message << "Inventory" << "::" << "move_cursor_left" << ": error: " << "guard \"has_valid_size()\" not met";
          throw std::runtime_error(error_message.str());
       }
+   if (!active) return;
    cursor_x--;
    while(cursor_x < 0) cursor_x += num_columns;
    details_reveal_counter = 0.0f;
@@ -378,6 +381,7 @@ void Inventory::move_cursor_right()
          error_message << "Inventory" << "::" << "move_cursor_right" << ": error: " << "guard \"has_valid_size()\" not met";
          throw std::runtime_error(error_message.str());
       }
+   if (!active) return;
    cursor_x++;
    cursor_x = cursor_x % num_columns;
    details_reveal_counter = 0.0f;

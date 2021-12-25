@@ -43,8 +43,8 @@ namespace Krampus21
       int get_cursor_x();
       int get_cursor_y();
       void update();
-      void reveal();
-      void unreveal();
+      void activate();
+      void deactivate();
       void set_details_pane();
       ALLEGRO_COLOR opaquify(ALLEGRO_COLOR color={0,0,0,0});
       float inv_reveal_counter();

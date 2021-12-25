@@ -98,7 +98,7 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, hide__does_a_cool_ani
    Krampus21::Inventory inventory(&get_font_bin_ref(), &get_bitmap_bin_ref(), &af_inventory);
    //int passes = 60 * 1;
    int passes = 0;
-   inventory.reveal();
+   inventory.activate();
    inventory.hide();
    for (unsigned i=0; i<passes; i++)
    {
@@ -121,7 +121,7 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, moving_the_cursor__an
    Krampus21::Inventory inventory(&get_font_bin_ref(), &get_bitmap_bin_ref(), &af_inventory);
    int passes = 60 * 3;
    //int passes = 0;
-   inventory.reveal();
+   inventory.activate();
    float passes_to_move_cursor = 20;
    for (unsigned i=0; i<passes; i++)
    {
@@ -141,9 +141,23 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, moving_the_cursor__an
    }
 }
 
+TEST_F(Krampus21_InventoryTest, the_move_cursor_functions_do_not_modify_anything_if_the_inventory_is_inactive)
+{
+   Krampus21::Inventory inventory;
+   inventory.move_cursor_left();
+   EXPECT_EQ(0, inventory.get_cursor_x());
+   inventory.move_cursor_right();
+   EXPECT_EQ(0, inventory.get_cursor_x());
+   inventory.move_cursor_up();
+   EXPECT_EQ(0, inventory.get_cursor_y());
+   inventory.move_cursor_down();
+   EXPECT_EQ(0, inventory.get_cursor_y());
+}
+
 TEST_F(Krampus21_InventoryTest, move_cursor_left__wraps_the_cursor_when_at_the_edge)
 {
    Krampus21::Inventory inventory;
+   inventory.activate();
    inventory.move_cursor_left();
    EXPECT_EQ(3, inventory.get_cursor_x());
 }
@@ -151,6 +165,7 @@ TEST_F(Krampus21_InventoryTest, move_cursor_left__wraps_the_cursor_when_at_the_e
 TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_right__wraps_the_cursor_when_at_the_edge)
 {
    Krampus21::Inventory inventory;
+   inventory.activate();
    int num_rows = 4;
    for (unsigned i=0; i<(num_rows-1); i++) inventory.move_cursor_right();
 
@@ -162,6 +177,7 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_right__wr
 TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_up__wraps_the_cursor_when_at_the_edge)
 {
    Krampus21::Inventory inventory;
+   inventory.activate();
    inventory.move_cursor_up();
    EXPECT_EQ(2, inventory.get_cursor_y());
 }
@@ -169,6 +185,7 @@ TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_up__wraps
 TEST_F(Krampus21_InventoryWithAllegroRenderingFixtureTest, move_cursor_down__wraps_the_cursor_when_at_the_edge)
 {
    Krampus21::Inventory inventory;
+   inventory.activate();
    int num_columns = 3;
    for (unsigned i=0; i<(num_columns-1); i++) inventory.move_cursor_down();
 
