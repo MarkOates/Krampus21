@@ -220,6 +220,14 @@ functions:
     body: |
       ALLEGRO_COLOR revealed_white = opaquify(ALLEGRO_COLOR{1.0, 1.0, 1.0, 1.0});
 
+      std::tuple<std::string, std::string, std::string> item_definition = get_item_definition(item_in_details_pane);
+      bool contains_item = !std::get<0>(item_definition).empty();
+      if (!contains_item) return;
+      std::string item_name = std::get<0>(item_definition);
+      std::string item_description = std::get<1>(item_definition);
+      std::string item_bitmap_identifier = std::get<2>(item_definition);
+      ALLEGRO_BITMAP *item_bitmap = bitmap_bin->auto_get(item_bitmap_identifier);
+
       // draw label
       ALLEGRO_FONT* font = obtain_details_header_font();
       float details_header_reveal_offset = 80 * (1.0 - AllegroFlare::interpolator::fast_in(details_reveal_counter));
