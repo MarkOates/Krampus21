@@ -165,6 +165,15 @@ ALLEGRO_COLOR Inventory::opaquify(ALLEGRO_COLOR color)
    return color;
 }
 
+ALLEGRO_COLOR Inventory::change_a(ALLEGRO_COLOR color, float alpha)
+{
+   color.a *= alpha;
+   color.r *= color.a;
+   color.g *= color.a;
+   color.b *= color.a;
+   return color;
+}
+
 float Inventory::inv_reveal_counter()
 {
    return 1.0 - reveal_counter;
@@ -211,12 +220,13 @@ void Inventory::render()
 
 void Inventory::draw_backframe()
 {
-   ALLEGRO_COLOR backfill_color = opaquify(al_color_html("11111d"));
-   ALLEGRO_COLOR left_overbackfill_color = opaquify(al_color_html("16151c"));
-   ALLEGRO_COLOR top_and_bottom_pin_line_color = opaquify(ALLEGRO_COLOR{0.6, 0.6, 0.6, 1.0});
+   float o = 0.95f;
+   ALLEGRO_COLOR right_backfill_color = opaquify(change_a(al_color_html("11111d"), o));
+   ALLEGRO_COLOR left_overbackfill_color = opaquify(change_a(al_color_html("16151c"), o));
+   ALLEGRO_COLOR top_and_bottom_pin_line_color = opaquify(change_a(ALLEGRO_COLOR{0.6, 0.6, 0.6, 1.0}, o));
 
    // backfill
-   al_draw_filled_rectangle(0, 0, place.size.x, place.size.y, backfill_color);
+   al_draw_filled_rectangle(800, 0, place.size.x, place.size.y, right_backfill_color);
 
    // left "overbackfill"
    al_draw_filled_rectangle(0, 0, 800, place.size.y, left_overbackfill_color);
@@ -514,7 +524,7 @@ std::map<int, std::tuple<std::string, std::string, std::string>> Inventory::buil
 {
    std::map<int, std::tuple<std::string, std::string, std::string>> result = {
       { 1, { "Pack of Gum", "pack-of-gum-01.png", "Refreshing and long-lasting." } },
-      { 2, { "Watch", "watch-01.png", "Not a smartwatch, but still has all the features that matter." } },
+      { 2, { "Watch", "watch-01.png", "Not a smartwatch, but has all the features that matter." } },
    };
    return result;
 }

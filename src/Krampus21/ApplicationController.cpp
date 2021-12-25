@@ -222,8 +222,8 @@ void ApplicationController::primary_timer_func()
    if (current_dialog) current_dialog->update();
 
    // draw
-   al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
-   //al_clear_to_color(background_color);
+   //al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
+   al_clear_to_color(background_color);
 
    if (script.get_finished())
    {
