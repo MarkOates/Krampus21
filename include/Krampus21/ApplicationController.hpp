@@ -55,6 +55,13 @@ namespace Krampus21
       void initialize();
       bool load_script(std::string filename="unset-script-filename.txt");
       void advance();
+      void handle_cursor_up_input();
+      void handle_cursor_down_input();
+      void handle_cursor_left_input();
+      void handle_cursor_right_input();
+      void handle_submit_input();
+      void handle_cancel_input();
+      void handle_option_input();
       void play_current_script_line();
       void start_game();
       void shutdown_game();

@@ -106,6 +106,48 @@ void ApplicationController::advance()
    return;
 }
 
+void ApplicationController::handle_cursor_up_input()
+{
+   inventory.move_cursor_up();
+   return;
+}
+
+void ApplicationController::handle_cursor_down_input()
+{
+   inventory.move_cursor_down();
+   return;
+}
+
+void ApplicationController::handle_cursor_left_input()
+{
+   inventory.move_cursor_left();
+   return;
+}
+
+void ApplicationController::handle_cursor_right_input()
+{
+   inventory.move_cursor_right();
+   return;
+}
+
+void ApplicationController::handle_submit_input()
+{
+   advance();
+   return;
+}
+
+void ApplicationController::handle_cancel_input()
+{
+   shutdown_game();
+   return;
+}
+
+void ApplicationController::handle_option_input()
+{
+   toggle_inventory();
+   return;
+}
+
 void ApplicationController::play_current_script_line()
 {
    bool continue_directly_to_next_script_line = false;
@@ -236,32 +278,30 @@ void ApplicationController::key_down_func(ALLEGRO_EVENT* ev)
       switch(ev->keyboard.keycode)
       {
          case ALLEGRO_KEY_ESCAPE:
-            shutdown_game();
+            handle_cancel_input();
             break;
          case ALLEGRO_KEY_SPACE:
-            advance();
+         case ALLEGRO_KEY_ENTER:
+            handle_submit_input();
             break;
          case ALLEGRO_KEY_UP:
          case ALLEGRO_KEY_K:
-            inventory.move_cursor_up();
+            handle_cursor_up_input();
             break;
          case ALLEGRO_KEY_DOWN:
          case ALLEGRO_KEY_J:
-            inventory.move_cursor_up();
+            handle_cursor_down_input();
             break;
          case ALLEGRO_KEY_LEFT:
          case ALLEGRO_KEY_H:
-            inventory.move_cursor_left();
+            handle_cursor_left_input();
             break;
          case ALLEGRO_KEY_RIGHT:
          case ALLEGRO_KEY_L:
-            inventory.move_cursor_right();
-            break;
-         case ALLEGRO_KEY_ENTER:
-            // TODO submit dialog
+            handle_cursor_right_input();
             break;
          case ALLEGRO_KEY_I:
-            toggle_inventory();
+            handle_option_input();
             break;
       }
       break;
@@ -271,14 +311,20 @@ void ApplicationController::key_down_func(ALLEGRO_EVENT* ev)
 
 void ApplicationController::joy_button_down_func(ALLEGRO_EVENT* ev)
 {
+   std::cout << ev->joystick.button << std::endl;
    switch (ev->joystick.button)
    {
    case 4:
-      //shutdown_game();
-      toggle_inventory();
+      handle_option_input();
+      break;
+   case 0:
+      // nothing
       break;
    case 1:
-      advance();
+      handle_submit_input();
+      break;
+   case 11:
+      handle_cancel_input();
       break;
    }
    return;
@@ -300,12 +346,12 @@ void ApplicationController::joy_axis_func(ALLEGRO_EVENT* ev)
          if (joystick_0_x_state < 0.5 && new_joystick_0_x_state >= 0.5)
          {
             std::cout << "CURSOR RIGHT" << std::endl;
-            inventory.move_cursor_right();
+            handle_cursor_right_input();
          }
          else if (joystick_0_x_state > -0.5 && new_joystick_0_x_state <= -0.5)
          {
             std::cout << "CURSOR LEFT" << std::endl;
-            inventory.move_cursor_left();
+            handle_cursor_left_input();
          }
          joystick_0_x_state = new_joystick_0_x_state;
       }
@@ -315,12 +361,12 @@ void ApplicationController::joy_axis_func(ALLEGRO_EVENT* ev)
          if (joystick_0_y_state < 0.5 && new_joystick_0_y_state >= 0.5)
          {
             std::cout << "CURSOR DOWN" << std::endl;
-            inventory.move_cursor_down();
+            handle_cursor_down_input();
          }
          else if (joystick_0_y_state > -0.5 && new_joystick_0_y_state <= -0.5)
          {
             std::cout << "CURSOR UP" << std::endl;
-            inventory.move_cursor_up();
+            handle_cursor_up_input();
          }
          joystick_0_y_state = new_joystick_0_y_state;
       }
