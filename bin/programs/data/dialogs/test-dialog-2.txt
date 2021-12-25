@@ -10,6 +10,8 @@ SET_CHARACTER_ART: character-1-neutral.png
 I didn't want to bother you with it.
 Here, have watch!
 COLLECT: 2
+And some gum, too!
+COLLECT: 1
 SET_CHARACTER_ART: character-1-happy.png
 I know you've been so busy with your studies.  You're such a pointy-head smarty-pants ya know!
 It's no wonder you're being scouted by every single technology company out there!  Everyone wants to pick that big brain of yours!
