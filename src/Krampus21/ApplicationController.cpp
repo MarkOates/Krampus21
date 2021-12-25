@@ -76,8 +76,8 @@ void ApplicationController::initialize()
    inventory.set_font_bin(obtain_font_bin());
    inventory.set_bitmap_bin(obtain_bitmap_bin());
    inventory.set_af_inventory(&af_inventory);
-   af_inventory.add_item(1);
-   af_inventory.add_item(2);
+   //af_inventory.add_item(1);
+   //af_inventory.add_item(2);
 
    initialized = true;
    return;
@@ -244,14 +244,10 @@ void ApplicationController::primary_timer_func()
       // TODO
 
       // render character
-      //character.render();
+      character.render();
 
-      // render hud
+      // render letterbox
       draw_letterbox();
-
-      // TODO render inventory
-      inventory.render();
-      return;
 
       // render dialog
       if (current_dialog)
@@ -259,6 +255,9 @@ void ApplicationController::primary_timer_func()
          Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), current_dialog);
          renderer.render();
       }
+
+      // render inventory
+      inventory.render();
    }
    return;
 }
@@ -418,6 +417,7 @@ bool ApplicationController::parse_and_run_line(std::string script_line)
    std::string SET_CHARACTER_ART = "SET_CHARACTER_ART";
    std::string SET_CHARACTER_FRAMING = "SET_CHARACTER_FRAMING";
    std::string BEAT = "BEAT";
+   std::string COLLECT = "COLLECT";
 
    bool continue_directly_to_next_script_line = false;
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
@@ -479,6 +479,11 @@ bool ApplicationController::parse_and_run_line(std::string script_line)
          delete current_dialog;
          current_dialog = nullptr;
       }
+   }
+   else if (command == COLLECT)
+   {
+      af_inventory.add_item(atoi(argument.c_str()));
+      std::cout << "You got an item " << argument << std::endl;
    }
    else if (command == SET_CHARACTER_ART)
    {
