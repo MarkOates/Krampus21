@@ -114,7 +114,7 @@ void Inventory::update()
    details_reveal_counter += details_reveal_speed;
    if (details_reveal_counter >= 1.0) details_reveal_counter = 1.0;
 
-   details_num_revealed_characters++;
+   details_num_revealed_characters += 2;
    if (details_num_revealed_characters > 999) details_num_revealed_characters = 999;
    return;
 }
@@ -260,24 +260,24 @@ void Inventory::draw_details_frame()
    bool contains_item = !std::get<0>(item_definition).empty();
    if (!contains_item) return;
    std::string item_name = std::get<0>(item_definition);
-   std::string item_description = std::get<1>(item_definition);
-   std::string item_bitmap_identifier = std::get<2>(item_definition);
+   std::string item_bitmap_identifier = std::get<1>(item_definition);
+   std::string item_description = std::get<2>(item_definition);
    ALLEGRO_BITMAP *item_bitmap = bitmap_bin->auto_get(item_bitmap_identifier);
 
    // draw label
    ALLEGRO_FONT* font = obtain_details_header_font();
-   float details_header_reveal_offset = 80 * (1.0 - AllegroFlare::interpolator::fast_in(details_reveal_counter));
+   float details_header_reveal_offset = 60 * (1.0 - AllegroFlare::interpolator::fast_in(details_reveal_counter));
    al_draw_text(
       font,
       opaquify(ALLEGRO_COLOR{details_reveal_counter, details_reveal_counter, details_reveal_counter, details_reveal_counter}),
       850 + details_header_reveal_offset,
-      100,
+      85,
       ALLEGRO_ALIGN_LEFT,
-      "Watch"
+      item_name.c_str()
    );
 
    // draw graphic
-   ALLEGRO_BITMAP *bitmap = bitmap_bin->auto_get("watch-01.png");
+   ALLEGRO_BITMAP *bitmap = item_bitmap; //bitmap_bin->auto_get("watch-01.png");
    allegro_flare::placement2d box_place;
    box_place.position.x = 1025;
    box_place.position.y = 290;
@@ -298,10 +298,10 @@ void Inventory::draw_details_frame()
 
    // draw multiline description
    float x = 820;
-   float y = 420;
+   float y = 430;
    float width = 1300 - 800- 50 + 5;
    //int dialog_box_num_revealed_characters = 999;
-   std::string text = "This is the details text that will be shown in the right pane.";
+   std::string text = item_description; //"This is the details text that will be shown in the right pane.";
    float text_padding_x = 40.0f;
    float text_padding_y = 30.0f;
    float text_box_max_width = width - (text_padding_x * 2);
@@ -502,7 +502,7 @@ std::map<int, std::tuple<std::string, std::string, std::string>> Inventory::buil
 {
    std::map<int, std::tuple<std::string, std::string, std::string>> result = {
       { 1, { "Pack of Gum", "pack-of-gum-01.png", "Refreshing and long-lasting." } },
-      { 2, { "Watch", "watch-01.png", "Useful tool to keep you on track." } },
+      { 2, { "Watch", "watch-01.png", "Not a smartwatch, but still has all the features that matter." } },
    };
    return result;
 }
