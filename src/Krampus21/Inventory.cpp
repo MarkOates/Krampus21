@@ -125,6 +125,7 @@ void Inventory::activate()
    reveal_counter = 1.0;
    details_num_revealed_characters = 999;
    details_reveal_counter = 1.0;
+   set_details_pane();
    return;
 }
 
@@ -395,6 +396,7 @@ bool Inventory::show()
    if (active) return false;
    active = true;
    details_reveal_counter = 0.0f;
+   details_num_revealed_characters = 0;
    set_details_pane();
    return active;
 }
