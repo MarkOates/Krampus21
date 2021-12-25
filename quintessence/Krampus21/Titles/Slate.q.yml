@@ -29,28 +29,31 @@ functions:
       //FADE TO WHITE
       //FADING WHITE
       //FADING LIGHT
-
       allegro_flare::placement2d primary_text_place(1920/2, 1080/2-30, primary_text_width, primary_text_height);
-      allegro_flare::placement2d secondary_text_place;
+      //allegro_flare::placement2d secondary_text_place;
+
+      // draw the text
 
       primary_text_place.start_transform();
-      al_draw_text(obtain_primary_text_font(), fading_white, 0, 0, ALLEGRO_ALIGN_CENTER, primary_text.c_str());
+      al_draw_text(obtain_primary_text_font(), fading_white, 0, 0, ALLEGRO_ALIGN_LEFT, primary_text.c_str());
+      //al_draw_rectangle(0, 0, primary_text_width, primary_text_height, fading_white, 2.0);
       primary_text_place.restore_transform();
 
-      secondary_text_place.start_transform();
-      al_draw_text(obtain_primary_text_font(), fading_white, 0, 0, ALLEGRO_ALIGN_CENTER, secondary_text.c_str());
-      secondary_text_place.restore_transform();
+      //secondary_text_place.start_transform();
+      //al_draw_text(obtain_primary_text_font(), fading_white, 0, 0, ALLEGRO_ALIGN_LEFT, secondary_text.c_str());
+      //secondary_text_place.restore_transform();
 
       return;
     body_dependency_symbols:
       - allegro_flare::placement2d
       - al_get_font_line_height
+      - al_draw_rectangle
 
 
   - name: obtain_primary_text_font
     type: ALLEGRO_FONT*
     private: true
-    body: return font_bin->auto_get("Lato-Regular.ttf -30");
+    body: return font_bin->auto_get("Lato-Bold.ttf -48");
 
 
   - name: obtain_secondary_text_font
@@ -72,5 +75,7 @@ dependencies:
     headers: [ allegro5/allegro_font.h ]
   - symbol: al_get_font_line_height
     headers: [ allegro5/allegro_font.h ]
+  - symbol: al_draw_rectangle
+    headers: [ allegro5/allegro_primitives.h ]
 
 

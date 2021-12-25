@@ -3,6 +3,7 @@
 #include <Krampus21/Titles/Slate.hpp>
 #include <allegro_flare/placement2d.h>
 #include <allegro5/allegro_font.h>
+#include <allegro5/allegro_primitives.h>
 #include <stdexcept>
 #include <sstream>
 
@@ -42,24 +43,26 @@ void Slate::render()
    //FADE TO WHITE
    //FADING WHITE
    //FADING LIGHT
-
    allegro_flare::placement2d primary_text_place(1920/2, 1080/2-30, primary_text_width, primary_text_height);
-   allegro_flare::placement2d secondary_text_place;
+   //allegro_flare::placement2d secondary_text_place;
+
+   // draw the text
 
    primary_text_place.start_transform();
-   al_draw_text(obtain_primary_text_font(), fading_white, 0, 0, ALLEGRO_ALIGN_CENTER, primary_text.c_str());
+   al_draw_text(obtain_primary_text_font(), fading_white, 0, 0, ALLEGRO_ALIGN_LEFT, primary_text.c_str());
+   //al_draw_rectangle(0, 0, primary_text_width, primary_text_height, fading_white, 2.0);
    primary_text_place.restore_transform();
 
-   secondary_text_place.start_transform();
-   al_draw_text(obtain_primary_text_font(), fading_white, 0, 0, ALLEGRO_ALIGN_CENTER, secondary_text.c_str());
-   secondary_text_place.restore_transform();
+   //secondary_text_place.start_transform();
+   //al_draw_text(obtain_primary_text_font(), fading_white, 0, 0, ALLEGRO_ALIGN_LEFT, secondary_text.c_str());
+   //secondary_text_place.restore_transform();
 
    return;
 }
 
 ALLEGRO_FONT* Slate::obtain_primary_text_font()
 {
-   return font_bin->auto_get("Lato-Regular.ttf -30");
+   return font_bin->auto_get("Lato-Bold.ttf -48");
 }
 
 ALLEGRO_FONT* Slate::obtain_secondary_text_font()
