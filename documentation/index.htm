@@ -1176,10 +1176,17 @@ table td
   <td class="property">secondary_text</td>
   <td class="property">std::string</td>
 </tr>
+<tr>
+  <td class="property">primary_text_kerning</td>
+  <td class="property">int</td>
+</tr>
     </table>
      <table>
 <tr>
   <td class="method">render()</td>
+</tr>
+<tr>
+  <td class="method">kern(2)</td>
 </tr>
 <tr>
   <td class="private_method">obtain_primary_text_font()</td>
@@ -1206,6 +1213,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_rectangle&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Blast::StringJoiner&quot;, &quot;headers&quot;=&gt;[&quot;Blast/StringJoiner.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -1398,7 +1408,8 @@ table td
     "Krampus21/Elements/DialogBoxNameTag"
   ],
   "Blast/StringJoiner": [
-    "Krampus21/DialogBoxRenderer"
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/Titles/Slate"
   ],
   "Krampus21/Elements/DialogBoxFrame": [
     "Krampus21/DialogBoxRenderer",

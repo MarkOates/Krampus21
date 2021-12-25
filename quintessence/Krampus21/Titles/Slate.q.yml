@@ -14,6 +14,9 @@ properties:
     type: std::string
     constructor_arg: true
 
+  - name: primary_text_kerning
+    type: int
+    init_with: 6
 
 functions:
 
@@ -23,6 +26,7 @@ functions:
     body: |
       float opacity = 1.0;
       ALLEGRO_FONT *primary_text_font = obtain_primary_text_font();
+      std::string primary_text = kern(this->primary_text);
       ALLEGRO_COLOR fading_white = ALLEGRO_COLOR{opacity, opacity, opacity, opacity};
       float primary_text_width = al_get_text_width(primary_text_font, primary_text.c_str());
       float primary_text_height = al_get_font_line_height(primary_text_font);
@@ -48,6 +52,29 @@ functions:
       - allegro_flare::placement2d
       - al_get_font_line_height
       - al_draw_rectangle
+
+
+  - name: kern
+    type: std::string
+    parameters:
+      - name: text
+        type: std::string
+        default_argument: '""'
+      - name: amount
+        type: int
+        default_argument: 6
+    body: |
+      //string s("string");
+      std::vector<char> v(text.begin(), text.end());
+      std::vector<std::string> strs;
+
+      for (auto &vc : v) strs.push_back(std::string(1, vc) + std::string(amount, ' '));
+      std::string str = Blast::StringJoiner(strs, "").join();
+
+      str.substr(0, str.length() - amount);
+      return str;
+    body_dependency_symbols:
+      - Blast::StringJoiner
 
 
   - name: obtain_primary_text_font
@@ -77,5 +104,7 @@ dependencies:
     headers: [ allegro5/allegro_font.h ]
   - symbol: al_draw_rectangle
     headers: [ allegro5/allegro_primitives.h ]
+  - symbol: Blast::StringJoiner
+    headers: [ Blast/StringJoiner.hpp ]
 
 
