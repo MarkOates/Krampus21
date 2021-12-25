@@ -76,6 +76,7 @@ void ApplicationController::initialize()
    inventory.set_font_bin(obtain_font_bin());
    inventory.set_bitmap_bin(obtain_bitmap_bin());
    inventory.set_af_inventory(&af_inventory);
+   af_inventory.add_item(1);
    af_inventory.add_item(2);
 
    initialized = true;
@@ -153,9 +154,29 @@ bool ApplicationController::dialog_is_finished()
    return current_dialog->get_finished();
 }
 
+void ApplicationController::open_inventory()
+{
+   if (!inventory.get_active()) inventory.show();
+   return;
+}
+
+void ApplicationController::close_inventory()
+{
+   if (inventory.get_active()) inventory.hide();
+   return;
+}
+
+void ApplicationController::toggle_inventory()
+{
+   if (inventory.get_active()) close_inventory();
+   else open_inventory();
+   return;
+}
+
 void ApplicationController::primary_timer_func()
 {
    // update
+   inventory.update();
    if (current_dialog) current_dialog->update();
 
    // draw
@@ -242,7 +263,8 @@ void ApplicationController::joy_button_down_func(ALLEGRO_EVENT* ev)
    switch (ev->joystick.button)
    {
    case 4:
-      shutdown_game();
+      //shutdown_game();
+      toggle_inventory();
       break;
    case 1:
       advance();

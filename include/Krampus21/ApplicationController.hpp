@@ -59,6 +59,9 @@ namespace Krampus21
       void start_game();
       void shutdown_game();
       bool dialog_is_finished();
+      void open_inventory();
+      void close_inventory();
+      void toggle_inventory();
       void primary_timer_func() override;
       void draw_letterbox();
       void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;

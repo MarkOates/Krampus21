@@ -45,6 +45,7 @@ properties:
   - name: active
     type: bool
     init_with: false
+    getter: true
 
   - name: details_reveal_counter
     type: float

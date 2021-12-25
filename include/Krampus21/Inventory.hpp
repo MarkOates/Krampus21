@@ -42,6 +42,7 @@ namespace Krampus21
       allegro_flare::placement2d get_place();
       int get_cursor_x();
       int get_cursor_y();
+      bool get_active();
       void update();
       void activate();
       void deactivate();

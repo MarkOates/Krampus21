@@ -97,6 +97,7 @@ functions:
       inventory.set_font_bin(obtain_font_bin());
       inventory.set_bitmap_bin(obtain_bitmap_bin());
       inventory.set_af_inventory(&af_inventory);
+      af_inventory.add_item(1);
       af_inventory.add_item(2);
 
       initialized = true;
@@ -182,10 +183,30 @@ functions:
       return current_dialog->get_finished();
 
 
+  - name: open_inventory
+    body: |
+      if (!inventory.get_active()) inventory.show();
+      return;
+
+
+  - name: close_inventory
+    body: |
+      if (inventory.get_active()) inventory.hide();
+      return;
+
+
+  - name: toggle_inventory
+    body: |
+      if (inventory.get_active()) close_inventory();
+      else open_inventory();
+      return;
+
+
   - name: primary_timer_func
     override: true
     body: |
       // update
+      inventory.update();
       if (current_dialog) current_dialog->update();
 
       // draw
@@ -284,7 +305,8 @@ functions:
       switch (ev->joystick.button)
       {
       case 4:
-         shutdown_game();
+         //shutdown_game();
+         toggle_inventory();
          break;
       case 1:
          advance();

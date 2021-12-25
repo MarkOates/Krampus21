@@ -84,6 +84,12 @@ int Inventory::get_cursor_y()
 }
 
 
+bool Inventory::get_active()
+{
+   return active;
+}
+
+
 void Inventory::update()
 {
    if (!(font_bin))
