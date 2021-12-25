@@ -19,7 +19,8 @@ Slate::Slate(AllegroFlare::FontBin* font_bin, std::string primary_text, std::str
    : font_bin(font_bin)
    , primary_text(primary_text)
    , secondary_text(secondary_text)
-   , primary_text_kerning(6)
+   , primary_text_kerning(2)
+   , secondary_text_kerning(2)
 {
 }
 
@@ -38,27 +39,30 @@ void Slate::render()
          throw std::runtime_error(error_message.str());
       }
    float opacity = 1.0;
-   ALLEGRO_FONT *primary_text_font = obtain_primary_text_font();
-   std::string primary_text = kern(this->primary_text);
    ALLEGRO_COLOR fading_white = ALLEGRO_COLOR{opacity, opacity, opacity, opacity};
+   ALLEGRO_FONT *primary_text_font = obtain_primary_text_font();
+   ALLEGRO_FONT *secondary_text_font = obtain_secondary_text_font();
+   std::string primary_text = kern(this->primary_text, primary_text_kerning);
+   std::string secondary_text = kern(this->secondary_text, secondary_text_kerning);
    float primary_text_width = al_get_text_width(primary_text_font, primary_text.c_str());
    float primary_text_height = al_get_font_line_height(primary_text_font);
+   float secondary_text_width = al_get_text_width(secondary_text_font, secondary_text.c_str());
+   float secondary_text_height = al_get_font_line_height(secondary_text_font);
    //FADE TO WHITE
    //FADING WHITE
    //FADING LIGHT
    allegro_flare::placement2d primary_text_place(1920/2, 1080/2-30, primary_text_width, primary_text_height);
-   //allegro_flare::placement2d secondary_text_place;
+   allegro_flare::placement2d secondary_text_place(1920/2, 1080/2-82, secondary_text_width, secondary_text_height);
 
    // draw the text
 
    primary_text_place.start_transform();
-   al_draw_text(obtain_primary_text_font(), fading_white, 0, 0, ALLEGRO_ALIGN_LEFT, primary_text.c_str());
-   //al_draw_rectangle(0, 0, primary_text_width, primary_text_height, fading_white, 2.0);
+   al_draw_text(primary_text_font, fading_white, 0, 0, ALLEGRO_ALIGN_LEFT, primary_text.c_str());
    primary_text_place.restore_transform();
 
-   //secondary_text_place.start_transform();
-   //al_draw_text(obtain_primary_text_font(), fading_white, 0, 0, ALLEGRO_ALIGN_LEFT, secondary_text.c_str());
-   //secondary_text_place.restore_transform();
+   secondary_text_place.start_transform();
+   al_draw_text(secondary_text_font, fading_white, 0, 0, ALLEGRO_ALIGN_LEFT, secondary_text.c_str());
+   secondary_text_place.restore_transform();
 
    return;
 }
@@ -77,12 +81,12 @@ std::string Slate::kern(std::string text, int amount)
 
 ALLEGRO_FONT* Slate::obtain_primary_text_font()
 {
-   return font_bin->auto_get("Lato-Bold.ttf -48");
+   return font_bin->auto_get("Lato-Bold.ttf -50");
 }
 
 ALLEGRO_FONT* Slate::obtain_secondary_text_font()
 {
-   return font_bin->auto_get("Lato-Bold.ttf -30");
+   return font_bin->auto_get("Lato-Bold.ttf -28");
 }
 } // namespace Titles
 } // namespace Krampus21

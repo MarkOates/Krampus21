@@ -17,6 +17,7 @@ namespace Krampus21
          std::string primary_text;
          std::string secondary_text;
          int primary_text_kerning;
+         int secondary_text_kerning;
 
       public:
          Slate(AllegroFlare::FontBin* font_bin=nullptr, std::string primary_text="", std::string secondary_text="");

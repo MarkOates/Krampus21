@@ -26,8 +26,9 @@ TEST_F(Krampus21_Titles_SlateTest, can_be_created_without_blowing_up)
 
 TEST_F(Krampus21_Titles_SlateWithAllegroRenderingFixtureTest, can_be_created_without_blowing_up)
 {
-   std::string title_text = "FADING LIGHT";
-   Krampus21::Titles::Slate slate(&get_font_bin_ref(), title_text);
+   std::string title_text = "ALLEGRO GAME PROGRAMMING LIBRARY";
+   std::string secondary_text = "made with";
+   Krampus21::Titles::Slate slate(&get_font_bin_ref(), title_text, secondary_text);
    al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 1.0});
    slate.render();
    SHOW_RENDER();
