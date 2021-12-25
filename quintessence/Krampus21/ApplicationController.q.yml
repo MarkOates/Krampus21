@@ -280,14 +280,25 @@ functions:
                break;
             case ALLEGRO_KEY_UP:
             case ALLEGRO_KEY_K:
-               // TODO move cursor up
+               inventory.move_cursor_up();
                break;
             case ALLEGRO_KEY_DOWN:
             case ALLEGRO_KEY_J:
-               // TODO move cursor down
+               inventory.move_cursor_up();
+               break;
+            case ALLEGRO_KEY_LEFT:
+            case ALLEGRO_KEY_H:
+               inventory.move_cursor_left();
+               break;
+            case ALLEGRO_KEY_RIGHT:
+            case ALLEGRO_KEY_L:
+               inventory.move_cursor_right();
                break;
             case ALLEGRO_KEY_ENTER:
                // TODO submit dialog
+               break;
+            case ALLEGRO_KEY_I:
+               toggle_inventory();
                break;
          }
          break;
@@ -323,13 +334,29 @@ functions:
         default_argument: nullptr
     body: |
       static float joystick_0_y_state = 0.0;
+      static float joystick_0_x_state = 0.0;
       static float joystick_1_y_state = 0.0;
       static float joystick_2_y_state = 0.0;
 
       switch (ev->joystick.stick)
       {
       case 0: // left most stick
-         if (ev->joystick.axis == 1) // the up/down axis
+         if (ev->joystick.axis == 0) // the right/left axis
+         {
+            float new_joystick_0_x_state = ev->joystick.pos;
+            if (joystick_0_x_state < 0.5 && new_joystick_0_x_state >= 0.5)
+            {
+               // TODO move cursor right
+               std::cout << "CURSOR RIGHT" << std::endl;
+            }
+            else if (joystick_0_x_state > -0.5 && new_joystick_0_x_state <= -0.5)
+            {
+               // TODO move cursor left
+               std::cout << "CURSOR LEFT" << std::endl;
+            }
+            joystick_0_x_state = new_joystick_0_x_state;
+         }
+         else if (ev->joystick.axis == 1) // the up/down axis
          {
             float new_joystick_0_y_state = ev->joystick.pos;
             if (joystick_0_y_state < 0.5 && new_joystick_0_y_state >= 0.5)
