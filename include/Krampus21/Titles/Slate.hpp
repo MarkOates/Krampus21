@@ -1,7 +1,8 @@
 #pragma once
 
 
-#include <string>
+#include <AllegroFlare/FontBin.hpp>
+#include <allegro5/allegro_font.h>
 
 
 namespace Krampus21
@@ -11,12 +12,14 @@ namespace Krampus21
       class Slate
       {
       private:
+         AllegroFlare::FontBin* font_bin;
 
       public:
-         Slate();
+         Slate(AllegroFlare::FontBin* font_bin=nullptr);
          ~Slate();
 
-         std::string run();
+         void render();
+         ALLEGRO_FONT* obtain_title_font();
       };
    }
 }

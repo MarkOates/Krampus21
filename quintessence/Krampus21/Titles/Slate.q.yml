@@ -1,4 +1,42 @@
+properties:
+
+
+  - name: font_bin
+    type: AllegroFlare::FontBin*
+    init_with: nullptr
+    constructor_arg: true
+
+
 functions:
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+
+
+  - name: render
+    guards: [ font_bin ]
+    body: |
+      allegro_flare::placement2d label_pace;
+      allegro_flare::placement2d title_pace;
+
+      return;
+    body_dependency_symbols:
+      - allegro_flare::placement2d
+
+
+  - name: obtain_title_font
+    type: ALLEGRO_FONT*
+    private: true
+    body: return font_bin->auto_get("Lato-Regular.ttf -30");
+
+
+dependencies:
+
+
+  - symbol: allegro_flare::placement2d
+    headers: [ allegro_flare/placement2d.h ]
+  - symbol: AllegroFlare::FontBin*
+    headers: [ AllegroFlare/FontBin.hpp ]
+  - symbol: ALLEGRO_COLOR
+    headers: [ allegro5/allegro.h ]
+  - symbol: ALLEGRO_FONT*
+    headers: [ allegro5/allegro_font.h ]
+
+

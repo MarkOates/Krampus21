@@ -62,6 +62,7 @@ table td
   <li><a href="#quintessence/Krampus21/Inventory.q.yml">quintessence/Krampus21/Inventory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/ProgramRunner.q.yml">quintessence/Krampus21/ProgramRunner.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Script.q.yml">quintessence/Krampus21/Script.q.yml</a></li>
+  <li><a href="#quintessence/Krampus21/Titles/Slate.q.yml">quintessence/Krampus21/Titles/Slate.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/UserEventEmitter.q.yml">quintessence/Krampus21/UserEventEmitter.q.yml</a></li>
 </ul>
 <h1>Components</h1>
@@ -1161,6 +1162,39 @@ table td
 </ul>
 <ul>
   <div class="component">
+    <h3 id="quintessence/Krampus21/Titles/Slate.q.yml">quintessence/Krampus21/Titles/Slate.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">font_bin</td>
+  <td class="property">AllegroFlare::FontBin*</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">render()</td>
+</tr>
+<tr>
+  <td class="private_method">obtain_title_font()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement2d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement2d.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
     <h3 id="quintessence/Krampus21/UserEventEmitter.q.yml">quintessence/Krampus21/UserEventEmitter.q.yml</h3>
      <table>
     </table>
@@ -1178,7 +1212,8 @@ table td
 {
   "ALLEGRO_COLOR": [
     "Krampus21/ApplicationController",
-    "Krampus21/Inventory"
+    "Krampus21/Inventory",
+    "Krampus21/Titles/Slate"
   ],
   "ALLEGRO_EVENT": [
     "Krampus21/ApplicationController"
@@ -1188,7 +1223,8 @@ table td
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/Elements/DialogBoxNameTag",
-    "Krampus21/Inventory"
+    "Krampus21/Inventory",
+    "Krampus21/Titles/Slate"
   ],
   "ALLEGRO_EVENT_SOURCE": [
     "Krampus21/ApplicationController"
@@ -1210,7 +1246,8 @@ table td
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/Elements/DialogBoxNameTag",
-    "Krampus21/Inventory"
+    "Krampus21/Inventory",
+    "Krampus21/Titles/Slate"
   ],
   "AllegroFlare/BitmapBin": [
     "Krampus21/ApplicationController",
@@ -1304,7 +1341,8 @@ table td
   "allegro_flare/placement2d": [
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/Inventory"
+    "Krampus21/Inventory",
+    "Krampus21/Titles/Slate"
   ],
   "ALLEGRO_BITMAP": [
     "Krampus21/Character"
