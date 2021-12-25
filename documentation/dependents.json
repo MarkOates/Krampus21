@@ -227,5 +227,8 @@
   ],
   "Krampus21/ApplicationController/build_markers_index": [
     "Krampus21/Script"
+  ],
+  "al_get_font_line_height": [
+    "Krampus21/Titles/Slate"
   ]
 }

@@ -1168,13 +1168,24 @@ table td
   <td class="property">font_bin</td>
   <td class="property">AllegroFlare::FontBin*</td>
 </tr>
+<tr>
+  <td class="property">primary_text</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">secondary_text</td>
+  <td class="property">std::string</td>
+</tr>
     </table>
      <table>
 <tr>
   <td class="method">render()</td>
 </tr>
 <tr>
-  <td class="private_method">obtain_title_font()</td>
+  <td class="private_method">obtain_primary_text_font()</td>
+</tr>
+<tr>
+  <td class="private_method">obtain_secondary_text_font()</td>
 </tr>
     </table>
      <table>
@@ -1189,6 +1200,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_get_font_line_height&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -1438,6 +1452,9 @@ table td
   ],
   "Krampus21/ApplicationController/build_markers_index": [
     "Krampus21/Script"
+  ],
+  "al_get_font_line_height": [
+    "Krampus21/Titles/Slate"
   ]
 }
 </pre>
