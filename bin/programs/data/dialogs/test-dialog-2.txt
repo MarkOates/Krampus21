@@ -7,10 +7,18 @@ CHOICE: What would you choose? | Pack of gum | GOTO: *CHOOSE_GUM* | Watch | GOTO
   MARKER: *CHOOSE_WATCH*
     COLLECT: 2
     GOTO: *FINISH_CHOICE*
-
-MARKER: *FINISH_CHOICE*
+  MARKER: *FINISH_CHOICE*
 
 OK, let me ask you another question then...
-CHOICE: What would you choose? | Pack of gum | COLLECT: 1 | Watch | COLLECT: 2
+
+CHOICE: What would you choose? | Pack of gum | GOTO: *CHOOSE_GUM_1* | Watch | GOTO: *CHOOSE_GUM_1*
+  MARKER: *CHOOSE_GUM_1*
+    COLLECT: 1
+    GOTO: *FINISH_CHOICE_1*
+  MARKER: *CHOOSE_GUM_1*
+    COLLECT: 2
+    GOTO: *FINISH_CHOICE_1*
+  MARKER: *FINISH_CHOICE_1*
+
 Cool! Looks like that worked out ;)
 C-ya later!

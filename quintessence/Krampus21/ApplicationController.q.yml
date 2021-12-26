@@ -139,13 +139,11 @@ functions:
          current_dialog = nullptr;
 
          parse_and_run_line(selected_choice_value, script_current_line_num);
-         //script.goto_next_line();
       }
 
       script.goto_next_line();
       play_current_script_line();
-      // if it's a dialog and the dialog is finished, play the next script line
-      //if (current_dialog) current_dialog->
+
       return;
 
 
