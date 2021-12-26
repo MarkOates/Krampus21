@@ -11,15 +11,29 @@ namespace DialogBoxes
 {
 
 
-YouGotAnItem::YouGotAnItem(int item_num)
+YouGotAnItem::YouGotAnItem(int item_num, std::string item_name, std::string item_bitmap_identifier)
    : Krampus21::DialogBoxes::Base("YouGotAnItem")
    , item_num(item_num)
+   , item_name(item_name)
+   , item_bitmap_identifier(item_bitmap_identifier)
 {
 }
 
 
 YouGotAnItem::~YouGotAnItem()
 {
+}
+
+
+std::string YouGotAnItem::get_item_name()
+{
+   return item_name;
+}
+
+
+std::string YouGotAnItem::get_item_bitmap_identifier()
+{
+   return item_bitmap_identifier;
 }
 
 

@@ -14,6 +14,18 @@ properties:
     init_with: 0
     constructor_arg: true
 
+  - name: item_name
+    type: std::string
+    init_with: '"[item-name-that-has-not-been-set]"'
+    constructor_arg: true
+    getter: true
+
+  - name: item_bitmap_identifier
+    type: std::string
+    init_with: '"[item-bitmap-identifier-has-not-been-set]"'
+    constructor_arg: true
+    getter: true
+
 
 functions:
 
