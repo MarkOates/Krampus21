@@ -137,6 +137,7 @@
   "allegro_flare/placement2d": [
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",
     "Krampus21/Titles/Slate"
