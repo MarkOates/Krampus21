@@ -16,8 +16,22 @@ class Krampus21_DialogBoxRenderers_YouGotAnItemRendererWithAllegroRenderingFixtu
    : public AllegroFlare::Testing::WithAllegroRenderingFixture {};
 
 
-TEST(Krampus21_DialogBoxRenderers_YouGotAnItemRendererTest, can_be_created_without_blowing_up)
+TEST_F(Krampus21_DialogBoxRenderers_YouGotAnItemRendererTest, can_be_created_without_blowing_up)
 {
    Krampus21::DialogBoxRenderers::YouGotAnItemRenderer you_got_an_item_renderer;
+}
+
+TEST_F(Krampus21_DialogBoxRenderers_YouGotAnItemRendererWithAllegroRenderingFixtureTest,
+   render__renders_the_dialog_box)
+{
+   Krampus21::DialogBoxes::YouGotAnItem you_got_an_item_dialog_box(1);
+   Krampus21::DialogBoxRenderers::YouGotAnItemRenderer you_got_an_item_renderer(
+      &get_font_bin_ref(),
+      &get_bitmap_bin_ref(),
+      &you_got_an_item_dialog_box
+   );
+   you_got_an_item_renderer.render();
+   al_flip_display();
+   sleep(1);
 }
 

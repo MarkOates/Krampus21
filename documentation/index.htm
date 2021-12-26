@@ -595,6 +595,14 @@ table td
     <h3 id="quintessence/Krampus21/DialogBoxRenderers/YouGotAnItemRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderers/YouGotAnItemRenderer.q.yml</h3>
      <table>
 <tr>
+  <td class="property">font_bin</td>
+  <td class="property">AllegroFlare::FontBin*</td>
+</tr>
+<tr>
+  <td class="property">bitmap_bin</td>
+  <td class="property">AllegroFlare::BitmapBin*</td>
+</tr>
+<tr>
   <td class="property">you_got_an_item_dialog_box</td>
   <td class="property">Krampus21::DialogBoxes::YouGotAnItem*</td>
 </tr>
@@ -603,10 +611,22 @@ table td
 <tr>
   <td class="method">render()</td>
 </tr>
+<tr>
+  <td class="private_method">obtain_dialog_font()</td>
+</tr>
     </table>
      <table>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::YouGotAnItem*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/YouGotAnItem.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -1367,6 +1387,7 @@ table td
     "Krampus21/ApplicationController",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Elements/DialogBoxNameTag",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",
@@ -1391,6 +1412,7 @@ table td
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Elements/DialogBoxNameTag",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",
@@ -1401,6 +1423,7 @@ table td
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Inventory"
   ],
   "AllegroFlare/Display": [

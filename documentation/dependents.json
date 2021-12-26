@@ -12,6 +12,7 @@
     "Krampus21/ApplicationController",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Elements/DialogBoxNameTag",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",
@@ -36,6 +37,7 @@
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Elements/DialogBoxNameTag",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",
@@ -46,6 +48,7 @@
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Inventory"
   ],
   "AllegroFlare/Display": [
