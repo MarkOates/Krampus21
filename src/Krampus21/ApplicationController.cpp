@@ -99,6 +99,16 @@ bool ApplicationController::load_script(std::string filename)
 
 void ApplicationController::advance()
 {
+   // if dialog box is "choice", eval the choice, then ...
+   if (current_dialog && current_dialog->is_type("Choice"))
+   {
+      Krampus21::DialogBoxes::Choice* choice_dialog_box =
+         static_cast<Krampus21::DialogBoxes::Choice*>(current_dialog);
+      std::string selected_choice_value = choice_dialog_box->get_current_selection_value();
+      int script_current_line_num = script.get_current_line_num();
+      parse_and_run_line(selected_choice_value, script_current_line_num);
+   }
+
    script.goto_next_line();
    play_current_script_line();
    // if it's a dialog and the dialog is finished, play the next script line
