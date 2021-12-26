@@ -74,7 +74,7 @@ Krampus21::DialogBoxes::YouGotAnItem* DialogFactory::create_you_got_an_item_dial
    Krampus21::DialogBoxes::YouGotAnItem* you_got_an_item_dialog_box =
       new Krampus21::DialogBoxes::YouGotAnItem(item_num);
    //choice_dialog_box->initialize(); // doesn't seem to require initialization
-   return choice_dialog_box;
+   return you_got_an_item_dialog_box;
 }
 
 Krampus21::DialogBoxes::Basic DialogFactory::build_basic_dialog_from_file(std::string filename)

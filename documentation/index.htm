@@ -51,7 +51,6 @@ table td
 <ul>
   <li><a href="#quintessence/Krampus21/ApplicationController.q.yml">quintessence/Krampus21/ApplicationController.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Character.q.yml">quintessence/Krampus21/Character.q.yml</a></li>
-  <li><a href="#quintessence/Krampus21/DialogBoxFactory.q.yml">quintessence/Krampus21/DialogBoxFactory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderer.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxRenderers/ChoiceRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderers/ChoiceRenderer.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/Base.q.yml">quintessence/Krampus21/DialogBoxes/Base.q.yml</a></li>
@@ -399,32 +398,6 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
-</tr>
-    </table>
-  </div>
-</ul>
-<ul>
-  <div class="component">
-    <h3 id="quintessence/Krampus21/DialogBoxFactory.q.yml">quintessence/Krampus21/DialogBoxFactory.q.yml</h3>
-     <table>
-    </table>
-     <table>
-<tr>
-  <td class="method">create_basic_dialog_box_for_testing()</td>
-</tr>
-<tr>
-  <td class="method">create_basic_dialog_box(1)</td>
-</tr>
-    </table>
-     <table>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::string&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;string&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Basic&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Basic.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -783,10 +756,16 @@ table td
   <td class="method">create_choice_dialog(2)</td>
 </tr>
 <tr>
+  <td class="method">create_you_got_an_item_dialog(1)</td>
+</tr>
+<tr>
   <td class="method">build_basic_dialog_from_file(1)</td>
 </tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::YouGotAnItem*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/YouGotAnItem.hpp&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Choice*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Choice.hpp&quot;]}</td>
 </tr>
@@ -1422,7 +1401,6 @@ table td
   "Krampus21/DialogBoxes/Basic": [
     "Krampus21/ApplicationController",
     "Krampus21/ApplicationController",
-    "Krampus21/DialogBoxFactory",
     "Krampus21/DialogFactory",
     "Krampus21/DialogFactory"
   ],
@@ -1440,7 +1418,6 @@ table td
   "Krampus21/DialogBoxes/Base": [
     "Krampus21/ApplicationController",
     "Krampus21/ApplicationController",
-    "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxes/Base",
     "Krampus21/DialogBoxes/Choice",
@@ -1495,9 +1472,6 @@ table td
   ],
   "ALLEGRO_BITMAP": [
     "Krampus21/Character"
-  ],
-  "std/vector<std/string>": [
-    "Krampus21/DialogBoxFactory"
   ],
   "al_is_system_installed": [
     "Krampus21/DialogBoxRenderer",
@@ -1565,6 +1539,9 @@ table td
   ],
   "std/vector<std/vector<std/string>>": [
     "Krampus21/DialogBoxes/Base"
+  ],
+  "Krampus21/DialogBoxes/YouGotAnItem": [
+    "Krampus21/DialogFactory"
   ],
   "al_draw_text": [
     "Krampus21/Elements/DialogBoxNameTag"

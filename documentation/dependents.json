@@ -68,7 +68,6 @@
   "Krampus21/DialogBoxes/Basic": [
     "Krampus21/ApplicationController",
     "Krampus21/ApplicationController",
-    "Krampus21/DialogBoxFactory",
     "Krampus21/DialogFactory",
     "Krampus21/DialogFactory"
   ],
@@ -86,7 +85,6 @@
   "Krampus21/DialogBoxes/Base": [
     "Krampus21/ApplicationController",
     "Krampus21/ApplicationController",
-    "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxes/Base",
     "Krampus21/DialogBoxes/Choice",
@@ -141,9 +139,6 @@
   ],
   "ALLEGRO_BITMAP": [
     "Krampus21/Character"
-  ],
-  "std/vector<std/string>": [
-    "Krampus21/DialogBoxFactory"
   ],
   "al_is_system_installed": [
     "Krampus21/DialogBoxRenderer",
@@ -211,6 +206,9 @@
   ],
   "std/vector<std/vector<std/string>>": [
     "Krampus21/DialogBoxes/Base"
+  ],
+  "Krampus21/DialogBoxes/YouGotAnItem": [
+    "Krampus21/DialogFactory"
   ],
   "al_draw_text": [
     "Krampus21/Elements/DialogBoxNameTag"

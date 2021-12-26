@@ -81,7 +81,7 @@ functions:
       Krampus21::DialogBoxes::YouGotAnItem* you_got_an_item_dialog_box =
          new Krampus21::DialogBoxes::YouGotAnItem(item_num);
       //choice_dialog_box->initialize(); // doesn't seem to require initialization
-      return choice_dialog_box;
+      return you_got_an_item_dialog_box;
 
 
   - name: build_basic_dialog_from_file
