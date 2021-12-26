@@ -67,6 +67,22 @@ void DialogBoxRenderer::render()
          error_message << "DialogBoxRenderer" << "::" << "render" << ": error: " << "guard \"dialog_box\" not met";
          throw std::runtime_error(error_message.str());
       }
+   //where we want to be:
+   //std::string dialog_box_type = dialog_box->get_type();
+   //if (dialog_box->is_type("Choice"))
+   //{
+   //   Krampus21::DialogBoxes::Choice* choice_dialog_box = static_cast<Krampus21::DialogBoxes::Choice*>(dialog_box);
+   //   Krampus21::DialogBoxRenderers::ChoiceRenderer(choice_dialog_box).render();
+   //}
+   //else if (dialog_box->is_type("Basic"))
+   //{
+   //   Krampus21::DialogBoxRenderers::ChoiceRenderer(dialog_box).render();
+   //}
+   //else
+   //{
+   //   throw std::runtime_error("Unrecognized dialog box type:: " dialog_box->get_type() ");
+   //}
+
    float roundness = 18.0f;
    float border_thickness = 5.0f;
    float border_inner_padding = border_thickness * 3;
