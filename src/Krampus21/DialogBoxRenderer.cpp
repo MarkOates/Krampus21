@@ -1,6 +1,7 @@
 
 
 #include <Krampus21/DialogBoxRenderer.hpp>
+#include <allegro_flare/placement2d.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_primitives.h>
@@ -30,19 +31,12 @@ DialogBoxRenderer::DialogBoxRenderer(AllegroFlare::FontBin* font_bin, AllegroFla
    : font_bin(font_bin)
    , bitmap_bin(bitmap_bin)
    , dialog_box(dialog_box)
-   , place({ 1920/2, 1080/5*4, 1920/5*3, 1080/4 })
 {
 }
 
 
 DialogBoxRenderer::~DialogBoxRenderer()
 {
-}
-
-
-allegro_flare::placement2d DialogBoxRenderer::get_place()
-{
-   return place;
 }
 
 
@@ -93,6 +87,8 @@ void DialogBoxRenderer::render()
    //where we want to be:
    if (dialog_box->is_type("Choice"))
    {
+      allegro_flare::placement2d place{ 1920/2, 1080/5*4, 1920/5*3, 1080/4 };
+
       float width = place.size.x;
       float height = place.size.y;
       place.start_transform();
@@ -102,6 +98,8 @@ void DialogBoxRenderer::render()
    }
    else if (dialog_box->is_type("YouGotAnItem"))
    {
+      allegro_flare::placement2d place{ 1920/2, 1080/5*4, 1920/5*3, 1080/4 };
+
       float width = place.size.x;
       float height = place.size.y;
       place.start_transform();
@@ -126,24 +124,26 @@ void DialogBoxRenderer::render()
    //
    //   // Instead:
    // draw frame
+      allegro_flare::placement2d place{ 1920/2, 1080/5*4, 1920/5*3, 1080/4 };
+
       place.start_transform();
       Krampus21::Elements::DialogBoxFrame(place.size.x, place.size.y).render();
 
       if (dialog_box->get_finished())
       {
-         draw_special_state_empty_text();
+         draw_special_state_empty_text(place.size.x, place.size.y);
       }
       else
       {
-         draw_styled_revealed_text();
+         draw_styled_revealed_text(place.size.x);
 
          // draw the player's action cursor thing at the bottom
          int current_dialog_box_page_character_count = dialog_box->get_current_page_text().length();
          int num_revealed_characters = obtain_dialog_box_num_revealed_characters();
          if (num_revealed_characters >= current_dialog_box_page_character_count)
          {
-            //if (dialog_box->at_last_page()) draw_action_text("[close]");
-            draw_action_text(">>");
+            //if (dialog_box->at_last_page()) draw_action_text("[close]", place.size.x, place.size.y);
+            draw_action_text(">>", place.size.x, place.size.y);
          }
       }
 
@@ -158,7 +158,7 @@ void DialogBoxRenderer::render()
    return;
 }
 
-void DialogBoxRenderer::draw_special_state_empty_text()
+void DialogBoxRenderer::draw_special_state_empty_text(float width, float height)
 {
    ALLEGRO_FONT* text_font = obtain_dialog_font();
    ALLEGRO_COLOR text_color = al_color_name("darkslategray");
@@ -167,15 +167,15 @@ void DialogBoxRenderer::draw_special_state_empty_text()
    al_draw_text(
       text_font,
       text_color,
-      place.size.x * 0.5,
-      place.size.y * 0.5 - line_height * 0.5,
+      width * 0.5,
+      height * 0.5 - line_height * 0.5,
       ALLEGRO_ALIGN_CENTER,
       text.c_str()
    );
    return;
 }
 
-void DialogBoxRenderer::draw_action_text(std::string text)
+void DialogBoxRenderer::draw_action_text(std::string text, float width, float height)
 {
    ALLEGRO_FONT* text_font = obtain_dialog_font();
    ALLEGRO_COLOR text_color = al_color_html("66a9bc");
@@ -183,20 +183,20 @@ void DialogBoxRenderer::draw_action_text(std::string text)
    al_draw_text(
       text_font,
       text_color,
-      place.size.x-20,
-      place.size.y-line_height-10,
+      width-20,
+      height-line_height-10,
       ALLEGRO_ALIGN_RIGHT,
       text.c_str()
    );
    return;
 }
 
-void DialogBoxRenderer::draw_styled_revealed_text()
+void DialogBoxRenderer::draw_styled_revealed_text(float max_width)
 {
    std::string text = obtain_dialog_box_text();
    float text_padding_x = 40.0f;
    float text_padding_y = 30.0f;
-   float text_box_max_width = place.size.x - (text_padding_x * 2);
+   float text_box_max_width = max_width - (text_padding_x * 2);
    ALLEGRO_FONT* text_font = obtain_dialog_font();
    float line_height = al_get_font_line_height(text_font);
    //ALLEGRO_COLOR text_color = al_color_html("66a9bc");
