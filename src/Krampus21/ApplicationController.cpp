@@ -122,13 +122,31 @@ void ApplicationController::advance()
 
 void ApplicationController::handle_cursor_up_input()
 {
-   inventory.move_cursor_up();
+   if (inventory.get_active())
+   {
+      inventory.move_cursor_up();
+   }
+   else if (current_dialog && current_dialog->is_type("Choice"))
+   {
+      Krampus21::DialogBoxes::Choice* choice_dialog_box =
+         static_cast<Krampus21::DialogBoxes::Choice*>(current_dialog);
+      choice_dialog_box->move_cursor_position_up();
+   }
    return;
 }
 
 void ApplicationController::handle_cursor_down_input()
 {
-   inventory.move_cursor_down();
+   if (inventory.get_active())
+   {
+      inventory.move_cursor_down();
+   }
+   else if (current_dialog && current_dialog->is_type("Choice"))
+   {
+      Krampus21::DialogBoxes::Choice* choice_dialog_box =
+         static_cast<Krampus21::DialogBoxes::Choice*>(current_dialog);
+      choice_dialog_box->move_cursor_position_down();
+   }
    return;
 }
 
