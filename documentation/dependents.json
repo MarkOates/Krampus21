@@ -218,6 +218,9 @@
   "std/vector<std/vector<std/string>>": [
     "Krampus21/DialogBoxes/Base"
   ],
+  "al_get_time": [
+    "Krampus21/DialogBoxes/YouGotAnItem"
+  ],
   "al_draw_text": [
     "Krampus21/Elements/DialogBoxNameTag"
   ],
