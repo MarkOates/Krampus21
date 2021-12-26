@@ -105,10 +105,13 @@ void ApplicationController::advance()
       Krampus21::DialogBoxes::Choice* choice_dialog_box =
          static_cast<Krampus21::DialogBoxes::Choice*>(current_dialog);
       std::string selected_choice_value = choice_dialog_box->get_current_selection_value();
-      int script_current_line_num = script.get_current_line_num();
-      parse_and_run_line(selected_choice_value, script_current_line_num);
       delete current_dialog;
       current_dialog = nullptr;
+
+      int script_current_line_num = script.get_current_line_num();
+      parse_and_run_line(selected_choice_value, script_current_line_num);
+      //delete current_dialog;
+      //current_dialog = nullptr;
    }
 
    script.goto_next_line();
