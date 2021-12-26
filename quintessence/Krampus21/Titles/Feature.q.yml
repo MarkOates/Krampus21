@@ -42,7 +42,7 @@ functions:
       //FADING WHITE
       //FADING LIGHT
       allegro_flare::placement2d primary_text_place(1920/2, 1080/2-30, primary_text_width, primary_text_height);
-      allegro_flare::placement2d secondary_text_place(1920/2, 1080/2+62, secondary_text_width, secondary_text_height);
+      allegro_flare::placement2d secondary_text_place(1920/2, 1080/2+56, secondary_text_width, secondary_text_height);
 
       // draw the text
 
