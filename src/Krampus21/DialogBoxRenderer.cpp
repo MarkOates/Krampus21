@@ -7,7 +7,9 @@
 #include <allegro5/allegro_color.h>
 #include <Krampus21/Elements/DialogBoxFrame.hpp>
 #include <Krampus21/DialogBoxes/Choice.hpp>
+#include <Krampus21/DialogBoxes/YouGotAnItem.hpp>
 #include <Krampus21/DialogBoxRenderers/ChoiceRenderer.hpp>
+#include <Krampus21/DialogBoxRenderers/YouGotAnItemRenderer.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -96,6 +98,22 @@ void DialogBoxRenderer::render()
       place.start_transform();
       Krampus21::DialogBoxes::Choice* choice_dialog_box = static_cast<Krampus21::DialogBoxes::Choice*>(dialog_box);
       Krampus21::DialogBoxRenderers::ChoiceRenderer(font_bin, bitmap_bin, choice_dialog_box, width, height).render();
+      place.restore_transform();
+   }
+   else if (dialog_box->is_type("YouGotAnItem"))
+   {
+      float width = place.size.x;
+      float height = place.size.y;
+      place.start_transform();
+      Krampus21::DialogBoxes::YouGotAnItem* you_got_an_item_dialog_box =
+         static_cast<Krampus21::DialogBoxes::YouGotAnItem*>(dialog_box);
+      Krampus21::DialogBoxRenderers::YouGotAnItemRenderer you_got_an_item_dialog_box_renderer(
+         font_bin,
+         bitmap_bin,
+         you_got_an_item_dialog_box,
+         width, height
+      );
+      you_got_an_item_dialog_box_renderer.render();
       place.restore_transform();
    }
    else if (dialog_box->is_type("Basic"))

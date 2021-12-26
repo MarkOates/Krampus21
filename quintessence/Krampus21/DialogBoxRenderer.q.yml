@@ -45,6 +45,22 @@ functions:
          Krampus21::DialogBoxRenderers::ChoiceRenderer(font_bin, bitmap_bin, choice_dialog_box, width, height).render();
          place.restore_transform();
       }
+      else if (dialog_box->is_type("YouGotAnItem"))
+      {
+         float width = place.size.x;
+         float height = place.size.y;
+         place.start_transform();
+         Krampus21::DialogBoxes::YouGotAnItem* you_got_an_item_dialog_box =
+            static_cast<Krampus21::DialogBoxes::YouGotAnItem*>(dialog_box);
+         Krampus21::DialogBoxRenderers::YouGotAnItemRenderer you_got_an_item_dialog_box_renderer(
+            font_bin,
+            bitmap_bin,
+            you_got_an_item_dialog_box,
+            width, height
+         );
+         you_got_an_item_dialog_box_renderer.render();
+         place.restore_transform();
+      }
       else if (dialog_box->is_type("Basic"))
       {
       //   // Note: BasicRenderer does not exist
@@ -92,7 +108,9 @@ functions:
       - al_color_html
       - Krampus21::Elements::DialogBoxFrame
       - Krampus21::DialogBoxes::Choice*
+      - Krampus21::DialogBoxes::YouGotAnItem*
       - Krampus21::DialogBoxRenderers::ChoiceRenderer
+      - Krampus21::DialogBoxRenderers::YouGotAnItemRenderer
 
 
   - name: draw_special_state_empty_text
@@ -224,8 +242,12 @@ dependencies:
     headers: [ Krampus21/Elements/DialogBoxFrame.hpp ]
   - symbol: Krampus21::DialogBoxes::Choice*
     headers: [ Krampus21/DialogBoxes/Choice.hpp ]
+  - symbol: Krampus21::DialogBoxes::YouGotAnItem*
+    headers: [ Krampus21/DialogBoxes/YouGotAnItem.hpp ]
   - symbol: Krampus21::DialogBoxRenderers::ChoiceRenderer
     headers: [ Krampus21/DialogBoxRenderers/ChoiceRenderer.hpp ]
+  - symbol: Krampus21::DialogBoxRenderers::YouGotAnItemRenderer
+    headers: [ Krampus21/DialogBoxRenderers/YouGotAnItemRenderer.hpp ]
 
 
 

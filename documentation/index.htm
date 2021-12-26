@@ -491,7 +491,13 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Choice*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Choice.hpp&quot;]}</td>
 </tr>
 <tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::YouGotAnItem*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/YouGotAnItem.hpp&quot;]}</td>
+</tr>
+<tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxRenderers::ChoiceRenderer&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxRenderers/ChoiceRenderer.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxRenderers::YouGotAnItemRenderer&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxRenderers/YouGotAnItemRenderer.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -1628,7 +1634,15 @@ table td
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/DialogFactory"
   ],
+  "Krampus21/DialogBoxes/YouGotAnItem": [
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
+    "Krampus21/DialogFactory"
+  ],
   "Krampus21/DialogBoxRenderers/ChoiceRenderer": [
+    "Krampus21/DialogBoxRenderer"
+  ],
+  "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer": [
     "Krampus21/DialogBoxRenderer"
   ],
   "al_color_name": [
@@ -1645,10 +1659,6 @@ table td
   "std/vector<std/pair<std/string, std/string>>": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/DialogBoxes/Choice",
-    "Krampus21/DialogFactory"
-  ],
-  "Krampus21/DialogBoxes/YouGotAnItem": [
-    "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/DialogFactory"
   ],
   "AllegroFlare/Interpolators/": [

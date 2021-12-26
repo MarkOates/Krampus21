@@ -502,6 +502,9 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
    {
       af_inventory.add_item(atoi(argument.c_str()));
       std::cout << "You got an item " << argument << std::endl;
+      Krampus21::DialogBoxes::YouGotAnItem* created_you_got_an_item_dialog_box =
+         dialog_factory.create_you_got_an_item_dialog(1);
+      created_dialog = created_you_got_an_item_dialog_box;
    }
    else if (command == SET_CHARACTER_ART)
    {
