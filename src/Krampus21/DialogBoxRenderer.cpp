@@ -84,7 +84,7 @@ void DialogBoxRenderer::render()
    //   throw std::runtime_error("Unrecognized dialog box type:: " dialog_box->get_type() ");
    //}
 
-   // draw backfill
+   // draw frame
    place.start_transform();
    Krampus21::Elements::DialogBoxFrame(place.size.x, place.size.y).render();
 
