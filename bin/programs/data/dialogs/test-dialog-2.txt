@@ -1,3 +1,14 @@
+CHOICE: What would you choose? | Pack of gum | GOTO: *1* | Watch | GOTO: *2*
+
+MARKER: *1*
+COLLECT: 1
+GOTO: *AMBIENCE*
+
+MARKER: *2*
+COLLECT: 2
+GOTO: *AMBIENCE*
+
+MARKER: *AMBIENCE*
 __PLAY_MUSIC: AMBIENCE
 SET_CHARACTER_ART: character-1-happy.png
 Hey!
