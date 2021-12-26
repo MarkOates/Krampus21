@@ -71,6 +71,19 @@ functions:
       return choice_dialog_box;
 
 
+  - name: create_you_got_an_item_dialog
+    type: Krampus21::DialogBoxes::YouGotAnItem*
+    parameters:
+      - name: item_num
+        type: int
+        default_argument: 0
+    body: |
+      Krampus21::DialogBoxes::YouGotAnItem* you_got_an_item_dialog_box =
+         new Krampus21::DialogBoxes::YouGotAnItem(item_num);
+      //choice_dialog_box->initialize(); // doesn't seem to require initialization
+      return choice_dialog_box;
+
+
   - name: build_basic_dialog_from_file
     type: Krampus21::DialogBoxes::Basic
     parameters:
@@ -103,6 +116,8 @@ functions:
 dependencies:
 
 
+  - symbol: Krampus21::DialogBoxes::YouGotAnItem*
+    headers: [ Krampus21/DialogBoxes/YouGotAnItem.hpp ]
   - symbol: Krampus21::DialogBoxes::Choice*
     headers: [ Krampus21/DialogBoxes/Choice.hpp ]
   - symbol: Krampus21::DialogBoxes::Basic*

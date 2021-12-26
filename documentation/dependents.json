@@ -89,7 +89,8 @@
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxes/Base",
-    "Krampus21/DialogBoxes/Choice"
+    "Krampus21/DialogBoxes/Choice",
+    "Krampus21/DialogBoxes/YouGotAnItem"
   ],
   "Krampus21/ScriptLoader": [
     "Krampus21/ApplicationController"

@@ -56,6 +56,7 @@ table td
   <li><a href="#quintessence/Krampus21/DialogBoxRenderers/ChoiceRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderers/ChoiceRenderer.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/Base.q.yml">quintessence/Krampus21/DialogBoxes/Base.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/Choice.q.yml">quintessence/Krampus21/DialogBoxes/Choice.q.yml</a></li>
+  <li><a href="#quintessence/Krampus21/DialogBoxes/YouGotAnItem.q.yml">quintessence/Krampus21/DialogBoxes/YouGotAnItem.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogFactory.q.yml">quintessence/Krampus21/DialogFactory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Elements/DialogBoxFrame.q.yml">quintessence/Krampus21/Elements/DialogBoxFrame.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Elements/DialogBoxNameTag.q.yml">quintessence/Krampus21/Elements/DialogBoxNameTag.q.yml</a></li>
@@ -744,6 +745,24 @@ table td
 </ul>
 <ul>
   <div class="component">
+    <h3 id="quintessence/Krampus21/DialogBoxes/YouGotAnItem.q.yml">quintessence/Krampus21/DialogBoxes/YouGotAnItem.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">item_num</td>
+  <td class="property">int</td>
+</tr>
+    </table>
+     <table>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
     <h3 id="quintessence/Krampus21/DialogFactory.q.yml">quintessence/Krampus21/DialogFactory.q.yml</h3>
      <table>
     </table>
@@ -1424,7 +1443,8 @@ table td
     "Krampus21/DialogBoxFactory",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxes/Base",
-    "Krampus21/DialogBoxes/Choice"
+    "Krampus21/DialogBoxes/Choice",
+    "Krampus21/DialogBoxes/YouGotAnItem"
   ],
   "Krampus21/ScriptLoader": [
     "Krampus21/ApplicationController"
