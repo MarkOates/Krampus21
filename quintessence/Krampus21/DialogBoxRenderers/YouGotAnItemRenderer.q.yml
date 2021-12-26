@@ -11,10 +11,11 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
-  - name: you_got_an_item_dialog_box
-    type: Krampus21::DialogBoxes::YouGotAnItem*
-    init_with: nullptr
+  - name: age
+    type: float
+    init_with: 0
     constructor_arg: true
+    getter: true
 
   - name: width
     type: float
@@ -109,10 +110,10 @@ functions:
   - name: get_live_reveal_counter
     type: float
     body: |
-      float age = you_got_an_item_dialog_box->infer_age();
+      float local_age = get_age();
       float time_duration_to_reveal = 0.8;
-      if (age >= time_duration_to_reveal) age = time_duration_to_reveal;
-      float reveal_duration_normalized = 1.0 - ((time_duration_to_reveal - age) / time_duration_to_reveal);
+      if (local_age >= time_duration_to_reveal) local_age = time_duration_to_reveal;
+      float reveal_duration_normalized = 1.0 - ((time_duration_to_reveal - local_age) / time_duration_to_reveal);
       //return 0.5;
       return reveal_duration_normalized;
 
@@ -156,8 +157,6 @@ dependencies:
 
   - symbol: allegro_flare::placement2d
     headers: [ allegro_flare/placement2d.h ]
-  - symbol: Krampus21::DialogBoxes::YouGotAnItem*
-    headers: [ Krampus21/DialogBoxes/YouGotAnItem.hpp ]
   - symbol: AllegroFlare::BitmapBin*
     headers: [ AllegroFlare/BitmapBin.hpp ]
   - symbol: AllegroFlare::FontBin*

@@ -27,27 +27,25 @@ TEST_F(Krampus21_DialogBoxRenderers_YouGotAnItemRendererWithAllegroRenderingFixt
    render__renders_the_dialog_box)
 {
    allegro_flare::placement2d place{ 1920/2, 1080/4*2, 400, 400 };
-   Krampus21::DialogBoxes::YouGotAnItem you_got_an_item_dialog_box(1);
-   Krampus21::DialogBoxRenderers::YouGotAnItemRenderer you_got_an_item_renderer(
-      &get_font_bin_ref(),
-      &get_bitmap_bin_ref(),
-      &you_got_an_item_dialog_box,
-      place.size.x,
-      place.size.y
-   );
-
-   you_got_an_item_dialog_box.show();
+   float age = 0.0;
 
    int passes = 60*2;
-   //int passes = 0;
    for (unsigned i=0; i<passes; i++)
    {
       al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 1});
       place.start_transform();
+      Krampus21::DialogBoxRenderers::YouGotAnItemRenderer you_got_an_item_renderer(
+         &get_font_bin_ref(),
+         &get_bitmap_bin_ref(),
+         age,
+         place.size.x,
+         place.size.y
+      );
       you_got_an_item_renderer.render();
       place.restore_transform();
       al_flip_display();
       std::this_thread::sleep_for(std::chrono::milliseconds(1000/60));
+      age += 1.0/60.0f;
    }
 }
 

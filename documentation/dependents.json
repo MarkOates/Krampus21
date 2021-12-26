@@ -195,7 +195,6 @@
   ],
   "Krampus21/DialogBoxes/YouGotAnItem": [
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/DialogFactory"
   ],
   "Krampus21/DialogBoxRenderers/ChoiceRenderer": [

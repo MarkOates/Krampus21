@@ -17,10 +17,10 @@ namespace DialogBoxRenderers
 {
 
 
-YouGotAnItemRenderer::YouGotAnItemRenderer(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* bitmap_bin, Krampus21::DialogBoxes::YouGotAnItem* you_got_an_item_dialog_box, float width, float height)
+YouGotAnItemRenderer::YouGotAnItemRenderer(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* bitmap_bin, float age, float width, float height)
    : font_bin(font_bin)
    , bitmap_bin(bitmap_bin)
-   , you_got_an_item_dialog_box(you_got_an_item_dialog_box)
+   , age(age)
    , width(width)
    , height(height)
 {
@@ -29,6 +29,12 @@ YouGotAnItemRenderer::YouGotAnItemRenderer(AllegroFlare::FontBin* font_bin, Alle
 
 YouGotAnItemRenderer::~YouGotAnItemRenderer()
 {
+}
+
+
+float YouGotAnItemRenderer::get_age()
+{
+   return age;
 }
 
 
@@ -110,10 +116,10 @@ void YouGotAnItemRenderer::render()
 
 float YouGotAnItemRenderer::get_live_reveal_counter()
 {
-   float age = you_got_an_item_dialog_box->infer_age();
+   float local_age = get_age();
    float time_duration_to_reveal = 0.8;
-   if (age >= time_duration_to_reveal) age = time_duration_to_reveal;
-   float reveal_duration_normalized = 1.0 - ((time_duration_to_reveal - age) / time_duration_to_reveal);
+   if (local_age >= time_duration_to_reveal) local_age = time_duration_to_reveal;
+   float reveal_duration_normalized = 1.0 - ((time_duration_to_reveal - local_age) / time_duration_to_reveal);
    //return 0.5;
    return reveal_duration_normalized;
 }

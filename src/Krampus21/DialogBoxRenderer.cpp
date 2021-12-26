@@ -105,10 +105,11 @@ void DialogBoxRenderer::render()
       place.start_transform();
       Krampus21::DialogBoxes::YouGotAnItem* you_got_an_item_dialog_box =
          static_cast<Krampus21::DialogBoxes::YouGotAnItem*>(dialog_box);
+      float age = you_got_an_item_dialog_box->infer_age();
       Krampus21::DialogBoxRenderers::YouGotAnItemRenderer you_got_an_item_dialog_box_renderer(
          font_bin,
          bitmap_bin,
-         you_got_an_item_dialog_box,
+         age,
          width, height
       );
       you_got_an_item_dialog_box_renderer.render();
