@@ -69,10 +69,10 @@ Krampus21::DialogBoxes::Choice* DialogFactory::create_choice_dialog(std::string 
    return choice_dialog_box;
 }
 
-Krampus21::DialogBoxes::YouGotAnItem* DialogFactory::create_you_got_an_item_dialog(int item_num)
+Krampus21::DialogBoxes::YouGotAnItem* DialogFactory::create_you_got_an_item_dialog(int item_num, std::string item_name, std::string item_bitmap_identifier)
 {
    Krampus21::DialogBoxes::YouGotAnItem* you_got_an_item_dialog_box =
-      new Krampus21::DialogBoxes::YouGotAnItem(item_num);
+      new Krampus21::DialogBoxes::YouGotAnItem(item_num, item_name, item_bitmap_identifier);
    you_got_an_item_dialog_box->set_created_at(al_get_time());
    you_got_an_item_dialog_box->show();
    //choice_dialog_box->initialize(); // doesn't seem to require initialization

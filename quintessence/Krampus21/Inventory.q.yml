@@ -470,7 +470,6 @@ functions:
 
   - name: get_item_definition
     type: std::tuple<std::string, std::string, std::string>
-    private: true
     parameters:
       - name: index
         type: int

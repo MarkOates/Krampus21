@@ -215,7 +215,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_a_you_got_an_item_type_dialo
    AllegroFlare::BitmapBin bitmap_bin;
    font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
    bitmap_bin.set_full_path(TEST_FIXTURE_BITMAP_FOLDER);
-   Krampus21::DialogBoxes::YouGotAnItem you_got_an_item_dialog_box(1);
+   Krampus21::DialogBoxes::YouGotAnItem you_got_an_item_dialog_box(1, "Watch", "watch-01.png");
    Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &bitmap_bin, &you_got_an_item_dialog_box);
 
    dialog_box_renderer.render();

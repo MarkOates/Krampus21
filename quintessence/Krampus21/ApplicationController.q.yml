@@ -572,10 +572,20 @@ functions:
       }
       else if (command == COLLECT)
       {
-         af_inventory.add_item(atoi(argument.c_str()));
+         int item_id = atoi(argument.c_str());
+         std::tuple<std::string, std::string, std::string> item_definition = inventory.get_item_definition(item_id);
+         std::string item_name = std::get<0>(item_definition);
+         std::string item_bitmap_identifier = std::get<1>(item_definition);
+
+         // add the item to the inventory
+         af_inventory.add_item(item_id);
+
+         // cout for debugging
          std::cout << "You got an item " << argument << std::endl;
+
+         // construct the dialog
          Krampus21::DialogBoxes::YouGotAnItem* created_you_got_an_item_dialog_box =
-            dialog_factory.create_you_got_an_item_dialog(1);
+            dialog_factory.create_you_got_an_item_dialog(item_id, item_name, item_bitmap_identifier);
          created_dialog = created_you_got_an_item_dialog_box;
       }
       else if (command == SET_CHARACTER_ART)
