@@ -179,19 +179,32 @@ functions:
 
   - name: handle_cursor_left_input
     body: |
-      inventory.move_cursor_left();
+      if (inventory.get_active())
+      {
+         inventory.move_cursor_left();
+      }
       return;
 
 
   - name: handle_cursor_right_input
     body: |
-      inventory.move_cursor_right();
+      if (inventory.get_active())
+      {
+         inventory.move_cursor_right();
+      }
       return;
 
 
   - name: handle_submit_input
     body: |
-      advance();
+      if (inventory.get_active())
+      {
+         // do nothing
+      }
+      else
+      {
+         advance();
+      }
       return;
 
 

@@ -150,19 +150,32 @@ void ApplicationController::handle_cursor_down_input()
 
 void ApplicationController::handle_cursor_left_input()
 {
-   inventory.move_cursor_left();
+   if (inventory.get_active())
+   {
+      inventory.move_cursor_left();
+   }
    return;
 }
 
 void ApplicationController::handle_cursor_right_input()
 {
-   inventory.move_cursor_right();
+   if (inventory.get_active())
+   {
+      inventory.move_cursor_right();
+   }
    return;
 }
 
 void ApplicationController::handle_submit_input()
 {
-   advance();
+   if (inventory.get_active())
+   {
+      // do nothing
+   }
+   else
+   {
+      advance();
+   }
    return;
 }
 
