@@ -30,12 +30,13 @@ YouGotAnItemRenderer::~YouGotAnItemRenderer()
 
 void YouGotAnItemRenderer::render()
 {
-   Krampus21::Elements::DialogBoxFrame dialog_box_renderer;
-   dialog_box_renderer.render();
-
    ALLEGRO_FONT* font = obtain_dialog_font();
    ALLEGRO_COLOR text_color = al_color_html("fbedc3");
    std::string notification_text = "You got an item!";
+   Krampus21::Elements::DialogBoxFrame dialog_box_frame;
+   dialog_box_frame.set_fill_color(al_color_html("2a2104"));
+
+   dialog_box_frame.render();
    al_draw_text(font, text_color, width/2, height/2, ALLEGRO_ALIGN_CENTER, notification_text.c_str());
    return;
 }
