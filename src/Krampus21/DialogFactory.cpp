@@ -73,6 +73,7 @@ Krampus21::DialogBoxes::YouGotAnItem* DialogFactory::create_you_got_an_item_dial
 {
    Krampus21::DialogBoxes::YouGotAnItem* you_got_an_item_dialog_box =
       new Krampus21::DialogBoxes::YouGotAnItem(item_num);
+   you_got_an_item_dialog_box->set_created_at(al_get_time());
    //choice_dialog_box->initialize(); // doesn't seem to require initialization
    return you_got_an_item_dialog_box;
 }
