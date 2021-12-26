@@ -17,9 +17,11 @@ namespace Krampus21
          AllegroFlare::FontBin* font_bin;
          AllegroFlare::BitmapBin* bitmap_bin;
          Krampus21::DialogBoxes::YouGotAnItem* you_got_an_item_dialog_box;
+         float width;
+         float height;
 
       public:
-         YouGotAnItemRenderer(AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, Krampus21::DialogBoxes::YouGotAnItem* you_got_an_item_dialog_box=nullptr);
+         YouGotAnItemRenderer(AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, Krampus21::DialogBoxes::YouGotAnItem* you_got_an_item_dialog_box=nullptr, float width=1, float height=1);
          ~YouGotAnItemRenderer();
 
          void render();

@@ -24,13 +24,21 @@ TEST_F(Krampus21_DialogBoxRenderers_YouGotAnItemRendererTest, can_be_created_wit
 TEST_F(Krampus21_DialogBoxRenderers_YouGotAnItemRendererWithAllegroRenderingFixtureTest,
    render__renders_the_dialog_box)
 {
+   allegro_flare::placement2d place{ 1920/2, 1080/4*3, 1920/5*3, 1080/4 };
    Krampus21::DialogBoxes::YouGotAnItem you_got_an_item_dialog_box(1);
    Krampus21::DialogBoxRenderers::YouGotAnItemRenderer you_got_an_item_renderer(
       &get_font_bin_ref(),
       &get_bitmap_bin_ref(),
-      &you_got_an_item_dialog_box
+      &you_got_an_item_dialog_box,
+      place.size.x,
+      place.size.y
    );
+
+   al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 1});
+   place.start_transform();
    you_got_an_item_renderer.render();
+   place.restore_transform();
+
    al_flip_display();
    sleep(1);
 }

@@ -11,10 +11,12 @@ namespace DialogBoxRenderers
 {
 
 
-YouGotAnItemRenderer::YouGotAnItemRenderer(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* bitmap_bin, Krampus21::DialogBoxes::YouGotAnItem* you_got_an_item_dialog_box)
+YouGotAnItemRenderer::YouGotAnItemRenderer(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* bitmap_bin, Krampus21::DialogBoxes::YouGotAnItem* you_got_an_item_dialog_box, float width, float height)
    : font_bin(font_bin)
    , bitmap_bin(bitmap_bin)
    , you_got_an_item_dialog_box(you_got_an_item_dialog_box)
+   , width(width)
+   , height(height)
 {
 }
 
