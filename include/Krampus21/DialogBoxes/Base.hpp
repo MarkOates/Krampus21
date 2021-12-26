@@ -17,16 +17,19 @@ namespace Krampus21
          int current_page_num;
          bool finished;
          int num_revealed_characters;
+         float created_at;
 
       public:
          Base(std::string type="Base", std::vector<std::string> pages={});
          virtual ~Base();
 
+         void set_created_at(float created_at);
          std::string get_type();
          std::vector<std::string> get_pages();
          int get_current_page_num();
          bool get_finished();
          int get_num_revealed_characters();
+         float get_created_at();
          void set_pages(std::vector<std::string> pages={});
          void reset();
          virtual void update();

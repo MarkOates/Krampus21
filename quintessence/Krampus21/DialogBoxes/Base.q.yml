@@ -28,6 +28,12 @@ properties:
     init_with: 9999
     getter: true
 
+  - name: created_at
+    type: float
+    init_with: 0
+    getter: true
+    setter: true
+
 
 functions:
 

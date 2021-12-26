@@ -16,12 +16,19 @@ Base::Base(std::string type, std::vector<std::string> pages)
    , current_page_num(-1)
    , finished(false)
    , num_revealed_characters(9999)
+   , created_at(0)
 {
 }
 
 
 Base::~Base()
 {
+}
+
+
+void Base::set_created_at(float created_at)
+{
+   this->created_at = created_at;
 }
 
 
@@ -52,6 +59,12 @@ bool Base::get_finished()
 int Base::get_num_revealed_characters()
 {
    return num_revealed_characters;
+}
+
+
+float Base::get_created_at()
+{
+   return created_at;
 }
 
 
