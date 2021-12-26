@@ -183,6 +183,7 @@
   "Krampus21/Elements/DialogBoxFrame": [
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Elements/DialogBoxNameTag"
   ],
   "Krampus21/DialogBoxes/Choice": [

@@ -2,6 +2,7 @@
 
 #include <Krampus21/DialogBoxRenderers/YouGotAnItemRenderer.hpp>
 #include <allegro5/allegro_color.h>
+#include <Krampus21/Elements/DialogBoxFrame.hpp>
 #include <stdexcept>
 #include <sstream>
 
@@ -29,6 +30,9 @@ YouGotAnItemRenderer::~YouGotAnItemRenderer()
 
 void YouGotAnItemRenderer::render()
 {
+   Krampus21::Elements::DialogBoxFrame dialog_box_renderer;
+   dialog_box_renderer.render();
+
    ALLEGRO_FONT* font = obtain_dialog_font();
    ALLEGRO_COLOR text_color = al_color_html("fbedc3");
    std::string notification_text = "You got an item!";
