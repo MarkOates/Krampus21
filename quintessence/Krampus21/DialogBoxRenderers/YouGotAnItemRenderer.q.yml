@@ -40,6 +40,8 @@ functions:
       float notification_text_font_line_heigt = al_get_font_line_height(notification_text_font);
       float item_name_text_font_line_heigt = al_get_font_line_height(item_name_text_font);
       ALLEGRO_COLOR text_color = opaquify(al_color_html("fbedc3"));
+      ALLEGRO_COLOR item_name_text_color = opaquify(al_color_html("ffffff"));
+      ALLEGRO_COLOR item_name_text_dropshadow_color = opaquify(al_color_html("770000"));
       std::string notification_text = "You got an item!";
       std::string item_name_text = "Watch";
       std::string item_bitmap_identifier = "watch-01.png";
@@ -76,12 +78,22 @@ functions:
       al_draw_tinted_bitmap(item_bitmap, fading_white, 0, 0, 0);
       item_place.restore_transform();
 
-      // he collected item name
+      // the collected item name
+      // draw a nice little drop shadow :)
+      float item_name_text_y_position = height/2 + 120;
       al_draw_text(
          item_name_text_font,
-         text_color,
+         item_name_text_dropshadow_color,
          width/2,
-         height/2 + 120,
+         item_name_text_y_position + 3,
+         ALLEGRO_ALIGN_CENTER,
+         item_name_text.c_str()
+      );
+      al_draw_text(
+         item_name_text_font,
+         item_name_text_color,
+         width/2,
+         item_name_text_y_position,
          ALLEGRO_ALIGN_CENTER,
          item_name_text.c_str()
       );

@@ -98,7 +98,7 @@ void DialogBoxRenderer::render()
    }
    else if (dialog_box->is_type("YouGotAnItem"))
    {
-      allegro_flare::placement2d place{ 1920/2, 1080/5*4, 1920/5*3, 1080/4 };
+      allegro_flare::placement2d place{ 1920/2, 1080/2, 400, 420 };
 
       float width = place.size.x;
       float height = place.size.y;
