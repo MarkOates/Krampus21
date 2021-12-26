@@ -20,9 +20,9 @@ BlackCard::~BlackCard()
 }
 
 
-std::string BlackCard::run()
+void BlackCard::render()
 {
-   return "Hello World!";
+   return;
 }
 } // namespace Titles
 } // namespace Krampus21

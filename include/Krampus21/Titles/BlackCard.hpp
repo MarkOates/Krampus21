@@ -1,7 +1,6 @@
 #pragma once
 
 
-#include <string>
 
 
 namespace Krampus21
@@ -16,7 +15,7 @@ namespace Krampus21
          BlackCard();
          ~BlackCard();
 
-         std::string run();
+         void render();
       };
    }
 }
