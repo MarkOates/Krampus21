@@ -26,7 +26,14 @@ functions:
 
 
   - name: render
-    guards: [ al_is_system_installed(), al_is_primitives_addon_initialized(), al_get_current_display(), dialog_box ]
+    guards:
+      - al_is_system_installed()
+      - al_is_primitives_addon_initialized()
+      - al_get_current_display()
+      - dialog_box
+      - al_is_font_addon_initialized()
+      - al_is_ttf_addon_initialized()
+      - font_bin
     body: |
       //where we want to be:
       if (dialog_box->is_type("Choice"))

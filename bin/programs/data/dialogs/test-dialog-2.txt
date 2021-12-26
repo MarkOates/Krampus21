@@ -1,3 +1,4 @@
+I'll ask you a question...
 CHOICE: What would you choose? | Pack of gum | GOTO: *CHOOSE_GUM* | Watch | GOTO: *CHOOSE_WATCH*
 
 MARKER: *CHOOSE_GUM*

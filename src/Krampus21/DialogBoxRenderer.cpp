@@ -70,6 +70,24 @@ void DialogBoxRenderer::render()
          error_message << "DialogBoxRenderer" << "::" << "render" << ": error: " << "guard \"dialog_box\" not met";
          throw std::runtime_error(error_message.str());
       }
+   if (!(al_is_font_addon_initialized()))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBoxRenderer" << "::" << "render" << ": error: " << "guard \"al_is_font_addon_initialized()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!(al_is_ttf_addon_initialized()))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBoxRenderer" << "::" << "render" << ": error: " << "guard \"al_is_ttf_addon_initialized()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!(font_bin))
+      {
+         std::stringstream error_message;
+         error_message << "DialogBoxRenderer" << "::" << "render" << ": error: " << "guard \"font_bin\" not met";
+         throw std::runtime_error(error_message.str());
+      }
    //where we want to be:
    if (dialog_box->is_type("Choice"))
    {

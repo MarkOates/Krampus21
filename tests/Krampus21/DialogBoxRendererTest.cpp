@@ -20,6 +20,8 @@
 #define TEST_FIXTURE_FONT_FOLDER "/Users/markoates/Repos/Krampus21/bin/programs/data/fonts/"
 #endif
 
+#include <Krampus21/DialogBoxes/Choice.hpp>
+
 
 TEST(Krampus21_DialogBoxRendererTest, can_be_created_without_blowing_up)
 {
@@ -73,7 +75,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_the_allegro_font_addon_has_no
    Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, nullptr, &dialog_box);
 
    std::string expected_error_message =
-      "DialogBoxRenderer::obtain_dialog_font: error: guard \"al_is_font_addon_initialized()\" not met";
+      "DialogBoxRenderer::render: error: guard \"al_is_font_addon_initialized()\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_destroy_display(display);
@@ -93,7 +95,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_the_allegro_ttf_addon_has_not
    Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, nullptr, &dialog_box);
 
    std::string expected_error_message =
-      "DialogBoxRenderer::obtain_dialog_font: error: guard \"font_bin\" not met";
+      "DialogBoxRenderer::render: error: guard \"font_bin\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_destroy_display(display);
@@ -113,7 +115,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_font_bin__raises_
    Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, nullptr, &dialog_box);
 
    std::string expected_error_message =
-      "DialogBoxRenderer::obtain_dialog_font: error: guard \"font_bin\" not met";
+      "DialogBoxRenderer::render: error: guard \"font_bin\" not met";
    ASSERT_THROW_WITH_MESSAGE(dialog_box_renderer.render(), std::runtime_error, expected_error_message);
 
    al_destroy_display(display);
@@ -160,6 +162,38 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_the_dialog_box)
    dialog_box_renderer.render();
    al_flip_display();
    //std::this_thread::sleep_for(std::chrono::seconds(1));
+
+   al_destroy_display(display);
+   al_uninstall_system();
+}
+
+
+TEST(Krampus21_DialogBoxRendererTest, render__draws_a_choice_type_dialog_box)
+{
+   al_init();
+   al_init_primitives_addon();
+   al_init_font_addon();
+   al_init_ttf_addon();
+   ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
+   AllegroFlare::FontBin font_bin;
+   AllegroFlare::BitmapBin bitmap_bin;
+   font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
+   Krampus21::DialogBoxes::Choice choice_dialog_box(
+      "What's up!?",
+      {
+         { "Not much", "NOTHING", },
+         { "A lot", "EVERYTHING" },
+      }
+   );
+   choice_dialog_box.initialize();
+   //dialog_box.set_pages({ "Some test dialog text with multiple pages.", "Here's the second page." });
+   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &bitmap_bin, &choice_dialog_box);
+
+   //choice_dialog_box.reveal_all_characters();
+
+   dialog_box_renderer.render();
+   al_flip_display();
+   std::this_thread::sleep_for(std::chrono::seconds(1));
 
    al_destroy_display(display);
    al_uninstall_system();
