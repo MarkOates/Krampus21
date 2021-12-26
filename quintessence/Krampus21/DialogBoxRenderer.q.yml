@@ -38,42 +38,45 @@ functions:
          Krampus21::DialogBoxRenderers::ChoiceRenderer(font_bin, bitmap_bin, choice_dialog_box, width, height).render();
          place.restore_transform();
       }
-      //else if (dialog_box->is_type("Basic"))
-      //{
+      else if (dialog_box->is_type("Basic"))
+      {
       //   // Note: BasicRenderer does not exist
       //   // probably... place.start_transform();
-      //   Krampus21::DialogBoxes::Basic* basic_dialog_box = static_cast<Krampus21::DialogBoxes::Basic*>(dalog_box);
+      //   //Krampus21::DialogBoxes::Basic* basic_dialog_box = static_cast<Krampus21::DialogBoxes::Basic*>(dalog_box);
       //   //Krampus21::DialogBoxRenderers::BasicRenderer(basic_dialog_box).render();
       //   //place.restore_transform();
-      //}
-      //else
-      //{
-      //   throw std::runtime_error("Unrecognized dialog box type:: " dialog_box->get_type() ");
-      //}
-
+      //
+      //   // Instead:
       // draw frame
-      place.start_transform();
-      Krampus21::Elements::DialogBoxFrame(place.size.x, place.size.y).render();
+         place.start_transform();
+         Krampus21::Elements::DialogBoxFrame(place.size.x, place.size.y).render();
 
-      if (dialog_box->get_finished())
-      {
-         draw_special_state_empty_text();
+         if (dialog_box->get_finished())
+         {
+            draw_special_state_empty_text();
+         }
+         else
+         {
+            draw_styled_revealed_text();
+
+            // draw the player's action cursor thing at the bottom
+            int current_dialog_box_page_character_count = dialog_box->get_current_page_text().length();
+            int num_revealed_characters = obtain_dialog_box_num_revealed_characters();
+            if (num_revealed_characters >= current_dialog_box_page_character_count)
+            {
+               //if (dialog_box->at_last_page()) draw_action_text("[close]");
+               draw_action_text(">>");
+            }
+         }
+
+         place.restore_transform();
       }
       else
       {
-         draw_styled_revealed_text();
-
-         // draw the player's action cursor thing at the bottom
-         int current_dialog_box_page_character_count = dialog_box->get_current_page_text().length();
-         int num_revealed_characters = obtain_dialog_box_num_revealed_characters();
-         if (num_revealed_characters >= current_dialog_box_page_character_count)
-         {
-            //if (dialog_box->at_last_page()) draw_action_text("[close]");
-            draw_action_text(">>");
-         }
+         // TODO
+         //throw std::runtime_error("Unrecognized dialog box type:: " dialog_box->get_type() ");
       }
 
-      place.restore_transform();
       return;
     body_dependency_symbols:
       - al_is_system_installed
