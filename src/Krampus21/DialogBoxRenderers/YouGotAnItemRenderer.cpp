@@ -17,9 +17,11 @@ namespace DialogBoxRenderers
 {
 
 
-YouGotAnItemRenderer::YouGotAnItemRenderer(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* bitmap_bin, float age, float width, float height)
+YouGotAnItemRenderer::YouGotAnItemRenderer(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* bitmap_bin, std::string item_name, std::string item_bitmap_identifier, float age, float width, float height)
    : font_bin(font_bin)
    , bitmap_bin(bitmap_bin)
+   , item_name(item_name)
+   , item_bitmap_identifier(item_bitmap_identifier)
    , age(age)
    , width(width)
    , height(height)
@@ -29,6 +31,18 @@ YouGotAnItemRenderer::YouGotAnItemRenderer(AllegroFlare::FontBin* font_bin, Alle
 
 YouGotAnItemRenderer::~YouGotAnItemRenderer()
 {
+}
+
+
+std::string YouGotAnItemRenderer::get_item_name()
+{
+   return item_name;
+}
+
+
+std::string YouGotAnItemRenderer::get_item_bitmap_identifier()
+{
+   return item_bitmap_identifier;
 }
 
 
@@ -56,8 +70,8 @@ void YouGotAnItemRenderer::render()
    ALLEGRO_COLOR item_name_text_color = opaquify(al_color_html("ffffff"));
    ALLEGRO_COLOR item_name_text_dropshadow_color = opaquify(al_color_html("770000"));
    std::string notification_text = "You got an item!";
-   std::string item_name_text = "Watch";
-   std::string item_bitmap_identifier = "watch-01.png";
+   std::string item_name_text = get_item_name(); // "Watch";
+   std::string item_bitmap_identifier = get_item_bitmap_identifier(); //"watch-01.png";
    ALLEGRO_BITMAP* item_bitmap = bitmap_bin->auto_get(item_bitmap_identifier);
    Krampus21::Elements::DialogBoxFrame dialog_box_frame(width, height);
    dialog_box_frame.set_fill_color(opaquify(al_color_html("2a2104")));

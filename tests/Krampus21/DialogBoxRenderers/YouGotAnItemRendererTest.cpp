@@ -27,6 +27,8 @@ TEST_F(Krampus21_DialogBoxRenderers_YouGotAnItemRendererWithAllegroRenderingFixt
    render__renders_the_dialog_box)
 {
    allegro_flare::placement2d place{ 1920/2, 1080/4*2, 400, 400 };
+   std::string item_name = "Pack of gum";
+   std::string item_bitmap_identifier = "pack-of-gum-01.png";
    float age = 0.0;
 
    int passes = 60*2;
@@ -37,6 +39,8 @@ TEST_F(Krampus21_DialogBoxRenderers_YouGotAnItemRendererWithAllegroRenderingFixt
       Krampus21::DialogBoxRenderers::YouGotAnItemRenderer you_got_an_item_renderer(
          &get_font_bin_ref(),
          &get_bitmap_bin_ref(),
+         item_name,
+         item_bitmap_identifier,
          age,
          place.size.x,
          place.size.y

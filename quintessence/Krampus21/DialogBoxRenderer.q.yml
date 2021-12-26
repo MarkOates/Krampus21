@@ -52,9 +52,13 @@ functions:
          Krampus21::DialogBoxes::YouGotAnItem* you_got_an_item_dialog_box =
             static_cast<Krampus21::DialogBoxes::YouGotAnItem*>(dialog_box);
          float age = you_got_an_item_dialog_box->infer_age();
+         std::string item_name = "Pack of gum";
+         std::string item_bitmap_identifier = "pack-of-gum-01.png";
          Krampus21::DialogBoxRenderers::YouGotAnItemRenderer you_got_an_item_dialog_box_renderer(
             font_bin,
             bitmap_bin,
+            item_name,
+            item_bitmap_identifier,
             age,
             width, height
          );
