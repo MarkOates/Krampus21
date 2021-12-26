@@ -466,8 +466,11 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
       // next consecutive tokens are (choice_text, choice_value) pairs
       for (unsigned i=2; i<tokens.size(); i+=2)
       {
-         std::cout << "WARNING: CHOICE argument on line [" << line_num << "] contains arguments that are empty. "
-                   << "The full argument is \"" << argument << "\"" << std::endl;
+         if (tokens[i-1].empty() || tokens[i].empty())
+         {
+            std::cout << "WARNING: CHOICE argument on line [" << line_num << "] contains arguments that are empty. "
+                      << "The full argument is \"" << argument << "\"" << std::endl;
+         }
          choice_options.push_back({ tokens[i-1], tokens[i] });
       }
 
