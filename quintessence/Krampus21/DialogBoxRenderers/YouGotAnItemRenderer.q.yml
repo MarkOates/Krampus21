@@ -1,0 +1,21 @@
+properties:
+
+  - name: you_got_an_item_dialog_box
+    type: Krampus21::DialogBoxes::YouGotAnItem*
+    init_with: nullptr
+
+functions:
+
+
+  - name: render
+    body: |
+      return;
+
+
+dependencies:
+
+
+  - symbol: Krampus21::DialogBoxes::YouGotAnItem*
+    headers: [ Krampus21/DialogBoxes/YouGotAnItem.hpp ]
+
+
