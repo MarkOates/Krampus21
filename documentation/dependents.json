@@ -216,6 +216,9 @@
     "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/DialogFactory"
   ],
+  "AllegroFlare/Interpolators/": [
+    "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer"
+  ],
   "std/vector<std/vector<std/string>>": [
     "Krampus21/DialogBoxes/Base"
   ],

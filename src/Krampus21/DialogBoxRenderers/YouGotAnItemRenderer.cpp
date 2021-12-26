@@ -4,6 +4,7 @@
 #include <allegro5/allegro_color.h>
 #include <Krampus21/Elements/DialogBoxFrame.hpp>
 #include <allegro_flare/placement2d.h>
+#include <AllegroFlare/Interpolators.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -59,9 +60,10 @@ void YouGotAnItemRenderer::render()
 
    // animations
    float reveal_counter = get_live_reveal_counter();
-   item_place.position.y += ((1.0 - reveal_counter) * 20);
-   item_place.scale.x += item_place.scale.x * (0.2 * reveal_counter);
-   item_place.scale.y += item_place.scale.y * (0.2 * reveal_counter);
+   item_place.position.y += ((1.0 - AllegroFlare::interpolator::fast_in(reveal_counter)) * 30);
+   float scale_multiplier = 1.0;
+   item_place.scale.x = item_place.scale.x * scale_multiplier;
+   item_place.scale.y = item_place.scale.y * scale_multiplier;
 
    // draw the frame
    dialog_box_frame.render();
@@ -138,8 +140,9 @@ ALLEGRO_COLOR YouGotAnItemRenderer::opaquify(ALLEGRO_COLOR color)
 {
    //AllegroFlare::color::change_alpha(color, reveal_counter);
    //AllegroFlare::color::change_alpha(color, 1.0);
-   float alpha = get_live_reveal_counter();
-      color.a *= alpha;
+      float opacity = get_live_reveal_counter();
+      opacity = AllegroFlare::interpolator::double_fast_in(opacity);
+      color.a *= opacity;
       color.r *= color.a;
       color.g *= color.a;
       color.b *= color.a;
