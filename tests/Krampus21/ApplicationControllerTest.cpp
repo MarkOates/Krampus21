@@ -94,7 +94,7 @@ TEST(Krampus21_ApplicationControllerTest, parse_and_run_line__will_parse_a_DIALO
 TEST(Krampus21_ApplicationControllerTest, parse_and_run_line__will_parse_a_CHOICE_command)
    // note this is a private method test
 {
-   std::string script_line = "CHOICE: What would you choose? | Apple | COLLECT APPLE | Pear | COLLECT PEAR";
+   std::string script_line = "CHOICE: What would you choose? | Apple | COLLECT: APPLE | Pear | COLLECT: PEAR";
    Krampus21::ApplicationController script_loader;
 
    script_loader.parse_and_run_line(script_line);
@@ -107,8 +107,8 @@ TEST(Krampus21_ApplicationControllerTest, parse_and_run_line__will_parse_a_CHOIC
 
    std::string expected_prompt = "What would you choose?";
    std::vector<std::pair<std::string, std::string>> expected_options = {
-      { "Apple", "COLLECT APPLE" },
-      { "Pear", "COLLECT PEAR" },
+      { "Apple", "COLLECT: APPLE" },
+      { "Pear", "COLLECT: PEAR" },
    };
    EXPECT_EQ(expected_prompt, created_choice_dialog->get_prompt());
    EXPECT_EQ(expected_options, created_choice_dialog->get_options());
