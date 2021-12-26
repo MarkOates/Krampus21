@@ -156,7 +156,8 @@ void ApplicationController::play_current_script_line()
    do
    {
       std::string script_line = script.get_current_line_text();
-      continue_directly_to_next_script_line = parse_and_run_line(script_line);
+      int script_current_line_num = script.get_current_line_num();
+      continue_directly_to_next_script_line = parse_and_run_line(script_line, script_current_line_num);
 
       if (continue_directly_to_next_script_line)
       {
@@ -407,7 +408,7 @@ AllegroFlare::BitmapBin* ApplicationController::obtain_bitmap_bin()
    return &framework->get_bitmap_bin_ref();
 }
 
-bool ApplicationController::parse_and_run_line(std::string script_line)
+bool ApplicationController::parse_and_run_line(std::string script_line, int line_num)
 {
    std::string DIALOG = "DIALOG";
    std::string GOTO = "GOTO";
@@ -455,7 +456,8 @@ bool ApplicationController::parse_and_run_line(std::string script_line)
       // next consecutive tokens are (choice_text, choice_value) pairs
       for (unsigned i=2; i<tokens.size(); i+=2)
       {
-         // TODO warning if token is empty
+         std::cout << "WARNING: CHOICE argument on line [" << line_num << "] contains arguments that are empty. "
+                   << "The full argument is \"" << argument << "\"" << std::endl;
          choice_options.push_back({ tokens[i-1], tokens[i] });
       }
 

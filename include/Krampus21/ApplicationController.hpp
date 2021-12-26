@@ -77,7 +77,7 @@ namespace Krampus21
       void user_event_func(ALLEGRO_EVENT* ev=nullptr) override;
       AllegroFlare::FontBin* obtain_font_bin();
       AllegroFlare::BitmapBin* obtain_bitmap_bin();
-      bool parse_and_run_line(std::string script_line="[empty-script-line]");
+      bool parse_and_run_line(std::string script_line="[empty-script-line]", int line_num=0);
       static std::pair<std::string, std::string> parse_command_and_argument(std::string script_line={});
       static std::map<std::string, int> build_markers_index(std::vector<std::string> script_lines={});
       static std::vector<std::string> tokenize(std::string str="", char delim='|');
