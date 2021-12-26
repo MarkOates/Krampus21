@@ -1,0 +1,24 @@
+parent_classes:
+
+
+  - class: Krampus21::DialogBoxes::Base
+    scope: public
+    init_with: '"YouGotAnItem"'
+
+
+properties:
+
+
+  - name: item_num
+    type: int
+    init_with: 0
+    constructor_arg: true
+
+
+dependencies:
+
+
+  - symbol: Krampus21::DialogBoxes::Base
+    headers: [ Krampus21/DialogBoxes/Base.hpp ]
+
+
