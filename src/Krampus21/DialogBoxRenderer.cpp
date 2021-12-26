@@ -73,9 +73,11 @@ void DialogBoxRenderer::render()
    //where we want to be:
    if (dialog_box->is_type("Choice"))
    {
+      float width = place.size.x;
+      float height = place.size.y;
       place.start_transform();
       Krampus21::DialogBoxes::Choice* choice_dialog_box = static_cast<Krampus21::DialogBoxes::Choice*>(dialog_box);
-      Krampus21::DialogBoxRenderers::ChoiceRenderer(font_bin, bitmap_bin, choice_dialog_box).render();
+      Krampus21::DialogBoxRenderers::ChoiceRenderer(font_bin, bitmap_bin, choice_dialog_box, width, height).render();
       place.restore_transform();
    }
    //else if (dialog_box->is_type("Basic"))
