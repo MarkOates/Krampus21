@@ -13,6 +13,21 @@ properties:
     constructor_arg: true
     getter: true
 
+  - name: opacity
+    type: float
+    init_with: 0.7
+    setter: true
+
+  - name: fill_color
+    type: ALLEGRO_COLOR
+    init_with: ALLEGRO_COLOR{0.02f*opacity, 0.0f*opacity, 0.1f*opacity, opacity}
+    setter: true
+
+  - name: border_color
+    type: ALLEGRO_COLOR
+    init_with: al_color_html("244751")
+    setter: true
+
 
 functions:
 
@@ -27,9 +42,8 @@ functions:
       float border_thickness = 5.0f;
       float border_inner_padding = border_thickness * 3;
       //ALLEGRO_COLOR fill_color = al_color_html("162428");
-      float opacity = 0.7;
-      ALLEGRO_COLOR fill_color = ALLEGRO_COLOR{0.02f*opacity, 0.0f*opacity, 0.1f*opacity, opacity};
-      ALLEGRO_COLOR border_color = al_color_html("244751");
+      //ALLEGRO_COLOR fill_color = ALLEGRO_COLOR{0.02f*opacity, 0.0f*opacity, 0.1f*opacity, opacity};
+      //ALLEGRO_COLOR border_color = al_color_html("244751");
 
       // draw backfill
       al_draw_filled_rounded_rectangle(
@@ -64,6 +78,8 @@ functions:
 dependencies:
 
 
+  - symbol: ALLEGRO_COLOR
+    headers: [ allegro5/allegro.h ]
   - symbol: al_is_system_installed
     headers: [ allegro5/allegro.h ]
   - symbol: al_get_current_display
