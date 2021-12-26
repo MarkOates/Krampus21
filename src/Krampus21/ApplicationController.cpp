@@ -105,11 +105,12 @@ void ApplicationController::advance()
       Krampus21::DialogBoxes::Choice* choice_dialog_box =
          static_cast<Krampus21::DialogBoxes::Choice*>(current_dialog);
       std::string selected_choice_value = choice_dialog_box->get_current_selection_value();
+      int script_current_line_num = script.get_current_line_num();
       delete current_dialog;
       current_dialog = nullptr;
 
-      int script_current_line_num = script.get_current_line_num();
       parse_and_run_line(selected_choice_value, script_current_line_num);
+      //script.goto_next_line();
    }
 
    script.goto_next_line();
@@ -181,7 +182,9 @@ void ApplicationController::play_current_script_line()
       {
          continue_directly_to_next_script_line = false;
          std::cout << "ApplicationController::play_current_script_line: continued unstopped playing more than "
-                   << "500 script lines without a stop. Assuming error and halting to avoid infinite loop.";
+                   << "500 script lines without a stop. Assuming error and halting to avoid infinite loop."
+                   << " That line was \"" << script_line << "\" which is on line ["
+                   << script_current_line_num << "]" << std::endl;
       }
    } while (continue_directly_to_next_script_line);
 }
