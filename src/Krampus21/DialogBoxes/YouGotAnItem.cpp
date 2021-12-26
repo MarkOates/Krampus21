@@ -2,6 +2,7 @@
 
 #include <Krampus21/DialogBoxes/YouGotAnItem.hpp>
 #include <allegro5/allegro.h>
+#include <allegro5/allegro.h>
 
 
 namespace Krampus21
@@ -25,6 +26,11 @@ YouGotAnItem::~YouGotAnItem()
 float YouGotAnItem::infer_age()
 {
    return al_get_time() - get_created_at();
+}
+
+void YouGotAnItem::show()
+{
+   set_created_at(al_get_time());
 }
 } // namespace DialogBoxes
 } // namespace Krampus21

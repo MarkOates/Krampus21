@@ -25,8 +25,10 @@ namespace Krampus21
          ~YouGotAnItemRenderer();
 
          void render();
+         float get_live_reveal_counter();
          ALLEGRO_FONT* obtain_notification_text_font();
          ALLEGRO_FONT* obtain_item_name_text_font();
+         ALLEGRO_COLOR opaquify(ALLEGRO_COLOR color={0,0,0,0});
       };
    }
 }

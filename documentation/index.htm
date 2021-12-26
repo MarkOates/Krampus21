@@ -620,10 +620,16 @@ table td
   <td class="method">render()</td>
 </tr>
 <tr>
+  <td class="method">get_live_reveal_counter()</td>
+</tr>
+<tr>
   <td class="private_method">obtain_notification_text_font()</td>
 </tr>
 <tr>
   <td class="private_method">obtain_item_name_text_font()</td>
+</tr>
+<tr>
+  <td class="method">opaquify(1)</td>
 </tr>
     </table>
      <table>
@@ -641,6 +647,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_html&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
@@ -794,6 +803,9 @@ table td
      <table>
 <tr>
   <td class="method">infer_age()</td>
+</tr>
+<tr>
+  <td class="method">show()</td>
 </tr>
     </table>
      <table>
@@ -1421,6 +1433,7 @@ table td
 {
   "ALLEGRO_COLOR": [
     "Krampus21/ApplicationController",
+    "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Elements/DialogBoxFrame",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",

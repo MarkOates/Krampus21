@@ -10,6 +10,8 @@
 #include <Krampus21/DialogBoxRenderers/YouGotAnItemRenderer.hpp>
 
 #include <AllegroFlare/Testing/WithAllegroRenderingFixture.hpp>
+#include <chrono>
+#include <thread>
 
 class Krampus21_DialogBoxRenderers_YouGotAnItemRendererTest : public ::testing::Test {};
 class Krampus21_DialogBoxRenderers_YouGotAnItemRendererWithAllegroRenderingFixtureTest
@@ -34,12 +36,18 @@ TEST_F(Krampus21_DialogBoxRenderers_YouGotAnItemRendererWithAllegroRenderingFixt
       place.size.y
    );
 
-   al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 1});
-   place.start_transform();
-   you_got_an_item_renderer.render();
-   place.restore_transform();
+   you_got_an_item_dialog_box.show();
 
-   al_flip_display();
-   sleep(1);
+   int passes = 60*2;
+   //int passes = 0;
+   for (unsigned i=0; i<passes; i++)
+   {
+      al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 1});
+      place.start_transform();
+      you_got_an_item_renderer.render();
+      place.restore_transform();
+      al_flip_display();
+      std::this_thread::sleep_for(std::chrono::milliseconds(1000/60));
+   }
 }
 

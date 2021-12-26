@@ -18,6 +18,7 @@ namespace Krampus21
          ~YouGotAnItem();
 
          float infer_age();
+         void show();
       };
    }
 }
