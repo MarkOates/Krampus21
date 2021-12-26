@@ -39,6 +39,7 @@ void YouGotAnItemRenderer::render()
          error_message << "YouGotAnItemRenderer" << "::" << "render" << ": error: " << "guard \"bitmap_bin\" not met";
          throw std::runtime_error(error_message.str());
       }
+   // style attributes
    ALLEGRO_COLOR fading_white = opaquify(ALLEGRO_COLOR{1, 1, 1, 1});
    ALLEGRO_FONT* notification_text_font = obtain_notification_text_font();
    ALLEGRO_FONT* item_name_text_font = obtain_item_name_text_font();
@@ -55,6 +56,12 @@ void YouGotAnItemRenderer::render()
    allegro_flare::placement2d item_place(width/2, height/2, 800, 800);
    item_place.scale.x = 0.55;
    item_place.scale.y = 0.55;
+
+   // animations
+   float reveal_counter = get_live_reveal_counter();
+   item_place.position.y += ((1.0 - reveal_counter) * 20);
+   item_place.scale.x += item_place.scale.x * (0.2 * reveal_counter);
+   item_place.scale.y += item_place.scale.y * (0.2 * reveal_counter);
 
    // draw the frame
    dialog_box_frame.render();
@@ -90,7 +97,7 @@ void YouGotAnItemRenderer::render()
 float YouGotAnItemRenderer::get_live_reveal_counter()
 {
    float age = you_got_an_item_dialog_box->infer_age();
-   float time_duration_to_reveal = 1.0;
+   float time_duration_to_reveal = 0.8;
    if (age >= time_duration_to_reveal) age = time_duration_to_reveal;
    float reveal_duration_normalized = 1.0 - ((time_duration_to_reveal - age) / time_duration_to_reveal);
    //return 0.5;
