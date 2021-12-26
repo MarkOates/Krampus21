@@ -44,6 +44,7 @@
   "AllegroFlare/BitmapBin": [
     "Krampus21/ApplicationController",
     "Krampus21/Character",
+    "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/Inventory"
   ],
@@ -184,8 +185,12 @@
     "Krampus21/Elements/DialogBoxNameTag"
   ],
   "Krampus21/DialogBoxes/Choice": [
+    "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/DialogFactory"
+  ],
+  "Krampus21/DialogBoxRenderers/ChoiceRenderer": [
+    "Krampus21/DialogBoxRenderer"
   ],
   "al_color_name": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer"

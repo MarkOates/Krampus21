@@ -437,6 +437,10 @@ table td
   <td class="property">AllegroFlare::FontBin*</td>
 </tr>
 <tr>
+  <td class="property">bitmap_bin</td>
+  <td class="property">AllegroFlare::BitmapBin*</td>
+</tr>
+<tr>
   <td class="property">dialog_box</td>
   <td class="property">Krampus21::DialogBoxes::Base*</td>
 </tr>
@@ -494,6 +498,9 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Blast::StringJoiner&quot;, &quot;headers&quot;=&gt;[&quot;Blast/StringJoiner.hpp&quot;]}</td>
 </tr>
 <tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
+</tr>
+<tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
 </tr>
 <tr>
@@ -504,6 +511,12 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Elements::DialogBoxFrame&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Elements/DialogBoxFrame.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Choice*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Choice.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxRenderers::ChoiceRenderer&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxRenderers/ChoiceRenderer.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -1366,6 +1379,7 @@ table td
   "AllegroFlare/BitmapBin": [
     "Krampus21/ApplicationController",
     "Krampus21/Character",
+    "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/Inventory"
   ],
@@ -1506,8 +1520,12 @@ table td
     "Krampus21/Elements/DialogBoxNameTag"
   ],
   "Krampus21/DialogBoxes/Choice": [
+    "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/DialogFactory"
+  ],
+  "Krampus21/DialogBoxRenderers/ChoiceRenderer": [
+    "Krampus21/DialogBoxRenderer"
   ],
   "al_color_name": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer"

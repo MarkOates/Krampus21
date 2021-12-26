@@ -70,7 +70,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_the_allegro_font_addon_has_no
    ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
    Krampus21::DialogBoxes::Base dialog_box;
    dialog_box.set_pages({ { "Some test dialog text." } });
-   Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, &dialog_box);
+   Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, nullptr, &dialog_box);
 
    std::string expected_error_message =
       "DialogBoxRenderer::obtain_dialog_font: error: guard \"al_is_font_addon_initialized()\" not met";
@@ -90,7 +90,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_the_allegro_ttf_addon_has_not
    ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
    Krampus21::DialogBoxes::Base dialog_box;
    dialog_box.set_pages({ { "Some test dialog text." } });
-   Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, &dialog_box);
+   Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, nullptr, &dialog_box);
 
    std::string expected_error_message =
       "DialogBoxRenderer::obtain_dialog_font: error: guard \"font_bin\" not met";
@@ -110,7 +110,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_font_bin__raises_
    ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
    Krampus21::DialogBoxes::Base dialog_box;
    dialog_box.set_pages({ { "Some test dialog text." } });
-   Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, &dialog_box);
+   Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, nullptr, &dialog_box);
 
    std::string expected_error_message =
       "DialogBoxRenderer::obtain_dialog_font: error: guard \"font_bin\" not met";
@@ -129,7 +129,8 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_there_is_no_dialog_box__raise
    al_init_ttf_addon();
    ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
    AllegroFlare::FontBin font_bin;
-   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin);
+   AllegroFlare::BitmapBin bitmap_bin;
+   Krampus21::DialogBoxRenderer dialog_box_renderer(nullptr, &bitmap_bin);
 
    std::string expected_error_message =
       "DialogBoxRenderer::render: error: guard \"dialog_box\" not met";
@@ -148,10 +149,11 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_the_dialog_box)
    al_init_ttf_addon();
    ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
    AllegroFlare::FontBin font_bin;
+   AllegroFlare::BitmapBin bitmap_bin;
    font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
    Krampus21::DialogBoxes::Base dialog_box;
    dialog_box.set_pages({ "Some test dialog text with multiple pages.", "Here's the second page." });
-   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
+   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &bitmap_bin, &dialog_box);
 
    dialog_box.reveal_all_characters();
 
@@ -172,10 +174,11 @@ TEST(Krampus21_DialogBoxRendererTest, render__when_the_dialog_box_is_finish__ren
    al_init_ttf_addon();
    ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
    AllegroFlare::FontBin font_bin;
+   AllegroFlare::BitmapBin bitmap_bin;
    font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
    Krampus21::DialogBoxes::Base dialog_box;
    dialog_box.next_page();
-   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
+   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &bitmap_bin, &dialog_box);
 
    dialog_box.reveal_all_characters();
 
@@ -196,10 +199,11 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_multiline_dialog)
    al_init_ttf_addon();
    ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
    AllegroFlare::FontBin font_bin;
+   AllegroFlare::BitmapBin bitmap_bin;
    font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
    Krampus21::DialogBoxes::Base dialog_box;
    dialog_box.set_pages({ "Some test dialog text. There's actually a lot of text that will need to fit." });
-   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
+   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &bitmap_bin, &dialog_box);
 
    dialog_box.reveal_all_characters();
 
@@ -220,11 +224,12 @@ TEST(Krampus21_DialogBoxRendererTest, render__will_propertly_render_revealing_te
    al_init_ttf_addon();
    ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
    AllegroFlare::FontBin font_bin;
+   AllegroFlare::BitmapBin bitmap_bin;
    font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
    Krampus21::DialogBoxes::Base dialog_box;
    std::string page_text = "Some test dialog text that will reveal characters sequentially when rendering.";
    dialog_box.set_pages({ page_text });
-   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &dialog_box);
+   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &bitmap_bin, &dialog_box);
 
    for (unsigned i=0; i<page_text.size(); i++)
    {

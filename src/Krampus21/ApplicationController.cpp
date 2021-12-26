@@ -253,7 +253,7 @@ void ApplicationController::primary_timer_func()
       // render dialog
       if (current_dialog)
       {
-         Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), current_dialog);
+         Krampus21::DialogBoxRenderer renderer(obtain_font_bin(), obtain_bitmap_bin(), current_dialog);
          renderer.render();
       }
 

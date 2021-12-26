@@ -1,6 +1,7 @@
 #pragma once
 
 
+#include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/FontBin.hpp>
 #include <Krampus21/DialogBoxes/Base.hpp>
 #include <allegro5/allegro.h>
@@ -14,11 +15,12 @@ namespace Krampus21
    {
    private:
       AllegroFlare::FontBin* font_bin;
+      AllegroFlare::BitmapBin* bitmap_bin;
       Krampus21::DialogBoxes::Base* dialog_box;
       allegro_flare::placement2d place;
 
    public:
-      DialogBoxRenderer(AllegroFlare::FontBin* font_bin=nullptr, Krampus21::DialogBoxes::Base* dialog_box=nullptr);
+      DialogBoxRenderer(AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, Krampus21::DialogBoxes::Base* dialog_box=nullptr);
       ~DialogBoxRenderer();
 
       allegro_flare::placement2d get_place();

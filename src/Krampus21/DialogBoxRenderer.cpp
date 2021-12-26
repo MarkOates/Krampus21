@@ -6,6 +6,8 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_color.h>
 #include <Krampus21/Elements/DialogBoxFrame.hpp>
+#include <Krampus21/DialogBoxes/Choice.hpp>
+#include <Krampus21/DialogBoxRenderers/ChoiceRenderer.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -22,8 +24,9 @@ namespace Krampus21
 {
 
 
-DialogBoxRenderer::DialogBoxRenderer(AllegroFlare::FontBin* font_bin, Krampus21::DialogBoxes::Base* dialog_box)
+DialogBoxRenderer::DialogBoxRenderer(AllegroFlare::FontBin* font_bin, AllegroFlare::BitmapBin* bitmap_bin, Krampus21::DialogBoxes::Base* dialog_box)
    : font_bin(font_bin)
+   , bitmap_bin(bitmap_bin)
    , dialog_box(dialog_box)
    , place({ 1920/2, 1080/5*4, 1920/5*3, 1080/4 })
 {
@@ -68,16 +71,20 @@ void DialogBoxRenderer::render()
          throw std::runtime_error(error_message.str());
       }
    //where we want to be:
-   //if (dialog_box->is_type("Choice"))
-   //{
-   //   Krampus21::DialogBoxes::Choice* choice_dialog_box = static_cast<Krampus21::DialogBoxes::Choice*>(dialog_box);
-   //   Krampus21::DialogBoxRenderers::ChoiceRenderer(choice_dialog_box).render();
-   //}
+   if (dialog_box->is_type("Choice"))
+   {
+      place.start_transform();
+      Krampus21::DialogBoxes::Choice* choice_dialog_box = static_cast<Krampus21::DialogBoxes::Choice*>(dialog_box);
+      Krampus21::DialogBoxRenderers::ChoiceRenderer(font_bin, bitmap_bin, choice_dialog_box).render();
+      place.restore_transform();
+   }
    //else if (dialog_box->is_type("Basic"))
    //{
    //   // Note: BasicRenderer does not exist
+   //   // probably... place.start_transform();
    //   Krampus21::DialogBoxes::Basic* basic_dialog_box = static_cast<Krampus21::DialogBoxes::Basic*>(dalog_box);
    //   //Krampus21::DialogBoxRenderers::BasicRenderer(basic_dialog_box).render();
+   //   //place.restore_transform();
    //}
    //else
    //{

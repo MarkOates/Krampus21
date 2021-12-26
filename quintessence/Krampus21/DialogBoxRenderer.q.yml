@@ -6,6 +6,11 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
+  - name: bitmap_bin
+    type: AllegroFlare::BitmapBin*
+    init_with: nullptr
+    constructor_arg: true
+
   - name: dialog_box
     type: Krampus21::DialogBoxes::Base*
     init_with: nullptr
@@ -24,16 +29,20 @@ functions:
     guards: [ al_is_system_installed(), al_is_primitives_addon_initialized(), al_get_current_display(), dialog_box ]
     body: |
       //where we want to be:
-      //if (dialog_box->is_type("Choice"))
-      //{
-      //   Krampus21::DialogBoxes::Choice* choice_dialog_box = static_cast<Krampus21::DialogBoxes::Choice*>(dialog_box);
-      //   Krampus21::DialogBoxRenderers::ChoiceRenderer(choice_dialog_box).render();
-      //}
+      if (dialog_box->is_type("Choice"))
+      {
+         place.start_transform();
+         Krampus21::DialogBoxes::Choice* choice_dialog_box = static_cast<Krampus21::DialogBoxes::Choice*>(dialog_box);
+         Krampus21::DialogBoxRenderers::ChoiceRenderer(font_bin, bitmap_bin, choice_dialog_box).render();
+         place.restore_transform();
+      }
       //else if (dialog_box->is_type("Basic"))
       //{
       //   // Note: BasicRenderer does not exist
+      //   // probably... place.start_transform();
       //   Krampus21::DialogBoxes::Basic* basic_dialog_box = static_cast<Krampus21::DialogBoxes::Basic*>(dalog_box);
       //   //Krampus21::DialogBoxRenderers::BasicRenderer(basic_dialog_box).render();
+      //   //place.restore_transform();
       //}
       //else
       //{
@@ -70,6 +79,8 @@ functions:
       - al_draw_filled_rounded_rectangle
       - al_color_html
       - Krampus21::Elements::DialogBoxFrame
+      - Krampus21::DialogBoxes::Choice*
+      - Krampus21::DialogBoxRenderers::ChoiceRenderer
 
 
   - name: draw_special_state_empty_text
@@ -189,6 +200,8 @@ dependencies:
     headers: [ allegro5/allegro_primitives.h ]
   - symbol: Blast::StringJoiner
     headers: [ Blast/StringJoiner.hpp ]
+  - symbol: AllegroFlare::BitmapBin*
+    headers: [ AllegroFlare/BitmapBin.hpp ]
   - symbol: AllegroFlare::FontBin*
     headers: [ AllegroFlare/FontBin.hpp ]
   - symbol: Krampus21::DialogBoxes::Base*
@@ -197,7 +210,10 @@ dependencies:
     headers: [ allegro_flare/placement2d.h ]
   - symbol: Krampus21::Elements::DialogBoxFrame
     headers: [ Krampus21/Elements/DialogBoxFrame.hpp ]
-
+  - symbol: Krampus21::DialogBoxes::Choice*
+    headers: [ Krampus21/DialogBoxes/Choice.hpp ]
+  - symbol: Krampus21::DialogBoxRenderers::ChoiceRenderer
+    headers: [ Krampus21/DialogBoxRenderers/ChoiceRenderer.hpp ]
 
 
 
