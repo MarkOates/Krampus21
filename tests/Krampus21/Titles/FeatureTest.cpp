@@ -11,7 +11,7 @@
 #include <chrono>
 #include <thread>
 
-void SHOW_RENDER(int seconds=1) { al_flip_display(); std::this_thread::sleep_for(std::chrono::seconds(seconds)); }
+static void SHOW_RENDER(int seconds=1) { al_flip_display(); std::this_thread::sleep_for(std::chrono::seconds(seconds)); }
 
 class Krampus21_Titles_FeatureTest : public ::testing::Test {};
 class Krampus21_Titles_FeatureWithAllegroRenderingFixtureTest :
