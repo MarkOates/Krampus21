@@ -110,8 +110,6 @@ void ApplicationController::advance()
 
       int script_current_line_num = script.get_current_line_num();
       parse_and_run_line(selected_choice_value, script_current_line_num);
-      //delete current_dialog;
-      //current_dialog = nullptr;
    }
 
    script.goto_next_line();
