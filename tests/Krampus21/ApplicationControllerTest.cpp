@@ -354,6 +354,7 @@ TEST(Krampus21_ApplicationControllerText,
    std::string cout_output = testing::internal::GetCapturedStdout();
 
    ASSERT_EQ("The external script was loaded!\n", cout_output);
+   al_uninstall_system();
 }
 
 
