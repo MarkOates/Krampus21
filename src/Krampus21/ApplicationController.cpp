@@ -464,6 +464,7 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
    std::string SET_CHARACTER_FRAMING = "SET_CHARACTER_FRAMING";
    std::string BEAT = "BEAT";
    std::string COLLECT = "COLLECT";
+   std::string IF_IN_INVENTORY = "IF_IN_INVENTORY";
 
    bool continue_directly_to_next_script_line = false;
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
@@ -481,6 +482,26 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
       {
          created_dialog = dialog_factory.create_basic_dialog(std::vector<std::string>{script_line});
       }
+   }
+   else if (command == IF_IN_INVENTORY)
+   {
+      // tokenize
+      std::vector<std::string> tokens = tokenize(argument);
+
+      // validate
+      // TODO
+      // exactly_2_params
+
+      // get arguments
+      // int item_id = atoi(...);
+      // std::string consequence = ...
+
+      // bonus:
+      // eval only GOTO
+      // eval MARKER target exists
+
+      // check inventory for item
+         // parse_and_run(consequence)
    }
    else if (command == CHOICE)
    {
