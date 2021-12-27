@@ -503,8 +503,11 @@ void ApplicationController::draw_smart_phone()
    float phone_transparency = smart_phone_reveal_counter;
    ALLEGRO_COLOR fading_white =
       ALLEGRO_COLOR{phone_transparency, phone_transparency, phone_transparency, phone_transparency};
-   //ALLEGRO_BITMAP *smart_phone_image = obtain_bitmap_bin()->auto_get("phone-in-hand-01.png");
-   //al_draw_tinted_bitmap(smart_phone_image, fading_white, 0, 0, 0);
+   ALLEGRO_BITMAP *smart_phone_image = obtain_bitmap_bin()->auto_get("phone-in-hand-01.png");
+   allegro_flare::placement2d smart_phone_placement(1920/4 * 1, 1080/3*2, 800, 800);
+   smart_phone_placement.start_transform();
+   al_draw_tinted_bitmap(smart_phone_image, fading_white, 0, 0, 0);
+   smart_phone_placement.restore_transform();
    return;
 }
 
