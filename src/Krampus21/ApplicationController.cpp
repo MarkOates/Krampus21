@@ -83,6 +83,13 @@ void ApplicationController::initialize()
    return;
 }
 
+bool ApplicationController::load_script_lines(std::vector<std::string> script_lines)
+{
+   script = Krampus21::Script(script_lines);
+   script.initialize();
+   return true;
+}
+
 bool ApplicationController::load_script(std::string filename)
 {
    if (!Blast::FileExistenceChecker(filename).exists())
@@ -92,9 +99,7 @@ bool ApplicationController::load_script(std::string filename)
       return false;
    }
    std::vector<std::string> script_lines = AllegroFlare::php::file_get_contents_split(filename);
-   script = Krampus21::Script(script_lines);
-   script.initialize();
-   return true;
+   return load_script_lines(script_lines);
 }
 
 void ApplicationController::advance()
@@ -460,10 +465,12 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
    std::string CHOICE = "CHOICE";
    std::string PLAY_MUSIC = "PLAY_MUSIC";
    std::string MARKER = "MARKER";
+   std::string SIGNAL = "SIGNAL"; // outputs text to the terminal
    std::string SET_CHARACTER_ART = "SET_CHARACTER_ART";
    std::string SET_CHARACTER_FRAMING = "SET_CHARACTER_FRAMING";
    std::string BEAT = "BEAT";
    std::string COLLECT = "COLLECT";
+   std::string COLLECT_SILENTLY = "COLLECT_SILENTLY";
    std::string IF_IN_INVENTORY = "IF_IN_INVENTORY";
 
    bool continue_directly_to_next_script_line = false;
@@ -489,19 +496,38 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
       std::vector<std::string> tokens = tokenize(argument);
 
       // validate
-      // TODO
-      // exactly_2_params
+      // expect exactly 2 params
+      if (!assert_token_count_eq(tokens, 2))
+      {
+         std::cout << "tokens must be equal to 2 on line " << line_num << std::endl;
+         return false;
+      }
 
       // get arguments
-      // int item_id = atoi(...);
-      // std::string consequence = ...
+      int item_id = atoi(tokens[0].c_str());
+      std::string consequence = tokens[1];
 
       // bonus:
+      std::pair<std::string, std::string> command_and_argument = parse_command_and_argument(consequence);
+      std::string consequence_command = command_and_argument.first;
+      std::string consequence_argument = command_and_argument.second;
       // eval only GOTO
-      // eval MARKER target exists
+      if (consequence_command != "GOTO")
+      {
+         std::cout << "IF_IN_INVENTORY consequence argument must be a GOTO (line [" << line_num << "])" << std::endl;
+      }
+      // TODO: eval MARKER target exists
 
-      // check inventory for item
-         // parse_and_run(consequence)
+      if (af_inventory.has_item(item_id))
+      {
+         parse_and_run_line(consequence, line_num);
+      }
+      continue_directly_to_next_script_line = true;
+   }
+   else if (command == SIGNAL)
+   {
+      std::cout << argument << std::endl;
+      continue_directly_to_next_script_line = true;
    }
    else if (command == CHOICE)
    {
@@ -551,7 +577,7 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
          current_dialog = nullptr;
       }
    }
-   else if (command == COLLECT)
+   else if (command == COLLECT_SILENTLY || command == COLLECT)
    {
       int item_id = atoi(argument.c_str());
       std::tuple<std::string, std::string, std::string> item_definition = inventory.get_item_definition(item_id);
@@ -565,9 +591,12 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
       std::cout << "You got an item " << argument << std::endl;
 
       // construct the dialog
-      Krampus21::DialogBoxes::YouGotAnItem* created_you_got_an_item_dialog_box =
-         dialog_factory.create_you_got_an_item_dialog(item_id, item_name, item_bitmap_identifier);
-      created_dialog = created_you_got_an_item_dialog_box;
+      if (command != "COLLECT_SILENTLY")
+      {
+         Krampus21::DialogBoxes::YouGotAnItem* created_you_got_an_item_dialog_box =
+            dialog_factory.create_you_got_an_item_dialog(item_id, item_name, item_bitmap_identifier);
+         created_dialog = created_you_got_an_item_dialog_box;
+      }
    }
    else if (command == SET_CHARACTER_ART)
    {

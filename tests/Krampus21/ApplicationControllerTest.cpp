@@ -265,4 +265,21 @@ TEST(Krampus21_ApplicationControllerText,
 }
 
 
+TEST(Krampus21_ApplicationControllerText,
+   parse_and_run_line__executes_the_consequence_command_if_the_item_is_in_the_inventory)
+{
+   std::vector<std::string> script_lines = {
+//     "COLLECT_SILENTLY: 1",
+//     "IF_IN_INVENTORY: 1 | GOTO: #A",
+//        "SIGNAL: The item was NOT detected in the inventory",
+//        "GOTO #END"
+//        "MARKER: #A",
+//        "SIGNAL: The item was detected in the inventory",
+//        "MARKER: #END",
+   };
+   Krampus21::ApplicationController application_controller;
+   application_controller.load_script_lines(script_lines);
+   application_controller.play_current_script_line();
+}
+
 

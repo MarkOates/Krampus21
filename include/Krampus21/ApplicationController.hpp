@@ -53,6 +53,7 @@ namespace Krampus21
 
       Krampus21::DialogBoxes::Base* get_current_dialog();
       void initialize();
+      bool load_script_lines(std::vector<std::string> script_lines={});
       bool load_script(std::string filename="unset-script-filename.txt");
       void advance();
       void handle_cursor_up_input();
