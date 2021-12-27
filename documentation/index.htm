@@ -57,10 +57,12 @@ table td
   <li><a href="#quintessence/Krampus21/DialogBoxRenderers/YouGotAnItemRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderers/YouGotAnItemRenderer.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/Base.q.yml">quintessence/Krampus21/DialogBoxes/Base.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/Choice.q.yml">quintessence/Krampus21/DialogBoxes/Choice.q.yml</a></li>
+  <li><a href="#quintessence/Krampus21/DialogBoxes/SmartPhone.q.yml">quintessence/Krampus21/DialogBoxes/SmartPhone.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/YouGotAnItem.q.yml">quintessence/Krampus21/DialogBoxes/YouGotAnItem.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogFactory.q.yml">quintessence/Krampus21/DialogFactory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Elements/DialogBoxFrame.q.yml">quintessence/Krampus21/Elements/DialogBoxFrame.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Elements/DialogBoxNameTag.q.yml">quintessence/Krampus21/Elements/DialogBoxNameTag.q.yml</a></li>
+  <li><a href="#quintessence/Krampus21/Elements/SmartPhone.q.yml">quintessence/Krampus21/Elements/SmartPhone.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Inventory.q.yml">quintessence/Krampus21/Inventory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/ProgramRunner.q.yml">quintessence/Krampus21/ProgramRunner.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Script.q.yml">quintessence/Krampus21/Script.q.yml</a></li>
@@ -232,7 +234,13 @@ table td
   <td class="method">primary_timer_func()</td>
 </tr>
 <tr>
+  <td class="method">update_phone()</td>
+</tr>
+<tr>
   <td class="method">draw_letterbox()</td>
+</tr>
+<tr>
+  <td class="method">draw_phone()</td>
 </tr>
 <tr>
   <td class="method">key_down_func(1)</td>
@@ -388,6 +396,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Inventory&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Inventory.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Elements::SmartPhone&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Elements/SmartPhone.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -846,6 +857,20 @@ table td
 </ul>
 <ul>
   <div class="component">
+    <h3 id="quintessence/Krampus21/DialogBoxes/SmartPhone.q.yml">quintessence/Krampus21/DialogBoxes/SmartPhone.q.yml</h3>
+     <table>
+    </table>
+     <table>
+<tr>
+  <td class="method">run()</td>
+</tr>
+    </table>
+     <table>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
     <h3 id="quintessence/Krampus21/DialogBoxes/YouGotAnItem.q.yml">quintessence/Krampus21/DialogBoxes/YouGotAnItem.q.yml</h3>
      <table>
 <tr>
@@ -1046,6 +1071,47 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Elements::DialogBoxFrame&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Elements/DialogBoxFrame.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/Krampus21/Elements/SmartPhone.q.yml">quintessence/Krampus21/Elements/SmartPhone.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">font_bin</td>
+  <td class="property">AllegroFlare::FontBin*</td>
+</tr>
+<tr>
+  <td class="property">bitmap_bin</td>
+  <td class="property">AllegroFlare::BitmapBin*</td>
+</tr>
+<tr>
+  <td class="property">place</td>
+  <td class="property">allegro_flare::placement2d</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">render()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_filled_rectangle&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement2d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement2d.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -1534,6 +1600,7 @@ table td
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Elements/DialogBoxNameTag",
+    "Krampus21/Elements/SmartPhone",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",
     "Krampus21/Titles/Slate"
@@ -1544,6 +1611,7 @@ table td
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
+    "Krampus21/Elements/SmartPhone",
     "Krampus21/Inventory"
   ],
   "AllegroFlare/Display": [
@@ -1628,10 +1696,14 @@ table td
   "Krampus21/Inventory": [
     "Krampus21/ApplicationController"
   ],
+  "Krampus21/Elements/SmartPhone": [
+    "Krampus21/ApplicationController"
+  ],
   "allegro_flare/placement2d": [
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
+    "Krampus21/Elements/SmartPhone",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",
     "Krampus21/Titles/Slate"
@@ -1697,7 +1769,8 @@ table td
     "Krampus21/DialogBoxRenderer"
   ],
   "al_color_name": [
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/Elements/SmartPhone"
   ],
   "al_draw_rectangle": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
@@ -1705,7 +1778,8 @@ table td
     "Krampus21/Titles/Slate"
   ],
   "al_draw_filled_rectangle": [
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/Elements/SmartPhone"
   ],
   "std/vector<std/pair<std/string, std/string>>": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",

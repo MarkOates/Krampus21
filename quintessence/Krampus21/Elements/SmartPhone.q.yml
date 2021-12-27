@@ -1,4 +1,51 @@
+
+
+properties:
+
+
+  - name: font_bin
+    type: AllegroFlare::FontBin*
+    init_with: nullptr
+    constructor_arg: true
+
+  - name: bitmap_bin
+    type: AllegroFlare::BitmapBin*
+    init_with: nullptr
+    constructor_arg: true
+
+  - name: place
+    type: allegro_flare::placement2d
+    init_with: '{1920/2, 1080/2, 400, 400}'
+
+
 functions:
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+
+
+  - name: render
+    type: void
+    guards: [ al_is_primitives_addon_initialized() ]
+    body: |
+      place.start_transform();
+      al_draw_filled_rectangle(400, 400, 200, 500, al_color_name("blue"));
+      place.restore_transform();
+      return;
+    body_dependency_symbols:
+      - al_draw_filled_rectangle
+      - al_color_name
+
+
+dependencies:
+
+
+  - symbol: al_draw_filled_rectangle
+    headers: [ allegro5/allegro_primitives.h ]
+  - symbol: al_color_name
+    headers: [ allegro5/allegro_color.h ]
+  - symbol: allegro_flare::placement2d
+    headers: [ allegro_flare/placement2d.h ]
+  - symbol: AllegroFlare::FontBin*
+    headers: [ AllegroFlare/FontBin.hpp ]
+  - symbol: AllegroFlare::BitmapBin*
+    headers: [ AllegroFlare/BitmapBin.hpp ]
+
+

@@ -77,7 +77,9 @@ namespace Krampus21
       void close_inventory();
       void toggle_inventory();
       void primary_timer_func() override;
+      void update_phone();
       void draw_letterbox();
+      void draw_phone();
       void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
       void joy_button_down_func(ALLEGRO_EVENT* ev=nullptr) override;
       void joy_axis_func(ALLEGRO_EVENT* ev=nullptr) override;

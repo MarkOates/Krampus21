@@ -41,6 +41,7 @@
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Elements/DialogBoxNameTag",
+    "Krampus21/Elements/SmartPhone",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",
     "Krampus21/Titles/Slate"
@@ -51,6 +52,7 @@
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
+    "Krampus21/Elements/SmartPhone",
     "Krampus21/Inventory"
   ],
   "AllegroFlare/Display": [
@@ -135,10 +137,14 @@
   "Krampus21/Inventory": [
     "Krampus21/ApplicationController"
   ],
+  "Krampus21/Elements/SmartPhone": [
+    "Krampus21/ApplicationController"
+  ],
   "allegro_flare/placement2d": [
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
+    "Krampus21/Elements/SmartPhone",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",
     "Krampus21/Titles/Slate"
@@ -204,7 +210,8 @@
     "Krampus21/DialogBoxRenderer"
   ],
   "al_color_name": [
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/Elements/SmartPhone"
   ],
   "al_draw_rectangle": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
@@ -212,7 +219,8 @@
     "Krampus21/Titles/Slate"
   ],
   "al_draw_filled_rectangle": [
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/Elements/SmartPhone"
   ],
   "std/vector<std/pair<std/string, std/string>>": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",

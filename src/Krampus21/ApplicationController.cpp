@@ -9,6 +9,7 @@
 #include <stdexcept>
 #include <sstream>
 #include <Krampus21/DialogBoxRenderer.hpp>
+#include <Krampus21/Elements/SmartPhone.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -294,6 +295,7 @@ void ApplicationController::primary_timer_func()
 {
    // update
    inventory.update();
+   update_phone();
    if (current_dialog) current_dialog->update();
 
    // draw
@@ -321,6 +323,9 @@ void ApplicationController::primary_timer_func()
       // render character
       character.render();
 
+      // draw the phone
+      draw_phone();
+
       // render letterbox
       draw_letterbox();
 
@@ -337,10 +342,23 @@ void ApplicationController::primary_timer_func()
    return;
 }
 
+void ApplicationController::update_phone()
+{
+   smart_phone_reveal_counter += 1.0/60.0f;
+   return;
+}
+
 void ApplicationController::draw_letterbox()
 {
    al_draw_filled_rectangle(0, 0, 1920, letterbox_frame_height, letterbox_color);
    al_draw_filled_rectangle(0, 1080-letterbox_frame_height, 1920, 1080, letterbox_color);
+   return;
+}
+
+void ApplicationController::draw_phone()
+{
+   Krampus21::Elements::SmartPhone phone;
+   phone.render();
    return;
 }
 
@@ -538,6 +556,15 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
    else if (command == PHONE)
    {
       show_phone();
+      std::vector<std::string> tokens = tokenize(argument);
+      if (!assert_min_token_count(tokens, 1))
+      {
+         std::cout << "tokens must be equal to 1 on line " << line_num << std::endl;
+         return false;
+      }
+      std::vector<std::string> messages = tokens;
+      
+      //TODO created_dialog = dialog_factory.create_phone_messages_dialog(messages);
    }
    else if (command == OPENSCRIPT)
    {

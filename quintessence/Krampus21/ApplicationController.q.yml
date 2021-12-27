@@ -332,6 +332,7 @@ functions:
     body: |
       // update
       inventory.update();
+      update_phone();
       if (current_dialog) current_dialog->update();
 
       // draw
@@ -359,6 +360,9 @@ functions:
          // render character
          character.render();
 
+         // draw the phone
+         draw_phone();
+
          // render letterbox
          draw_letterbox();
 
@@ -377,11 +381,27 @@ functions:
       - Krampus21::DialogBoxRenderer
 
 
+  - name: update_phone
+    type: void
+    body: |
+      smart_phone_reveal_counter += 1.0/60.0f;
+      return;
+
+
   - name: draw_letterbox
     body: |
       al_draw_filled_rectangle(0, 0, 1920, letterbox_frame_height, letterbox_color);
       al_draw_filled_rectangle(0, 1080-letterbox_frame_height, 1920, 1080, letterbox_color);
       return;
+
+
+  - name: draw_phone
+    body: |
+      Krampus21::Elements::SmartPhone phone;
+      phone.render();
+      return;
+    body_dependency_symbols:
+      - Krampus21::Elements::SmartPhone
 
 
   - name: key_down_func
@@ -601,6 +621,15 @@ functions:
       else if (command == PHONE)
       {
          show_phone();
+         std::vector<std::string> tokens = tokenize(argument);
+         if (!assert_min_token_count(tokens, 1))
+         {
+            std::cout << "tokens must be equal to 1 on line " << line_num << std::endl;
+            return false;
+         }
+         std::vector<std::string> messages = tokens;
+         
+         //TODO created_dialog = dialog_factory.create_phone_messages_dialog(messages);
       }
       else if (command == OPENSCRIPT)
       {
@@ -1050,4 +1079,6 @@ dependencies:
     headers: [ AllegroFlare/Inventory.hpp ]
   - symbol: Krampus21::Inventory
     headers: [ Krampus21/Inventory.hpp ]
+  - symbol: Krampus21::Elements::SmartPhone
+    headers: [ Krampus21/Elements/SmartPhone.hpp ]
 
