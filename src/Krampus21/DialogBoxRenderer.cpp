@@ -9,8 +9,10 @@
 #include <Krampus21/Elements/DialogBoxFrame.hpp>
 #include <Krampus21/DialogBoxes/Choice.hpp>
 #include <Krampus21/DialogBoxes/YouGotAnItem.hpp>
+#include <Krampus21/DialogBoxes/SmartPhone.hpp>
 #include <Krampus21/DialogBoxRenderers/ChoiceRenderer.hpp>
 #include <Krampus21/DialogBoxRenderers/YouGotAnItemRenderer.hpp>
+#include <Krampus21/DialogBoxRenderers/SmartPhone.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -93,6 +95,18 @@ void DialogBoxRenderer::render()
       place.start_transform();
       Krampus21::DialogBoxes::Choice* choice_dialog_box = static_cast<Krampus21::DialogBoxes::Choice*>(dialog_box);
       Krampus21::DialogBoxRenderers::ChoiceRenderer(font_bin, bitmap_bin, choice_dialog_box, width, height).render();
+      place.restore_transform();
+   }
+   else if (dialog_box->is_type("SmartPhone"))
+   {
+      allegro_flare::placement2d place{ 1920/2, 1080/2, 400, 420 };
+      Krampus21::DialogBoxes::SmartPhone* smart_phone_dialog_box =
+         static_cast<Krampus21::DialogBoxes::SmartPhone*>(dialog_box);
+      std::vector<std::string> messages = smart_phone_dialog_box->get_messages();
+
+      place.start_transform();
+      Krampus21::DialogBoxRenderers::SmartPhone smart_phone_dialog_box_renderer(font_bin, 800, 800, messages);
+      smart_phone_dialog_box_renderer.render();
       place.restore_transform();
    }
    else if (dialog_box->is_type("YouGotAnItem"))

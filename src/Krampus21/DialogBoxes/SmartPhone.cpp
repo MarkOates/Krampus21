@@ -1,7 +1,7 @@
 
 
 #include <Krampus21/DialogBoxes/SmartPhone.hpp>
-#include <Krampus21/Elements/SmartPhoneDialogBubble.hpp>
+
 
 
 namespace Krampus21
@@ -22,14 +22,12 @@ SmartPhone::~SmartPhone()
 }
 
 
-void SmartPhone::render()
+std::vector<std::string> SmartPhone::get_messages()
 {
-   // TODO
-   // render smart phone dialog
-   //Krampus21::Elements::SmartPhoneDialogBubble dialog_bubble_element(text);
-   //dialog_bubble_elemenet.render();
-   return;
+   return messages;
 }
+
+
 } // namespace DialogBoxes
 } // namespace Krampus21
 

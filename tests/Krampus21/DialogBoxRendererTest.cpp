@@ -24,6 +24,7 @@
 
 #include <Krampus21/DialogBoxes/Choice.hpp>
 #include <Krampus21/DialogBoxes/YouGotAnItem.hpp>
+#include <Krampus21/DialogBoxes/SmartPhone.hpp>
 
 
 TEST(Krampus21_DialogBoxRendererTest, can_be_created_without_blowing_up)
@@ -196,7 +197,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_a_choice_type_dialog_box)
 
    dialog_box_renderer.render();
    al_flip_display();
-   std::this_thread::sleep_for(std::chrono::seconds(1));
+   //std::this_thread::sleep_for(std::chrono::seconds(1));
 
    al_destroy_display(display);
    al_uninstall_system();
@@ -220,7 +221,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_a_you_got_an_item_type_dialo
 
    dialog_box_renderer.render();
    al_flip_display();
-   std::this_thread::sleep_for(std::chrono::seconds(1));
+   //std::this_thread::sleep_for(std::chrono::seconds(1));
 
    bitmap_bin.clear();
    al_destroy_display(display);
@@ -278,6 +279,31 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_multiline_dialog)
 }
 
 
+TEST(Krampus21_DialogBoxRendererTest, render__draws_smart_phone_dialog)
+{
+   al_init();
+   al_init_primitives_addon();
+   al_init_font_addon();
+   al_init_ttf_addon();
+   ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
+   AllegroFlare::FontBin font_bin;
+   AllegroFlare::BitmapBin bitmap_bin;
+   font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
+   Krampus21::DialogBoxes::SmartPhone smart_phone;
+   //smart_phone.set_pages({ "Some test dialog text. There's actually a lot of text that will need to fit." });
+   Krampus21::DialogBoxRenderer dialog_box_renderer(&font_bin, &bitmap_bin, &smart_phone);
+
+   //dialog_box.reveal_all_characters();
+
+   dialog_box_renderer.render();
+   al_flip_display();
+   std::this_thread::sleep_for(std::chrono::seconds(1));
+
+   al_destroy_display(display);
+   al_uninstall_system();
+}
+
+
 TEST(Krampus21_DialogBoxRendererTest, render__will_propertly_render_revealing_text)
 {
    al_init();
@@ -297,7 +323,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__will_propertly_render_revealing_te
    {
       dialog_box.update();
       dialog_box_renderer.render();
-      al_flip_display();
+      //al_flip_display();
       //std::this_thread::sleep_for(std::chrono::microseconds(10000)); // add sleep for more obvious visual delay
    }
    //std::this_thread::sleep_for(std::chrono::milliseconds(500));
@@ -305,5 +331,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__will_propertly_render_revealing_te
    al_destroy_display(display);
    al_uninstall_system();
 }
+
+
 
 

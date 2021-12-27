@@ -19,7 +19,7 @@ namespace Krampus21
          SmartPhone(std::vector<std::string> messages={"[no-messages-set]"});
          ~SmartPhone();
 
-         void render();
+         std::vector<std::string> get_messages();
       };
    }
 }

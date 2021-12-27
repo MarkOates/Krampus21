@@ -54,6 +54,7 @@ table td
   <li><a href="#quintessence/Krampus21/Character.q.yml">quintessence/Krampus21/Character.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderer.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxRenderers/ChoiceRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderers/ChoiceRenderer.q.yml</a></li>
+  <li><a href="#quintessence/Krampus21/DialogBoxRenderers/SmartPhone.q.yml">quintessence/Krampus21/DialogBoxRenderers/SmartPhone.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxRenderers/YouGotAnItemRenderer.q.yml">quintessence/Krampus21/DialogBoxRenderers/YouGotAnItemRenderer.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/Base.q.yml">quintessence/Krampus21/DialogBoxes/Base.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/Choice.q.yml">quintessence/Krampus21/DialogBoxes/Choice.q.yml</a></li>
@@ -542,10 +543,16 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::YouGotAnItem*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/YouGotAnItem.hpp&quot;]}</td>
 </tr>
 <tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::SmartPhone*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/SmartPhone.hpp&quot;]}</td>
+</tr>
+<tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxRenderers::ChoiceRenderer&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxRenderers/ChoiceRenderer.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxRenderers::YouGotAnItemRenderer&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxRenderers/YouGotAnItemRenderer.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxRenderers::SmartPhone&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxRenderers/SmartPhone.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -640,6 +647,45 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Elements::DialogBoxFrame&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Elements/DialogBoxFrame.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/Krampus21/DialogBoxRenderers/SmartPhone.q.yml">quintessence/Krampus21/DialogBoxRenderers/SmartPhone.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">font_bin</td>
+  <td class="property">AllegroFlare::FontBin*</td>
+</tr>
+<tr>
+  <td class="property">width</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">height</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">messages</td>
+  <td class="property">std::vector&lt;std::string&gt;</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">render()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Elements::SmartPhoneDialogBubble&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Elements/SmartPhoneDialogBubble.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement2d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement2d.h&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -863,9 +909,6 @@ table td
 </tr>
     </table>
      <table>
-<tr>
-  <td class="method">render()</td>
-</tr>
     </table>
      <table>
 <tr>
@@ -1093,13 +1136,35 @@ table td
   <div class="component">
     <h3 id="quintessence/Krampus21/Elements/SmartPhone.q.yml">quintessence/Krampus21/Elements/SmartPhone.q.yml</h3>
      <table>
-    </table>
-     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="property">font_bin</td>
+  <td class="property">AllegroFlare::FontBin*</td>
+</tr>
+<tr>
+  <td class="property">width</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">height</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">messages</td>
+  <td class="property">std::vector&lt;std::string&gt;</td>
 </tr>
     </table>
      <table>
+<tr>
+  <td class="method">render()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Elements::SmartPhoneDialogBubble&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Elements/SmartPhoneDialogBubble.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
+</tr>
     </table>
   </div>
 </ul>
@@ -1642,8 +1707,10 @@ table td
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/DialogBoxRenderers/SmartPhone",
     "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Elements/DialogBoxNameTag",
+    "Krampus21/Elements/SmartPhone",
     "Krampus21/Elements/SmartPhoneDialogBubble",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",
@@ -1743,6 +1810,7 @@ table td
   "allegro_flare/placement2d": [
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogBoxRenderers/SmartPhone",
     "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",
@@ -1803,10 +1871,17 @@ table td
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogFactory"
   ],
+  "Krampus21/DialogBoxes/SmartPhone": [
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogFactory"
+  ],
   "Krampus21/DialogBoxRenderers/ChoiceRenderer": [
     "Krampus21/DialogBoxRenderer"
   ],
   "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer": [
+    "Krampus21/DialogBoxRenderer"
+  ],
+  "Krampus21/DialogBoxRenderers/SmartPhone": [
     "Krampus21/DialogBoxRenderer"
   ],
   "al_color_name": [
@@ -1826,20 +1901,19 @@ table td
     "Krampus21/DialogBoxes/Choice",
     "Krampus21/DialogFactory"
   ],
+  "Krampus21/Elements/SmartPhoneDialogBubble": [
+    "Krampus21/DialogBoxRenderers/SmartPhone",
+    "Krampus21/DialogBoxes/SmartPhone",
+    "Krampus21/Elements/SmartPhone"
+  ],
   "AllegroFlare/Interpolators/": [
     "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer"
   ],
   "std/vector<std/vector<std/string>>": [
     "Krampus21/DialogBoxes/Base"
   ],
-  "Krampus21/Elements/SmartPhoneDialogBubble": [
-    "Krampus21/DialogBoxes/SmartPhone"
-  ],
   "al_get_time": [
     "Krampus21/DialogBoxes/YouGotAnItem"
-  ],
-  "Krampus21/DialogBoxes/SmartPhone": [
-    "Krampus21/DialogFactory"
   ],
   "al_draw_text": [
     "Krampus21/Elements/DialogBoxNameTag"

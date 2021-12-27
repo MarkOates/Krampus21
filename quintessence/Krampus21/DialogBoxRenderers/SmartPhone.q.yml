@@ -1,6 +1,5 @@
 properties:
 
-
   - name: font_bin
     type: AllegroFlare::FontBin*
     init_with: nullptr
@@ -18,7 +17,7 @@ properties:
 
   - name: messages
     type: std::vector<std::string>
-    init_with: '{"[no-messages-set]"}'
+    init_with: '{}'
     constructor_arg: true
 
 
@@ -27,11 +26,24 @@ functions:
 
   - name: render
     body: |
-      int line = 0;
+      //int line = 0;
+      float dialog_box_height = 120;
+      float dialog_box_spacing = dialog_box_height + 30;
+      allegro_flare::placement2d dialog_bubble_placement;
       for (unsigned i=0; i<messages.size(); i++)
       {
+         float y_position = i * dialog_box_spacing;
          auto &message = messages[i];
-         Krampus21::Elements::SmartPhoneDialogBubble dialog_bubble_element(font_bin, message, width, 180);
+         allegro_flare::placement2d dialog_bubble_placement{0, y_position, 0, 0};
+
+         dialog_bubble_placement.start_transform();
+         Krampus21::Elements::SmartPhoneDialogBubble dialog_bubble_element(
+            font_bin,
+            message,
+            width,
+            dialog_box_height,
+            true
+         );
            //- name: font_bin
            //- name: text
            //- name: width
@@ -39,10 +51,12 @@ functions:
            //- name: callout_on_left
 
          dialog_bubble_element.render();
+         dialog_bubble_placement.restore_transform();
       }
       return;
     body_dependency_symbols:
       - Krampus21::Elements::SmartPhoneDialogBubble
+      - allegro_flare::placement2d
 
 
 dependencies:
@@ -52,5 +66,7 @@ dependencies:
     headers: [ Krampus21/Elements/SmartPhoneDialogBubble.hpp ]
   - symbol: AllegroFlare::FontBin*
     headers: [ AllegroFlare/FontBin.hpp ]
+  - symbol: allegro_flare::placement2d
+    headers: [ allegro_flare/placement2d.h ]
 
 

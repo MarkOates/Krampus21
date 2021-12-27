@@ -8,7 +8,7 @@
 
 namespace Krampus21
 {
-   namespace Elements
+   namespace DialogBoxRenderers
    {
       class SmartPhone
       {
@@ -19,7 +19,7 @@ namespace Krampus21
          std::vector<std::string> messages;
 
       public:
-         SmartPhone(AllegroFlare::FontBin* font_bin=nullptr, float width=1, float height=1, std::vector<std::string> messages={"[no-messages-set]"});
+         SmartPhone(AllegroFlare::FontBin* font_bin=nullptr, float width=1, float height=1, std::vector<std::string> messages={});
          ~SmartPhone();
 
          void render();
