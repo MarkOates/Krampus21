@@ -43,7 +43,7 @@ functions:
       return basic_dialog_box;
 
 
-  - name: build_smart_phone_dialog
+  - name: create_smart_phone_dialog
     type: Krampus21::DialogBoxes::SmartPhone*
     parameters:
       - name: pages

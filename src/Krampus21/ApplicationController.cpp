@@ -538,6 +538,9 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
    else if (command == PHONE)
    {
       show_phone();
+
+      std::vector<std::string> messages = { "Hey what's up", "Not much here rly" };
+      created_dialog = dialog_factory.create_smart_phone_dialog(messages);
    }
    else if (command == OPENSCRIPT)
    {
