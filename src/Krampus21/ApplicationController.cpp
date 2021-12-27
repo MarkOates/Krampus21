@@ -322,11 +322,11 @@ void ApplicationController::primary_timer_func()
       // render character
       character.render();
 
-      // render letterbox
-      draw_letterbox();
-
       // render smartphone
       draw_smart_phone();
+
+      // render letterbox
+      draw_letterbox();
 
       // render dialog
       if (current_dialog)
@@ -504,7 +504,7 @@ void ApplicationController::draw_smart_phone()
    ALLEGRO_COLOR fading_white =
       ALLEGRO_COLOR{phone_transparency, phone_transparency, phone_transparency, phone_transparency};
    ALLEGRO_BITMAP *smart_phone_image = obtain_bitmap_bin()->auto_get("phone-in-hand-01.png");
-   allegro_flare::placement2d smart_phone_placement(1920/4 * 1, 1080/3*2, 800, 800);
+   allegro_flare::placement2d smart_phone_placement(1920/3 * 1, 1080/3*2, 800, 800);
    smart_phone_placement.start_transform();
    al_draw_tinted_bitmap(smart_phone_image, fading_white, 0, 0, 0);
    smart_phone_placement.restore_transform();
