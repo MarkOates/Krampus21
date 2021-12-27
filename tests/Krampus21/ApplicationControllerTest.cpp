@@ -309,6 +309,33 @@ TEST(Krampus21_ApplicationControllerText,
 
 
 TEST(Krampus21_ApplicationControllerText,
+   parse_and_run_line__on_the_IF_FLAG_IS_SET_command__executes_the_consequence_if_the_item_is_in_the_inventory)
+{
+   std::vector<std::string> script_lines = {
+     "ADD_FLAG: 231",
+     "IF_FLAG: 231 | GOTO: #A",
+       "GOTO: #B",
+       "MARKER: #A",
+          "SIGNAL: The condition evaluated to true!",
+          "GOTO: #END",
+       "MARKER: #B",
+          "SIGNAL: The condition evaluated to false!",
+          "GOTO: #END",
+       "MARKER: #END",
+       "SIGNAL: (end)",
+   };
+   Krampus21::ApplicationController application_controller;
+   application_controller.load_script_lines(script_lines);
+
+   testing::internal::CaptureStdout();
+   application_controller.play_current_script_line();
+   std::string cout_output = testing::internal::GetCapturedStdout();
+
+   ASSERT_EQ("A flag was set on the flag num 231\nThe condition evaluated to true!\n(end)\n", cout_output);
+}
+
+
+TEST(Krampus21_ApplicationControllerText,
    parse_and_run_line__on_the_OPENSCRIPT_command__opens_and_runs_the_script)
 {
    al_init();

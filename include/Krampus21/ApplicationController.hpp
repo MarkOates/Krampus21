@@ -45,6 +45,7 @@ namespace Krampus21
       float letterbox_frame_height;
       ALLEGRO_COLOR letterbox_color;
       AllegroFlare::Inventory af_inventory;
+      AllegroFlare::Inventory flags;
       Krampus21::Inventory inventory;
       bool script_freshly_loaded_via_OPENSCRIPT;
 

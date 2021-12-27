@@ -45,6 +45,7 @@ ApplicationController::ApplicationController(AllegroFlare::Framework* framework,
    , letterbox_frame_height(200)
    , letterbox_color(ALLEGRO_COLOR{0.0, 0.0, 0.0, 1.0})
    , af_inventory({})
+   , flags({})
    , inventory({})
    , script_freshly_loaded_via_OPENSCRIPT(false)
 {
@@ -494,6 +495,8 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
    std::string COLLECT_SILENTLY = "COLLECT_SILENTLY";
    std::string IF_IN_INVENTORY = "IF_IN_INVENTORY";
    std::string OPENSCRIPT = "OPENSCRIPT";
+   std::string ADD_FLAG = "ADD_FLAG";
+   std::string IF_FLAG = "IF_FLAG";
 
    bool continue_directly_to_next_script_line = false;
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
@@ -561,6 +564,40 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
       // TODO: eval MARKER target exists
 
       if (af_inventory.has_item(item_id))
+      {
+         parse_and_run_line(consequence, line_num);
+      }
+      continue_directly_to_next_script_line = true;
+   }
+   else if (command == IF_FLAG)
+   {
+      // tokenize
+      std::vector<std::string> tokens = tokenize(argument);
+
+      // validate
+      // expect exactly 2 params
+      if (!assert_token_count_eq(tokens, 2))
+      {
+         std::cout << "tokens must be equal to 2 on line " << line_num << std::endl;
+         return false;
+      }
+
+      // get arguments
+      int flag_id = atoi(tokens[0].c_str());
+      std::string consequence = tokens[1];
+
+      // bonus:
+      std::pair<std::string, std::string> consequence_command_and_argument = parse_command_and_argument(consequence);
+      std::string consequence_command = consequence_command_and_argument.first;
+      std::string consequence_argument = consequence_command_and_argument.second;
+      // eval only GOTO
+      if (consequence_command != "GOTO")
+      {
+         std::cout << "IF_IN_INVENTORY consequence argument must be a GOTO (line [" << line_num << "])" << std::endl;
+      }
+      // TODO: eval MARKER target exists
+
+      if (flags.has_item(flag_id))
       {
          parse_and_run_line(consequence, line_num);
       }
@@ -643,6 +680,18 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
             dialog_factory.create_you_got_an_item_dialog(item_id, item_name, item_bitmap_identifier);
          created_dialog = created_you_got_an_item_dialog_box;
       }
+   }
+   else if (command == ADD_FLAG)
+   {
+      int flag_id = atoi(argument.c_str());
+
+      // add the item to the inventory
+      flags.add_item(flag_id);
+
+      // cout for debugging
+      std::cout << "A flag was set on the flag num " << argument << std::endl;
+
+      continue_directly_to_next_script_line = true;
    }
    else if (command == SET_CHARACTER_ART)
    {
