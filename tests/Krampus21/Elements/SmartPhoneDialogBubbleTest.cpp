@@ -20,7 +20,7 @@ class Krampus21_SmartPhoneDialogBubbleWithAllegroRenderingFixtureTest
 
 TEST_F(Krampus21_SmartPhoneDialogBubbleWithAllegroRenderingFixtureTest, can_be_created_without_blowing_up)
 {
-   Krampus21::Elements::SmartPhoneDialogBubble dialog_bubble("Hello, this is bubble text", 800, 200);
+   Krampus21::Elements::SmartPhoneDialogBubble dialog_bubble("Hello, this is bubble text", 600, 100);
 
    al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 1});
    dialog_bubble.render();

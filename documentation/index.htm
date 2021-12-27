@@ -63,6 +63,7 @@ table td
   <li><a href="#quintessence/Krampus21/Elements/DialogBoxFrame.q.yml">quintessence/Krampus21/Elements/DialogBoxFrame.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Elements/DialogBoxNameTag.q.yml">quintessence/Krampus21/Elements/DialogBoxNameTag.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Elements/SmartPhone.q.yml">quintessence/Krampus21/Elements/SmartPhone.q.yml</a></li>
+  <li><a href="#quintessence/Krampus21/Elements/SmartPhoneDialogBubble.q.yml">quintessence/Krampus21/Elements/SmartPhoneDialogBubble.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Inventory.q.yml">quintessence/Krampus21/Inventory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/ProgramRunner.q.yml">quintessence/Krampus21/ProgramRunner.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Script.q.yml">quintessence/Krampus21/Script.q.yml</a></li>
@@ -1082,6 +1083,44 @@ table td
 </ul>
 <ul>
   <div class="component">
+    <h3 id="quintessence/Krampus21/Elements/SmartPhoneDialogBubble.q.yml">quintessence/Krampus21/Elements/SmartPhoneDialogBubble.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">text</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">width</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">height</td>
+  <td class="property">float</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">render()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_multiline_text&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_filled_rounded_rectangle&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
     <h3 id="quintessence/Krampus21/Inventory.q.yml">quintessence/Krampus21/Inventory.q.yml</h3>
      <table>
 <tr>
@@ -1526,6 +1565,7 @@ table td
     "Krampus21/ApplicationController",
     "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Elements/DialogBoxFrame",
+    "Krampus21/Elements/SmartPhoneDialogBubble",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",
     "Krampus21/Titles/Slate"
@@ -1698,7 +1738,8 @@ table td
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/Elements/DialogBoxFrame",
-    "Krampus21/Elements/DialogBoxNameTag"
+    "Krampus21/Elements/DialogBoxNameTag",
+    "Krampus21/Elements/SmartPhoneDialogBubble"
   ],
   "Blast/StringJoiner": [
     "Krampus21/DialogBoxRenderer",
@@ -1727,7 +1768,8 @@ table td
     "Krampus21/DialogBoxRenderer"
   ],
   "al_color_name": [
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/Elements/SmartPhoneDialogBubble"
   ],
   "al_draw_rectangle": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
@@ -1753,6 +1795,9 @@ table td
   ],
   "al_draw_text": [
     "Krampus21/Elements/DialogBoxNameTag"
+  ],
+  "al_draw_multiline_text": [
+    "Krampus21/Elements/SmartPhoneDialogBubble"
   ],
   "X": [
     "Krampus21/Inventory"

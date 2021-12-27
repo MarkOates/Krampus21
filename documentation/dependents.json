@@ -3,6 +3,7 @@
     "Krampus21/ApplicationController",
     "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Elements/DialogBoxFrame",
+    "Krampus21/Elements/SmartPhoneDialogBubble",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",
     "Krampus21/Titles/Slate"
@@ -175,7 +176,8 @@
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/Elements/DialogBoxFrame",
-    "Krampus21/Elements/DialogBoxNameTag"
+    "Krampus21/Elements/DialogBoxNameTag",
+    "Krampus21/Elements/SmartPhoneDialogBubble"
   ],
   "Blast/StringJoiner": [
     "Krampus21/DialogBoxRenderer",
@@ -204,7 +206,8 @@
     "Krampus21/DialogBoxRenderer"
   ],
   "al_color_name": [
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/Elements/SmartPhoneDialogBubble"
   ],
   "al_draw_rectangle": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
@@ -230,6 +233,9 @@
   ],
   "al_draw_text": [
     "Krampus21/Elements/DialogBoxNameTag"
+  ],
+  "al_draw_multiline_text": [
+    "Krampus21/Elements/SmartPhoneDialogBubble"
   ],
   "X": [
     "Krampus21/Inventory"
