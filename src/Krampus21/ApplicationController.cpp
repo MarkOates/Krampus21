@@ -508,9 +508,9 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
       std::string consequence = tokens[1];
 
       // bonus:
-      std::pair<std::string, std::string> command_and_argument = parse_command_and_argument(consequence);
-      std::string consequence_command = command_and_argument.first;
-      std::string consequence_argument = command_and_argument.second;
+      std::pair<std::string, std::string> consequence_command_and_argument = parse_command_and_argument(consequence);
+      std::string consequence_command = consequence_command_and_argument.first;
+      std::string consequence_argument = consequence_command_and_argument.second;
       // eval only GOTO
       if (consequence_command != "GOTO")
       {
@@ -520,6 +520,7 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
 
       if (af_inventory.has_item(item_id))
       {
+         std::cout << " -- item exists in inventory... doing a thing" << std::endl;
          parse_and_run_line(consequence, line_num);
       }
       continue_directly_to_next_script_line = true;
@@ -591,7 +592,11 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
       std::cout << "You got an item " << argument << std::endl;
 
       // construct the dialog
-      if (command != "COLLECT_SILENTLY")
+      if (command == COLLECT_SILENTLY)
+      {
+         continue_directly_to_next_script_line = true;
+      }
+      else if (command == COLLECT)
       {
          Krampus21::DialogBoxes::YouGotAnItem* created_you_got_an_item_dialog_box =
             dialog_factory.create_you_got_an_item_dialog(item_id, item_name, item_bitmap_identifier);
@@ -621,7 +626,13 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
    }
    else if (command == GOTO)
    {
-      script.goto_marker(argument);
+      bool successful = script.goto_marker(argument);
+      if (!successful)
+      {
+         std::cout << "WARNING: Attempted to GOTO a marker named \"" << argument << "\" "
+                   << "but that marker does not exist. This is from line ["
+                   << line_num << "], which is \"" << script_line << "\"" << std::endl;
+      }
       continue_directly_to_next_script_line = true;
    }
    else
