@@ -773,6 +773,21 @@ functions:
       return (tokens.size() >= min);
 
 
+  - name: assert_token_count_eq
+    type: bool
+    private: true
+    static: true
+    parameters:
+      - name: tokens
+        type: std::vector<std::string>
+        default_argument: '{}'
+      - name: value
+        type: int
+        default_argument: 0
+    body: |
+      return (tokens.size() == value);
+
+
   - name: assert_odd_token_count
     type: bool
     private: true

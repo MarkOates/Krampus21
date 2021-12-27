@@ -678,6 +678,11 @@ bool ApplicationController::assert_min_token_count(std::vector<std::string> toke
    return (tokens.size() >= min);
 }
 
+bool ApplicationController::assert_token_count_eq(std::vector<std::string> tokens, int value)
+{
+   return (tokens.size() == value);
+}
+
 bool ApplicationController::assert_odd_token_count(std::vector<std::string> tokens, int min)
 {
    return (tokens.size() % 2);

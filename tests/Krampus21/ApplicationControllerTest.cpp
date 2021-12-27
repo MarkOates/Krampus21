@@ -172,6 +172,22 @@ TEST(Krampus21_ApplicationControllerTest, assert_odd_token_count__will_return_fa
    ASSERT_EQ(false, Krampus21::ApplicationController::assert_odd_token_count({ "t1", "t2", "t3", "t4", "t5", "t6" }));
 }
 
+TEST(Krampus21_ApplicationControllerTest,
+   assert_token_count_eq__will_return_true_if_the_number_of_tokens_is_equal_to_the_value)
+{
+   ASSERT_EQ(true, Krampus21::ApplicationController::assert_token_count_eq({ }, 0));
+   ASSERT_EQ(true, Krampus21::ApplicationController::assert_token_count_eq({ "t1", "t2" }, 2));
+   ASSERT_EQ(true, Krampus21::ApplicationController::assert_token_count_eq({ "t1", "t2", "t3", "t4", "t5", "t6" }, 6));
+}
+
+TEST(Krampus21_ApplicationControllerTest,
+   assert_token_count_eq__will_return_false_if_the_number_of_tokens_is_equal_to_the_value)
+{
+   ASSERT_EQ(false, Krampus21::ApplicationController::assert_token_count_eq({ }, 1));
+   ASSERT_EQ(false, Krampus21::ApplicationController::assert_token_count_eq({ "t1", "t2" }, 999));
+   ASSERT_EQ(false, Krampus21::ApplicationController::assert_token_count_eq({ "t1", "t2", "t3", "t4", "t5", "t6" }, -1));
+}
+
 TEST(Krampus21_ApplicationControllerText,
    build_markers_index__will_build_an_index_with_the_markers_and_line_numbers_from_the_script)
 {

@@ -82,6 +82,7 @@ namespace Krampus21
       static std::map<std::string, int> build_markers_index(std::vector<std::string> script_lines={});
       static std::vector<std::string> tokenize(std::string str="", char delim='|');
       static bool assert_min_token_count(std::vector<std::string> tokens={}, int min=0);
+      static bool assert_token_count_eq(std::vector<std::string> tokens={}, int value=0);
       static bool assert_odd_token_count(std::vector<std::string> tokens={}, int min=0);
       ALLEGRO_FONT* obtain_dialog_font();
    };
