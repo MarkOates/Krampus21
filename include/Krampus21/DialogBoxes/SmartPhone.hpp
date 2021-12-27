@@ -20,6 +20,7 @@ namespace Krampus21
          ~SmartPhone();
 
          std::vector<std::string> get_messages();
+         float infer_age();
       };
    }
 }

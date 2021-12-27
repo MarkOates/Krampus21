@@ -57,6 +57,7 @@ Krampus21::DialogBoxes::Basic DialogFactory::build_basic_dialog(std::vector<std:
 Krampus21::DialogBoxes::SmartPhone* DialogFactory::create_smart_phone_dialog(std::vector<std::string> pages)
 {
    Krampus21::DialogBoxes::SmartPhone *smart_phone_dialog_box = new Krampus21::DialogBoxes::SmartPhone(pages);
+   smart_phone_dialog_box->set_created_at(al_get_time());
    //smart_phone_dialog_box.set_pages(pages);
    return smart_phone_dialog_box;
 }

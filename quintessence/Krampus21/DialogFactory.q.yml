@@ -51,6 +51,7 @@ functions:
         default_argument: '{}'
     body: |
       Krampus21::DialogBoxes::SmartPhone *smart_phone_dialog_box = new Krampus21::DialogBoxes::SmartPhone(pages);
+      smart_phone_dialog_box->set_created_at(al_get_time());
       //smart_phone_dialog_box.set_pages(pages);
       return smart_phone_dialog_box;
 

@@ -1,7 +1,7 @@
 
 
 #include <Krampus21/DialogBoxes/SmartPhone.hpp>
-
+#include <allegro5/allegro.h>
 
 
 namespace Krampus21
@@ -28,6 +28,10 @@ std::vector<std::string> SmartPhone::get_messages()
 }
 
 
+float SmartPhone::infer_age()
+{
+   return al_get_time() - get_created_at();
+}
 } // namespace DialogBoxes
 } // namespace Krampus21
 

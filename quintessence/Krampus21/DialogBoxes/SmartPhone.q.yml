@@ -16,9 +16,22 @@ properties:
     getter: true
 
 
+functions:
+
+
+  - name: infer_age
+    type: float
+    body: |
+      return al_get_time() - get_created_at();
+    body_dependency_symbols:
+      - al_get_time
+
+
 dependencies:
 
 
+  - symbol: al_get_time
+    headers: [ allegro5/allegro.h ]
   - symbol: Krampus21::DialogBoxes::Base
     headers: [ Krampus21/DialogBoxes/Base.hpp ]
   - symbol: Krampus21::Elements::SmartPhoneDialogBubble

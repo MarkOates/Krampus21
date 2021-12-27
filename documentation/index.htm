@@ -671,10 +671,17 @@ table td
   <td class="property">messages</td>
   <td class="property">std::vector&lt;std::string&gt;</td>
 </tr>
+<tr>
+  <td class="property">reveal_counter</td>
+  <td class="property">float</td>
+</tr>
     </table>
      <table>
 <tr>
   <td class="method">render()</td>
+</tr>
+<tr>
+  <td class="method">build_sanitized_reveal_counter()</td>
 </tr>
     </table>
      <table>
@@ -686,6 +693,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement2d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement2d.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::interpolator::*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Interpolators.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -909,8 +919,14 @@ table td
 </tr>
     </table>
      <table>
+<tr>
+  <td class="method">infer_age()</td>
+</tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_get_time&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
 </tr>
@@ -1906,6 +1922,9 @@ table td
     "Krampus21/DialogBoxes/SmartPhone",
     "Krampus21/Elements/SmartPhone"
   ],
+  "AllegroFlare/interpolator/": [
+    "Krampus21/DialogBoxRenderers/SmartPhone"
+  ],
   "AllegroFlare/Interpolators/": [
     "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer"
   ],
@@ -1913,6 +1932,7 @@ table td
     "Krampus21/DialogBoxes/Base"
   ],
   "al_get_time": [
+    "Krampus21/DialogBoxes/SmartPhone",
     "Krampus21/DialogBoxes/YouGotAnItem"
   ],
   "al_draw_text": [

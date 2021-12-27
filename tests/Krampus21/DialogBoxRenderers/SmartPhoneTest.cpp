@@ -20,20 +20,29 @@ class Krampus21_SmartPhoneWithAllegroRenderingFixtureTest
 
 TEST_F(Krampus21_SmartPhoneWithAllegroRenderingFixtureTest, can_be_created_without_blowing_up)
 {
-   Krampus21::DialogBoxRenderers::SmartPhone smart_phone_dialog_renderer(
-      &get_font_bin_ref(),
-      600,
-      100,
-      { "Hello, this is bubble text" }
-   );
+   allegro_flare::placement2d place{ 1920/2, 1080/2, 600/2, 600 };
+   int passes = 60;
+   float reveal_counter = 0;
+   for (unsigned i=0; i<passes; i++)
+   {
+      al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 1});
+      Krampus21::DialogBoxRenderers::SmartPhone smart_phone_dialog_renderer(
+         &get_font_bin_ref(),
+         600,
+         100,
+         { "Hello, this is bubble text", "And this is a second line", "And finally the last line" },
+         reveal_counter
+      );
 
-   al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 1});
-   smart_phone_dialog_renderer.render();
-   al_flip_display();
+      place.start_transform();
+      smart_phone_dialog_renderer.render();
+      place.restore_transform();
+      al_flip_display();
+      std::this_thread::sleep_for(std::chrono::milliseconds(1000/60));
+      reveal_counter += (1.0/60.0f) * 2;
+   }
 
-   //std::this_thread::sleep_for(std::chrono::milliseconds(1000/60));
-
-   std::this_thread::sleep_for(std::chrono::seconds(1));
+   //std::this_thread::sleep_for(std::chrono::seconds(1));
 }
 
 

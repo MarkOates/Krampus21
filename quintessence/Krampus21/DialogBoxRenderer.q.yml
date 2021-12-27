@@ -47,9 +47,16 @@ functions:
          Krampus21::DialogBoxes::SmartPhone* smart_phone_dialog_box =
             static_cast<Krampus21::DialogBoxes::SmartPhone*>(dialog_box);
          std::vector<std::string> messages = smart_phone_dialog_box->get_messages();
+         float reveal_counter = smart_phone_dialog_box->infer_age() * 2;
 
          place.start_transform();
-         Krampus21::DialogBoxRenderers::SmartPhone smart_phone_dialog_box_renderer(font_bin, 800, 800, messages);
+         Krampus21::DialogBoxRenderers::SmartPhone smart_phone_dialog_box_renderer(
+            font_bin,
+            800,
+            800,
+            messages,
+            reveal_counter
+         );
          smart_phone_dialog_box_renderer.render();
          place.restore_transform();
       }
