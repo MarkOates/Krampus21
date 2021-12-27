@@ -1,0 +1,49 @@
+properties:
+
+
+  - name: text
+    type: std::string
+    init_with: '""'
+    constructor_arg: true
+
+  - name: width
+    type: float
+    init_with: 1
+    constructor_arg: true
+
+  - name: height
+    type: float
+    init_with: 1
+    constructor_arg: true
+
+
+functions:
+
+
+  - name: render
+    guards: [ al_is_primitives_addon_initialized() ]
+    body: |
+      ALLEGRO_COLOR bubble_color = al_color_name("dodgerblue");
+      ALLEGRO_COLOR text_color = al_color_name("white");
+      float roundness = height / 3;
+      if (roundness <= 10.0) roundness = 10.0;
+
+      al_draw_filled_rounded_rectangle(0, 0, width, height, roundness, roundness, bubble_color);
+      return;
+    body_dependency_symbols:
+      - al_draw_filled_rounded_rectangle
+      - al_color_name
+      - ALLEGRO_COLOR
+
+
+dependencies:
+
+
+  - symbol: al_draw_filled_rounded_rectangle
+    headers: [ allegro5/allegro_primitives.h ]
+  - symbol: al_color_name
+    headers: [ allegro5/allegro_color.h ]
+  - symbol: ALLEGRO_COLOR
+    headers: [ allegro5/allegro_color.h ]
+
+
