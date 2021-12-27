@@ -46,6 +46,7 @@ ApplicationController::ApplicationController(AllegroFlare::Framework* framework,
    , letterbox_color(ALLEGRO_COLOR{0.0, 0.0, 0.0, 1.0})
    , af_inventory({})
    , inventory({})
+   , script_freshly_loaded_via_OPENSCRIPT(false)
 {
 }
 
@@ -55,9 +56,21 @@ ApplicationController::~ApplicationController()
 }
 
 
+void ApplicationController::set_script_freshly_loaded_via_OPENSCRIPT(bool script_freshly_loaded_via_OPENSCRIPT)
+{
+   this->script_freshly_loaded_via_OPENSCRIPT = script_freshly_loaded_via_OPENSCRIPT;
+}
+
+
 Krampus21::DialogBoxes::Base* ApplicationController::get_current_dialog()
 {
    return current_dialog;
+}
+
+
+bool ApplicationController::get_script_freshly_loaded_via_OPENSCRIPT()
+{
+   return script_freshly_loaded_via_OPENSCRIPT;
 }
 
 
@@ -209,9 +222,15 @@ void ApplicationController::play_current_script_line()
 
       if (continue_directly_to_next_script_line)
       {
-         script.goto_next_line();
+         if (!get_script_freshly_loaded_via_OPENSCRIPT())
+         {
+            script.goto_next_line();
+         }
+         else
+         {
+            set_script_freshly_loaded_via_OPENSCRIPT(false);
+         }
          if (script.get_finished()) break;
-         //play_current_script_line();
          continue_count++;
       }
       if (continue_count > 500)
@@ -474,6 +493,7 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
    std::string COLLECT = "COLLECT";
    std::string COLLECT_SILENTLY = "COLLECT_SILENTLY";
    std::string IF_IN_INVENTORY = "IF_IN_INVENTORY";
+   std::string OPENSCRIPT = "OPENSCRIPT";
 
    bool continue_directly_to_next_script_line = false;
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
@@ -490,6 +510,26 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
       else
       {
          created_dialog = dialog_factory.create_basic_dialog(std::vector<std::string>{script_line});
+      }
+   }
+   else if (command == OPENSCRIPT)
+   {
+      bool successful = load_script(argument);
+      if (successful)
+      {
+         if (current_dialog)
+         {
+            delete current_dialog;
+            current_dialog = nullptr;
+         }
+         // consider stopping music? I think not.  The opening script should start, stop, or change the music
+         // if needed.  Also, if the same music is already playing from the previous script...
+         // it wont' stop it then start it... instead it will keep playing seamlessly
+         continue_directly_to_next_script_line = true;
+
+         // setting this flag is required so that the advancer does not automatically move to the next
+         // line after oening the new script file
+         set_script_freshly_loaded_via_OPENSCRIPT(true);
       }
    }
    else if (command == IF_IN_INVENTORY)

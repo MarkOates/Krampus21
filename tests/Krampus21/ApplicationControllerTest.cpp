@@ -308,3 +308,25 @@ TEST(Krampus21_ApplicationControllerText,
 }
 
 
+TEST(Krampus21_ApplicationControllerText,
+   parse_and_run_line__on_the_OPENSCRIPT_command__opens_and_runs_the_script)
+{
+   al_init();
+   ALLEGRO_PATH *resource_path = al_get_standard_path(ALLEGRO_RESOURCES_PATH);
+   al_change_directory(al_path_cstr(resource_path, ALLEGRO_NATIVE_PATH_SEP));
+   al_destroy_path(resource_path);
+
+   std::vector<std::string> script_lines = {
+     "OPENSCRIPT: /Users/markoates/Repos/Krampus21/tests/test_fixtures/script-loaded-from-other-script.txt",
+   };
+   Krampus21::ApplicationController application_controller;
+   application_controller.load_script_lines(script_lines);
+
+   testing::internal::CaptureStdout();
+   application_controller.play_current_script_line();
+   std::string cout_output = testing::internal::GetCapturedStdout();
+
+   ASSERT_EQ("The external script was loaded!\n", cout_output);
+}
+
+

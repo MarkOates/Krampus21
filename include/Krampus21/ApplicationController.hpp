@@ -46,12 +46,15 @@ namespace Krampus21
       ALLEGRO_COLOR letterbox_color;
       AllegroFlare::Inventory af_inventory;
       Krampus21::Inventory inventory;
+      bool script_freshly_loaded_via_OPENSCRIPT;
 
    public:
       ApplicationController(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements={}, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements={});
       ~ApplicationController();
 
+      void set_script_freshly_loaded_via_OPENSCRIPT(bool script_freshly_loaded_via_OPENSCRIPT);
       Krampus21::DialogBoxes::Base* get_current_dialog();
+      bool get_script_freshly_loaded_via_OPENSCRIPT();
       void initialize();
       bool load_script_lines(std::vector<std::string> script_lines={});
       bool load_script(std::string filename="unset-script-filename.txt");
