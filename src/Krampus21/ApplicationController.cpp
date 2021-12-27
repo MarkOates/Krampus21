@@ -118,7 +118,7 @@ void ApplicationController::advance()
    }
 
    script.goto_next_line();
-   play_current_script_line();
+   if (!script.get_finished())  play_current_script_line();
 
    return;
 }
@@ -210,6 +210,8 @@ void ApplicationController::play_current_script_line()
       if (continue_directly_to_next_script_line)
       {
          script.goto_next_line();
+         if (script.get_finished()) break;
+         //play_current_script_line();
          continue_count++;
       }
       if (continue_count > 500)
@@ -520,7 +522,6 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
 
       if (af_inventory.has_item(item_id))
       {
-         std::cout << " -- item exists in inventory... doing a thing" << std::endl;
          parse_and_run_line(consequence, line_num);
       }
       continue_directly_to_next_script_line = true;
