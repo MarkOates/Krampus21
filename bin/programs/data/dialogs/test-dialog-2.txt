@@ -1,4 +1,7 @@
-__PLAY_MUSIC: AMBIENCE
+SIGNAL: Starting script...
+
 PHONE: Hey, Chris, what's up
 PHONE: You gotta get up fam, there's some new coding team at the University.
 PHONE: They're really trynna flex what they got.
+
+SIGNAL: ...signal exited successfully.

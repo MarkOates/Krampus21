@@ -295,6 +295,7 @@ void ApplicationController::primary_timer_func()
    // update
    inventory.update();
    if (current_dialog) current_dialog->update();
+   update_smart_phone();
 
    // draw
    //al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
@@ -323,6 +324,9 @@ void ApplicationController::primary_timer_func()
 
       // render letterbox
       draw_letterbox();
+
+      // render smartphone
+      draw_smart_phone();
 
       // render dialog
       if (current_dialog)
@@ -482,15 +486,40 @@ AllegroFlare::BitmapBin* ApplicationController::obtain_bitmap_bin()
    return &framework->get_bitmap_bin_ref();
 }
 
-void ApplicationController::show_phone()
+void ApplicationController::show_smart_phone()
 {
    showing_smart_phone = true;
    return;
 }
 
-void ApplicationController::hide_phone()
+void ApplicationController::hide_smart_phone()
 {
    showing_smart_phone = false;
+   return;
+}
+
+void ApplicationController::draw_smart_phone()
+{
+   float phone_transparency = smart_phone_reveal_counter;
+   ALLEGRO_COLOR fading_white =
+      ALLEGRO_COLOR{phone_transparency, phone_transparency, phone_transparency, phone_transparency};
+   //ALLEGRO_BITMAP *smart_phone_image = obtain_bitmap_bin()->auto_get("phone-in-hand-01.png");
+   //al_draw_tinted_bitmap(smart_phone_image, fading_white, 0, 0, 0);
+   return;
+}
+
+void ApplicationController::update_smart_phone()
+{
+   if (showing_smart_phone)
+   {
+      smart_phone_reveal_counter += 1.0/60.0f;
+      if (smart_phone_reveal_counter >= 1.0) smart_phone_reveal_counter = 1.0f;
+   }
+   else
+   {
+      smart_phone_reveal_counter -= 1.0/60.0f;
+      if (smart_phone_reveal_counter <= 0.0) smart_phone_reveal_counter = 0.0f;
+   }
    return;
 }
 
@@ -521,7 +550,7 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
 
    if (command != PHONE)
    {
-      hide_phone();
+      hide_smart_phone();
    }
 
    if (command.empty() || command == DIALOG)
@@ -537,7 +566,7 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
    }
    else if (command == PHONE)
    {
-      show_phone();
+      show_smart_phone();
 
       std::vector<std::string> messages = { "Hey what's up", "Not much here rly" };
       created_dialog = dialog_factory.create_smart_phone_dialog(messages);

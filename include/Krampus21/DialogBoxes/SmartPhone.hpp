@@ -13,10 +13,10 @@ namespace Krampus21
       class SmartPhone : public Krampus21::DialogBoxes::Base
       {
       private:
-         std::vector<std::string> pages;
+         std::vector<std::string> messages;
 
       public:
-         SmartPhone(std::vector<std::string> pages={"[no-message-text-set]"});
+         SmartPhone(std::vector<std::string> messages={"[no-messages-set]"});
          ~SmartPhone();
 
          void render();

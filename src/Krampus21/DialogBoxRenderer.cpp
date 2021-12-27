@@ -84,7 +84,6 @@ void DialogBoxRenderer::render()
          error_message << "DialogBoxRenderer" << "::" << "render" << ": error: " << "guard \"font_bin\" not met";
          throw std::runtime_error(error_message.str());
       }
-   //where we want to be:
    if (dialog_box->is_type("Choice"))
    {
       allegro_flare::placement2d place{ 1920/2, 1080/5*4, 1920/5*3, 1080/4 };
@@ -157,7 +156,8 @@ void DialogBoxRenderer::render()
    else
    {
       // TODO
-      //throw std::runtime_error("Unrecognized dialog box type:: " dialog_box->get_type() ");
+      //std::cout << "Unrecognized dialog box type:: " + dialog_box->get_type();
+      //throw std::runtime_error("Unrecognized dialog box type:: " + dialog_box->get_type());
    }
 
    return;

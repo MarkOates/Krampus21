@@ -3,15 +3,15 @@ parent_classes:
 
   - class: Krampus21::DialogBoxes::Base
     scope: public
-    init_with: '"YouGotAnItem"'
+    init_with: '"SmartPhone"'
 
 
 properties:
 
 
-  - name: pages
+  - name: messages
     type: std::vector<std::string>
-    init_with: '{"[no-message-text-set]"}'
+    init_with: '{"[no-messages-set]"}'
     constructor_arg: true
 
 

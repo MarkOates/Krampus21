@@ -10,9 +10,9 @@ namespace DialogBoxes
 {
 
 
-SmartPhone::SmartPhone(std::vector<std::string> pages)
-   : Krampus21::DialogBoxes::Base("YouGotAnItem")
-   , pages(pages)
+SmartPhone::SmartPhone(std::vector<std::string> messages)
+   : Krampus21::DialogBoxes::Base("SmartPhone")
+   , messages(messages)
 {
 }
 

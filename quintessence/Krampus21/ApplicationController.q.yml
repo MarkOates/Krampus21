@@ -333,6 +333,7 @@ functions:
       // update
       inventory.update();
       if (current_dialog) current_dialog->update();
+      update_smart_phone();
 
       // draw
       //al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
@@ -361,6 +362,9 @@ functions:
 
          // render letterbox
          draw_letterbox();
+
+         // render smartphone
+         draw_smart_phone();
 
          // render dialog
          if (current_dialog)
@@ -534,17 +538,42 @@ functions:
     body: return &framework->get_bitmap_bin_ref();
 
 
-  - name: show_phone
+  - name: show_smart_phone
     type: void
     body: |
       showing_smart_phone = true;
       return;
 
 
-  - name: hide_phone
+  - name: hide_smart_phone
     type: void
     body: |
       showing_smart_phone = false;
+      return;
+
+
+  - name: draw_smart_phone
+    body: |
+      float phone_transparency = smart_phone_reveal_counter;
+      ALLEGRO_COLOR fading_white =
+         ALLEGRO_COLOR{phone_transparency, phone_transparency, phone_transparency, phone_transparency};
+      //ALLEGRO_BITMAP *smart_phone_image = obtain_bitmap_bin()->auto_get("phone-in-hand-01.png");
+      //al_draw_tinted_bitmap(smart_phone_image, fading_white, 0, 0, 0);
+      return;
+
+
+  - name: update_smart_phone
+    body: |
+      if (showing_smart_phone)
+      {
+         smart_phone_reveal_counter += 1.0/60.0f;
+         if (smart_phone_reveal_counter >= 1.0) smart_phone_reveal_counter = 1.0f;
+      }
+      else
+      {
+         smart_phone_reveal_counter -= 1.0/60.0f;
+         if (smart_phone_reveal_counter <= 0.0) smart_phone_reveal_counter = 0.0f;
+      }
       return;
 
 
@@ -584,7 +613,7 @@ functions:
 
       if (command != PHONE)
       {
-         hide_phone();
+         hide_smart_phone();
       }
 
       if (command.empty() || command == DIALOG)
@@ -600,7 +629,7 @@ functions:
       }
       else if (command == PHONE)
       {
-         show_phone();
+         show_smart_phone();
 
          std::vector<std::string> messages = { "Hey what's up", "Not much here rly" };
          created_dialog = dialog_factory.create_smart_phone_dialog(messages);
