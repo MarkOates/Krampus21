@@ -1086,6 +1086,10 @@ table td
     <h3 id="quintessence/Krampus21/Elements/SmartPhoneDialogBubble.q.yml">quintessence/Krampus21/Elements/SmartPhoneDialogBubble.q.yml</h3>
      <table>
 <tr>
+  <td class="property">font_bin</td>
+  <td class="property">AllegroFlare::FontBin*</td>
+</tr>
+<tr>
   <td class="property">text</td>
   <td class="property">std::string</td>
 </tr>
@@ -1097,13 +1101,23 @@ table td
   <td class="property">height</td>
   <td class="property">float</td>
 </tr>
+<tr>
+  <td class="property">callout_on_left</td>
+  <td class="property">bool</td>
+</tr>
     </table>
      <table>
 <tr>
   <td class="method">render()</td>
 </tr>
+<tr>
+  <td class="private_method">obtain_text_font()</td>
+</tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_multiline_text&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
 </tr>
@@ -1115,6 +1129,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -1579,6 +1596,7 @@ table td
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Elements/DialogBoxNameTag",
+    "Krampus21/Elements/SmartPhoneDialogBubble",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",
     "Krampus21/Titles/Slate"
@@ -1604,6 +1622,7 @@ table td
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
     "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Elements/DialogBoxNameTag",
+    "Krampus21/Elements/SmartPhoneDialogBubble",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",
     "Krampus21/Titles/Slate"

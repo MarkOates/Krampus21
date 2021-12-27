@@ -1,6 +1,11 @@
 properties:
 
 
+  - name: font_bin
+    type: AllegroFlare::FontBin*
+    init_with: nullptr
+    constructor_arg: true
+
   - name: text
     type: std::string
     init_with: '""'
@@ -16,23 +21,36 @@ properties:
     init_with: 1
     constructor_arg: true
 
+  - name: callout_on_left
+    type: bool
+    init_with: false
+    constructor_arg: true
+
 
 functions:
 
 
   - name: render
-    guards: [ al_is_primitives_addon_initialized() ]
+    guards: [ font_bin, al_is_primitives_addon_initialized() ]
     body: |
-      ALLEGRO_COLOR bubble_color = al_color_name("dodgerblue");
+      ALLEGRO_COLOR bubble_color = al_color_html("40669F");
       ALLEGRO_COLOR text_color = al_color_name("white");
-      float roundness = height / 3;
-      if (roundness <= 10.0) roundness = 10.0;
+      float roundness = 32.0f;
+      //if (roundness <= 10.0) roundness = 10.0;
 
       al_draw_filled_rounded_rectangle(0, 0, width, height, roundness, roundness, bubble_color);
+      if (callout_on_left)
+      {
+         al_draw_filled_rectangle(0, height/2, height/2, height, bubble_color);
+      }
+      else
+      {
+         al_draw_filled_rectangle(width, height/2, width-height/2, height, bubble_color);
+      }
 
-      ALLEGRO_FONT *font = al_create_builtin_font();
-      float padding_x = 20;
-      float padding_y = 10;
+      ALLEGRO_FONT *font = obtain_text_font();
+      float padding_x = 30;
+      float padding_y = 20;
       float text_box_width = width - padding_y * 2;
       float line_height = al_get_font_line_height(font);
       al_draw_multiline_text(
@@ -52,11 +70,21 @@ functions:
       - al_draw_filled_rounded_rectangle
       - al_color_name
       - ALLEGRO_COLOR
+      - ALLEGRO_FONT*
+
+
+
+  - name: obtain_text_font
+    private: true
+    type: ALLEGRO_FONT*
+    body: return font_bin->auto_get("Lato-Regular.ttf -48");
 
 
 dependencies:
 
 
+  - symbol: ALLEGRO_FONT*
+    headers: [ allegro5/allegro_font.h ]
   - symbol: al_draw_multiline_text
     headers: [ allegro5/allegro_font.h ]
   - symbol: al_draw_filled_rounded_rectangle
@@ -65,5 +93,7 @@ dependencies:
     headers: [ allegro5/allegro_color.h ]
   - symbol: ALLEGRO_COLOR
     headers: [ allegro5/allegro_color.h ]
+  - symbol: AllegroFlare::FontBin*
+    headers: [ AllegroFlare/FontBin.hpp ]
 
 
