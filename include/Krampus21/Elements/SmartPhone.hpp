@@ -1,9 +1,7 @@
 #pragma once
 
 
-#include <AllegroFlare/BitmapBin.hpp>
-#include <AllegroFlare/FontBin.hpp>
-#include <allegro_flare/placement2d.h>
+#include <string>
 
 
 namespace Krampus21
@@ -13,15 +11,12 @@ namespace Krampus21
       class SmartPhone
       {
       private:
-         AllegroFlare::FontBin* font_bin;
-         AllegroFlare::BitmapBin* bitmap_bin;
-         allegro_flare::placement2d place;
 
       public:
-         SmartPhone(AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr);
+         SmartPhone();
          ~SmartPhone();
 
-         void render();
+         std::string run();
       };
    }
 }
