@@ -48,6 +48,8 @@ namespace Krampus21
       AllegroFlare::Inventory flags;
       Krampus21::Inventory inventory;
       bool script_freshly_loaded_via_OPENSCRIPT;
+      bool showing_smart_phone;
+      float smart_phone_reveal_counter;
 
    public:
       ApplicationController(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements={}, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements={});
@@ -82,6 +84,8 @@ namespace Krampus21
       void user_event_func(ALLEGRO_EVENT* ev=nullptr) override;
       AllegroFlare::FontBin* obtain_font_bin();
       AllegroFlare::BitmapBin* obtain_bitmap_bin();
+      void show_phone();
+      void hide_phone();
       bool parse_and_run_line(std::string script_line="[empty-script-line]", int line_num=0);
       static std::pair<std::string, std::string> parse_command_and_argument(std::string script_line={});
       static std::map<std::string, int> build_markers_index(std::vector<std::string> script_lines={});

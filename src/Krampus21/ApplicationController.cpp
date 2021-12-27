@@ -48,6 +48,8 @@ ApplicationController::ApplicationController(AllegroFlare::Framework* framework,
    , flags({})
    , inventory({})
    , script_freshly_loaded_via_OPENSCRIPT(false)
+   , showing_smart_phone(false)
+   , smart_phone_reveal_counter(0.0)
 {
 }
 
@@ -480,6 +482,18 @@ AllegroFlare::BitmapBin* ApplicationController::obtain_bitmap_bin()
    return &framework->get_bitmap_bin_ref();
 }
 
+void ApplicationController::show_phone()
+{
+   showing_smart_phone = true;
+   return;
+}
+
+void ApplicationController::hide_phone()
+{
+   showing_smart_phone = false;
+   return;
+}
+
 bool ApplicationController::parse_and_run_line(std::string script_line, int line_num)
 {
    std::string DIALOG = "DIALOG";
@@ -497,12 +511,18 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
    std::string OPENSCRIPT = "OPENSCRIPT";
    std::string ADD_FLAG = "ADD_FLAG";
    std::string IF_FLAG = "IF_FLAG";
+   std::string PHONE = "PHONE";
 
    bool continue_directly_to_next_script_line = false;
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
    std::pair<std::string, std::string> command_and_argument = parse_command_and_argument(script_line);
    std::string command = command_and_argument.first;
    std::string argument = command_and_argument.second;
+
+   if (command != PHONE)
+   {
+      hide_phone();
+   }
 
    if (command.empty() || command == DIALOG)
    {
@@ -514,6 +534,10 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
       {
          created_dialog = dialog_factory.create_basic_dialog(std::vector<std::string>{script_line});
       }
+   }
+   else if (command == PHONE)
+   {
+      show_phone();
    }
    else if (command == OPENSCRIPT)
    {

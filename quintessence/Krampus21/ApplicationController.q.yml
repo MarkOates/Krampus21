@@ -94,6 +94,14 @@ properties:
     getter: true
     setter: true
 
+  - name: showing_smart_phone
+    type: bool
+    init_with: false
+
+  - name: smart_phone_reveal_counter
+    type: float
+    init_with: 0.0
+
 
 functions:
 
@@ -526,6 +534,20 @@ functions:
     body: return &framework->get_bitmap_bin_ref();
 
 
+  - name: show_phone
+    type: void
+    body: |
+      showing_smart_phone = true;
+      return;
+
+
+  - name: hide_phone
+    type: void
+    body: |
+      showing_smart_phone = false;
+      return;
+
+
   - name: parse_and_run_line
     private: true
     type: bool
@@ -552,12 +574,18 @@ functions:
       std::string OPENSCRIPT = "OPENSCRIPT";
       std::string ADD_FLAG = "ADD_FLAG";
       std::string IF_FLAG = "IF_FLAG";
+      std::string PHONE = "PHONE";
 
       bool continue_directly_to_next_script_line = false;
       Krampus21::DialogBoxes::Base* created_dialog = nullptr;
       std::pair<std::string, std::string> command_and_argument = parse_command_and_argument(script_line);
       std::string command = command_and_argument.first;
       std::string argument = command_and_argument.second;
+
+      if (command != PHONE)
+      {
+         hide_phone();
+      }
 
       if (command.empty() || command == DIALOG)
       {
@@ -569,6 +597,10 @@ functions:
          {
             created_dialog = dialog_factory.create_basic_dialog(std::vector<std::string>{script_line});
          }
+      }
+      else if (command == PHONE)
+      {
+         show_phone();
       }
       else if (command == OPENSCRIPT)
       {
