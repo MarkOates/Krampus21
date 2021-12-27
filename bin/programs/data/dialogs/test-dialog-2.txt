@@ -1,6 +1,6 @@
 SIGNAL: Starting script...
 
-PHONE: Hey, Chris, what's up
+PHONE: Hey, Chris, what's up | not much here really.
 PHONE: You gotta get up fam, there's some new coding team at the University.
 PHONE: They're really trynna flex what they got.
 That's pretty crazy man

@@ -578,7 +578,18 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
    {
       show_smart_phone();
 
-      std::vector<std::string> messages = { "Hey what's up", "Not much here rly" };
+      // parse tokens
+      std::vector<std::string> tokens = tokenize(argument);
+
+      // validate tokens
+      if (!assert_min_token_count(tokens, 1))
+      {
+         std::cout << "tokens must be at least 1 on line " << line_num << std::endl;
+         return false;
+      }
+
+      // create the dialog
+      std::vector<std::string> messages = tokens;
       created_dialog = dialog_factory.create_smart_phone_dialog(messages);
    }
    else if (command == OPENSCRIPT)

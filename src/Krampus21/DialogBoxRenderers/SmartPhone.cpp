@@ -28,7 +28,7 @@ SmartPhone::~SmartPhone()
 void SmartPhone::render()
 {
    //int line = 0;
-   float dialog_box_height = 120;
+   float dialog_box_height = 140;
    float dialog_box_spacing = dialog_box_height + 30;
    allegro_flare::placement2d dialog_bubble_placement;
    for (unsigned i=0; i<messages.size(); i++)
