@@ -96,6 +96,7 @@
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxes/Base",
     "Krampus21/DialogBoxes/Choice",
+    "Krampus21/DialogBoxes/SmartPhone",
     "Krampus21/DialogBoxes/YouGotAnItem"
   ],
   "Krampus21/ScriptLoader": [
@@ -230,8 +231,14 @@
   "std/vector<std/vector<std/string>>": [
     "Krampus21/DialogBoxes/Base"
   ],
+  "Krampus21/Elements/SmartPhoneDialogBubble": [
+    "Krampus21/DialogBoxes/SmartPhone"
+  ],
   "al_get_time": [
     "Krampus21/DialogBoxes/YouGotAnItem"
+  ],
+  "Krampus21/DialogBoxes/SmartPhone": [
+    "Krampus21/DialogFactory"
   ],
   "al_draw_text": [
     "Krampus21/Elements/DialogBoxNameTag"

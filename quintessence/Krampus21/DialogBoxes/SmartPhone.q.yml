@@ -1,4 +1,40 @@
+parent_classes:
+
+
+  - class: Krampus21::DialogBoxes::Base
+    scope: public
+    init_with: '"YouGotAnItem"'
+
+
+properties:
+
+
+  - name: pages
+    type: std::vector<std::string>
+    init_with: '{"[no-message-text-set]"}'
+    constructor_arg: true
+
+
 functions:
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+
+
+  - name: render
+    body: |
+      // TODO
+      // render smart phone dialog
+      //Krampus21::Elements::SmartPhoneDialogBubble dialog_bubble_element(text);
+      //dialog_bubble_elemenet.render();
+      return;
+    body_dependency_symbols:
+      - Krampus21::Elements::SmartPhoneDialogBubble
+
+
+dependencies:
+
+
+  - symbol: Krampus21::DialogBoxes::Base
+    headers: [ Krampus21/DialogBoxes/Base.hpp ]
+  - symbol: Krampus21::Elements::SmartPhoneDialogBubble
+    headers: [ Krampus21/Elements/SmartPhoneDialogBubble.hpp ]
+
+

@@ -1,22 +1,25 @@
 #pragma once
 
 
+#include <Krampus21/DialogBoxes/Base.hpp>
 #include <string>
+#include <vector>
 
 
 namespace Krampus21
 {
    namespace DialogBoxes
    {
-      class SmartPhone
+      class SmartPhone : public Krampus21::DialogBoxes::Base
       {
       private:
+         std::vector<std::string> pages;
 
       public:
-         SmartPhone();
+         SmartPhone(std::vector<std::string> pages={"[no-message-text-set]"});
          ~SmartPhone();
 
-         std::string run();
+         void render();
       };
    }
 }

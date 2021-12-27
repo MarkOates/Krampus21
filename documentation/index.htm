@@ -851,13 +851,23 @@ table td
   <div class="component">
     <h3 id="quintessence/Krampus21/DialogBoxes/SmartPhone.q.yml">quintessence/Krampus21/DialogBoxes/SmartPhone.q.yml</h3>
      <table>
-    </table>
-     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="property">pages</td>
+  <td class="property">std::vector&lt;std::string&gt;</td>
 </tr>
     </table>
      <table>
+<tr>
+  <td class="method">render()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Elements::SmartPhoneDialogBubble&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Elements/SmartPhoneDialogBubble.hpp&quot;]}</td>
+</tr>
     </table>
   </div>
 </ul>
@@ -912,6 +922,9 @@ table td
   <td class="method">build_basic_dialog(1)</td>
 </tr>
 <tr>
+  <td class="method">build_smart_phone_dialog(1)</td>
+</tr>
+<tr>
   <td class="method">create_basic_dialog(1)</td>
 </tr>
 <tr>
@@ -930,6 +943,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Choice*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Choice.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::SmartPhone*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/SmartPhone.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Basic*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Basic.hpp&quot;]}</td>
@@ -1675,6 +1691,7 @@ table td
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxes/Base",
     "Krampus21/DialogBoxes/Choice",
+    "Krampus21/DialogBoxes/SmartPhone",
     "Krampus21/DialogBoxes/YouGotAnItem"
   ],
   "Krampus21/ScriptLoader": [
@@ -1809,8 +1826,14 @@ table td
   "std/vector<std/vector<std/string>>": [
     "Krampus21/DialogBoxes/Base"
   ],
+  "Krampus21/Elements/SmartPhoneDialogBubble": [
+    "Krampus21/DialogBoxes/SmartPhone"
+  ],
   "al_get_time": [
     "Krampus21/DialogBoxes/YouGotAnItem"
+  ],
+  "Krampus21/DialogBoxes/SmartPhone": [
+    "Krampus21/DialogFactory"
   ],
   "al_draw_text": [
     "Krampus21/Elements/DialogBoxNameTag"

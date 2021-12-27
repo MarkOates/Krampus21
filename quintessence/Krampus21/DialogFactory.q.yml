@@ -43,6 +43,18 @@ functions:
       return basic_dialog_box;
 
 
+  - name: build_smart_phone_dialog
+    type: Krampus21::DialogBoxes::SmartPhone*
+    parameters:
+      - name: pages
+        type: std::vector<std::string>
+        default_argument: '{}'
+    body: |
+      Krampus21::DialogBoxes::SmartPhone *smart_phone_dialog_box = new Krampus21::DialogBoxes::SmartPhone(pages);
+      //smart_phone_dialog_box.set_pages(pages);
+      return smart_phone_dialog_box;
+
+
   - name: create_basic_dialog
     type: Krampus21::DialogBoxes::Basic*
     parameters:
@@ -128,6 +140,8 @@ dependencies:
     headers: [ Krampus21/DialogBoxes/YouGotAnItem.hpp ]
   - symbol: Krampus21::DialogBoxes::Choice*
     headers: [ Krampus21/DialogBoxes/Choice.hpp ]
+  - symbol: Krampus21::DialogBoxes::SmartPhone*
+    headers: [ Krampus21/DialogBoxes/SmartPhone.hpp ]
   - symbol: Krampus21::DialogBoxes::Basic*
     headers: [ Krampus21/DialogBoxes/Basic.hpp ]
   - symbol: Krampus21::DialogBoxes::Basic
