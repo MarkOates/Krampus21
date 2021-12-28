@@ -99,7 +99,7 @@ void DialogBoxRenderer::render()
    }
    else if (dialog_box->is_type("SmartPhone"))
    {
-      float dialog_window_width = 700;
+      float dialog_window_width = 820;
       float dialog_window_height = 600;
       allegro_flare::placement2d place{ 1920/2 + 200, 1080/2, dialog_window_width, dialog_window_height };
       Krampus21::DialogBoxes::SmartPhone* smart_phone_dialog_box =
