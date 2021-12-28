@@ -31,7 +31,7 @@ SmartPhone::~SmartPhone()
 void SmartPhone::render()
 {
    //int line = 0;
-   float dialog_box_height = 140;
+   float dialog_box_height = 180;
    float dialog_box_spacing = dialog_box_height + 30;
    allegro_flare::placement2d dialog_bubble_placement;
    float window_padding = 30;
@@ -45,7 +45,7 @@ void SmartPhone::render()
       window_height,
       window_roundness,
       window_roundness,
-      ALLEGRO_COLOR{0, 0, 0.01, 0.95}
+      ALLEGRO_COLOR{0, 0.08, 0.1, 0.95}
    );
 
    for (unsigned i=0; i<messages.size(); i++)

@@ -24,7 +24,8 @@ TEST_F(Krampus21_SmartPhoneDialogBubbleWithAllegroRenderingFixtureTest, can_be_c
       &get_font_bin_ref(),
       "Hello, this is bubble text",
       600,
-      100
+      100,
+      true
    );
 
    al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 1});

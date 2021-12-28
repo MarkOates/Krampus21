@@ -50,8 +50,10 @@ void SmartPhoneDialogBubble::render()
    ALLEGRO_COLOR text_color = al_color_name("white");
    float roundness = 32.0f;
    //if (roundness <= 10.0) roundness = 10.0;
+   float sender_indent_padding = 80;
 
-   al_draw_filled_rounded_rectangle(0, 0, width, height, roundness, roundness, bubble_color);
+   al_draw_filled_rounded_rectangle(0, 0, width - sender_indent_padding, height, roundness, roundness, bubble_color);
+
    if (callout_on_left)
    {
       al_draw_filled_rectangle(0, height/2, height/2, height, bubble_color);
@@ -64,7 +66,7 @@ void SmartPhoneDialogBubble::render()
    ALLEGRO_FONT *font = obtain_text_font();
    float padding_x = 30;
    float padding_y = 20;
-   float text_box_width = width - padding_y * 2;
+   float text_box_width = width - padding_y * 2 - sender_indent_padding;
    float line_height = al_get_font_line_height(font);
    al_draw_multiline_text(
       font,
