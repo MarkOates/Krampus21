@@ -99,7 +99,9 @@ void DialogBoxRenderer::render()
    }
    else if (dialog_box->is_type("SmartPhone"))
    {
-      allegro_flare::placement2d place{ 1920/2, 1080/2, 400, 420 };
+      float dialog_window_width = 700;
+      float dialog_window_height = 600;
+      allegro_flare::placement2d place{ 1920/2 + 200, 1080/2, dialog_window_width, dialog_window_height };
       Krampus21::DialogBoxes::SmartPhone* smart_phone_dialog_box =
          static_cast<Krampus21::DialogBoxes::SmartPhone*>(dialog_box);
       std::vector<std::string> messages = smart_phone_dialog_box->get_messages();
@@ -108,8 +110,8 @@ void DialogBoxRenderer::render()
       place.start_transform();
       Krampus21::DialogBoxRenderers::SmartPhone smart_phone_dialog_box_renderer(
          font_bin,
-         800,
-         800,
+         dialog_window_width,
+         dialog_window_height,
          messages,
          reveal_counter
       );

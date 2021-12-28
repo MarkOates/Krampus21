@@ -82,7 +82,7 @@ void SmartPhoneDialogBubble::render()
 
 ALLEGRO_FONT* SmartPhoneDialogBubble::obtain_text_font()
 {
-   return font_bin->auto_get("Lato-Regular.ttf -48");
+   return font_bin->auto_get("Lato-Regular.ttf -42");
 }
 } // namespace Elements
 } // namespace Krampus21

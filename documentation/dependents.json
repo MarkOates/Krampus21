@@ -228,7 +228,8 @@
     "Krampus21/Titles/Slate"
   ],
   "al_draw_filled_rectangle": [
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/DialogBoxRenderers/SmartPhone"
   ],
   "std/vector<std/pair<std/string, std/string>>": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",

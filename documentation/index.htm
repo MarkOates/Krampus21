@@ -660,11 +660,11 @@ table td
   <td class="property">AllegroFlare::FontBin*</td>
 </tr>
 <tr>
-  <td class="property">width</td>
+  <td class="property">window_width</td>
   <td class="property">float</td>
 </tr>
 <tr>
-  <td class="property">height</td>
+  <td class="property">window_height</td>
   <td class="property">float</td>
 </tr>
 <tr>
@@ -685,6 +685,9 @@ table td
 </tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_filled_rectangle&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Elements::SmartPhoneDialogBubble&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Elements/SmartPhoneDialogBubble.hpp&quot;]}</td>
 </tr>
@@ -1910,7 +1913,8 @@ table td
     "Krampus21/Titles/Slate"
   ],
   "al_draw_filled_rectangle": [
-    "Krampus21/DialogBoxRenderers/ChoiceRenderer"
+    "Krampus21/DialogBoxRenderers/ChoiceRenderer",
+    "Krampus21/DialogBoxRenderers/SmartPhone"
   ],
   "std/vector<std/pair<std/string, std/string>>": [
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",
