@@ -146,6 +146,7 @@
     "Krampus21/Backgrounds/Monoplex"
   ],
   "allegro_flare/placement2d": [
+    "Krampus21/Backgrounds/Monoplex",
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/SmartPhone",
