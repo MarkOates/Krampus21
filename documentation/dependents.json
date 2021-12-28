@@ -52,6 +52,7 @@
   ],
   "AllegroFlare/BitmapBin": [
     "Krampus21/ApplicationController",
+    "Krampus21/Backgrounds/Monoplex",
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
     "Krampus21/DialogBoxRenderers/ChoiceRenderer",

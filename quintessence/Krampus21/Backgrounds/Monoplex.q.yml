@@ -6,13 +6,26 @@ parent_classes:
     init_with: '"Monoplex"'
 
 
+properties:
+
+
+  - name: bitmap_bin
+    type: AllegroFlare::BitmapBin*
+    init_with: nullptr
+    constructor_arg: true
+
+
 functions:
 
 
   - name: draw
     virtual: true
     override: true
+    guards: [ bitmap_bin ]
     body: |
+      ALLEGRO_BITMAP *monoplex_1_bitmap = bitmap_bin->auto_get("monoplex-1.png");
+      ALLEGRO_BITMAP *monoplex_2_bitmap = bitmap_bin->auto_get("monoplex-2.png");
+      ALLEGRO_BITMAP *monoplex_3_bitmap = bitmap_bin->auto_get("monoplex-3.png");
       return;
 
 
@@ -21,5 +34,7 @@ dependencies:
 
   - symbol: Krampus21::Backgrounds::Base
     headers: [ Krampus21/Backgrounds/Base.hpp ]
+  - symbol: AllegroFlare::BitmapBin*
+    headers: [ AllegroFlare/BitmapBin.hpp ]
 
 
