@@ -10,8 +10,9 @@ namespace Backgrounds
 {
 
 
-Base::Base()
-   : reveal_counter(0)
+Base::Base(std::string type)
+   : type(type)
+   , reveal_counter(0)
    , reveal_speed(1.0f/60.0f)
    , active(false)
 {

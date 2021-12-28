@@ -1,22 +1,22 @@
 #pragma once
 
 
-#include <string>
+#include <Krampus21/Backgrounds/Base.hpp>
 
 
 namespace Krampus21
 {
    namespace Backgrounds
    {
-      class Monoplex
+      class Monoplex : public Krampus21::Backgrounds::Base
       {
       private:
 
       public:
          Monoplex();
-         ~Monoplex();
+         virtual ~Monoplex();
 
-         std::string run();
+         virtual void draw() override;
       };
    }
 }

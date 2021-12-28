@@ -1,6 +1,7 @@
 #pragma once
 
 
+#include <string>
 
 
 namespace Krampus21
@@ -10,12 +11,13 @@ namespace Krampus21
       class Base
       {
       private:
+         std::string type;
          float reveal_counter;
          float reveal_speed;
          bool active;
 
       public:
-         Base();
+         Base(std::string type="Base");
          virtual ~Base();
 
          void activate();

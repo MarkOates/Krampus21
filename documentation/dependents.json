@@ -141,6 +141,9 @@
   "Krampus21/Inventory": [
     "Krampus21/ApplicationController"
   ],
+  "Krampus21/Backgrounds/Base": [
+    "Krampus21/Backgrounds/Monoplex"
+  ],
   "allegro_flare/placement2d": [
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",

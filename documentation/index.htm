@@ -409,6 +409,10 @@ table td
     <h3 id="quintessence/Krampus21/Backgrounds/Base.q.yml">quintessence/Krampus21/Backgrounds/Base.q.yml</h3>
      <table>
 <tr>
+  <td class="property">type</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
   <td class="property">reveal_counter</td>
   <td class="property">float</td>
 </tr>
@@ -455,10 +459,13 @@ table td
     </table>
      <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">draw()</td>
 </tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Backgrounds::Base&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Backgrounds/Base.hpp&quot;]}</td>
+</tr>
     </table>
   </div>
 </ul>
@@ -1885,6 +1892,9 @@ table td
   ],
   "Krampus21/Inventory": [
     "Krampus21/ApplicationController"
+  ],
+  "Krampus21/Backgrounds/Base": [
+    "Krampus21/Backgrounds/Monoplex"
   ],
   "allegro_flare/placement2d": [
     "Krampus21/Character",

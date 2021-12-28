@@ -11,6 +11,7 @@ namespace Backgrounds
 
 
 Monoplex::Monoplex()
+   : Krampus21::Backgrounds::Base("Monoplex")
 {
 }
 
@@ -20,9 +21,9 @@ Monoplex::~Monoplex()
 }
 
 
-std::string Monoplex::run()
+void Monoplex::draw()
 {
-   return "Hello World!";
+   return;
 }
 } // namespace Backgrounds
 } // namespace Krampus21
