@@ -11,6 +11,9 @@ namespace Backgrounds
 
 
 Base::Base()
+   : reveal_counter(0)
+   , reveal_speed(1.0f/60.0f)
+   , active(false)
 {
 }
 
@@ -20,9 +23,47 @@ Base::~Base()
 }
 
 
-std::string Base::run()
+void Base::activate()
 {
-   return "Hello World!";
+   reveal_counter = 1.0;
+   active = true;
+   return;
+}
+
+void Base::deactivate()
+{
+   reveal_counter = 0.0;
+   active = false;
+   return;
+}
+
+void Base::managed_update()
+{
+   reveal_counter += reveal_speed;
+   if (reveal_counter >= 1.0) reveal_counter = 1.0f;
+   if (reveal_counter < 0.0) reveal_counter = 0.0f;
+   update();
+   return;
+}
+
+void Base::update()
+{
+   return;
+}
+
+void Base::draw()
+{
+   return;
+}
+
+void Base::show()
+{
+   return;
+}
+
+void Base::hide()
+{
+   return;
 }
 } // namespace Backgrounds
 } // namespace Krampus21
