@@ -1,6 +1,7 @@
 
 
 #include <Krampus21/Elements/DialogBoxFrame.hpp>
+#include <AllegroFlare/Color.hpp>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_primitives.h>
@@ -19,7 +20,7 @@ DialogBoxFrame::DialogBoxFrame(float width, float height)
    : width(width)
    , height(height)
    , opacity(0.8)
-   , fill_color(ALLEGRO_COLOR{0.05f*opacity, 0.02f*opacity, 0.12f*opacity, opacity})
+   , fill_color(ALLEGRO_COLOR{0.05f, 0.02f, 0.12f, 1.0f})
    , border_color(al_color_html("345761"))
 {
 }
@@ -86,6 +87,7 @@ void DialogBoxFrame::render()
    //ALLEGRO_COLOR fill_color = al_color_html("162428");
    //ALLEGRO_COLOR fill_color = ALLEGRO_COLOR{0.02f*opacity, 0.0f*opacity, 0.1f*opacity, opacity};
    //ALLEGRO_COLOR border_color = al_color_html("244751");
+   ALLEGRO_COLOR fill_color_with_opacity = AllegroFlare::color::color(fill_color, opacity);
 
    // draw backfill
    al_draw_filled_rounded_rectangle(
@@ -95,7 +97,7 @@ void DialogBoxFrame::render()
       height,
       roundness * 1.0,
       roundness * 1.0,
-      fill_color
+      fill_color_with_opacity
    );
    // draw "inner" backfill
    al_draw_filled_rounded_rectangle(
@@ -105,7 +107,7 @@ void DialogBoxFrame::render()
       height - border_inner_padding,
       roundness * 0.5,
       roundness * 0.5,
-      fill_color
+      fill_color_with_opacity
    );
    // draw border
    al_draw_rounded_rectangle(

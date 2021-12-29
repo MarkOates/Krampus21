@@ -20,7 +20,7 @@ properties:
 
   - name: fill_color
     type: ALLEGRO_COLOR
-    init_with: ALLEGRO_COLOR{0.05f*opacity, 0.02f*opacity, 0.12f*opacity, opacity}
+    init_with: ALLEGRO_COLOR{0.05f, 0.02f, 0.12f, 1.0f}
     setter: true
 
   - name: border_color
@@ -44,6 +44,7 @@ functions:
       //ALLEGRO_COLOR fill_color = al_color_html("162428");
       //ALLEGRO_COLOR fill_color = ALLEGRO_COLOR{0.02f*opacity, 0.0f*opacity, 0.1f*opacity, opacity};
       //ALLEGRO_COLOR border_color = al_color_html("244751");
+      ALLEGRO_COLOR fill_color_with_opacity = AllegroFlare::color::color(fill_color, opacity);
 
       // draw backfill
       al_draw_filled_rounded_rectangle(
@@ -53,7 +54,7 @@ functions:
          height,
          roundness * 1.0,
          roundness * 1.0,
-         fill_color
+         fill_color_with_opacity
       );
       // draw "inner" backfill
       al_draw_filled_rounded_rectangle(
@@ -63,7 +64,7 @@ functions:
          height - border_inner_padding,
          roundness * 0.5,
          roundness * 0.5,
-         fill_color
+         fill_color_with_opacity
       );
       // draw border
       al_draw_rounded_rectangle(
@@ -79,6 +80,7 @@ functions:
 
       return;
     body_dependency_symbols:
+      - AllegroFlare::color::color
       - al_is_system_installed
       - al_is_primitives_addon_initialized
       - al_draw_filled_rounded_rectangle
@@ -88,6 +90,8 @@ functions:
 dependencies:
 
 
+  - symbol: AllegroFlare::color::color
+    headers: [ AllegroFlare/Color.hpp ]
   - symbol: ALLEGRO_COLOR
     headers: [ allegro5/allegro.h ]
   - symbol: al_is_system_installed

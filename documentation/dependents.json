@@ -271,6 +271,9 @@
     "Krampus21/DialogBoxes/SmartPhone",
     "Krampus21/DialogBoxes/YouGotAnItem"
   ],
+  "AllegroFlare/color/color": [
+    "Krampus21/Elements/DialogBoxFrame"
+  ],
   "al_draw_text": [
     "Krampus21/Elements/DialogBoxNameTag"
   ],
