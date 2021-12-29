@@ -5,7 +5,9 @@ SET_CHARACTER_ART: character-1-happy.png
 Hey!
 What have you been up to these days?  I know we haven't talked in a while.
 
+SET_CHARACTER_ART: character-1-neutral.png
 SET_BACKGROUND: monoplex
+SET_CHARACTER_FRAMING: close-up
 
 WOAH!
 
