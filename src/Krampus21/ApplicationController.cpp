@@ -604,6 +604,11 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
       {
          created_background = background_factory.create_monoplex();
       }
+      else
+      {
+         std::string background_filename = tokens[0];
+         // TODO create a simple background with a good-ole image
+      }
 
       if (current_background && created_background)
       {
