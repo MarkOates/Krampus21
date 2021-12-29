@@ -24,7 +24,7 @@ TEST(Krampus21_Backgrounds_MonoplexTest, can_be_created_without_blowing_up)
 }
 
 
-TEST_F(Krampus21_Backgrounds_MonoplexWithAllegroRenderingFixtureTest, can_be_created_without_blowing_up)
+TEST_F(Krampus21_Backgrounds_MonoplexWithAllegroRenderingFixtureTest, draw__will_render_in_motion)
 {
    Krampus21::Backgrounds::Monoplex monoplex(&get_bitmap_bin_ref());
 
