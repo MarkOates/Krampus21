@@ -586,6 +586,22 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
          created_dialog = dialog_factory.create_basic_dialog(std::vector<std::string>{script_line});
       }
    }
+   else if (command == PLAY_MUSIC)
+   {
+      // parse tokens
+      std::vector<std::string> tokens = tokenize(argument);
+
+      if (!assert_min_token_count(tokens, 1))
+      {
+         std::cout << "tokens must be at least 1 on line " << line_num << std::endl;
+         return false;
+      }
+      std::string music_filename_identifier = tokens[0]; //"etherial-ambience-01.wav";
+
+      audio_controller.play_music_track_by_identifier(music_filename_identifier);
+
+      continue_directly_to_next_script_line = true;
+   }
    else if (command == SET_BACKGROUND)
    {
       // parse tokens
@@ -760,12 +776,6 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
 
       //choice_options = { { "Boobar", "boobruhh" }, { "Zoozaz", "zazzle" } };
       created_dialog = dialog_factory.create_choice_dialog(choice_prompt, choice_options);
-   }
-   else if (command == PLAY_MUSIC)
-   {
-      std::string identifier = "etherial-ambience-01.wav";
-      audio_controller.play_music_track_by_identifier(identifier);
-      continue_directly_to_next_script_line = true;
    }
    else if (command == BEAT)
    {
