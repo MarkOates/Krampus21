@@ -53,6 +53,7 @@
   "AllegroFlare/BitmapBin": [
     "Krampus21/ApplicationController",
     "Krampus21/BackgroundFactory",
+    "Krampus21/Backgrounds/Image",
     "Krampus21/Backgrounds/Monoplex",
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
@@ -149,12 +150,18 @@
   ],
   "Krampus21/Backgrounds/Base": [
     "Krampus21/ApplicationController",
+    "Krampus21/Backgrounds/Image",
     "Krampus21/Backgrounds/Monoplex"
   ],
   "Krampus21/Backgrounds/Monoplex": [
     "Krampus21/BackgroundFactory"
   ],
+  "ALLEGRO_BITMAP": [
+    "Krampus21/Backgrounds/Image",
+    "Krampus21/Character"
+  ],
   "allegro_flare/placement2d": [
+    "Krampus21/Backgrounds/Image",
     "Krampus21/Backgrounds/Monoplex",
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
@@ -166,9 +173,6 @@
   ],
   "sin": [
     "Krampus21/Backgrounds/Monoplex"
-  ],
-  "ALLEGRO_BITMAP": [
-    "Krampus21/Character"
   ],
   "al_is_system_installed": [
     "Krampus21/DialogBoxRenderer",
