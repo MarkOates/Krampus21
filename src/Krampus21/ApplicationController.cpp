@@ -606,7 +606,9 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
       }
       else
       {
-         std::string background_filename = tokens[0];
+         std::string background_bitmap_filename_identifier = tokens[0];
+         created_background = background_factory.create_image(background_bitmap_filename_identifier);
+
          // TODO create a simple background with a good-ole image
       }
 
