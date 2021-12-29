@@ -328,7 +328,7 @@ void ApplicationController::primary_timer_func()
       al_clear_to_color(background_color);
 
       // render background
-      if (current_background) current_background->managed_update();
+      if (current_background) current_background->draw();
 
       // render character
       character.render();
@@ -610,11 +610,13 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
          // TODO create a simple background with a good-ole image
       }
 
-      if (current_background && created_background)
+      if (created_background)
       {
-         delete current_background;
+         if (current_background) delete current_background;
          current_background = created_background;
       }
+
+      continue_directly_to_next_script_line = true;
    }
    else if (command == PHONE)
    {

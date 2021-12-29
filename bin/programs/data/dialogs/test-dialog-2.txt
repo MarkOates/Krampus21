@@ -5,6 +5,10 @@ SET_CHARACTER_ART: character-1-happy.png
 Hey!
 What have you been up to these days?  I know we haven't talked in a while.
 
+SET_BACKGROUND: monoplex
+
+WOAH!
+
 PHONE: Hey, Chris, what's up | not much here really.
 PHONE: You gotta get up fam, there's some new coding team at the University.
 PHONE: They're really trynna flex what they got.
