@@ -24,6 +24,12 @@ Base::~Base()
 }
 
 
+std::string Base::get_type()
+{
+   return type;
+}
+
+
 void Base::activate()
 {
    reveal_counter = 1.0;

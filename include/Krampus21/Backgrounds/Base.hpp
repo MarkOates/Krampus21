@@ -20,6 +20,7 @@ namespace Krampus21
          Base(std::string type="Base");
          virtual ~Base();
 
+         std::string get_type();
          void activate();
          void deactivate();
          void managed_update();

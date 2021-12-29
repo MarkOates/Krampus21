@@ -1,4 +1,29 @@
+properties:
+
+
+  - name: bitmap_bin
+    type: AllegroFlare::BitmapBin*
+    init_with: nullptr
+    constructor_arg: true
+
+
 functions:
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+
+
+  - name: create_monoplex
+    type: Krampus21::Backgrounds::Monoplex*
+    guards: [ bitmap_bin ]
+    body: |
+      Krampus21::Backgrounds::Monoplex* monoplex = new Krampus21::Backgrounds::Monoplex(bitmap_bin);
+      return monoplex;
+
+
+dependencies:
+
+
+  - symbol: AllegroFlare::BitmapBin*
+    headers: [ AllegroFlare/BitmapBin.hpp ]
+  - symbol: Krampus21::Backgrounds::Monoplex*
+    headers: [ Krampus21/Backgrounds/Monoplex.hpp ]
+
+

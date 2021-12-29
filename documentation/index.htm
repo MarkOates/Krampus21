@@ -51,6 +51,7 @@ table td
 <ul>
   <li><a href="#quintessence/Krampu21/InventoryFactory.q.yml">quintessence/Krampu21/InventoryFactory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/ApplicationController.q.yml">quintessence/Krampus21/ApplicationController.q.yml</a></li>
+  <li><a href="#quintessence/Krampus21/BackgroundFactory.q.yml">quintessence/Krampus21/BackgroundFactory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Backgrounds/Base.q.yml">quintessence/Krampus21/Backgrounds/Base.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Backgrounds/Monoplex.q.yml">quintessence/Krampus21/Backgrounds/Monoplex.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Character.q.yml">quintessence/Krampus21/Character.q.yml</a></li>
@@ -400,6 +401,30 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Inventory&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Inventory.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/Krampus21/BackgroundFactory.q.yml">quintessence/Krampus21/BackgroundFactory.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">bitmap_bin</td>
+  <td class="property">AllegroFlare::BitmapBin*</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">create_monoplex()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Backgrounds::Monoplex*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Backgrounds/Monoplex.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -1832,6 +1857,7 @@ table td
   ],
   "AllegroFlare/BitmapBin": [
     "Krampus21/ApplicationController",
+    "Krampus21/BackgroundFactory",
     "Krampus21/Backgrounds/Monoplex",
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
@@ -1921,6 +1947,9 @@ table td
   ],
   "Krampus21/Inventory": [
     "Krampus21/ApplicationController"
+  ],
+  "Krampus21/Backgrounds/Monoplex": [
+    "Krampus21/BackgroundFactory"
   ],
   "Krampus21/Backgrounds/Base": [
     "Krampus21/Backgrounds/Monoplex"

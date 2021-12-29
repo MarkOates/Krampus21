@@ -28,7 +28,7 @@ TEST_F(Krampus21_Backgrounds_MonoplexWithAllegroRenderingFixtureTest, draw__will
 {
    Krampus21::Backgrounds::Monoplex monoplex(&get_bitmap_bin_ref());
 
-   int frames = 60*4;
+   int frames = 60*1;
    for (unsigned i=0; i<frames; i++)
    {
       //update

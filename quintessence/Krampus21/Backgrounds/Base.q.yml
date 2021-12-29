@@ -5,6 +5,7 @@ properties:
     type: std::string
     init_with: '"Base"'
     constructor_arg: true
+    getter: true
 
   - name: reveal_counter
     type: float

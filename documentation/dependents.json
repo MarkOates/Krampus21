@@ -52,6 +52,7 @@
   ],
   "AllegroFlare/BitmapBin": [
     "Krampus21/ApplicationController",
+    "Krampus21/BackgroundFactory",
     "Krampus21/Backgrounds/Monoplex",
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
@@ -141,6 +142,9 @@
   ],
   "Krampus21/Inventory": [
     "Krampus21/ApplicationController"
+  ],
+  "Krampus21/Backgrounds/Monoplex": [
+    "Krampus21/BackgroundFactory"
   ],
   "Krampus21/Backgrounds/Base": [
     "Krampus21/Backgrounds/Monoplex"
