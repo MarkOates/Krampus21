@@ -128,6 +128,10 @@ table td
   <td class="property">Krampus21::DialogBoxes::Base*</td>
 </tr>
 <tr>
+  <td class="property">current_background</td>
+  <td class="property">Krampus21::Backgrounds::Base*</td>
+</tr>
+<tr>
   <td class="property">character</td>
   <td class="property">Krampus21::Character</td>
 </tr>
@@ -401,6 +405,15 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Inventory&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Inventory.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::BackgroundFactory&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/BackgroundFactory.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Backgrounds::Base*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Backgrounds/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::BackgroundFactory&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/BackgroundFactory.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -1948,11 +1961,16 @@ table td
   "Krampus21/Inventory": [
     "Krampus21/ApplicationController"
   ],
-  "Krampus21/Backgrounds/Monoplex": [
-    "Krampus21/BackgroundFactory"
+  "Krampus21/BackgroundFactory": [
+    "Krampus21/ApplicationController",
+    "Krampus21/ApplicationController"
   ],
   "Krampus21/Backgrounds/Base": [
+    "Krampus21/ApplicationController",
     "Krampus21/Backgrounds/Monoplex"
+  ],
+  "Krampus21/Backgrounds/Monoplex": [
+    "Krampus21/BackgroundFactory"
   ],
   "allegro_flare/placement2d": [
     "Krampus21/Backgrounds/Monoplex",

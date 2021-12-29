@@ -13,6 +13,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <sstream>
+#include <Krampus21/BackgroundFactory.hpp>
 #include <Blast/String/Trimmer.hpp>
 #include <iostream>
 #include <Blast/String/Trimmer.hpp>
@@ -37,6 +38,7 @@ ApplicationController::ApplicationController(AllegroFlare::Framework* framework,
    , user_event_emitter({})
    , audio_controller(&framework->get_sample_bin_ref(), sound_effect_elements, music_track_elements)
    , current_dialog(nullptr)
+   , current_background(nullptr)
    , character({})
    , initialized(false)
    , script()
@@ -68,6 +70,12 @@ void ApplicationController::set_script_freshly_loaded_via_OPENSCRIPT(bool script
 Krampus21::DialogBoxes::Base* ApplicationController::get_current_dialog()
 {
    return current_dialog;
+}
+
+
+Krampus21::Backgrounds::Base* ApplicationController::get_current_background()
+{
+   return current_background;
 }
 
 
@@ -296,13 +304,13 @@ void ApplicationController::primary_timer_func()
    inventory.update();
    if (current_dialog) current_dialog->update();
    update_smart_phone();
+   if (current_background) current_background->managed_update();
 
    // draw
-   //al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
-   al_clear_to_color(background_color);
-
    if (script.get_finished())
    {
+      al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
+
       ALLEGRO_FONT* font = obtain_dialog_font();
       std::string script_finished_text = "GAME OVER";
       al_draw_text(
@@ -316,8 +324,11 @@ void ApplicationController::primary_timer_func()
    }
    else
    {
-      // render background here
-      // TODO
+      // clear to the background color
+      al_clear_to_color(background_color);
+
+      // render background
+      if (current_background) current_background->managed_update();
 
       // render character
       character.render();
@@ -551,6 +562,7 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
    std::string ADD_FLAG = "ADD_FLAG";
    std::string IF_FLAG = "IF_FLAG";
    std::string PHONE = "PHONE";
+   std::string SET_BACKGROUND = "SET_BACKGROUND";
 
    bool continue_directly_to_next_script_line = false;
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
@@ -572,6 +584,31 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
       else
       {
          created_dialog = dialog_factory.create_basic_dialog(std::vector<std::string>{script_line});
+      }
+   }
+   else if (command == SET_BACKGROUND)
+   {
+      // parse tokens
+      std::vector<std::string> tokens = tokenize(argument);
+
+      if (!assert_min_token_count(tokens, 1))
+      {
+         std::cout << "tokens must be at least 1 on line " << line_num << std::endl;
+         return false;
+      }
+
+      Krampus21::Backgrounds::Base* created_background = nullptr;
+      Krampus21::BackgroundFactory background_factory(obtain_bitmap_bin());
+
+      if (tokens[0] == "monoplex")
+      {
+         created_background = background_factory.create_monoplex();
+      }
+
+      if (current_background && created_background)
+      {
+         delete current_background;
+         current_background = created_background;
       }
    }
    else if (command == PHONE)

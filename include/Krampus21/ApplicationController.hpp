@@ -9,6 +9,7 @@
 #include <AllegroFlare/Inventory.hpp>
 #include <AllegroFlare/Screen.hpp>
 #include <AllegroFlare/Screens.hpp>
+#include <Krampus21/Backgrounds/Base.hpp>
 #include <Krampus21/Character.hpp>
 #include <Krampus21/DialogBoxes/Base.hpp>
 #include <Krampus21/DialogFactory.hpp>
@@ -37,6 +38,7 @@ namespace Krampus21
       Krampus21::UserEventEmitter user_event_emitter;
       AllegroFlare::AudioController audio_controller;
       Krampus21::DialogBoxes::Base* current_dialog;
+      Krampus21::Backgrounds::Base* current_background;
       Krampus21::Character character;
       bool initialized;
       Krampus21::Script script;
@@ -57,6 +59,7 @@ namespace Krampus21
 
       void set_script_freshly_loaded_via_OPENSCRIPT(bool script_freshly_loaded_via_OPENSCRIPT);
       Krampus21::DialogBoxes::Base* get_current_dialog();
+      Krampus21::Backgrounds::Base* get_current_background();
       bool get_script_freshly_loaded_via_OPENSCRIPT();
       void initialize();
       bool load_script_lines(std::vector<std::string> script_lines={});
