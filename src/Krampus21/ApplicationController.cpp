@@ -651,9 +651,14 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
          return false;
       }
 
+      // play notification sound
+      audio_controller.play_sound_effect_by_identifier("phone-notification.wav");
+
+
       // create the dialog
       std::vector<std::string> messages = tokens;
       created_dialog = dialog_factory.create_smart_phone_dialog(messages);
+
    }
    else if (command == OPENSCRIPT)
    {
