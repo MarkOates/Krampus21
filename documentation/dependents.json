@@ -156,6 +156,9 @@
   "Krampus21/Backgrounds/Monoplex": [
     "Krampus21/BackgroundFactory"
   ],
+  "Krampus21/Backgrounds/Image": [
+    "Krampus21/BackgroundFactory"
+  ],
   "ALLEGRO_BITMAP": [
     "Krampus21/Backgrounds/Image",
     "Krampus21/Character"

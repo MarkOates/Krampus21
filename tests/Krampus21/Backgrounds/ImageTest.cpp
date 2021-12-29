@@ -24,6 +24,13 @@ TEST(Krampus21_Backgrounds_ImageTest, can_be_created_without_blowing_up)
 }
 
 
+TEST(Krampus21_Backgrounds_ImageTest, has_the_expected_type)
+{
+   Krampus21::Backgrounds::Image image_background;
+   EXPECT_EQ("Image", image_background.get_type());
+}
+
+
 TEST_F(Krampus21_Backgrounds_ImageWithAllegroRenderingFixtureTest, draw__will_render_the_image)
 {
    Krampus21::Backgrounds::Image image_background(&get_bitmap_bin_ref(), "outside-amys-place.png");

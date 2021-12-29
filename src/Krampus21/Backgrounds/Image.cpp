@@ -13,7 +13,7 @@ namespace Backgrounds
 
 
 Image::Image(AllegroFlare::BitmapBin* bitmap_bin, std::string image_filename)
-   : Krampus21::Backgrounds::Base("Monoplex")
+   : Krampus21::Backgrounds::Base("Image")
    , bitmap_bin(bitmap_bin)
    , image_filename(image_filename)
    , image_file_location_prefix("backgrounds/")

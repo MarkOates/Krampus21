@@ -2,7 +2,9 @@
 
 
 #include <AllegroFlare/BitmapBin.hpp>
+#include <Krampus21/Backgrounds/Image.hpp>
 #include <Krampus21/Backgrounds/Monoplex.hpp>
+#include <string>
 
 
 namespace Krampus21
@@ -17,6 +19,7 @@ namespace Krampus21
       ~BackgroundFactory();
 
       Krampus21::Backgrounds::Monoplex* create_monoplex();
+      Krampus21::Backgrounds::Image* create_image(std::string image_identifier="[unset-default-image-identifer-for-background-factory]");
    };
 }
 

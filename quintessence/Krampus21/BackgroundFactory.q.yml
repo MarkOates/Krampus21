@@ -14,8 +14,20 @@ functions:
     type: Krampus21::Backgrounds::Monoplex*
     guards: [ bitmap_bin ]
     body: |
-      Krampus21::Backgrounds::Monoplex* monoplex = new Krampus21::Backgrounds::Monoplex(bitmap_bin);
-      return monoplex;
+      Krampus21::Backgrounds::Monoplex* monoplex_background = new Krampus21::Backgrounds::Monoplex(bitmap_bin);
+      return monoplex_background;
+
+
+  - name: create_image
+    type: Krampus21::Backgrounds::Image*
+    guards: [ bitmap_bin ]
+    parameters:
+      - name: image_identifier
+        type: std::string
+        default_argument: '"[unset-default-image-identifer-for-background-factory]"'
+    body: |
+      Krampus21::Backgrounds::Image* image_background = new Krampus21::Backgrounds::Image(bitmap_bin, image_identifier);
+      return image_background;
 
 
 dependencies:
@@ -25,5 +37,7 @@ dependencies:
     headers: [ AllegroFlare/BitmapBin.hpp ]
   - symbol: Krampus21::Backgrounds::Monoplex*
     headers: [ Krampus21/Backgrounds/Monoplex.hpp ]
+  - symbol: Krampus21::Backgrounds::Image*
+    headers: [ Krampus21/Backgrounds/Image.hpp ]
 
 

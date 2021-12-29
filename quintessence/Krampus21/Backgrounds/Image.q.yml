@@ -3,7 +3,7 @@ parent_classes:
 
   - class: Krampus21::Backgrounds::Base
     scope: public
-    init_with: '"Monoplex"'
+    init_with: '"Image"'
 
 
 properties:
