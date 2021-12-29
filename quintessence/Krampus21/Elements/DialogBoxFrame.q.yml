@@ -15,17 +15,17 @@ properties:
 
   - name: opacity
     type: float
-    init_with: 0.7
+    init_with: 0.8
     setter: true
 
   - name: fill_color
     type: ALLEGRO_COLOR
-    init_with: ALLEGRO_COLOR{0.02f*opacity, 0.0f*opacity, 0.1f*opacity, opacity}
+    init_with: ALLEGRO_COLOR{0.05f*opacity, 0.02f*opacity, 0.12f*opacity, opacity}
     setter: true
 
   - name: border_color
     type: ALLEGRO_COLOR
-    init_with: al_color_html("244751")
+    init_with: al_color_html("345761")
     setter: true
 
 
@@ -39,13 +39,23 @@ functions:
       - al_get_current_display()
     body: |
       float roundness = 18.0f;
-      float border_thickness = 5.0f;
-      float border_inner_padding = border_thickness * 3;
+      float border_thickness = 6.0f;
+      float border_inner_padding = border_thickness * 2.5;
       //ALLEGRO_COLOR fill_color = al_color_html("162428");
       //ALLEGRO_COLOR fill_color = ALLEGRO_COLOR{0.02f*opacity, 0.0f*opacity, 0.1f*opacity, opacity};
       //ALLEGRO_COLOR border_color = al_color_html("244751");
 
       // draw backfill
+      al_draw_filled_rounded_rectangle(
+         0,
+         0,
+         width,
+         height,
+         roundness * 1.0,
+         roundness * 1.0,
+         fill_color
+      );
+      // draw "inner" backfill
       al_draw_filled_rounded_rectangle(
          0 + border_inner_padding,
          0 + border_inner_padding,

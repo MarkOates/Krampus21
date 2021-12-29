@@ -65,7 +65,7 @@ TEST(Krampus21_Elements_DialogBoxFrameTest, render__draws_the_dialog_box)
 
    dialog_box_renderer.render();
    al_flip_display();
-   //std::this_thread::sleep_for(std::chrono::seconds(1));
+   std::this_thread::sleep_for(std::chrono::seconds(1));
 
    al_destroy_display(display);
    al_uninstall_system();

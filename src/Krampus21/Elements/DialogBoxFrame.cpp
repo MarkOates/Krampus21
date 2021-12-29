@@ -18,9 +18,9 @@ namespace Elements
 DialogBoxFrame::DialogBoxFrame(float width, float height)
    : width(width)
    , height(height)
-   , opacity(0.7)
-   , fill_color(ALLEGRO_COLOR{0.02f*opacity, 0.0f*opacity, 0.1f*opacity, opacity})
-   , border_color(al_color_html("244751"))
+   , opacity(0.8)
+   , fill_color(ALLEGRO_COLOR{0.05f*opacity, 0.02f*opacity, 0.12f*opacity, opacity})
+   , border_color(al_color_html("345761"))
 {
 }
 
@@ -81,13 +81,23 @@ void DialogBoxFrame::render()
          throw std::runtime_error(error_message.str());
       }
    float roundness = 18.0f;
-   float border_thickness = 5.0f;
-   float border_inner_padding = border_thickness * 3;
+   float border_thickness = 6.0f;
+   float border_inner_padding = border_thickness * 2.5;
    //ALLEGRO_COLOR fill_color = al_color_html("162428");
    //ALLEGRO_COLOR fill_color = ALLEGRO_COLOR{0.02f*opacity, 0.0f*opacity, 0.1f*opacity, opacity};
    //ALLEGRO_COLOR border_color = al_color_html("244751");
 
    // draw backfill
+   al_draw_filled_rounded_rectangle(
+      0,
+      0,
+      width,
+      height,
+      roundness * 1.0,
+      roundness * 1.0,
+      fill_color
+   );
+   // draw "inner" backfill
    al_draw_filled_rounded_rectangle(
       0 + border_inner_padding,
       0 + border_inner_padding,
