@@ -155,6 +155,9 @@
     "Krampus21/Titles/Feature",
     "Krampus21/Titles/Slate"
   ],
+  "sin": [
+    "Krampus21/Backgrounds/Monoplex"
+  ],
   "ALLEGRO_BITMAP": [
     "Krampus21/Character"
   ],
