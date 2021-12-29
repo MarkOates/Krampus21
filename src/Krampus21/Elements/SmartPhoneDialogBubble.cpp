@@ -46,7 +46,8 @@ void SmartPhoneDialogBubble::render()
          throw std::runtime_error(error_message.str());
       }
    //ALLEGRO_COLOR bubble_color = al_color_html("40669F");
-   ALLEGRO_COLOR bubble_color = al_color_html("6F7C8F");
+   //ALLEGRO_COLOR bubble_color = al_color_html("6F7C8F"); // a nice gray
+   ALLEGRO_COLOR bubble_color = al_color_html("66848b");
    ALLEGRO_COLOR text_color = al_color_name("white");
    float roundness = 32.0f;
    //if (roundness <= 10.0) roundness = 10.0;

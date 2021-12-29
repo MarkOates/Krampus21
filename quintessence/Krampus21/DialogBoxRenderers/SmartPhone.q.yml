@@ -25,6 +25,12 @@ properties:
     init_with: 0
     constructor_arg: true
 
+  - name: draw_background_fill
+    type: bool
+    init_with: false
+    getter: true
+    setter: true
+
 
 functions:
 
@@ -40,15 +46,18 @@ functions:
       float bubble_width = window_width - window_padding * 2;
 
       float window_roundness = 22;
-      al_draw_filled_rounded_rectangle(
-         0,
-         0,
-         window_width,
-         window_height,
-         window_roundness,
-         window_roundness,
-         ALLEGRO_COLOR{0, 0.08, 0.1, 0.95}
-      );
+      if (draw_background_fill)
+      {
+         al_draw_filled_rounded_rectangle(
+            0,
+            0,
+            window_width,
+            window_height,
+            window_roundness,
+            window_roundness,
+            ALLEGRO_COLOR{0, 0.08, 0.1, 0.95}
+         );
+      }
 
       for (unsigned i=0; i<messages.size(); i++)
       {

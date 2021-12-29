@@ -19,12 +19,25 @@ SmartPhone::SmartPhone(AllegroFlare::FontBin* font_bin, float window_width, floa
    , window_height(window_height)
    , messages(messages)
    , reveal_counter(reveal_counter)
+   , draw_background_fill(false)
 {
 }
 
 
 SmartPhone::~SmartPhone()
 {
+}
+
+
+void SmartPhone::set_draw_background_fill(bool draw_background_fill)
+{
+   this->draw_background_fill = draw_background_fill;
+}
+
+
+bool SmartPhone::get_draw_background_fill()
+{
+   return draw_background_fill;
 }
 
 
@@ -38,15 +51,18 @@ void SmartPhone::render()
    float bubble_width = window_width - window_padding * 2;
 
    float window_roundness = 22;
-   al_draw_filled_rounded_rectangle(
-      0,
-      0,
-      window_width,
-      window_height,
-      window_roundness,
-      window_roundness,
-      ALLEGRO_COLOR{0, 0.08, 0.1, 0.95}
-   );
+   if (draw_background_fill)
+   {
+      al_draw_filled_rounded_rectangle(
+         0,
+         0,
+         window_width,
+         window_height,
+         window_roundness,
+         window_roundness,
+         ALLEGRO_COLOR{0, 0.08, 0.1, 0.95}
+      );
+   }
 
    for (unsigned i=0; i<messages.size(); i++)
    {
