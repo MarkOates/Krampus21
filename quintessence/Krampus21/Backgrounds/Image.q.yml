@@ -17,6 +17,11 @@ properties:
   - name: image_filename
     type: std::string
     init_with: '"[image-filename-not-set]"'
+    constructor_arg: true
+
+  - name: image_file_location_prefix
+    type: std::string
+    init_with: '"backgrounds/"'
 
 
 functions:
@@ -26,7 +31,10 @@ functions:
     override: true
     guards: [ bitmap_bin ]
     body: |
-      allegro_flare::placement2d background_image_placement;
+      allegro_flare::placement2d background_image_placement{1920/2, 1080/2, 1920/2, 1080/2};
+      float scale = 2.0f;
+      background_image_placement.scale.x = background_image_placement.scale.y = scale;
+
       ALLEGRO_BITMAP *bitmap = obtain_background_bitmap();
       background_image_placement.start_transform();
       al_draw_bitmap(bitmap, 0, 0, 0);
@@ -40,7 +48,8 @@ functions:
     type: ALLEGRO_BITMAP*
     private: true
     body: |
-      return bitmap_bin->auto_get(image_filename);
+      std::string full_identifier = image_file_location_prefix + image_filename;
+      return bitmap_bin->auto_get(full_identifier);
 
 
 dependencies:

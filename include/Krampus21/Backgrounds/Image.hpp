@@ -16,9 +16,10 @@ namespace Krampus21
       private:
          AllegroFlare::BitmapBin* bitmap_bin;
          std::string image_filename;
+         std::string image_file_location_prefix;
 
       public:
-         Image(AllegroFlare::BitmapBin* bitmap_bin=nullptr);
+         Image(AllegroFlare::BitmapBin* bitmap_bin=nullptr, std::string image_filename="[image-filename-not-set]");
          ~Image();
 
          void draw() override;
