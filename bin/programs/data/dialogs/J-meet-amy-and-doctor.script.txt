@@ -1,6 +1,6 @@
 SIGNAL: ***Starting script J***
 
 SET_BACKGROUND: none
-SET_TITLE: ---
+SET_TITLE: Meet Amy and the Doctor
 
 OPENSCRIPT: data/dialogs/K-boss-gets-shot.script.txt

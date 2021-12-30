@@ -1,6 +1,6 @@
 SIGNAL: ***Starting script L***
 
 SET_BACKGROUND: none
-SET_TITLE: ---
+SET_TITLE: Amy's Laser Eyes
 
 OPENSCRIPT: data/dialogs/M-final-boss-mode.script.txt

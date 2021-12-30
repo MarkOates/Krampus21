@@ -1,6 +1,16 @@
 SIGNAL: ***Starting script O1***
 
-SET_TITLE: Script O1
-BEAT: pause
+SET_BACKGROUND: monoplex
+SET_TITLE: You get a choice
 
-OPENSCRIPT: 
+
+CHOICE: What would you choose? | Pull the plug | GOTO: *CHOOSE_TO_PULL_PLUG* | Accept the perfect life | GOTO: *CHOOSE_PERFECT_WORLD*
+  MARKER: *CHOOSE_TO_PULL_PLUG*
+    OPENSCRIPT: data/dialogs/Q-return-home.script.txt
+    GOTO: *FINISH_CHOICE*
+  MARKER: *CHOOSE_PERFECT_WORLD*
+    OPENSCRIPT: data/dialogs/P-a-perfect-world.script.txt
+    GOTO: *FINISH_CHOICE*
+
+MARKER: *FINISH_CHOICE*
+

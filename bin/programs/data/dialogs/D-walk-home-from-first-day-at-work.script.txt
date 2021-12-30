@@ -1,7 +1,7 @@
 SIGNAL: ***Starting script D***
 
-SET_BACKGROUND: outside-amys-place.png
-SET_TITLE: Meet Amy at Her Place
+SET_BACKGROUND: none
+SET_TITLE: Walk Home from Frist Day at Work
 
 OPENSCRIPT: data/dialogs/E-meet-amy-at-her-place.script.txt
 

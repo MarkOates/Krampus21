@@ -1,1 +1,6 @@
 SIGNAL: ***Starting script P***
+
+SET_BACKGROUND: bedroom-perfect-world.png
+SET_TITLE: A Perfect World
+
+OPENSCRIPT: data/dialogs/O2-dont-really-have-a-choice.script.txt

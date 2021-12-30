@@ -1,6 +1,6 @@
 SIGNAL: ***Starting script M***
 
-SET_BACKGROUND: none
-SET_TITLE: ---
+SET_BACKGROUND: monoplex
+SET_TITLE: Final boss mode
 
 OPENSCRIPT: data/dialogs/O1-you-get-a-choice.script.txt

@@ -1,6 +1,7 @@
 SIGNAL: ***Starting script O2***
 
-SET_BACKGROUND: none
-SET_TITLE: ---
+SET_BACKGROUND: monoplex
+SET_TITLE: You don't really get a choice
+
 
 OPENSCRIPT: data/dialogs/Q-return-home.script.txt

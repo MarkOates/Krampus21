@@ -1,7 +1,7 @@
 SIGNAL: ***Starting script I***
 
 SET_BACKGROUND: none
-SET_TITLE: ---
+SET_TITLE: At Amy's Hospital
 
 OPENSCRIPT: data/dialogs/J-meet-amy-and-doctor.script.txt
 

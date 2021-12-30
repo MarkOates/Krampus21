@@ -3,4 +3,6 @@ SIGNAL: ***Starting script C***
 SET_BACKGROUND: none
 SET_TITLE: First Day at Dynamax
 
+SET_BACKGROUND: your-workstation.png
+
 OPENSCRIPT: data/dialogs/D-walk-home-from-first-day-at-work.script.txt

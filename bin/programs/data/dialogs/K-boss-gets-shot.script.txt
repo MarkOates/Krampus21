@@ -1,6 +1,6 @@
 SIGNAL: ***Starting script K***
 
 SET_BACKGROUND: none
-SET_TITLE: ---
+SET_TITLE: Boss Gets Shot
 
 OPENSCRIPT: data/dialogs/L-amys-laser-eyes.script.txt

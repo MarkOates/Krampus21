@@ -1,7 +1,7 @@
 SIGNAL: ***Starting script F***
 
-SET_BACKGROUND: none
-SET_TITLE: ---
+SET_BACKGROUND: your-workstation.png
+SET_TITLE: Write the Hexagon Monoplex
 
 OPENSCRIPT: data/dialogs/G-walk-into-sick-room-at-work.script.txt
 
