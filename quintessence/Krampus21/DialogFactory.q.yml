@@ -68,6 +68,17 @@ functions:
       return basic_dialog_box;
 
 
+  - name: create_title_text_dialog
+    type: Krampus21::DialogBoxes::TitleText*
+    parameters:
+      - name: title_text
+        type: std::string
+        default_argument: '"[title-text-that-is-not-set]"'
+    body: |
+      Krampus21::DialogBoxes::TitleText* title_text_dialog_box = new Krampus21::DialogBoxes::TitleText(title_text);
+      return title_text_dialog_box;
+
+
   - name: create_choice_dialog
     type: Krampus21::DialogBoxes::Choice*
     parameters:
@@ -153,5 +164,7 @@ dependencies:
     headers: [ AllegroFlare/UsefulPHP.hpp ]
   - symbol: std::vector<std::pair<std::string, std::string>>
     headers: [ vector, utility, string ]
+  - symbol: Krampus21::DialogBoxes::TitleText*
+    headers: [ Krampus21/DialogBoxes/TitleText.hpp ]
 
 

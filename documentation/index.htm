@@ -63,6 +63,7 @@ table td
   <li><a href="#quintessence/Krampus21/DialogBoxes/Base.q.yml">quintessence/Krampus21/DialogBoxes/Base.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/Choice.q.yml">quintessence/Krampus21/DialogBoxes/Choice.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/SmartPhone.q.yml">quintessence/Krampus21/DialogBoxes/SmartPhone.q.yml</a></li>
+  <li><a href="#quintessence/Krampus21/DialogBoxes/TitleText.q.yml">quintessence/Krampus21/DialogBoxes/TitleText.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogBoxes/YouGotAnItem.q.yml">quintessence/Krampus21/DialogBoxes/YouGotAnItem.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/DialogFactory.q.yml">quintessence/Krampus21/DialogFactory.q.yml</a></li>
   <li><a href="#quintessence/Krampus21/Elements/DialogBoxFrame.q.yml">quintessence/Krampus21/Elements/DialogBoxFrame.q.yml</a></li>
@@ -735,6 +736,12 @@ table td
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxRenderers::SmartPhone&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxRenderers/SmartPhone.hpp&quot;]}</td>
 </tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::TitleText*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/TitleText.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::Titles::Slate&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/Titles/Slate.hpp&quot;]}</td>
+</tr>
     </table>
   </div>
 </ul>
@@ -1126,6 +1133,24 @@ table td
 </ul>
 <ul>
   <div class="component">
+    <h3 id="quintessence/Krampus21/DialogBoxes/TitleText.q.yml">quintessence/Krampus21/DialogBoxes/TitleText.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">primary_text</td>
+  <td class="property">std::string</td>
+</tr>
+    </table>
+     <table>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::Base&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/Base.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
     <h3 id="quintessence/Krampus21/DialogBoxes/YouGotAnItem.q.yml">quintessence/Krampus21/DialogBoxes/YouGotAnItem.q.yml</h3>
      <table>
 <tr>
@@ -1181,6 +1206,9 @@ table td
   <td class="method">create_basic_dialog(1)</td>
 </tr>
 <tr>
+  <td class="method">create_title_text_dialog(1)</td>
+</tr>
+<tr>
   <td class="method">create_choice_dialog(2)</td>
 </tr>
 <tr>
@@ -1214,6 +1242,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;utility&quot;, &quot;string&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Krampus21::DialogBoxes::TitleText*&quot;, &quot;headers&quot;=&gt;[&quot;Krampus21/DialogBoxes/TitleText.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -1975,6 +2006,7 @@ table td
     "Krampus21/DialogBoxes/Base",
     "Krampus21/DialogBoxes/Choice",
     "Krampus21/DialogBoxes/SmartPhone",
+    "Krampus21/DialogBoxes/TitleText",
     "Krampus21/DialogBoxes/YouGotAnItem"
   ],
   "Krampus21/ScriptLoader": [
@@ -2113,6 +2145,13 @@ table td
     "Krampus21/DialogBoxRenderer"
   ],
   "Krampus21/DialogBoxRenderers/SmartPhone": [
+    "Krampus21/DialogBoxRenderer"
+  ],
+  "Krampus21/DialogBoxes/TitleText": [
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogFactory"
+  ],
+  "Krampus21/Titles/Slate": [
     "Krampus21/DialogBoxRenderer"
   ],
   "al_color_name": [

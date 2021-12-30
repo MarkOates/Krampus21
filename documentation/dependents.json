@@ -102,6 +102,7 @@
     "Krampus21/DialogBoxes/Base",
     "Krampus21/DialogBoxes/Choice",
     "Krampus21/DialogBoxes/SmartPhone",
+    "Krampus21/DialogBoxes/TitleText",
     "Krampus21/DialogBoxes/YouGotAnItem"
   ],
   "Krampus21/ScriptLoader": [
@@ -240,6 +241,13 @@
     "Krampus21/DialogBoxRenderer"
   ],
   "Krampus21/DialogBoxRenderers/SmartPhone": [
+    "Krampus21/DialogBoxRenderer"
+  ],
+  "Krampus21/DialogBoxes/TitleText": [
+    "Krampus21/DialogBoxRenderer",
+    "Krampus21/DialogFactory"
+  ],
+  "Krampus21/Titles/Slate": [
     "Krampus21/DialogBoxRenderer"
   ],
   "al_color_name": [

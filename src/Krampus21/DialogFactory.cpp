@@ -69,6 +69,12 @@ Krampus21::DialogBoxes::Basic* DialogFactory::create_basic_dialog(std::vector<st
    return basic_dialog_box;
 }
 
+Krampus21::DialogBoxes::TitleText* DialogFactory::create_title_text_dialog(std::string title_text)
+{
+   Krampus21::DialogBoxes::TitleText* title_text_dialog_box = new Krampus21::DialogBoxes::TitleText(title_text);
+   return title_text_dialog_box;
+}
+
 Krampus21::DialogBoxes::Choice* DialogFactory::create_choice_dialog(std::string prompt, std::vector<std::pair<std::string, std::string>> options)
 {
    Krampus21::DialogBoxes::Choice* choice_dialog_box = new Krampus21::DialogBoxes::Choice(prompt, options);

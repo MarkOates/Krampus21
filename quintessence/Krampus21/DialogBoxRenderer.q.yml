@@ -41,6 +41,14 @@ functions:
          Krampus21::DialogBoxRenderers::ChoiceRenderer(font_bin, bitmap_bin, choice_dialog_box, width, height).render();
          place.restore_transform();
       }
+      else if (dialog_box->is_type("TitleText"))
+      {
+         Krampus21::DialogBoxes::TitleText* title_text_dialog_box =
+            static_cast<Krampus21::DialogBoxes::TitleText*>(title_text_dialog_box);
+         std::string primary_text = title_text_dialog_box->get_primary_text();
+         Krampus21::Titles::Slate slate_title(font_bin, primary_text, "");
+         slate_title.render();
+      }
       else if (dialog_box->is_type("SmartPhone"))
       {
          float dialog_window_width = 820;
@@ -138,9 +146,11 @@ functions:
       - Krampus21::DialogBoxes::Choice*
       - Krampus21::DialogBoxes::YouGotAnItem*
       - Krampus21::DialogBoxes::SmartPhone*
+      - Krampus21::DialogBoxes::TitleText*
       - Krampus21::DialogBoxRenderers::ChoiceRenderer
       - Krampus21::DialogBoxRenderers::YouGotAnItemRenderer
       - Krampus21::DialogBoxRenderers::SmartPhone
+      - Krampus21::Titles::Slate
 
 
   - name: draw_special_state_empty_text
@@ -299,6 +309,10 @@ dependencies:
     headers: [ Krampus21/DialogBoxRenderers/YouGotAnItemRenderer.hpp ]
   - symbol: Krampus21::DialogBoxRenderers::SmartPhone
     headers: [ Krampus21/DialogBoxRenderers/SmartPhone.hpp ]
+  - symbol: Krampus21::DialogBoxes::TitleText*
+    headers: [ Krampus21/DialogBoxes/TitleText.hpp ]
+  - symbol: Krampus21::Titles::Slate
+    headers: [ Krampus21/Titles/Slate.hpp ]
 
 
 

@@ -10,9 +10,11 @@
 #include <Krampus21/DialogBoxes/Choice.hpp>
 #include <Krampus21/DialogBoxes/YouGotAnItem.hpp>
 #include <Krampus21/DialogBoxes/SmartPhone.hpp>
+#include <Krampus21/DialogBoxes/TitleText.hpp>
 #include <Krampus21/DialogBoxRenderers/ChoiceRenderer.hpp>
 #include <Krampus21/DialogBoxRenderers/YouGotAnItemRenderer.hpp>
 #include <Krampus21/DialogBoxRenderers/SmartPhone.hpp>
+#include <Krampus21/Titles/Slate.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -96,6 +98,14 @@ void DialogBoxRenderer::render()
       Krampus21::DialogBoxes::Choice* choice_dialog_box = static_cast<Krampus21::DialogBoxes::Choice*>(dialog_box);
       Krampus21::DialogBoxRenderers::ChoiceRenderer(font_bin, bitmap_bin, choice_dialog_box, width, height).render();
       place.restore_transform();
+   }
+   else if (dialog_box->is_type("TitleText"))
+   {
+      Krampus21::DialogBoxes::TitleText* title_text_dialog_box =
+         static_cast<Krampus21::DialogBoxes::TitleText*>(title_text_dialog_box);
+      std::string primary_text = title_text_dialog_box->get_primary_text();
+      Krampus21::Titles::Slate slate_title(font_bin, primary_text, "");
+      slate_title.render();
    }
    else if (dialog_box->is_type("SmartPhone"))
    {
