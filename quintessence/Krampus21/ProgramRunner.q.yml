@@ -47,6 +47,7 @@ functions:
 
       std::string full_script_filename = "/Users/markoates/Repos/Krampus21/bin/programs/data/dialogs/"
                                        + script_to_start;
+      std::cout << "Starting from script: " << full_script_filename << std::endl;
 
       Krampus21::ApplicationController *screen_manager = new Krampus21::ApplicationController(
          &framework,
