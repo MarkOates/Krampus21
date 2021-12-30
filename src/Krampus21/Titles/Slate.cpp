@@ -30,6 +30,30 @@ Slate::~Slate()
 }
 
 
+void Slate::set_primary_text_kerning(int primary_text_kerning)
+{
+   this->primary_text_kerning = primary_text_kerning;
+}
+
+
+void Slate::set_secondary_text_kerning(int secondary_text_kerning)
+{
+   this->secondary_text_kerning = secondary_text_kerning;
+}
+
+
+int Slate::get_primary_text_kerning()
+{
+   return primary_text_kerning;
+}
+
+
+int Slate::get_secondary_text_kerning()
+{
+   return secondary_text_kerning;
+}
+
+
 void Slate::render()
 {
    if (!(font_bin))
@@ -69,6 +93,7 @@ void Slate::render()
 
 std::string Slate::kern(std::string text, int amount)
 {
+   if (text.empty()) return "";
    std::vector<char> v(text.begin(), text.end());
    std::vector<std::string> strs;
 

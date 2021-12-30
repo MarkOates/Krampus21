@@ -297,7 +297,7 @@ TEST(Krampus21_DialogBoxRendererTest, render__draws_smart_phone_dialog)
 
    dialog_box_renderer.render();
    al_flip_display();
-   std::this_thread::sleep_for(std::chrono::seconds(1));
+   //std::this_thread::sleep_for(std::chrono::seconds(1));
 
    al_destroy_display(display);
    al_uninstall_system();

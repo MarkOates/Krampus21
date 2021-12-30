@@ -35,3 +35,10 @@ TEST_F(Krampus21_Titles_SlateWithAllegroRenderingFixtureTest, can_be_created_wit
 }
 
 
+TEST_F(Krampus21_Titles_SlateWithAllegroRenderingFixtureTest, kern__with_empty_text__does_not_blow_up)
+{
+   Krampus21::Titles::Slate slate(&get_font_bin_ref(), "", "");
+   slate.render();
+}
+
+

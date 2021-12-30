@@ -564,6 +564,7 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
    std::string IF_FLAG = "IF_FLAG";
    std::string PHONE = "PHONE";
    std::string SET_BACKGROUND = "SET_BACKGROUND";
+   std::string SET_TITLE = "SET_TITLE";
 
    bool continue_directly_to_next_script_line = false;
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
@@ -602,6 +603,22 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
       audio_controller.play_music_track_by_identifier(music_filename_identifier);
 
       continue_directly_to_next_script_line = true;
+   }
+   else if (command == SET_TITLE)
+   {
+      // parse tokens
+      std::vector<std::string> tokens = tokenize(argument);
+
+      if (!assert_min_token_count(tokens, 1))
+      {
+         std::cout << "tokens must be at least 1 on line " << line_num << std::endl;
+         return false;
+      }
+
+      std::string text = tokens[0];
+      created_dialog = dialog_factory.create_title_text_dialog(text);
+
+      //continue_directly_to_next_script_line = true;
    }
    else if (command == SET_BACKGROUND)
    {

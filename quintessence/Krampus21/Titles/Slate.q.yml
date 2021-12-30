@@ -17,10 +17,14 @@ properties:
   - name: primary_text_kerning
     type: int
     init_with: 2
+    getter: true
+    setter: true
 
   - name: secondary_text_kerning
     type: int
     init_with: 2
+    getter: true
+    setter: true
 
 functions:
 
@@ -71,6 +75,7 @@ functions:
         type: int
         default_argument: 6
     body: |
+      if (text.empty()) return "";
       std::vector<char> v(text.begin(), text.end());
       std::vector<std::string> strs;
 
