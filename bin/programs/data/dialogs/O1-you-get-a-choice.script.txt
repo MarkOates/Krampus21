@@ -12,5 +12,6 @@ CHOICE: What would you choose? | Pull the plug | GOTO: *CHOOSE_TO_PULL_PLUG* | A
     OPENSCRIPT: data/dialogs/P-a-perfect-world.script.txt
     GOTO: *FINISH_CHOICE*
 
+
 MARKER: *FINISH_CHOICE*
 
