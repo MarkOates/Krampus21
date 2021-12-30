@@ -105,6 +105,7 @@ void DialogBoxRenderer::render()
          static_cast<Krampus21::DialogBoxes::TitleText*>(dialog_box);
       std::string primary_text = title_text_dialog_box->get_primary_text();
       Krampus21::Titles::Slate slate_title(font_bin, primary_text, "");
+      slate_title.set_primary_text_kerning(1);
       slate_title.render();
    }
    else if (dialog_box->is_type("SmartPhone"))
