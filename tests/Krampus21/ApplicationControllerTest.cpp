@@ -344,7 +344,7 @@ TEST(Krampus21_ApplicationControllerText,
    al_destroy_path(resource_path);
 
    std::vector<std::string> script_lines = {
-     "OPENSCRIPT: /Users/markoates/Repos/Krampus21/tests/test_fixtures/script-loaded-from-other-script.txt",
+     "OPENSCRIPT: /Users/markoates/Repos/Krampus21/tests/test_fixtures/dialogs/script-loaded-from-other-script.txt",
    };
    Krampus21::ApplicationController application_controller;
    application_controller.load_script_lines(script_lines);

@@ -1,0 +1,7 @@
+SIGNAL: ***Starting script F***
+
+SET_BACKGROUND: none
+SET_TITLE: ---
+
+OPENSCRIPT: data/dialogs/G-walk-into-sick-room-at-work.script.txt
+

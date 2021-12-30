@@ -1,0 +1,6 @@
+SIGNAL: ***Starting script O1***
+
+SET_TITLE: Script O1
+BEAT: pause
+
+OPENSCRIPT: 

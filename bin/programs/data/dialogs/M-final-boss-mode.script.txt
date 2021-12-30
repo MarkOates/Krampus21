@@ -1,0 +1,6 @@
+SIGNAL: ***Starting script M***
+
+SET_BACKGROUND: none
+SET_TITLE: ---
+
+OPENSCRIPT: data/dialogs/O1-you-get-a-choice.script.txt

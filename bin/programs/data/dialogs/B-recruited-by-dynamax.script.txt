@@ -1,0 +1,6 @@
+SIGNAL: ***Starting script B***
+
+SET_BACKGROUND: university-lobby.png
+SET_TITLE: University Lobby
+
+OPENSCRIPT: data/dialogs/C-first-day-at-dynamax.script.txt

@@ -1,0 +1,6 @@
+SIGNAL: ***Starting script K***
+
+SET_BACKGROUND: none
+SET_TITLE: ---
+
+OPENSCRIPT: data/dialogs/L-amys-laser-eyes.script.txt

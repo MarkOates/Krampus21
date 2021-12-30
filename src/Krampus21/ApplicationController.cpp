@@ -684,7 +684,12 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
    }
    else if (command == OPENSCRIPT)
    {
-      bool successful = load_script(argument);
+      //std::string script_auto_prefix = "scripts/";
+      std::string script_auto_prefix = "";
+      std::string script_to_load = script_auto_prefix + argument;
+
+      bool successful = load_script(script_to_load);
+
       if (successful)
       {
          if (current_dialog)

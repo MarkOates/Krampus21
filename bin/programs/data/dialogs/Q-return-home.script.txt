@@ -1,0 +1,9 @@
+SIGNAL: ***Starting script Q***
+
+SET_BACKGROUND: home-bedroom-morning.png
+SET_TITLE: Your Apartment (several days later)
+
+SET_BACKGROUND: none
+SET_TITLE: THE END
+SET_TITLE: THANK YOU FOR PLAYING
+

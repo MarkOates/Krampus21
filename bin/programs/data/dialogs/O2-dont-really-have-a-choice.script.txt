@@ -1,0 +1,6 @@
+SIGNAL: ***Starting script O2***
+
+SET_BACKGROUND: none
+SET_TITLE: ---
+
+OPENSCRIPT: data/dialogs/Q-return-home.script.txt

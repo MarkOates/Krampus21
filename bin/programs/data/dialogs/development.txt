@@ -1,0 +1,16 @@
+SIGNAL: Starting script **development**
+
+SET_BACKGROUND: none
+PLAY_MUSIC: ringing-ambience-01.wav
+
+SET_TITLE: Your Bedroom, 7:35 AM
+SET_BACKGROUND: home-bedroom-morning.png
+
+PHONE: Hey buddy! You awake?
+BEAT: rest
+PHONE: Wake up! I'm on campus, you gotta be here man.
+PHONE: There's some important stuff going on. | There's a bunch of recruiters from a lot of different tech companies.
+PHONE: PolySoft, Space Digital, Systemic...
+PHONE: Dude! There's even a recruiter from DynaMax!
+
+

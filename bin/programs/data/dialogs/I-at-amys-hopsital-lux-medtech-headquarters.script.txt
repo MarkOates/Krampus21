@@ -1,0 +1,7 @@
+SIGNAL: ***Starting script I***
+
+SET_BACKGROUND: none
+SET_TITLE: ---
+
+OPENSCRIPT: data/dialogs/J-meet-amy-and-doctor.script.txt
+
