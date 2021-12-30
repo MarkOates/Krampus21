@@ -14,13 +14,20 @@ namespace Krampus21
 {
 
 
-ProgramRunner::ProgramRunner()
+ProgramRunner::ProgramRunner(std::string script_to_start)
+   : script_to_start(script_to_start)
 {
 }
 
 
 ProgramRunner::~ProgramRunner()
 {
+}
+
+
+void ProgramRunner::set_script_to_start(std::string script_to_start)
+{
+   this->script_to_start = script_to_start;
 }
 
 
@@ -57,7 +64,8 @@ void ProgramRunner::run()
          //{ BULLET_DEFLECTED_SOUND_EFFECT, { "sfx_wpn_noammo1.wav", false } },
       };
 
-   std::string script_filename = "/Users/markoates/Repos/Krampus21/bin/programs/data/dialogs/development.txt";
+   std::string full_script_filename = "/Users/markoates/Repos/Krampus21/bin/programs/data/dialogs/"
+                                    + script_to_start;
 
    Krampus21::ApplicationController *screen_manager = new Krampus21::ApplicationController(
       &framework,
@@ -67,7 +75,7 @@ void ProgramRunner::run()
    );
    screens.add(screen_manager);
 
-   screen_manager->load_script(script_filename);
+   screen_manager->load_script(full_script_filename);
    screen_manager->initialize();
    screen_manager->start_game();
 

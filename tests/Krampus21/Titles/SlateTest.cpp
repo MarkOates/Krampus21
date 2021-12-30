@@ -31,7 +31,7 @@ TEST_F(Krampus21_Titles_SlateWithAllegroRenderingFixtureTest, can_be_created_wit
    Krampus21::Titles::Slate slate(&get_font_bin_ref(), title_text, secondary_text);
    al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 1.0});
    slate.render();
-   SHOW_RENDER();
+   //SHOW_RENDER();
 }
 
 

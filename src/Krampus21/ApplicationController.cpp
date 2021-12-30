@@ -634,7 +634,12 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
       Krampus21::Backgrounds::Base* created_background = nullptr;
       Krampus21::BackgroundFactory background_factory(obtain_bitmap_bin());
 
-      if (tokens[0] == "monoplex")
+      if (tokens[0] == "none")
+      {
+         if (current_background) delete current_background;
+         current_background = nullptr;
+      }
+      else if (tokens[0] == "monoplex")
       {
          created_background = background_factory.create_monoplex();
       }
