@@ -64,8 +64,13 @@ void ProgramRunner::run()
          //{ BULLET_DEFLECTED_SOUND_EFFECT, { "sfx_wpn_noammo1.wav", false } },
       };
 
-   std::string full_script_filename = "/Users/markoates/Repos/Krampus21/bin/programs/data/dialogs/"
-                                    + script_to_start;
+   #ifdef _WIN32
+   static std::string DIALOGS_FOLDER = "/msys64/home/Mark/Repos/Krampus21/bin/programs/data/dialogs/";
+   #else
+   static std::string DIALOGS_FOLDER = "/Users/markoates/Repos/Krampus21/bin/programs/data/dialogs/";
+   #endif
+
+   std::string full_script_filename = DIALOGS_FOLDER + script_to_start;
    std::cout << "Starting from script: " << full_script_filename << std::endl;
 
    Krampus21::ApplicationController *screen_manager = new Krampus21::ApplicationController(

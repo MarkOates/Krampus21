@@ -127,8 +127,6 @@ CHOICE:  | Wait, how did you get to see my exam? | GOTO: *GO_TO_QUESTION_EXAM_AC
     GOTO: *FINISH_HAGGLE_CHOICE*
 MARKER: *FINISH_HAGGLE_CHOICE*
 
-MARKER: *FINISH_HAGGLE_CHOICE*
-
 
 CHOICE: What do you say? Would you like to work at DynaMax? | Yea, let's do it! When do I start! | GOTO: *ACCEPT_OFFER* | Sure, I think this sounds reasonable. | GOTO: *ACCEPT_OFFER*
 MARKER: *ACCEPT_OFFER*
