@@ -1,6 +1,10 @@
 SIGNAL: ***Starting script E***
 
-SET_BACKGROUND: outside-amys-place.png
+SET_BACKGROUND: none
 SET_TITLE: Meet Amy at Her Place
+SET_BACKGROUND: outside-amys-place.png
+
+BEAT: pause
+
 
 OPENSCRIPT: data/dialogs/F-write-the-hexagon-monoplex.script.txt

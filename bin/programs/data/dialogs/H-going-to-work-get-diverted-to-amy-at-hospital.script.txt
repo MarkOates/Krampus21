@@ -1,6 +1,8 @@
 SIGNAL: ***Starting script H***
 
-SET_BACKGROUND: none
-SET_TITLE: On Way to Work, Diverted to Hospital
+SET_BACKGROUND: from-work-at-night.png
+SET_TITLE: Going home, getting diverted
+
+BEAT: pause
 
 OPENSCRIPT: data/dialogs/I-at-amys-hopsital-lux-medtech-headquarters.script.txt

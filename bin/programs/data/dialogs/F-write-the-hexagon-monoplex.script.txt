@@ -3,5 +3,8 @@ SIGNAL: ***Starting script F***
 SET_BACKGROUND: your-workstation.png
 SET_TITLE: Write the Hexagon Monoplex
 
+SET_BACKGROUND: dynamax-hallway.png
+BEAT: pause
+
 OPENSCRIPT: data/dialogs/G-walk-into-sick-room-at-work.script.txt
 

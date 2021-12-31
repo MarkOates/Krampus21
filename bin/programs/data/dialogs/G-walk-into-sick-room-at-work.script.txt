@@ -3,4 +3,7 @@ SIGNAL: ***Starting script G***
 SET_BACKGROUND: none
 SET_TITLE: Walk Into Sick Room at DynaMax
 
+SET_BACKGROUND: patient-room-1.png
+BEAT: pause
+
 OPENSCRIPT: data/dialogs/H-going-to-work-get-diverted-to-amy-at-hospital.script.txt

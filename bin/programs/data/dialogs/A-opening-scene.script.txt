@@ -1,6 +1,8 @@
 SIGNAL: ***Starting script A***
 
-SET_BACKGROUND: home-bedroom-morning.png
 SET_TITLE: Your Apartment, Early Morning
+SET_BACKGROUND: home-bedroom-morning.png
+
+BEAT: pause
 
 OPENSCRIPT: data/dialogs/B-recruited-by-dynamax.script.txt

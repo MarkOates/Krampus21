@@ -1,6 +1,19 @@
 SIGNAL: ***Starting script B***
 
+
+
+SET_BACKGROUND: none
+SET_TITLE: On the way to the University
+SET_BACKGROUND: on-the-way-to-university.png
+
+BEAT: pause
+
+
+
 SET_BACKGROUND: university-lobby.png
 SET_TITLE: University Lobby
+
+BEAT: pause
+
 
 OPENSCRIPT: data/dialogs/C-first-day-at-dynamax.script.txt

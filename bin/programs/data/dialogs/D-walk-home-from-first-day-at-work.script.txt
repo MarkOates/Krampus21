@@ -2,6 +2,10 @@ SIGNAL: ***Starting script D***
 
 SET_BACKGROUND: none
 SET_TITLE: Walk Home from Frist Day at Work
+SET_BACKGROUND: from-work-at-night.png
+
+BEAT: pause
+
 
 OPENSCRIPT: data/dialogs/E-meet-amy-at-her-place.script.txt
 
