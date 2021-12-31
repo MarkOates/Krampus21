@@ -3,7 +3,7 @@ properties:
 
   - name: script_to_start
     type: std::string
-    init_with: '"development.txt"'
+    init_with: '"A-opening-scene.script.txt"'
     constructor_arg: true
     setter: true
 

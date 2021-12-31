@@ -12,7 +12,7 @@ namespace Krampus21
       std::string script_to_start;
 
    public:
-      ProgramRunner(std::string script_to_start="development.txt");
+      ProgramRunner(std::string script_to_start="A-opening-scene.script.txt");
       ~ProgramRunner();
 
       void set_script_to_start(std::string script_to_start);
