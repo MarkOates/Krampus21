@@ -2,7 +2,7 @@ SIGNAL: ***Starting script A***
 
 PLAY_MUSIC: ringing-ambience-01.wav
 SET_TITLE: Your Apartment, 7:35 AM
-WAIT: 2
+WAIT: 4
 SET_BACKGROUND: home-bedroom-morning.png
 
 WAIT: 2
@@ -26,7 +26,7 @@ CHOICE: What should I do? | Go to the university | GOTO: *GO_NOW* | Wait just a 
   MARKER: *GO_IN_A_FEW*
     WAIT: 2
     PHONE: Buddy, seriously! There's even a recruiter from DynaMax!
-    CHOICE: What would you do? | DynaMax is my dream job! Let's go! | GOTO: *FINISH_CHOICE* | I'd better go so my BFF will leave me alone | GOTO: *FINISH_CHOICE*
+    CHOICE: What should I do? | DynaMax is my dream job! Let's go! | GOTO: *FINISH_CHOICE* | I'd better go so my BFF will leave me alone | GOTO: *FINISH_CHOICE*
     GOTO: *FINISH_CHOICE*
 MARKER: *FINISH_CHOICE*
 
