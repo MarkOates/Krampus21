@@ -1,5 +1,6 @@
 SIGNAL: ***Starting script C***
 
+SET_CHARACTER_ART: none
 SET_BACKGROUND: none
 SET_TITLE: The Next Morning, On Your Way to Work
 

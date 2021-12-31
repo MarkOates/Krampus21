@@ -11,6 +11,16 @@ BEAT: rest
 PHONE: Wake up! I'm on campus, you gotta be here man.
 PHONE: There's some important stuff going on. | There's a bunch of recruiters from a lot of different tech companies.
 PHONE: PolySoft, Space Digital, Systemic...
-PHONE: Dude! There's even a recruiter from DynaMax!
 
+CHOICE: What should I do? | Go to the university | GOTO: *GO_NOW* | Wait just a while longer | GOTO: *GO_IN_A_FEW*
+  MARKER: *GO_NOW*
+    GOTO: *FINISH_CHOICE*
+  MARKER: *GO_IN_A_FEW*
+    PHONE: Buddy, seriously! There's even a recruiter from DynaMax!
+    CHOICE: What would you do? | DynaMax is my dream job! Let's go! | GOTO: *FINISH_CHOICE* | OK, I'd better get to the campus. | GOTO *FINISH_CHOICE*
+    GOTO: *FINISH_CHOICE*
+MARKER: *FINISH_CHOICE*
+
+
+WAIT: 2
 

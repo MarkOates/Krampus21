@@ -1,18 +1,58 @@
 SIGNAL: ***Starting script B***
 
-
-
+SET_CHARACTER_ART: none
 SET_BACKGROUND: none
 SET_TITLE: On the way to the University
+WAIT: 2
 SET_BACKGROUND: on-the-way-to-university.png
 
-BEAT: pause
+
+WAIT: 2
+SET_CHARACTER_ART: character-1-happy.png
+Hey!
+What have you been up to these days?  I know we haven't talked in a while.
+SET_CHARACTER_ART: character-1-very-happy.png
+I hope you don't think it's because I'm ignoring you or anything.
+SET_CHARACTER_ART: character-1-happy.png
+It's just that I've had something come up, and, well...
+SET_CHARACTER_ART: character-1-neutral.png
+I didn't want to bother you with it.
+Here, have watch!
+COLLECT: 2
+And some gum, too!
+COLLECT: 1
+SET_CHARACTER_ART: character-1-happy.png
+I know you've been so busy with your studies.  You're such a pointy-head smarty-pants ya know!
+It's no wonder you're being scouted by every single technology company out there!  Everyone wants to pick that big brain of yours!
+Who knows! Maybe you'll even get picked up by Allegras!
+SET_CHARACTER_ART: character-1-very-happy.png
+Oh wow! Wouldn't that be amazing!?
+One of my good friends, working on The Allegras Codebase?!  Even I would be popular!  It would be the talk of the town!
+SET_CHARACTER_ART: character-1-happy.png
+Anyway...
+SET_CHARACTER_ART: character-1-neutral.png
+
+
+
+
+
+
+
+
+
+
+SIGNAL: ***Starting script B, at university lobby***
+
+
+SET_CHARACTER_ART: boss-happy-2.png
 
 
 SET_BACKGROUND: university-lobby.png
 SET_TITLE: University Lobby
 
-BEAT: pause
+SET_CHARACTER_ART: boss-happy-2.png
 
+
+BEAT: pause
 
 OPENSCRIPT: data/dialogs/C-first-day-at-dynamax.script.txt
