@@ -51,9 +51,9 @@ ApplicationController::ApplicationController(AllegroFlare::Framework* framework,
    , inventory({})
    , script_freshly_loaded_via_OPENSCRIPT(false)
    , showing_smart_phone(false)
-   , smart_phone_reveal_counter(0.0)
+   , smart_phone_reveal_counter(0.0f)
    , image_identifier_for_smart_phone("bestie-on-phone-01.png")
-   , wait_delay_countdown_sec(0.0)
+   , wait_delay_countdown_sec(0.0f)
    , on_hold_for_wait_delay(false)
 {
 }
