@@ -1,49 +1,51 @@
 SIGNAL: ***Starting script B***
 
 
-GOTO: **SECTION_2-BFF**
-
-
-
 SET_CHARACTER_ART: none
 SET_BACKGROUND: none
+_WAIT: 2
 SET_TITLE: On the way to the University
-WAIT: 2
+WAIT: 4
 SET_BACKGROUND: on-the-way-to-university.png
 
 WAIT: 2
 SET_CHARACTER_ART: character-1-happy.png
 Hey!
-What have you been up to these days?  I know we haven't talked in a while.
-SET_CHARACTER_ART: character-1-very-happy.png
+Are you headed to the university conference hall?  Everyone's there.
+SET_CHARACTER_ART: character-1-neutral.png
+I may go back later but I have to go.
+It's just that I've had something come up, and, well...
+I don't think I could tell you about it right now.
+SET_CHARACTER_ART: character-1-sad.png
 I hope you don't think it's because I'm ignoring you or anything.
 SET_CHARACTER_ART: character-1-happy.png
-It's just that I've had something come up, and, well...
+I know you've been so busy with studies and there's a lot going on right now, with it being the end of the school year.
 SET_CHARACTER_ART: character-1-neutral.png
-I didn't want to bother you with it.
-Here, have watch!
-COLLECT: 2
-And some gum, too!
-COLLECT: 1
-SET_CHARACTER_ART: character-1-happy.png
-I know you've been so busy with your studies.  You're such a pointy-head smarty-pants ya know!
-It's no wonder you're being scouted by every single technology company out there!  Everyone wants to pick that big brain of yours!
+You're such a smarty-pants ya know!
+You should get to the conference hall.
 Who knows! Maybe you'll even get picked up by Allegras!
+One of my good friends, working on The Allegras Codebase?!  Even I would be popular!  It would be the talk of the town!
+Or maybe even DynaMax!
 SET_CHARACTER_ART: character-1-very-happy.png
 Oh wow! Wouldn't that be amazing!?
-One of my good friends, working on The Allegras Codebase?!  Even I would be popular!  It would be the talk of the town!
 SET_CHARACTER_ART: character-1-happy.png
 Anyway...
 SET_CHARACTER_ART: character-1-neutral.png
+I really should get going...
 
 
 
-
-
+CLEAR_DIALOGS: *
+SET_CHARACTER_ART: none
+SET_BACKGROUND: none
+WAIT: 2
+SET_TITLE: Conference Hall, University Center
+WAIT: 4
 MARKER: **SECTION_2-BFF**
 
 
 SIGNAL: ***Starting script B -- at university lobby***
+WAIT: 2
 SET_BACKGROUND: university-lobby.png
 
 SET_CHARACTER_ART: bff-1.png
@@ -63,10 +65,9 @@ I'm sure they'd take you.  You should talk to Terry, he's their recruiter.  I ta
 
 CHOICE: What should I do? | Go talk to the DynaMax recruiter, Terry | GOTO: *GO_TO_TERRY* | I'll play it cool and wait for DynaMax to come to me | GOTO: *WAIT_FOR_TERRY*
   MARKER: *GO_TO_TERRY*
-    That's a good idea.  Showing some ambition and passion, there?  Companies love that stuff.
-    OK, well, I'll let you get to it. There's no time like the present.
-    Seize the day, eh?
-    Have fun!
+    That's a good idea.  Showing some ambition and passion!  Companies love that stuff.
+    OK, well, I'll let you get to it. Seize the day, eh? There's no time like the present.
+    Good luck!  Not that you'll need it, of course! haha!
     GOTO: *FINISH_CHOICE*
   MARKER: *WAIT_FOR_TERRY*
     Hahaha! That's great.

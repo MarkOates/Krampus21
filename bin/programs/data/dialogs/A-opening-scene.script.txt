@@ -1,6 +1,7 @@
 SIGNAL: ***Starting script A***
 
 PLAY_MUSIC: ringing-ambience-01.wav
+WAIT: 2
 SET_TITLE: Your Apartment, 7:35 AM
 WAIT: 4
 SET_BACKGROUND: home-bedroom-morning.png

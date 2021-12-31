@@ -2,7 +2,9 @@ SIGNAL: ***Starting script C***
 
 SET_CHARACTER_ART: none
 SET_BACKGROUND: none
+WAIT: 2
 SET_TITLE: The Next Morning, On Your Way to Work
+WAIT: 4
 
 SET_BACKGROUND: on-the-way-to-work.png
 BEAT: pause
