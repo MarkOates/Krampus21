@@ -425,12 +425,11 @@ void ApplicationController::joy_button_down_func(ALLEGRO_EVENT* ev)
    std::cout << ev->joystick.button << std::endl;
    switch (ev->joystick.button)
    {
+   case 3:
    case 4:
       handle_option_input();
       break;
    case 0:
-      // nothing
-      break;
    case 1:
       handle_submit_input();
       break;
