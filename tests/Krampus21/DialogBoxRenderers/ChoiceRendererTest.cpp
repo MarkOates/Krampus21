@@ -65,7 +65,7 @@ TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererWithAllegroRenderingFixtureTes
    choice_renderer.render();
    place.restore_transform();
    al_flip_display();
-   sleep(1);
+   sleep_for(1);
 
    SUCCEED();
 }
