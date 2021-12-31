@@ -24,6 +24,7 @@ namespace Krampus21
 
          void draw() override;
          ALLEGRO_BITMAP* obtain_background_bitmap();
+         float infer_opacity();
       };
    }
 }

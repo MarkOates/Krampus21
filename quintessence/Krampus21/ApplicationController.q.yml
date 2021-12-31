@@ -71,7 +71,7 @@ properties:
 
   - name: background_color
     type: ALLEGRO_COLOR
-    init_with: 'ALLEGRO_COLOR{0.1, 0.1, 0.2, 1.0}'
+    init_with: 'ALLEGRO_COLOR{0.05, 0.05, 0.05, 1.0}'
 
   - name: letterbox_frame_height
     type: float

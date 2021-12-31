@@ -10,6 +10,7 @@ properties:
   - name: reveal_counter
     type: float
     init_with: 0
+    getter: true
 
   - name: reveal_speed
     type: float

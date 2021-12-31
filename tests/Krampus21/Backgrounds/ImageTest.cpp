@@ -35,7 +35,7 @@ TEST_F(Krampus21_Backgrounds_ImageWithAllegroRenderingFixtureTest, draw__will_re
 {
    Krampus21::Backgrounds::Image image_background(&get_bitmap_bin_ref(), "outside-amys-place.png");
 
-   int frames = 1;
+   int frames = 60;
    for (unsigned i=0; i<frames; i++)
    {
       //update
@@ -45,7 +45,7 @@ TEST_F(Krampus21_Backgrounds_ImageWithAllegroRenderingFixtureTest, draw__will_re
       al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 1});
       image_background.draw();
       al_flip_display();
-      sleep_for(1);
+      sleep_for_frame();
    }
 }
 

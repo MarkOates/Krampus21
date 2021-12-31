@@ -21,6 +21,7 @@ namespace Krampus21
          virtual ~Base();
 
          std::string get_type();
+         float get_reveal_counter();
          void activate();
          void deactivate();
          void managed_update();

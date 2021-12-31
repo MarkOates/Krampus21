@@ -30,6 +30,12 @@ std::string Base::get_type()
 }
 
 
+float Base::get_reveal_counter()
+{
+   return reveal_counter;
+}
+
+
 void Base::activate()
 {
    reveal_counter = 1.0;
