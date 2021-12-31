@@ -3,6 +3,12 @@
 
 #include <Krampus21/ApplicationController.hpp>
 
+#ifdef _WIN32
+static std::string _TEST_FIXTURE_DIALOGS_FOLDER = "/msys64/home/Mark/Repos/Krampus21/tests/test_fixtures/dialogs/";
+#else
+static std::string _TEST_FIXTURE_DIALOGS_FOLDER = "/Users/markoates/Repos/Krampus21/tests/test_fixtures/dialogs/";
+#endif
+
 TEST(Krampus21_ApplicationControllerTest, can_be_created_without_blowing_up)
 {
    Krampus21::ApplicationController screen_manager;
@@ -344,8 +350,9 @@ TEST(Krampus21_ApplicationControllerText,
    al_destroy_path(resource_path);
 
    std::vector<std::string> script_lines = {
-     "OPENSCRIPT: /Users/markoates/Repos/Krampus21/tests/test_fixtures/dialogs/script-loaded-from-other-script.txt",
+     "OPENSCRIPT: " + _TEST_FIXTURE_DIALOGS_FOLDER + "script-loaded-from-other-script.txt",
    };
+
    Krampus21::ApplicationController application_controller;
    application_controller.load_script_lines(script_lines);
 
