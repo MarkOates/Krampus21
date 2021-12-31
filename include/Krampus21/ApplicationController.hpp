@@ -52,6 +52,8 @@ namespace Krampus21
       bool script_freshly_loaded_via_OPENSCRIPT;
       bool showing_smart_phone;
       float smart_phone_reveal_counter;
+      float wait_delay_countdown_sec;
+      bool on_hold_for_wait_delay;
 
    public:
       ApplicationController(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements={}, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements={});

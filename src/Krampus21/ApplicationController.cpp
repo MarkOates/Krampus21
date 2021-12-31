@@ -52,6 +52,8 @@ ApplicationController::ApplicationController(AllegroFlare::Framework* framework,
    , script_freshly_loaded_via_OPENSCRIPT(false)
    , showing_smart_phone(false)
    , smart_phone_reveal_counter(0.0)
+   , wait_delay_countdown_sec(0.0)
+   , on_hold_for_wait_delay(false)
 {
 }
 
@@ -128,6 +130,8 @@ bool ApplicationController::load_script(std::string filename)
 
 void ApplicationController::advance()
 {
+   if (on_hold_for_wait_delay) return; // do not allow any user input until the wait delay is lower
+
    // if dialog box is "choice", eval the choice, then ...
    if (current_dialog && current_dialog->is_type("Choice"))
    {
@@ -300,6 +304,17 @@ void ApplicationController::toggle_inventory()
 
 void ApplicationController::primary_timer_func()
 {
+   if (on_hold_for_wait_delay)
+   {
+      wait_delay_countdown_sec -= (1.0/60.0f);
+      if (wait_delay_countdown_sec <= 0.0)
+      {
+         on_hold_for_wait_delay = false;
+         script.goto_next_line();
+         play_current_script_line();
+      }
+   }
+
    // update
    inventory.update();
    if (current_dialog) current_dialog->update();
@@ -556,6 +571,7 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
    std::string SET_CHARACTER_ART = "SET_CHARACTER_ART";
    std::string SET_CHARACTER_FRAMING = "SET_CHARACTER_FRAMING";
    std::string BEAT = "BEAT";
+   std::string WAIT = "WAIT";
    std::string COLLECT = "COLLECT";
    std::string COLLECT_SILENTLY = "COLLECT_SILENTLY";
    std::string IF_IN_INVENTORY = "IF_IN_INVENTORY";
@@ -565,6 +581,7 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
    std::string PHONE = "PHONE";
    std::string SET_BACKGROUND = "SET_BACKGROUND";
    std::string SET_TITLE = "SET_TITLE";
+   std::string CLEAR_DIALOGS = "CLEAR_DIALOGS";
 
    bool continue_directly_to_next_script_line = false;
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
@@ -618,7 +635,17 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
       std::string text = tokens[0];
       created_dialog = dialog_factory.create_title_text_dialog(text);
 
-      //continue_directly_to_next_script_line = true;
+      continue_directly_to_next_script_line = true;
+   }
+   else if (command == CLEAR_DIALOGS)
+   {
+      if (current_dialog)
+      {
+         if (current_dialog) delete current_dialog;
+         current_dialog = nullptr;
+      }
+
+      continue_directly_to_next_script_line = true;
    }
    else if (command == SET_BACKGROUND)
    {
@@ -809,6 +836,18 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
 
       //choice_options = { { "Boobar", "boobruhh" }, { "Zoozaz", "zazzle" } };
       created_dialog = dialog_factory.create_choice_dialog(choice_prompt, choice_options);
+   }
+   else if (command == WAIT)
+   {
+      // this will prevent the next line from executing until after a delay
+      int num_sec_to_wait = 2.0;
+      if (!argument.empty())
+      {
+         num_sec_to_wait = atoi(argument.c_str());
+      }
+
+      on_hold_for_wait_delay = true;
+      wait_delay_countdown_sec = num_sec_to_wait;
    }
    else if (command == BEAT)
    {

@@ -70,7 +70,7 @@ TEST(Krampus21_DialogFactoryTest, build_basic_dialog_from_file__sets_the_test_to
 {
    Krampus21::DialogFactory dialog_factory;
    Krampus21::DialogBoxes::Basic basic_dialog_box;
-   std::string test_fixture_filename = std::string(TEST_FIXTURE_FOLDER) + "dialog-1.txt";
+   std::string test_fixture_filename = std::string(TEST_FIXTURE_FOLDER) + "dialogs/dialog-1.txt";
 
    basic_dialog_box = dialog_factory.build_basic_dialog_from_file(test_fixture_filename);
 

@@ -1,8 +1,26 @@
 SIGNAL: ***Starting script A***
 
+PLAY_MUSIC: ringing-ambience-01.wav
 SET_TITLE: Your Apartment, Early Morning
+WAIT: 2
 SET_BACKGROUND: home-bedroom-morning.png
 
-BEAT: pause
+WAIT: 2
+CLEAR_DIALOGS: *
+
+WAIT: 2
+
+
+PHONE: Hey buddy! You awake?
+CLEAR_DIALOGS: *
+
+WAIT: 2
+
+PHONE: Wake up! I'm on campus, you gotta be here man.
+PHONE: There's some important stuff going on. | There's a bunch of recruiters from a lot of different tech companies.
+PHONE: PolySoft, Space Digital, Systemic...
+PHONE: Dude! There's even a recruiter from DynaMax!
+
+
 
 OPENSCRIPT: data/dialogs/B-recruited-by-dynamax.script.txt
