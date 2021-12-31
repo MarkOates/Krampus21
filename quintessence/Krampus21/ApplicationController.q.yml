@@ -107,6 +107,11 @@ properties:
     type: float
     init_with: 0.0
 
+  - name: image_identifier_for_smart_phone
+    type: std::string
+    init_with: '"bestie-on-phone-01.png"'
+    getter: true
+
   - name: wait_delay_countdown_sec
     type: float
     init_with: 0.0
@@ -586,7 +591,7 @@ functions:
       float phone_transparency = smart_phone_reveal_counter;
       ALLEGRO_COLOR fading_white =
          ALLEGRO_COLOR{phone_transparency, phone_transparency, phone_transparency, phone_transparency};
-      ALLEGRO_BITMAP *smart_phone_image = obtain_bitmap_bin()->auto_get("phone-in-hand-02.png");
+      ALLEGRO_BITMAP *smart_phone_image = obtain_bitmap_bin()->auto_get(get_image_identifier_for_smart_phone());
 
       float smart_phone_y_offset = (AllegroFlare::interpolator::tripple_fast_in(smart_phone_reveal_counter) * -100);
 

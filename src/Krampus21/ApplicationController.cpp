@@ -52,6 +52,7 @@ ApplicationController::ApplicationController(AllegroFlare::Framework* framework,
    , script_freshly_loaded_via_OPENSCRIPT(false)
    , showing_smart_phone(false)
    , smart_phone_reveal_counter(0.0)
+   , image_identifier_for_smart_phone("bestie-on-phone-01.png")
    , wait_delay_countdown_sec(0.0)
    , on_hold_for_wait_delay(false)
 {
@@ -84,6 +85,12 @@ Krampus21::Backgrounds::Base* ApplicationController::get_current_background()
 bool ApplicationController::get_script_freshly_loaded_via_OPENSCRIPT()
 {
    return script_freshly_loaded_via_OPENSCRIPT;
+}
+
+
+std::string ApplicationController::get_image_identifier_for_smart_phone()
+{
+   return image_identifier_for_smart_phone;
 }
 
 
@@ -529,7 +536,7 @@ void ApplicationController::draw_smart_phone()
    float phone_transparency = smart_phone_reveal_counter;
    ALLEGRO_COLOR fading_white =
       ALLEGRO_COLOR{phone_transparency, phone_transparency, phone_transparency, phone_transparency};
-   ALLEGRO_BITMAP *smart_phone_image = obtain_bitmap_bin()->auto_get("phone-in-hand-02.png");
+   ALLEGRO_BITMAP *smart_phone_image = obtain_bitmap_bin()->auto_get(get_image_identifier_for_smart_phone());
 
    float smart_phone_y_offset = (AllegroFlare::interpolator::tripple_fast_in(smart_phone_reveal_counter) * -100);
 

@@ -52,6 +52,7 @@ namespace Krampus21
       bool script_freshly_loaded_via_OPENSCRIPT;
       bool showing_smart_phone;
       float smart_phone_reveal_counter;
+      std::string image_identifier_for_smart_phone;
       float wait_delay_countdown_sec;
       bool on_hold_for_wait_delay;
 
@@ -63,6 +64,7 @@ namespace Krampus21
       Krampus21::DialogBoxes::Base* get_current_dialog();
       Krampus21::Backgrounds::Base* get_current_background();
       bool get_script_freshly_loaded_via_OPENSCRIPT();
+      std::string get_image_identifier_for_smart_phone();
       void initialize();
       bool load_script_lines(std::vector<std::string> script_lines={});
       bool load_script(std::string filename="unset-script-filename.txt");
