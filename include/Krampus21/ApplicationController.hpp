@@ -95,7 +95,7 @@ namespace Krampus21
       void hide_smart_phone();
       void draw_smart_phone();
       void update_smart_phone();
-      bool parse_and_run_line(std::string script_line="[empty-script-line]", int line_num=0);
+      bool parse_and_run_line(std::string raw_script_line="[empty-script-line]", int line_num=0);
       static std::pair<std::string, std::string> parse_command_and_argument(std::string script_line={});
       static std::map<std::string, int> build_markers_index(std::vector<std::string> script_lines={});
       static std::vector<std::string> tokenize(std::string str="", char delim='|');

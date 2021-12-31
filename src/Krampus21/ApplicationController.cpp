@@ -566,7 +566,7 @@ void ApplicationController::update_smart_phone()
    return;
 }
 
-bool ApplicationController::parse_and_run_line(std::string script_line, int line_num)
+bool ApplicationController::parse_and_run_line(std::string raw_script_line, int line_num)
 {
    std::string DIALOG = "DIALOG";
    std::string GOTO = "GOTO";
@@ -591,6 +591,8 @@ bool ApplicationController::parse_and_run_line(std::string script_line, int line
 
    bool continue_directly_to_next_script_line = false;
    Krampus21::DialogBoxes::Base* created_dialog = nullptr;
+   std::string script_line = Blast::String::Trimmer(raw_script_line).trim();
+
    std::pair<std::string, std::string> command_and_argument = parse_command_and_argument(script_line);
    std::string command = command_and_argument.first;
    std::string argument = command_and_argument.second;

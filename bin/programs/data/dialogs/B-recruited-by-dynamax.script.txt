@@ -1,11 +1,15 @@
 SIGNAL: ***Starting script B***
 
+
+GOTO: **SECTION_2-BFF**
+
+
+
 SET_CHARACTER_ART: none
 SET_BACKGROUND: none
 SET_TITLE: On the way to the University
 WAIT: 2
 SET_BACKGROUND: on-the-way-to-university.png
-
 
 WAIT: 2
 SET_CHARACTER_ART: character-1-happy.png
@@ -36,23 +40,107 @@ SET_CHARACTER_ART: character-1-neutral.png
 
 
 
+MARKER: **SECTION_2-BFF**
+
+
+SIGNAL: ***Starting script B -- at university lobby***
+SET_BACKGROUND: university-lobby.png
+
+SET_CHARACTER_ART: bff-1.png
+Heeeyyy... look who finally showed up!
+Good to see you, friend!
+This place is buzzing with excitement!  It seems like every major company is here, and they all want to hire the students at our university.
+A guy from Polytec told me that there was a big turnover of employees this year between all the companies. So, there's a lot of new positions open everywhere!
+Maybe this is my chance to grab a entry level position with Space Digital!
+I know their CEO is a little wacky but they're really ambitious.
+CLEAR_DIALOGS: *
+WAIT: 1
+Oh!
+There's a recruiter from DynaMax, too!
+I know you've been interested in working with them.
+I'm sure they'd take you.  You should talk to Terry, he's their recruiter.  I talked to him just few minutes ago. 
+
+
+CHOICE: What should I do? | Go talk to the DynaMax recruiter, Terry | GOTO: *GO_TO_TERRY* | I'll play it cool and wait for DynaMax to come to me | GOTO: *WAIT_FOR_TERRY*
+  MARKER: *GO_TO_TERRY*
+    That's a good idea.  Showing some ambition and passion, there?  Companies love that stuff.
+    OK, well, I'll let you get to it. There's no time like the present.
+    Seize the day, eh?
+    Have fun!
+    GOTO: *FINISH_CHOICE*
+  MARKER: *WAIT_FOR_TERRY*
+    Hahaha! That's great.
+    You're gonna play it mysterious, huh?
+    Well, there's no reason not to.  It's pretty obvious that you're the #1 top pick in this whole room.
+    I'm sure every one of these companies would come running if they found out you were the only student in the whole university to solve the monoplex on the final exam!
+    Some of them probably already found out. Half the student body is talking about it, already, ya know!
+    CLEAR_DIALOGS: *
+    WAIT: 1
+    Oh, haha, look at that...
+    ... looks like the recruiter from DynaMax just noticed you're here...
+    ... and... yup... he's coming this way.
+    CLEAR_DIALOGS: *
+    WAIT: 1
+    You know what, I'll leave you two alone... hahahah!
+    Have fun!
+    GOTO: *FINISH_CHOICE*
+MARKER: *FINISH_CHOICE*
 
 
 
 
-
-SIGNAL: ***Starting script B, at university lobby***
-
-
-SET_CHARACTER_ART: boss-happy-2.png
+MARKER: **SECTION_3-MEET_RECRUITER**
 
 
 SET_BACKGROUND: university-lobby.png
-SET_TITLE: University Lobby
-
 SET_CHARACTER_ART: boss-happy-2.png
 
 
-BEAT: pause
+What an honor to meed you!  If it isn't the most talked about candidate of the year.
+You know, I heard about your ...
+Oh, pfft, I'm sorry! How clumsy of me. I didn't even to introduce myself.
+I'm Terry, I'm the recruiter from DynaMax.
+
+
+Listen, I'll get straight to the point.  Obviously we want you to work with us.
+So much so, that I'm willing to offer you a full-time salaried position at DOUBLE the pay of any other company.
+We have a lot of resources. And, well, to be frank, we need your talent on a very specific project we're working on now.
+There aren't a lot of people who have a grasp of monoplex theory, and, I was lucky enough to have a look at your final exam and WOW! I was blown away.
+
+
+CHOICE:  | Wait, how did you get to see my exam? | GOTO: *GO_TO_QUESTION_EXAM_ACCESS* | Double the pay of any other company? That's it? | GOTO: *GO_TO_PUSH_OFFER*
+  MARKER: *GO_TO_QUESTION_EXAM_ACCESS*
+    At DynaMax, we are VERY thorough with our recruiting. We have a big pool of candidates from all of the universities and access to the testing.
+    We even help design some of the questions for the test ourselves, to be completely honest with you.
+    And, just between you and me... that monoplex question... the question that no other person has ever answered correctly until now? I came up with that question.
+    Your solution was pretty creative and was all the proof we needed to screen you as a candidate, and...
+    ...well, you were our top pick, no doubt.
+    Also, if you work with us, your work schedule would be very flexible.  If something comes up in your personal life, it'll be easy to take time off.  All you have to do is ask!
+    We'd be lucky to have you.
+    GOTO: *FINISH_HAGGLE_CHOICE*
+  MARKER: *GO_TO_PUSH_OFFER*
+    Hahah! You're not kidding, huh?
+    OK, fiar.  Not only double ANY OTHER company's offer, I'll also get you a signing bonus and stock options, too.
+    In addition to that, you'll also get our most flexible work schedule. So if something comes up in your personal life, it'll be easy to take time off.  All you have to do is ask!
+    Of course you'll have to finish the work, though. But for you it'd be a breeze, no doubt.
+    GOTO: *FINISH_HAGGLE_CHOICE*
+MARKER: *FINISH_HAGGLE_CHOICE*
+
+MARKER: *FINISH_HAGGLE_CHOICE*
+
+
+CHOICE: What do you say? Would you like to work at DynaMax? | Yea, let's do it! When do I start! | GOTO: *ACCEPT_OFFER* | Sure, I think this sounds reasonable. | GOTO: *ACCEPT_OFFER*
+MARKER: *ACCEPT_OFFER*
+
+
+Great!
+Wow this is incredible.
+I can't wait for you to start with us.
+How about you come in tomorrow first thing in the morning?
+We can get you up and running in no time.
+
+
+SET_CHARACTER_ART: none
+SET_BACKGROUND: none
 
 OPENSCRIPT: data/dialogs/C-first-day-at-dynamax.script.txt
