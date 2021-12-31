@@ -44,7 +44,7 @@ ApplicationController::ApplicationController(AllegroFlare::Framework* framework,
    , script()
    , dialog_factory({})
    , background_color(ALLEGRO_COLOR{0.1, 0.1, 0.2, 1.0})
-   , letterbox_frame_height(200)
+   , letterbox_frame_height(160)
    , letterbox_color(ALLEGRO_COLOR{0.0, 0.0, 0.0, 1.0})
    , af_inventory({})
    , flags({})

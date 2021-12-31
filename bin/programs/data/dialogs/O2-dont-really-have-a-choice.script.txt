@@ -4,4 +4,8 @@ SET_BACKGROUND: monoplex
 SET_TITLE: You don't really get a choice
 
 
+CHOICE: What would you choose? | Pull the plug | GOTO: *CHOOSE_TO_PULL_PLUG*
+
+MARKER: *CHOOSE_TO_PULL_PLUG*
 OPENSCRIPT: data/dialogs/Q-return-home.script.txt
+

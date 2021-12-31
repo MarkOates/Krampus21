@@ -75,7 +75,7 @@ properties:
 
   - name: letterbox_frame_height
     type: float
-    init_with: 200
+    init_with: 160
 
   - name: letterbox_color
     type: ALLEGRO_COLOR
