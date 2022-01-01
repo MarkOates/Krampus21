@@ -142,4 +142,4 @@ We can get you up and running in no time.
 SET_CHARACTER_ART: none
 SET_BACKGROUND: none
 
-OPENSCRIPT: data/dialogs/C-first-day-at-dynamax.script.txt
+__DISABLED__OPENSCRIPT: data/dialogs/C-first-day-at-dynamax.script.txt
