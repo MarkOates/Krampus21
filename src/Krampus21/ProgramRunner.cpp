@@ -65,9 +65,10 @@ void ProgramRunner::run()
       };
 
    #ifdef _WIN32
-   static std::string DIALOGS_FOLDER = "/msys64/home/Mark/Repos/Krampus21/bin/programs/data/dialogs/";
+   //static std::string DIALOGS_FOLDER = "/msys64/home/Mark/Repos/Krampus21/bin/programs/data/dialogs/";
+   static std::string DIALOGS_FOLDER = "./data/dialogs/";
    #else
-   static std::string DIALOGS_FOLDER = "/Users/markoates/Repos/Krampus21/bin/programs/data/dialogs/";
+   static std::string DIALOGS_FOLDER = "./data/dialogs/";
    #endif
 
    std::string full_script_filename = DIALOGS_FOLDER + script_to_start;
