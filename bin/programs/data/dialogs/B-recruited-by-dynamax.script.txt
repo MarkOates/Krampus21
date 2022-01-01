@@ -1,6 +1,6 @@
 SIGNAL: ***Starting script B***
 
-
+PLAY_MUSIC: park-audio-long-01.wav
 SET_CHARACTER_ART: none
 SET_BACKGROUND: none
 _WAIT: 2
@@ -13,20 +13,31 @@ SET_CHARACTER_ART: character-1-happy.png
 Hey!
 Are you headed to the university conference hall?  Everyone's there.
 SET_CHARACTER_ART: character-1-neutral.png
-I may go back later but I have to go.
+I may go back later but I had to leave for...
 It's just that I've had something come up, and, well...
 I don't think I could tell you about it right now.
 SET_CHARACTER_ART: character-1-sad.png
 I hope you don't think it's because I'm ignoring you or anything.
 SET_CHARACTER_ART: character-1-happy.png
 I know you've been so busy with studies and there's a lot going on right now, with it being the end of the school year.
-SET_CHARACTER_ART: character-1-neutral.png
 You're such a smarty-pants ya know!
 You should get to the conference hall.
+SET_CHARACTER_ART: character-1-happy.png
+Oh! And if you're going to make a good impression you gotta have fresh breath!
+Have some gum. You can have the pack. It's on me, ok?
+COLLECT: 1 
+
+SET_CHARACTER_ART: none
+SET_BACKGROUND: none
+SET_TITLE: Toggle your inventory with the "i" key
+WAIT: 4
+
+SET_BACKGROUND: on-the-way-to-university.png
+SET_CHARACTER_ART: character-1-happy.png
 Who knows! Maybe you'll even get picked up by Allegras!
 One of my good friends, working on The Allegras Codebase?!  Even I would be popular!  It would be the talk of the town!
-Or maybe even DynaMax!
 SET_CHARACTER_ART: character-1-very-happy.png
+Or maybe even DynaMax!
 Oh wow! Wouldn't that be amazing!?
 SET_CHARACTER_ART: character-1-happy.png
 Anyway...
@@ -36,6 +47,7 @@ I really should get going...
 
 
 CLEAR_DIALOGS: *
+PLAY_MUSIC: lobby-ambience.wav
 SET_CHARACTER_ART: none
 SET_BACKGROUND: none
 WAIT: 2
@@ -139,7 +151,16 @@ How about you come in tomorrow first thing in the morning?
 We can get you up and running in no time.
 
 
+
+
 SET_CHARACTER_ART: none
 SET_BACKGROUND: none
+
+SET_TITLE: To Be Continued...
+WAIT: 4
+PLAY_MUSIC: park-audio-long-01.wav
+SET_TITLE: Thank you for playing this brief demo
+WAIT: 4
+
 
 __DISABLED__OPENSCRIPT: data/dialogs/C-first-day-at-dynamax.script.txt

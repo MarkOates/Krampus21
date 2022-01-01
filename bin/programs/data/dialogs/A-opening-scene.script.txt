@@ -1,5 +1,12 @@
 SIGNAL: ***Starting script A***
 
+
+SET_TITLE: Press SPACE to advance, UP/DOWN to choose options
+WAIT: 4
+SET_TITLE: ESCAPE quits the game
+WAIT: 4
+
+CLEAR_DIALOGS: *
 PLAY_MUSIC: ringing-ambience-01.wav
 WAIT: 2
 SET_TITLE: Your Apartment, 7:35 AM

@@ -15,8 +15,8 @@ https://www.reddit.com/r/RenPy/comments/fhjmvt/royalty_free_no_copyright_visual_
 
 Sounds:
 - Gunshot Sounds: https://www.fesliyanstudios.com/royalty-free-sound-effects-download/gun-shooting-300
-- Lobby: https://www.videvo.net/royalty-free-sound-effects/lobby/
-- Lobby: https://www.soundsnap.com/tags/lobby
+- Lobby SFX: https://freesound.org/people/makosan/sounds/34709/
+- Park SFX: https://freesound.org/people/Rico_Casazza/sounds/568206/
 
 Other Entries:
 - https://tins.amarillion.org/krampu21/entries/
