@@ -35,7 +35,7 @@ void ProgramRunner::run()
 {
    AllegroFlare::Display *display;
    AllegroFlare::Screens screens;
-   AllegroFlare::Framework framework(screens);
+   AllegroFlare::Framework framework(&screens);
 
    framework.initialize();
    display = framework.create_display(1920, 1080, ALLEGRO_FULLSCREEN_WINDOW);
