@@ -1,1 +1,0 @@
-../../../allegro_flare/tests/AllegroFlare/ScreensTest.cpp

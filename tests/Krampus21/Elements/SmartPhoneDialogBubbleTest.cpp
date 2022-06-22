@@ -6,6 +6,11 @@
    catch ( raised_exception_type const &err ) { EXPECT_EQ(err.what(), std::string( raised_exception_message )); } \
    catch (...) { FAIL() << "Expected " # raised_exception_type; }
 
+#ifdef _WIN32
+#define TEST_FIXTURE_FONT_FOLDER "/msys64/home/Mark/Repos/Krampus21/bin/programs/data/fonts/"
+#else
+#define TEST_FIXTURE_FONT_FOLDER "/Users/markoates/Repos/Krampus21/bin/programs/data/fonts/"
+#endif
 
 #include <Krampus21/Elements/SmartPhoneDialogBubble.hpp>
 
@@ -20,6 +25,8 @@ class Krampus21_SmartPhoneDialogBubbleWithAllegroRenderingFixtureTest
 
 TEST_F(Krampus21_SmartPhoneDialogBubbleWithAllegroRenderingFixtureTest, can_be_created_without_blowing_up)
 {
+   get_font_bin_ref().set_full_path(TEST_FIXTURE_FONT_FOLDER);
+
    Krampus21::Elements::SmartPhoneDialogBubble dialog_bubble(
       &get_font_bin_ref(),
       "Hello, this is bubble text",

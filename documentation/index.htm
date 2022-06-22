@@ -103,7 +103,7 @@ table td
 </tr>
 <tr>
   <td class="property">screens</td>
-  <td class="property">AllegroFlare::Screens*</td>
+  <td class="property">AllegroFlare::ScreenManager*</td>
 </tr>
 <tr>
   <td class="private_property">sound_effect_elements</td>
@@ -331,7 +331,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Screen&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Screen.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Screens*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Screens.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::ScreenManager*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/ScreenManager.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Framework*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Framework.hpp&quot;]}</td>
@@ -902,7 +902,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement2d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement2d.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Placement2D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Placement2D.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::interpolator::*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Interpolators.hpp&quot;]}</td>
@@ -962,7 +962,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement2d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement2d.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Placement2D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Placement2D.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
@@ -1685,7 +1685,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Display&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Display.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Screens&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Screens.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::ScreenManager&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/ScreenManager.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Framework&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Framework.hpp&quot;]}</td>
@@ -1951,7 +1951,7 @@ table td
   "AllegroFlare/Screen": [
     "Krampus21/ApplicationController"
   ],
-  "AllegroFlare/Screens": [
+  "AllegroFlare/ScreenManager": [
     "Krampus21/ApplicationController",
     "Krampus21/ProgramRunner"
   ],
@@ -2092,8 +2092,6 @@ table td
     "Krampus21/Backgrounds/Monoplex",
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/SmartPhone",
-    "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",
     "Krampus21/Titles/Slate"
@@ -2195,6 +2193,10 @@ table td
     "Krampus21/DialogBoxRenderers/SmartPhone",
     "Krampus21/DialogBoxes/SmartPhone",
     "Krampus21/Elements/SmartPhone"
+  ],
+  "AllegroFlare/Placement2D": [
+    "Krampus21/DialogBoxRenderers/SmartPhone",
+    "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer"
   ],
   "AllegroFlare/interpolator/": [
     "Krampus21/DialogBoxRenderers/SmartPhone"

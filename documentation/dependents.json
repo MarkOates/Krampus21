@@ -28,7 +28,7 @@
   "AllegroFlare/Screen": [
     "Krampus21/ApplicationController"
   ],
-  "AllegroFlare/Screens": [
+  "AllegroFlare/ScreenManager": [
     "Krampus21/ApplicationController",
     "Krampus21/ProgramRunner"
   ],
@@ -169,8 +169,6 @@
     "Krampus21/Backgrounds/Monoplex",
     "Krampus21/Character",
     "Krampus21/DialogBoxRenderer",
-    "Krampus21/DialogBoxRenderers/SmartPhone",
-    "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer",
     "Krampus21/Inventory",
     "Krampus21/Titles/Feature",
     "Krampus21/Titles/Slate"
@@ -272,6 +270,10 @@
     "Krampus21/DialogBoxRenderers/SmartPhone",
     "Krampus21/DialogBoxes/SmartPhone",
     "Krampus21/Elements/SmartPhone"
+  ],
+  "AllegroFlare/Placement2D": [
+    "Krampus21/DialogBoxRenderers/SmartPhone",
+    "Krampus21/DialogBoxRenderers/YouGotAnItemRenderer"
   ],
   "AllegroFlare/interpolator/": [
     "Krampus21/DialogBoxRenderers/SmartPhone"

@@ -42,7 +42,9 @@ TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererTest, render__without_a_choice
 TEST_F(Krampus21_DialogBoxRenderers_ChoiceRendererWithAllegroRenderingFixtureTest,
    render__renders_the_elements)
 {
-   allegro_flare::placement2d place{ 1920/2, 1080/4*3, 1920/5*3, 1080/4 };
+   get_font_bin_ref().set_full_path(TEST_FIXTURE_FONT_FOLDER);
+
+   AllegroFlare::Placement2D place{ 1920/2, 1080/4*3, 1920/5*3, 1080/4 };
    std::string choice_box_prompt = "Do you think you're making progress?";
    std::vector<std::pair<std::string, std::string>> choice_options = {
      { "Absolutely!", "GOTO A" },

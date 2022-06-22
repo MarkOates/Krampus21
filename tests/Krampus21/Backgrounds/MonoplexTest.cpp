@@ -9,6 +9,12 @@
 
 #include <Krampus21/Backgrounds/Monoplex.hpp>
 
+#ifdef _WIN32
+#define TEST_FIXTURE_BITMAP_FOLDER "/msys64/home/Mark/Repos/Krampus21/bin/programs/data/bitmaps/"
+#else
+#define TEST_FIXTURE_BITMAP_FOLDER "/Users/markoates/Repos/Krampus21/bin/programs/data/bitmaps/"
+#endif
+
 #include <AllegroFlare/Testing/WithAllegroRenderingFixture.hpp>
 #include <chrono>
 #include <thread>
@@ -26,6 +32,8 @@ TEST(Krampus21_Backgrounds_MonoplexTest, can_be_created_without_blowing_up)
 
 TEST_F(Krampus21_Backgrounds_MonoplexWithAllegroRenderingFixtureTest, draw__will_render_in_motion)
 {
+   get_bitmap_bin_ref().set_full_path(TEST_FIXTURE_BITMAP_FOLDER);
+
    Krampus21::Backgrounds::Monoplex monoplex(&get_bitmap_bin_ref());
 
    int frames = 60*1;

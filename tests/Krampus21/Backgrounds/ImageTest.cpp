@@ -9,6 +9,12 @@
 
 #include <Krampus21/Backgrounds/Image.hpp>
 
+#ifdef _WIN32
+#define TEST_FIXTURE_BITMAP_FOLDER "/msys64/home/Mark/Repos/Krampus21/bin/programs/data/bitmaps/"
+#else
+#define TEST_FIXTURE_BITMAP_FOLDER "/Users/markoates/Repos/Krampus21/bin/programs/data/bitmaps/"
+#endif
+
 #include <AllegroFlare/Testing/WithAllegroRenderingFixture.hpp>
 #include <chrono>
 #include <thread>
@@ -33,6 +39,8 @@ TEST(Krampus21_Backgrounds_ImageTest, has_the_expected_type)
 
 TEST_F(Krampus21_Backgrounds_ImageWithAllegroRenderingFixtureTest, draw__will_render_the_image)
 {
+   get_bitmap_bin_ref().set_full_path(TEST_FIXTURE_BITMAP_FOLDER);
+
    Krampus21::Backgrounds::Image image_background(&get_bitmap_bin_ref(), "outside-amys-place.png");
 
    int frames = 60;

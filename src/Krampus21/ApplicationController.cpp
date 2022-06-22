@@ -28,7 +28,7 @@ namespace Krampus21
 {
 
 
-ApplicationController::ApplicationController(AllegroFlare::Framework* framework, AllegroFlare::Screens* screens, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements)
+ApplicationController::ApplicationController(AllegroFlare::Framework* framework, AllegroFlare::ScreenManager* screens, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements)
    : AllegroFlare::Screen()
    , framework(framework)
    , screens(screens)
@@ -371,6 +371,8 @@ void ApplicationController::primary_timer_func()
       // render inventory
       inventory.render();
    }
+
+   al_flip_display();
    return;
 }
 

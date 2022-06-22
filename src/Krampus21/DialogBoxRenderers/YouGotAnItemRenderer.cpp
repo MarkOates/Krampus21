@@ -3,7 +3,7 @@
 #include <Krampus21/DialogBoxRenderers/YouGotAnItemRenderer.hpp>
 #include <allegro5/allegro_color.h>
 #include <Krampus21/Elements/DialogBoxFrame.hpp>
-#include <allegro_flare/placement2d.h>
+#include <AllegroFlare/Placement2D.hpp>
 #include <AllegroFlare/Interpolators.hpp>
 #include <stdexcept>
 #include <sstream>
@@ -76,7 +76,7 @@ void YouGotAnItemRenderer::render()
    Krampus21::Elements::DialogBoxFrame dialog_box_frame(width, height);
    dialog_box_frame.set_fill_color(opaquify(al_color_html("2a2104")));
    dialog_box_frame.set_border_color(opaquify(al_color_html("c49505")));
-   allegro_flare::placement2d item_place(width/2, height/2, 800, 800);
+   AllegroFlare::Placement2D item_place(width/2, height/2, 800, 800);
    item_place.scale.x = 0.55;
    item_place.scale.y = 0.55;
 

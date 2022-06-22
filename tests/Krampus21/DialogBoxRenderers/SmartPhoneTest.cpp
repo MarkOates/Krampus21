@@ -9,18 +9,26 @@
 
 #include <Krampus21/DialogBoxRenderers/SmartPhone.hpp>
 
+#ifdef _WIN32
+#define TEST_FIXTURE_FONT_FOLDER "/msys64/home/Mark/Repos/Krampus21/bin/programs/data/fonts/"
+#else
+#define TEST_FIXTURE_FONT_FOLDER "/Users/markoates/Repos/Krampus21/bin/programs/data/fonts/"
+#endif
+
 #include <AllegroFlare/Testing/WithAllegroRenderingFixture.hpp>
 #include <chrono>
 #include <thread>
 
-class Krampus21_SmartPhoneTest : public ::testing::Test {};
-class Krampus21_SmartPhoneWithAllegroRenderingFixtureTest
+class Krampus21_DialogBoxRenderers_SmartPhoneTest : public ::testing::Test {};
+class Krampus21_DialogBoxRenderers_SmartPhoneWithAllegroRenderingFixtureTest
    : public AllegroFlare::Testing::WithAllegroRenderingFixture {};
 
 
-TEST_F(Krampus21_SmartPhoneWithAllegroRenderingFixtureTest, can_be_created_without_blowing_up)
+TEST_F(Krampus21_DialogBoxRenderers_SmartPhoneWithAllegroRenderingFixtureTest, can_be_created_without_blowing_up)
 {
-   allegro_flare::placement2d place{ 1920/2, 1080/2, 600/2, 600 };
+   get_font_bin_ref().set_full_path(TEST_FIXTURE_FONT_FOLDER);
+
+   AllegroFlare::Placement2D place{ 1920/2, 1080/2, 600/2, 600 };
    int passes = 60;
    float reveal_counter = 0;
    for (unsigned i=0; i<passes; i++)

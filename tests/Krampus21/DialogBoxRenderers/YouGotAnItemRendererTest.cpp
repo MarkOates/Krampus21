@@ -6,6 +6,13 @@
    catch ( raised_exception_type const &err ) { EXPECT_EQ(err.what(), std::string( raised_exception_message )); } \
    catch (...) { FAIL() << "Expected " # raised_exception_type; }
 
+#ifdef _WIN32
+#define TEST_FIXTURE_FONT_FOLDER "/msys64/home/Mark/Repos/Krampus21/bin/programs/data/fonts/"
+#define TEST_FIXTURE_BITMAP_FOLDER "/msys64/home/Mark/Repos/Krampus21/bin/programs/data/bitmaps/"
+#else
+#define TEST_FIXTURE_FONT_FOLDER "/Users/markoates/Repos/Krampus21/bin/programs/data/fonts/"
+#define TEST_FIXTURE_BITMAP_FOLDER "/Users/markoates/Repos/Krampus21/bin/programs/data/bitmaps/"
+#endif
 
 #include <Krampus21/DialogBoxRenderers/YouGotAnItemRenderer.hpp>
 
@@ -26,7 +33,10 @@ TEST_F(Krampus21_DialogBoxRenderers_YouGotAnItemRendererTest, can_be_created_wit
 TEST_F(Krampus21_DialogBoxRenderers_YouGotAnItemRendererWithAllegroRenderingFixtureTest,
    render__renders_the_dialog_box)
 {
-   allegro_flare::placement2d place{ 1920/2, 1080/4*2, 400, 400 };
+   get_font_bin_ref().set_full_path(TEST_FIXTURE_FONT_FOLDER);
+   get_bitmap_bin_ref().set_full_path(TEST_FIXTURE_BITMAP_FOLDER);
+
+   AllegroFlare::Placement2D place{ 1920/2, 1080/4*2, 400, 400 };
    std::string item_name = "Pack of gum";
    std::string item_bitmap_identifier = "pack-of-gum-01.png";
    float age = 0.0;

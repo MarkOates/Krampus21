@@ -8,7 +8,7 @@
 #include <AllegroFlare/Framework.hpp>
 #include <AllegroFlare/Inventory.hpp>
 #include <AllegroFlare/Screen.hpp>
-#include <AllegroFlare/Screens.hpp>
+#include <AllegroFlare/ScreenManager.hpp>
 #include <Krampus21/Backgrounds/Base.hpp>
 #include <Krampus21/Character.hpp>
 #include <Krampus21/DialogBoxes/Base.hpp>
@@ -31,7 +31,7 @@ namespace Krampus21
    {
    private:
       AllegroFlare::Framework* framework;
-      AllegroFlare::Screens* screens;
+      AllegroFlare::ScreenManager* screens;
       std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements;
       std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements;
       ALLEGRO_EVENT_SOURCE user_event_emitter_souce;
@@ -57,7 +57,7 @@ namespace Krampus21
       bool on_hold_for_wait_delay;
 
    public:
-      ApplicationController(AllegroFlare::Framework* framework=nullptr, AllegroFlare::Screens* screens=nullptr, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements={}, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements={});
+      ApplicationController(AllegroFlare::Framework* framework=nullptr, AllegroFlare::ScreenManager* screens=nullptr, std::map<std::string, AllegroFlare::AudioRepositoryElement> sound_effect_elements={}, std::map<std::string, AllegroFlare::AudioRepositoryElement> music_track_elements={});
       ~ApplicationController();
 
       void set_script_freshly_loaded_via_OPENSCRIPT(bool script_freshly_loaded_via_OPENSCRIPT);

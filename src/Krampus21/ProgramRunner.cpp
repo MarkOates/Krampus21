@@ -2,7 +2,7 @@
 
 #include <Krampus21/ProgramRunner.hpp>
 #include <AllegroFlare/Display.hpp>
-#include <AllegroFlare/Screens.hpp>
+#include <AllegroFlare/ScreenManager.hpp>
 #include <AllegroFlare/Framework.hpp>
 #include <map>
 #include <string>
@@ -34,7 +34,7 @@ void ProgramRunner::set_script_to_start(std::string script_to_start)
 void ProgramRunner::run()
 {
    AllegroFlare::Display *display;
-   AllegroFlare::Screens screens;
+   AllegroFlare::ScreenManager screens;
    AllegroFlare::Framework framework(&screens);
 
    framework.initialize();

@@ -12,6 +12,6 @@ TEST(Krampus21_ProgramRunnerTest, can_be_created_without_blowing_up)
 TEST(Krampus21_ProgramRunnerTest, run__runs_the_program)
 {
    Krampus21::ProgramRunner program_runner;
-   //program_runner.run();
+   program_runner.run();
 }
 

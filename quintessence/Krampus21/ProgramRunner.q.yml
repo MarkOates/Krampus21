@@ -15,7 +15,7 @@ functions:
     type: void
     body: |
       AllegroFlare::Display *display;
-      AllegroFlare::Screens screens;
+      AllegroFlare::ScreenManager screens;
       AllegroFlare::Framework framework(&screens);
 
       framework.initialize();
@@ -74,7 +74,7 @@ functions:
       delete screen_manager;
     body_dependency_symbols:
       - AllegroFlare::Display
-      - AllegroFlare::Screens
+      - AllegroFlare::ScreenManager
       - AllegroFlare::Framework
       - std::map<std::string, AllegroFlare::AudioRepositoryElement>
       - Krampus21::ApplicationController
@@ -85,8 +85,8 @@ dependencies:
 
   - symbol: AllegroFlare::Display
     headers: [ AllegroFlare/Display.hpp ]
-  - symbol: AllegroFlare::Screens
-    headers: [ AllegroFlare/Screens.hpp ]
+  - symbol: AllegroFlare::ScreenManager
+    headers: [ AllegroFlare/ScreenManager.hpp ]
   - symbol: AllegroFlare::Framework
     headers: [ AllegroFlare/Framework.hpp ]
   - symbol: std::map<std::string, AllegroFlare::AudioRepositoryElement>

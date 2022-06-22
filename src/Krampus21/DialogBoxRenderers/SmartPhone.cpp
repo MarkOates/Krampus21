@@ -4,7 +4,7 @@
 #include <allegro5/allegro_primitives.h>
 #include <AllegroFlare/Interpolators.hpp>
 #include <Krampus21/Elements/SmartPhoneDialogBubble.hpp>
-#include <allegro_flare/placement2d.h>
+#include <AllegroFlare/Placement2D.hpp>
 
 
 namespace Krampus21
@@ -46,7 +46,7 @@ void SmartPhone::render()
    //int line = 0;
    float dialog_box_height = 180;
    float dialog_box_spacing = dialog_box_height + 30;
-   allegro_flare::placement2d dialog_bubble_placement;
+   AllegroFlare::Placement2D dialog_bubble_placement;
    float window_padding = 30;
    float bubble_width = window_width - window_padding * 2;
 
@@ -74,7 +74,7 @@ void SmartPhone::render()
       float reveal_scale = AllegroFlare::interpolator::tripple_fast_in(sanitized_reveal_counter);
       float y_position = i * dialog_box_spacing + y_reveal_offset + window_padding;
       auto &message = messages[i];
-      allegro_flare::placement2d dialog_bubble_placement{window_padding, y_position, 0, 0};
+      AllegroFlare::Placement2D dialog_bubble_placement{window_padding, y_position, 0, 0};
       dialog_bubble_placement.scale.y = 0.7 + reveal_scale * 0.3;
 
       dialog_bubble_placement.start_transform();

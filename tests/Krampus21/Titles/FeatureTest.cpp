@@ -7,6 +7,12 @@
 
 #include <Krampus21/Titles/Feature.hpp>
 
+#ifdef _WIN32
+#define TEST_FIXTURE_FONT_FOLDER "/msys64/home/Mark/Repos/Krampus21/bin/programs/data/fonts/"
+#else
+#define TEST_FIXTURE_FONT_FOLDER "/Users/markoates/Repos/Krampus21/bin/programs/data/fonts/"
+#endif
+
 #include <AllegroFlare/Testing/WithAllegroRenderingFixture.hpp>
 #include <chrono>
 #include <thread>
@@ -26,6 +32,8 @@ TEST_F(Krampus21_Titles_FeatureTest, can_be_created_without_blowing_up)
 
 TEST_F(Krampus21_Titles_FeatureWithAllegroRenderingFixtureTest, can_be_created_without_blowing_up)
 {
+   get_font_bin_ref().set_full_path(TEST_FIXTURE_FONT_FOLDER);
+
    std::string title_text = "FADE TO WHITE";
    std::string secondary_text = "A VISUAL NOVEL";
    Krampus21::Titles::Feature slate(&get_font_bin_ref(), title_text, secondary_text);

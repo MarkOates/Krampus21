@@ -15,7 +15,7 @@ properties:
     constructor_arg: true
 
   - name: screens
-    type: AllegroFlare::Screens*
+    type: AllegroFlare::ScreenManager*
     init_with: nullptr
     constructor_arg: true
 
@@ -410,6 +410,8 @@ functions:
          // render inventory
          inventory.render();
       }
+
+      al_flip_display();
       return;
     body_dependency_symbols:
       - Krampus21::DialogBoxRenderer
@@ -1182,8 +1184,8 @@ dependencies:
     headers: [ allegro5/allegro.h ]
   - symbol: AllegroFlare::Screen
     headers: [ AllegroFlare/Screen.hpp ]
-  - symbol: AllegroFlare::Screens*
-    headers: [ AllegroFlare/Screens.hpp ]
+  - symbol: AllegroFlare::ScreenManager*
+    headers: [ AllegroFlare/ScreenManager.hpp ]
   - symbol: AllegroFlare::Framework*
     headers: [ AllegroFlare/Framework.hpp ]
   - symbol: AllegroFlare::FontBin*
